@@ -1,0 +1,17 @@
+{% extends 'student.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.student'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoStudentBundle:Default:tdb.html.twig"%}{% endblock %}	
+{% block nav %}{%if student is defined and student!=null%}{%include "BoStudentBundle:Default:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>{{'entity.student'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('bo_student_edit') }}" method="post" class="style">
+			{{ form_errors(edit_form) }}
+			{%include "BoStudentBundle:Default:editactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoStudentBundle:Default:editform.html.twig"%}
+			</div>
+			{{ form_rest(edit_form) }}
+		</form>	
+	</div>
+{% endblock %}

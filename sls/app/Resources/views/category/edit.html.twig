@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.quiz'|trans([],'BoAdminBundle')}} >> {{'entity.category'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.quiz'|trans([],'BoAdminBundle')}} >> {{'entity.category'|trans([],'BoAdminBundle')}}  {{'title.edit'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('category_edit',{'id':category.id}) }}" method="post" class="style">
+			{{ form_errors(cat_form) }}
+			{%include "BoQuizBundle:Category:editactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoQuizBundle:Category:editform.html.twig"%}
+			</div>
+			{{ form_rest(cat_form) }}
+		</form>	
+	</div>
+{% endblock %}

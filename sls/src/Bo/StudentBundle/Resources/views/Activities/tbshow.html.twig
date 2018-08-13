@@ -1,0 +1,38 @@
+    <table>
+        <tbody>
+            <tr>
+                <th width="120px">Id:</th>
+                <td>{{ activity.id }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>User:</th>
+                <td>{{ username }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>Address Ip:</th>
+                <td>{{ activity.ip }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>Session id:</th>
+                <td>{{ activity.sessionid }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>Rubric viewed:</th>
+                <td>{{ activity.rubric }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>Detail:</th>
+                <td>{{ activity.subrubric }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>Creation date:</th>
+                <td>{% if activity.creationdate %}{{ activity.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>

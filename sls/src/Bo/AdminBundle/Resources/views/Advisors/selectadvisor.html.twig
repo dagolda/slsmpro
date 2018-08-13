@@ -1,0 +1,6 @@
+				<select name='advisor' id='advisor' required="true">
+					<option value="0" selected="delected">Select advisor</option>
+					{%for teacher in teachers%}
+						<option value="{{teacher[0]}}" {%if idadvisor is defined and idadvisor ==teacher[0]%}selected='selected'{%endif%}>{{teacher[1]}}</option>
+					{%endfor%}
+				</select>	

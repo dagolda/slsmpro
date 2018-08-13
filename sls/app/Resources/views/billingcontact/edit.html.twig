@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.billingcontact'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.billingcontact'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('billingcontact_edit',{'id':billingContact.id}) }}" method="post" class="style">
+			{{ form_errors(edit_form) }}
+			{%include "BoAdminBundle:BillingContact:editactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:BillingContact:editform.html.twig"%}
+			</div>
+			{{ form_rest(edit_form) }}
+		</form>	
+	</div>
+{% endblock %}

@@ -1,0 +1,139 @@
+    <table width=100%>
+        <tbody>
+            <tr>
+                <th width="20%">Id</th>
+				<th width="20%">{{'label.evaltype'|trans([],'BoAdminBundle')}}</th>
+                <th width="20%">{{'label.evaluator'|trans([],'BoAdminBundle')}}</th>
+				<th width="20%">{{'label.evaldate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+				<td>{{ evaluation.id }}</td>
+                <td>{{ evaluation.evaltype }}</td>
+                <td>{{ evaluation.evaluator }}</td>
+				<td>{% if evaluation.evaldate and evaluation.evaltime%}{{ evaluation.evaldate|date('Y-m-d') }} {{ evaluation.evaltime|date('H:i') }}{% endif %} </td>
+            </tr>
+            <tr><td colspam=4>&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.sendevaldate'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.sendto'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.language'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.ryacc'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ evaluation.sendevaldate }}</td>
+                <td>{{ evaluation.sendto }}</td>
+				<td>{{ evaluation.languages }}</td>
+				<td>{{ evaluation.ryacc }}</td>
+            </tr>
+            <tr><td colspam=4>&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.ftorpt'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.typeoftraining'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.expenses'|trans([],'BoAdminBundle')}}</th>	
+                <th>{{'label.address'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ evaluation.typetime }}</td>
+                <td>{{ evaluation.typeoftraining }}</td>
+				<td>{{ evaluation.expenses }}$</td>
+				<td>{{ evaluation.addresse }}</td>
+            </tr>
+            <tr><td colspam=4>&nbsp;</td></tr>
+            <tr>
+				<th width=20%>{{'label.fullname'|trans([],'BoAdminBundle')}}</th>
+                <th width=20%>{{'label.title'|trans([],'BoAdminBundle')}}</th>
+				<th width=20%>{{'label.phone'|trans([],'BoAdminBundle')}}</th>
+                <th width=20%>{{'label.studentemail'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ evaluation.other }}</td>
+				<td>{{ evaluation.title }}</td>
+				<td>{{ evaluation.phone }}</td>
+                <td>{{ evaluation.emailstudent }}</td>
+            </tr>
+            <tr><td colspam=4>&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.currentprofile'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.targetprofile'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.customer'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.contact'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ evaluation.currentprofile }}</td>
+                <td>{{ evaluation.targetprofile }}</td>
+                <td>{{ evaluation.customer }}</td>
+                <td>{{ evaluation.contact }}</td>
+            </tr>
+            <tr><td colspam=4>&nbsp;</td></tr>
+            <tr>
+				<th>{{'label.contactphone'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.contactemail'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.billingcontact'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.billingemail'|trans([],'BoAdminBundle')}}</th>				
+            </tr>
+            <tr>
+				<td>{{ evaluation.phonecontact }}</td>
+                <td>{{ evaluation.emailcontact }}</td>
+                <td>{{ evaluation.billingcontact }}</td>
+                <td>{{ evaluation.billingemail }}</td>
+            </tr>
+            <tr><td colspam=4>&nbsp;</td></tr>
+            <tr>
+				<th>{{'label.billingphone'|trans([],'BoAdminBundle')}}</th> 
+				<th>{{'label.location'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+				<td>{{ evaluation.billingphone }}</td>
+				<td>{{ evaluation.evallocation }}</td>
+                <td>{% if evaluation.creationdate %}{{ evaluation.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr><td colspam=4>&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.writencomprehension'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.writenexpression'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.oralunderstanding'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.qualityofdiscourse'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ evaluation.writencomprehension }}</td>
+                <td>{{ evaluation.writenexpression }}</td>
+				<td>{{ evaluation.oralunderstanding }}</td>
+				<td>{{ evaluation.qualityofdiscourse }}</td>
+            </tr>
+            <tr><td colspam=4>&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.prononciation'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.grammar'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.verbs'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.vocabulary'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ evaluation.prononciation }}</td>
+                <td>{{ evaluation.grammar }}</td>
+                <td>{{ evaluation.verbs }}</td>
+                <td>{{ evaluation.vocabulary }}</td>
+            </tr>
+			<tr><td colspam=4>&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.syntax'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.result'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.notes'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ evaluation.syntaxe }}</td>
+                <td>{{ evaluation.result }}</td>
+                <td>{{ evaluation.notes }}</td>
+                <td>{{ status[evaluation.status] }}</td>
+            </tr>
+			<tr><td colspam=4>&nbsp;</td></tr>
+            <tr>				
+                <th coslpan=4>Comment</th>
+            </tr>
+            <tr>
+                <td coslpan=4>{{ evaluation.comment }}</td>
+            </tr>
+			<tr><td colspam=4>&nbsp;</td></tr>
+        </tbody>
+    </table>

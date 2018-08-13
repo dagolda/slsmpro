@@ -1,0 +1,5 @@
+				<select name='idsexe' id='idsexe'>
+					<option value="0" {%if idsexe is defined and sexe.id ==0%}selected='selected'{%endif%}>{{'label.all'|trans([],'BoAdminBundle')}}</option>
+					<option value="1" {%if idsexe is defined and sexe.id ==1%}selected='selected'{%endif%}>{{'label.male'|trans([],'BoAdminBundle')}}</option>
+					<option value="2" {%if idsexe is defined and sexe.id ==2%}selected='selected'{%endif%}>{{'label.female'|trans([],'BoAdminBundle')}}</option>
+				</select>	

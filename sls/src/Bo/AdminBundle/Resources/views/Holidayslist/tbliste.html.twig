@@ -1,0 +1,29 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>{{'label.designation'|trans([],'BoAdminBundle')}}</th>
+                <th>Country</th>
+                <th>Province</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for holidayslist in holidayslists %}
+            <tr>
+                <td>{% if holidayslist.ddate %}{{ holidayslist.ddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ holidayslist.designation }}</td>
+                <td>{{ holidayslist.country }}</td>
+                <td>{{ holidayslist.province }}</td>
+                <td>{% if holidayslist.creationdate %}{{ holidayslist.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('holidayslist_show', { 'id': holidayslist.id }) }}">show</a>
+                    <a href="{{ path('holidayslist_edit', { 'id': holidayslist.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="6">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

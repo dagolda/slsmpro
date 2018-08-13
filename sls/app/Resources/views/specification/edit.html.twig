@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'label.specification'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tools.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'label.specification'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('specification_edit',{'id':specification.id}) }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Specification:editactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Specification:editform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

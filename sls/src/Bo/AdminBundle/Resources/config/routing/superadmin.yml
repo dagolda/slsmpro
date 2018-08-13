@@ -1,0 +1,4 @@
+superadmin_contract:
+    path:     /contract/
+    defaults: { _controller: "BoAdminBundle:Superadmin:contract" }
+    methods:  GET

@@ -1,0 +1,18 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					{%if tsstudent.status==1%}
+					<td class="delete-action">
+						{{ form_start(validate_form) }}
+							<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+						{{ form_end(validate_form) }}
+					</td>
+					{%endif%}
+					<td>
+						<a href="{{ path('student_timesheet_index') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

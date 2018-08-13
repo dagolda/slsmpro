@@ -1,0 +1,5 @@
+				<select name='idteacher' id='idteacher' height="40px">
+					{%for teacher in teachers%}
+						<option value="{{teacher.id}}" {%if employee is defined and employee.id==teacher.id%}selected='selected'{%endif%}>{{teacher.firstname}} {{teacher.name}}</option>
+					{%endfor%}
+				</select>	

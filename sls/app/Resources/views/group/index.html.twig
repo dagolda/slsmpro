@@ -1,0 +1,102 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.group'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'entity.group'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdminBundle:Group:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	{%if total is defined and total>nb_cpp%}
+	<div class="pagination_content">
+		{% include 'BoAdminBundle:Group:pagination.html.twig' %}
+	</div>
+	{%endif%}
+	<div id="content-liste">
+		{%include "BoAdminBundle:Group:tbliste.html.twig"%}
+	</div>
+	
+	<!-- begin add group creation form by modal dialog-->
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_group" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'entity.group'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('group_new')}}" method="post" class="style" class="form_submitt">
+				<div class="modal-message"></div>
+				<div class="modal-body">
+					{{ form_errors(form) }}
+						{%include "BoAdminBundle:Group:newform.html.twig"%}
+					{{ form_rest(form) }}
+				</div>
+				<div class="modal-footer">
+					<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+					<input id="btn-create" type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<!-- end group creation form by modal dialog-->		
+	
+	{% block javascripts %}
+		<script>
+			$("#btn-create").click(function(){
+				if($(".startdate").val()>=$(".enddate").val()){
+					$('.modal-message').html("Group startdate can not be equal to or greater than the end date!");
+					return false;
+				}
+				return true;
+			});
+			$("#idpage").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idpage option:selected");
+				page=str.text();
+				var DATA = 'motcle=' + page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('group_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});	
+			$("#btn-search").click(function(){
+				if($("#inp-search").val()==""){
+					alert("Search fields is empty!");
+					return false;
+				}
+				var criteria = $("#inp-search").val();				
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				$(".pagination_content").hide();
+				$(".list_link").show();
+				var DATA = 'description=' + criteria;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('group_search')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

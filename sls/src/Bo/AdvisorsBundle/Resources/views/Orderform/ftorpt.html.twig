@@ -1,0 +1,5 @@
+				<select name='idtt' id='idtt'>
+					<option value="0" {%if idtt is defined and idtt ==1%}selected='selected'{%endif%}>Ft or PT</option>
+					<option value="2" {%if idtt is defined and idtt ==2%}selected='selected'{%endif%}>{{'action.ft'|trans([],'BoAdminBundle')}}</option>
+					<option value="3" {%if idtt is defined and idtt ==3%}selected='selected'{%endif%}>{{'action.resolved'|trans([],'BoAdminBundle')}}</option>
+				</select>	

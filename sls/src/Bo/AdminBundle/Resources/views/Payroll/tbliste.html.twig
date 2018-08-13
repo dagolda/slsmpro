@@ -1,0 +1,37 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.year'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.month'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.listeweek'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.paydate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for periodPay in periodPays %}
+            <tr>
+                <td>{{ periodPay.year }}</td>
+                <td>{{ periodPay.month }}</td>
+                <td>{% if periodPay.startdate %}{{ periodPay.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if periodPay.enddate %}{{ periodPay.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ periodPay.pweek }}</td>
+                <td>{%if periodPay.status==1 %}{{'status.created'|trans([],'BoAdminBundle')}}{%elseif periodPay.status==2%}{{'status.paid'|trans([],'BoAdminBundle')}}{%endif%}</td>
+                <td>{% if periodPay.paydate %}{{ periodPay.paydate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if periodPay.creationdate %}{{ periodPay.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('payroll_show', { 'id': periodPay.id,'action': "Teaching" }) }}">show</a>
+				{%if app.session.get('rights')['ACCOUNTING']['Payroll'] is defined and app.session.get('rights')['ACCOUNTING']['Payroll'].edit==1%}	
+                    <!--a href="{{ path('payroll_edit', { 'id': periodPay.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a-->
+				{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="9">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

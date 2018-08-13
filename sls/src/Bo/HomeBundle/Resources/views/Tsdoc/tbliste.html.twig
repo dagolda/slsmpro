@@ -1,0 +1,42 @@
+    <table class='table table-bordered records_list'>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>{{'label.year'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.month'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.studentname'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.numberhour'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.createdby'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+			{% for tsdoc in tsdocs %}
+				<tr>
+					<td>{{ tsdoc.id }}</td>
+					<td>{{ tsdoc.year }}</td>
+					<td>{{ tsdoc.month }}</td>
+					<td>{{ tsdoc.student }}</td>
+					<td>{{ tsdoc.startdate|date('Y-m-d') }}</td>
+					<td>{{ tsdoc.enddate|date('Y-m-d') }}</td>
+					<td>{{ tsdoc.nbhour }}</td>
+					<td>{{ tsdoc.creationdate|date("Y-m-d H:i:s") }}</td>
+					<td>{%if tsdoc.createby %}{{ tsdoc.createby }}{%else%}---{%endif%}</td>
+					<td class="list-action">                         
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#myModal">
+							{{'action.delete'|trans([],'BoAdminBundle')}}
+						</button>
+						<a class="btn btn-info btn-lg modal-create" href="{{ asset('uploads/tsdoc/' ~ tsdoc.filename) }}">Download</a>
+					</td>
+				</tr>
+			{% endfor %}
+			<tr>
+				<td colspan="10"class="panel-body">
+					<button type="button" class="modal-create" data-toggle="modal" data-target="#add_tsdoc">{{'action.add'|trans([],'BoAdminBundle')}}</button>	
+				</td>
+			</tr>
+        </tbody>
+    </table>

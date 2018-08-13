@@ -1,0 +1,39 @@
+teachers_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Teachers:index" }
+    methods:  GET
+teachers_list:
+    path:     /list/
+    defaults: { _controller: "BoAdminBundle:Teachers:list" }
+    methods:  GET
+teachers_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdminBundle:Teachers:page" }
+teachers_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Teachers:show" }
+    methods:  GET
+teachers_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Teachers:new" }
+    methods:  [GET, POST]
+teachers_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Teachers:edit" }
+    methods:  [GET, POST]
+teachers_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Teachers:search" }
+    methods:  [GET, POST]
+teachers_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Teachers:pagesearch" }
+    methods:  [GET, POST]
+teachers_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Teachers:delete" }
+    methods:  DELETE
+#teachers_update:
+#    path:  /update/
+#    defaults: { _controller: "BoAdminBundle:Teachers:update" }
+#    methods:  [GET, POST]

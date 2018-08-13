@@ -1,0 +1,24 @@
+categoryteacher_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Categoryteacher:index" }
+    methods:  GET
+
+categoryteacher_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Categoryteacher:show" }
+    methods:  GET
+
+categoryteacher_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Categoryteacher:new" }
+    methods:  [GET, POST]
+
+categoryteacher_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Categoryteacher:edit" }
+    methods:  [GET, POST]
+
+categoryteacher_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Categoryteacher:delete" }
+    methods:  DELETE

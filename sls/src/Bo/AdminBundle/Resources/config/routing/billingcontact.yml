@@ -1,0 +1,24 @@
+billingcontact_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:BillingContact:index" }
+    methods:  GET
+
+billingcontact_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:BillingContact:show" }
+    methods:  GET
+
+billingcontact_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:BillingContact:new" }
+    methods:  [GET, POST]
+
+billingcontact_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:BillingContact:edit" }
+    methods:  [GET, POST]
+
+billingcontact_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:BillingContact:delete" }
+    methods:  DELETE

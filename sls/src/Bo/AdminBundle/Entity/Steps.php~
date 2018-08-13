@@ -1,0 +1,68 @@
+<?php
+/*
+* Date Création: 04/04/2017
+* Auteur: N'VEKOUNOU Moise José
+* Nom fichier : Steps.php
+* Description: Steps of training
+*/
+namespace Bo\AdminBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+/**
+* @ORM\Entity
+* @ORM\Table(name="adm_absences")
+* @ORM\Entity(repositoryClass="Bo\AdminBundle\Repository\StepsRepository")
+*/
+class Steps
+{
+    /**
+    * @ORM\GeneratedValue
+    * @ORM\Id
+    * @ORM\Column(type="integer")
+    */
+    private $id;
+	
+    /**
+    * @ORM\Column(type="integer")
+    */
+    private $number;
+	  
+    /**
+    * @ORM\ManyToOne(targetEntity="Bo\AdminBundle\Entity\Workfield")
+	* @ORM\JoinColumn(name="idworkfield",referencedColumnName="id", nullable=true)
+    */      
+    private $field;	
+	
+    /**
+     * @ORM\Column(type="string",length=255)
+     */    
+    private $resultat;
+	
+    /**
+     * @ORM\Column(type="string",length=25,nullable=true)
+     */    
+    private $numberofhours;
+		
+    /**
+    * @ORM\Column(type="date")
+    */
+	private $startpoint;	
+			
+    /**
+    * @ORM\Column(type="string",length=255, nullable=true)
+    */
+    private $createby;
+	
+    /**
+    * @ORM\Column(type="datetime")
+    */    
+	private $creationdate;
+	
+    /**
+    * Constructor
+    */
+    public function __construct()
+    {
+		$this->creationdate=$this->startdate=new \DateTime();
+    }
+}

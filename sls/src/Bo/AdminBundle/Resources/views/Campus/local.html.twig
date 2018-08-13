@@ -1,0 +1,31 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.reference'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.designation'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.dimension'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for local in locals %}
+            <tr>
+                <td><a href="{{ path('local_show', { 'id': local.id }) }}">{{ local.id }}</a></td>
+                <td>{{ local.reference }}</td>
+                <td>{{ local.designation }}</td>
+                <td>{{ local.dimension }}</td>
+                <td>{% if local.creationdate %}{{ local.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('local_show', { 'id': local.id }) }}"><img src="{{ asset('images/actions/afficher.jpg') }}" />show</a>
+					{%if app.session.get('rights')['ROOMS']['Campus'] is defined and app.session.get('rights')['ROOMS']['Campus'].edit==1%}	
+						<a href="{{ path('local_edit', { 'id': local.id }) }}"><img src="{{ asset('images/actions/modifier.jpg') }}" />{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="6">Aucune entrée de local trouvée dans la base de données</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

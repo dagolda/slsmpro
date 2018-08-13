@@ -1,0 +1,8 @@
+		<center>
+			{{'label.week'|trans([],'BoAdminBundle')}}
+			{{today|date("W")}} >>
+			{{'label.from'|trans([],'BoAdminBundle')}} <span>{{dates[0]|date("d")}} {{'label.to'|trans([],'BoAdminBundle')}} {{dates[6]|date("d")}} {{dates[6]|date("F")|trans([],'BoAdminBundle')}} {{dates[6]|date("Y")}}</span>
+		</center>
+		<input id="idemployee" type="hidden" value="{{employee.id}}" />
+		<input id="startdate" type="hidden" value="{{dates[0]|date("d-m-Y")}}" />
+		<input id="enddate" type="hidden" value="{{dates[6]|date("d-m-Y")}}" />

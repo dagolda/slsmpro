@@ -1,0 +1,21 @@
+		<div class='payroll_attendance'>
+			<legend>Attendance of learners</legend>
+			<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+				{%for student in contract.students%}
+					<tr>
+						<td class='ts_presence_label'>{{student.firstname}} {{student.name}}:</td>
+						<td class='ts_presence_value'>
+							<input type='radio' name='student{{student.id}}' value='P' checked> P
+							<input type='radio' name='student{{student.id}}' value='N-S'> N-S
+							<input type='radio' name='student{{student.id}}' value='ABS'> ABS				
+						</td>
+						<td width="3px">&nbsp;</td>
+						<td><b>L</b>:<input type='text' name='delay{{student.id}}' value='0' size="2"> (in minutes)</td>
+						<td width="3px">&nbsp;</td>
+						<td><b>LE</b>:<input type='text' name='dh{{student.id}}' value='0' size="2"> (in minutes)</td>
+						<td width="30%">&nbsp;</td>
+					</tr>
+				{%endfor%}
+				<tr><td colspan="2">&nbsp;</td></tr>		
+			</table>
+		</div>			

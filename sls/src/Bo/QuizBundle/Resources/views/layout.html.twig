@@ -1,0 +1,44 @@
+{% extends '::user.html.twig' %}
+{% block stylesheets %}
+	{{parent()}}
+	<style>
+		/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+		.row.content {
+			min-height: 400px;
+			overflow: hidden;
+			margin-top: 0;
+		}
+			
+		/* Set gray background color and 100% height */
+		.sidenav {
+			padding-top: 15px;
+			padding-bottom: 15px;
+			background-color: #f1f1f1;
+			min-height: 422px;
+			overflow: hidden;
+		}       
+		/* On small sgreens, set height to 'auto' for sidenav and grid */
+		@media sgreen and (max-width: 767px) {
+			.sidenav {
+				height: auto;
+				padding: 5px;
+			}
+			.row.content {height:auto;} 
+		}
+		.container-content{
+			padding: 0 15px;	
+		}
+		.footer{
+			height: 45px;
+			background-color: #222;
+			color: #fff;
+			padding: 15px;
+		}
+	</style>
+{% endblock %}
+{% block title %}{{parent()}}- {{'user.login'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block body %}
+	{% block fos_user_content %}
+		
+	{% endblock %}
+{% endblock %}	

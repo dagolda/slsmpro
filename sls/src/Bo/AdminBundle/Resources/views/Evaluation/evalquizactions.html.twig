@@ -1,0 +1,12 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td>
+						{%if evaluation %}
+						<a href="{{ path('evaluation_show',{'id':evaluation.id,'page':1}) }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+						{%endif%}
+					</td>
+			</table>		
+		</div>
+	</div>	

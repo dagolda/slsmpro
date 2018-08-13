@@ -1,0 +1,5 @@
+<select name='idquiz' required>
+	{%for quiz in formquiz%}
+		<option value='{{quiz.id}}'>{{quiz.name}}</option>
+	{%endfor%}
+</select>

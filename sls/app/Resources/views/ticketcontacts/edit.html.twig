@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.tickets'|trans([],'BoAdminBundle')}} >> {{'label.contacts'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tools.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.tickets'|trans([],'BoAdminBundle')}} >> {{'label.contacts'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('ticketcontacts_edit',{'id':ticketcontact.id}) }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:TicketContacts:editactions.html.twig"%}
+			<div class="show_content2">
+				{%include "BoAdminBundle:TicketContacts:editform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+	{%for employee in ticketcontact.employee%}
+		{%set remove_form=remove_forms[employee.id]%}
+		<div class="container">
+		  <!-- Modal -->
+		  <div class="modal fade" id="myModal{{employee.id}}" role="dialog">
+			<div class="modal-dialog">
+			
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+				</div>
+				<div class="modal-body">
+				  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+				</div>
+				<div class="modal-footer">
+					{{ form_start(remove_form) }}
+						<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+					{{ form_end(remove_form) }}
+				</div>
+			  </div>
+			  
+			</div>
+		  </div>
+		</div>
+	{%endfor%}
+
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

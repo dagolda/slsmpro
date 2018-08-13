@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'label.validation.ts'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}
+	{%include "BoAdminBundle:Employee:rightshow.html.twig"%}
+{% endblock %}
+{% block label %}<h1>{{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'label.validation.ts'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdvisorsBundle:Employee:showactions.html.twig"%}
+		<div class="display_content">
+			<legend>{{'label.teacher'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdvisorsBundle:Employee:teacher.html.twig"%}	
+		</div>
+		<div class="display_content">
+			<legend>{{'label.timesheets'|trans([],'BoAdminBundle')}}</legend>
+			<div id="content-liste">
+				{%include "BoAdvisorsBundle:Employee:timesheet.html.twig"%}	
+			</div>
+		</div>
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#btn-validate").click(function(){
+				$("#td_validate").hide();
+				var idemployee = $("#btn-validate").val();
+				$('#content-liste').html("<center>{{'message.allvalidate_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var DATA = 'idemployee='+idemployee;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_employee_ajaxvalidate')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

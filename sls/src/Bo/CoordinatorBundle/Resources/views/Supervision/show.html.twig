@@ -1,0 +1,92 @@
+{% extends 'coordinator.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.supervision'|trans([],'BoAdminBundle')}} >> {{'label.contracts'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block stylesheets %}{{parent()}} <style>.row.content {height: 100%;}</style>{% endblock %}
+{% block smenu %}{%include "BoCoordinatorBundle:Default:supervision.html.twig"%}{% endblock %}
+{% block nav %}{%include "BoAdminBundle:Contracts:rightshow.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'entity.supervision'|trans([],'BoAdminBundle')}} >> {{'label.contracts'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoCoordinatorBundle:Supervision:showactions.html.twig"%}
+
+		{%if contract.group is defined and contract.group!=null%}
+			<div class="display_content">
+				<legend>{{'label.group'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Contracts:group.html.twig"%}
+			</div>
+		{%endif%}
+		<div class="display_content">
+			<legend>{{'title.training'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoCoordinatorBundle:Supervision:training.html.twig"%}
+		</div>
+		<div class="display_content">
+			<legend>{{'Teacher'|trans([],'BoAdminBundle')}}</legend>
+			<div id="teacher_content">
+				{%include "BoCoordinatorBundle:Supervision:teachers.html.twig"%}
+			</div>
+		</div>
+		{%if contract.campus is defined and contract.campus!=null%}
+		<div class="display_content">
+			<legend>{{'label.room'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoCoordinatorBundle:Supervision:local.html.twig"%}
+		</div>
+		{%endif%}
+		<div class="display_content">
+			<legend>{{'Student'|trans([],'BoAdminBundle')}}</legend>
+			<div id="students_content">
+				{%include "BoCoordinatorBundle:Supervision:students.html.twig"%}
+			</div>
+		</div>	
+		{%if contract.advisor%}
+		<div class="display_content">
+			<legend>{{'label.pa'|trans([],'BoAdminBundle')}}</legend>
+			<div id="advisor_content">
+				{%include "BoAdminBundle:Contracts:advisor.html.twig"%}
+			</div>
+		</div>
+		{%endif%}
+		{%if revisions%}
+		<div class="display_content">
+			<legend>{{'label.revision'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoCoordinatorBundle:Supervision:revision.html.twig"%}
+		</div>
+		{%endif%}
+		{%if coordinator%}
+		<div class="display_content">
+			<legend>{{'title.departmentcontact'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Contracts:coordinator.html.twig"%}
+		</div>	
+		{%endif%}	
+		{%if contract.notes%}
+		<div class="display_content">
+			<legend>{{'label.notes'|trans([],'BoAdminBundle')}}</legend>
+			<div>{{contract.notes}}</div>
+		</div>	
+		{%endif%}			
+		<br/>
+	</div>
+	
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="historic_student" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.studenthistoric'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  {%include "BoAdminBundle:HistoStudents:tbliste.html.twig"%}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

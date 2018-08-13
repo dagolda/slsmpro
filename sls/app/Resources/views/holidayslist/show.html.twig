@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:tools.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>Holidayslist</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Holidayslist:showactions.html.twig"%}
+		<div class="show_content">
+			{%include "BoAdminBundle:Holidayslist:show.html.twig"%}
+		</div>			
+	</div>
+{% endblock %}

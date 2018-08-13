@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:setting.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>Message edit</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('message_edit',{'id':errormessage.id}) }}" method="post" class="style">
+			{{ form_errors(edit_form) }}
+			{%include "BoAdminBundle:Message:editactions.html.twig"%}
+			{%include "BoAdminBundle:Message:editform.html.twig"%}
+			{{ form_rest(edit_form) }}
+		</form>	
+	</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.timesheet'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}
+{% block nav %}	{%if employee!=null%}{%include "BoAdminBundle:User:rightshow.html.twig"%}{%endif%}	{% endblock %}
+{% block label %}<h1>{{'entity.timesheet'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoPayrollBundle:Timesheet:editactions.html.twig"%}
+		<div class="show_content">
+			{%include "BoPayrollBundle:Timesheet:editform.html.twig"%}
+		</div>				
+	</div>
+{% endblock %}

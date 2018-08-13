@@ -1,0 +1,5 @@
+{%if type==1%}
+	{{ path('home_invitation_accept',{'id':id}) }}
+{%else%}
+	{{ path('home_invitation_reject',{'id':id}) }}
+{%endif%}

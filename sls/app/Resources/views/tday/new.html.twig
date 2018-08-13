@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block nav %}{% endblock %}
+{% block label %}<h1>Day creation</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('tday_new') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Tday:newactions.html.twig"%}
+			{%include "BoAdminBundle:Tday:newform.html.twig"%}
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

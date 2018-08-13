@@ -1,0 +1,44 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.tools'|trans([],'BoAdminBundle')}} >> {{'title.schedule'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tools.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.tools'|trans([],'BoAdminBundle')}} >> {{'title.schedule'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdminBundle:Tools:scheduleactions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div id="content-liste">
+		{%include "BoAdminBundle:Tools:sslist.html.twig"%}
+	</div>
+	{% for schedule in schedules %}
+		{%set delete_form=deleteform[schedule.id]%}
+		<div class="container">
+			<!-- Modal -->
+			<div class="modal fade" id="myModal{{schedule.id}}" role="dialog">
+				<div class="modal-dialog">
+				
+				  <!-- Modal content-->
+				  <div class="modal-content">
+					<div class="modal-header">
+					  <button type="button" class="close" data-dismiss="modal">&times;</button>
+					  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+					</div>
+					<div class="modal-body">
+					  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+					</div>
+					<div class="modal-footer">
+						{{ form_start(delete_form) }}
+							<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+						{{ form_end(delete_form) }}
+					</div>
+				  </div>
+				  
+				</div>
+			</div>
+		</div>
+	{%endfor%}
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

@@ -1,0 +1,35 @@
+	<div class='payroll_attendance'>
+		<legend>Attendance of learners</legend>
+		<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+			{%for student in students%}
+				{%if student.firstname is defined and student.name is defined%}
+					<tr>
+						<td class='ts_presence_label'>{{student.firstname}} {{student.name}}:</td>
+						<td class='ts_presence_value'>
+							<input type='radio' id="p" name='student{{student.id}}' value='P' {%if (presence[student.id]['am']=="P" and presence[student.id]['pm']=="P") or (presence[student.id]['am']=="P" and tam!=0) or (presence[student.id]['pm']=="P" and tpm!=0)%}checked{%endif%} disabled> P
+							<input type='radio' id="ns" name='student{{student.id}}' value='N-S' {%if (presence[student.id] is defined and presence[student.id]['am']=="N-S" and presence[student.id]['pm']=="N-S") or (presence[student.id] is defined and presence[student.id]['am']=="N-S" and tam>0) or (presence[student.id] is defined and presence[student.id]['pm']=="N-S" and tpm>0) %}checked{%endif%} disabled> N-S
+							<input type='radio' id="abs" name='student{{student.id}}' value='ABS' {%if (presence[student.id] is defined and presence[student.id]['am']=="ABS" and presence[student.id]['pm']=="ABS") or (presence[student.id] is defined and presence[student.id]['am']=="ABS" and tam>0) or (presence[student.id] is defined and presence[student.id]['pm']=="ABS" and tpm>0)%}checked{%endif%} disabled> ABS
+						</td>
+						{%if tam is defined and tam!=0%}
+							<td width="3px">&nbsp;</td>
+							<td><b>AM</b> : {{presence[student.id]['am']}}</td>
+							<input type="hidden" name="am{{student.id}}" value="{{presence[student.id]['am']}}"/>
+							<input type="hidden" name="ham{{student.id}}" value="{{tam}}"/>
+						{%endif%}
+						{%if tpm is defined and tpm!=0%}
+							<td width="3px">&nbsp;</td>
+							<td><b>PM</b> : {{presence[student.id]['pm']}}</td>
+							<input type="hidden" name="pm{{student.id}}" value="{{presence[student.id]['pm']}}"/>
+							<input type="hidden" name="hpm{{student.id}}" value="{{tpm}}"/>
+						{%endif%}
+						<td width="3px">&nbsp;</td>
+						<td>L:<input type='text' name='delay{{student.id}}' value='0' size="2" {%if presence[student.id] is defined and (((presence[student.id]['am']=="N-S" or presence[student.id]['am']=="ABS") and tam>0) or ((presence[student.id]['pm']=="N-S" or presence[student.id]['pm']=="ABS") and tpm>0)) %}disabled{%endif%}> (in minutes)</td>
+						<td width="3px">&nbsp;</td>
+						<td>LE:<input type='text' name='dh{{student.id}}' value='0' size="2" {%if (((presence[student.id]['am']=="N-S" or presence[student.id]['am']=="ABS") and tam>0) or ((presence[student.id]['pm']=="N-S" or presence[student.id]['pm']=="ABS") and tpm>0)) %}disabled{%endif%}> (in minutes)</td>
+						<td>&nbsp;</td>
+					</tr>
+				{%endif%}
+			{%endfor%}
+			<tr><td colspan="2">&nbsp;</td></tr>		
+		</table>
+	</div>

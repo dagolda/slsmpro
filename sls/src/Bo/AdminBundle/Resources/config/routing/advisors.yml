@@ -1,0 +1,35 @@
+advisors_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Advisors:index" }
+    methods:  GET
+advisors_list:
+    path:     /list/
+    defaults: { _controller: "BoAdminBundle:Advisors:list" }
+    methods:  GET
+advisors_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdminBundle:Advisors:page" }
+advisors_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Advisors:show" }
+    methods:  GET
+advisors_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Advisors:new" }
+    methods:  [GET, POST]
+advisors_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Advisors:edit" }
+    methods:  [GET, POST]
+advisors_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Advisors:search" }
+    methods:  [GET, POST]
+advisors_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Advisors:pagesearch" }
+    methods:  [GET, POST]
+advisors_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Advisors:delete" }
+    methods:  DELETE

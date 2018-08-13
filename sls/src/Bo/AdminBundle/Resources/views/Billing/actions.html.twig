@@ -1,0 +1,30 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['ACCOUNTING']['Billing'] is defined and app.session.get('rights')['ACCOUNTING']['Billing'].search==1%}
+					<td class="form-group">
+						<input type="text" class="form-control" id="inp-search">
+					</td>
+					<td>						
+						<button type="submit" id="btn_search">{{'action.search'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				{%endif%}
+				<td>
+					{%if type=="1"%}
+						<a href="{{ path('billing_billed') }}">{{'action.billed'|trans([],'BoAdminBundle')}}</a>
+					{%else%}
+						<a href="{{ path('billing_index') }}">{{'action.tobill'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+				</td>
+				{%if app.session.get('rights')['ACCOUNTING']['Billing'] is defined and app.session.get('rights')['ACCOUNTING']['Billing'].liste==1%}
+					<td class="total_number">
+						<button type="button" class="btn btn-primary">
+							Total {{'entity.billing'|trans([],'BoAdminBundle')}} <span class="badge">{{billings|length|number_format(0,""," ")}}</span>
+						</button>
+					</td>
+				{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

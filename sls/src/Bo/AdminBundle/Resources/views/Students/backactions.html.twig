@@ -1,0 +1,18 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['CONTRACTS']['Students'] is defined and app.session.get('rights')['CONTRACTS']['Students'].search==1%}
+					<td class="form-group">
+						<input type="text" class="form-control" id="inp-search">
+					</td>
+					<td>
+						<button type="submit" id="btn_search">{{'action.search'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				{%endif%}
+				<td>
+					<a href="{{ path('students_index') }}">{{'title.list'|trans([],'BoAdminBundle')}}</a>
+				</td>
+			</table>		
+		</div>
+	</div>	

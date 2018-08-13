@@ -1,0 +1,40 @@
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Firstname</th>
+                <th>Targetlevel</th>
+                <th>Ftorpt</th>
+                <th>Privateorgroup</th>
+                <th>Language</th>
+                <th>Hours</th>
+                <th>Startdate</th>
+                <th>Enddate</th>
+                <th>Comment</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for enquiry in enquiries %}
+            <tr>
+                <td><a href="{{ path('enquiry_show', { 'id': enquiry.id }) }}">{{ enquiry.id }}</a></td>
+                <td>{{ enquiry.name }}</td>
+                <td>{{ enquiry.firstname }}</td>
+                <td>{{ enquiry.targetlevel }}</td>
+                <td>{{ enquiry.ftorpt }}</td>
+                <td>{{ enquiry.privateorgroup }}</td>
+                <td>{{ enquiry.language }}</td>
+                <td>{{ enquiry.hours }}</td>
+                <td>{% if enquiry.startdate %}{{ enquiry.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if enquiry.enddate %}{{ enquiry.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if enquiry.creationdate %}{{ enquiry.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('enquiry_show', { 'id': enquiry.id }) }}">show</a>
+					<a href="{{ path('enquiry_edit', { 'id': enquiry.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

@@ -1,0 +1,14 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					{%if timesheet.hour%}
+						<td class="class_btn_create"><button type="submit" id="btn-create">{{'action.create'|trans([],'BoAdminBundle')}}</button></td>
+					{%endif%}
+					<td>
+						<a href="{{ url }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

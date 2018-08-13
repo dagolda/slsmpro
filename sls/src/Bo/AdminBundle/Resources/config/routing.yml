@@ -1,0 +1,381 @@
+bo_admin_homepage:
+    path:     /
+    defaults: { _controller: BoAdminBundle:Default:index }
+    schemes: [https]
+bo_admin_loadschedule:
+    path:     /schedule/load/
+    defaults: { _controller: BoAdminBundle:Default:loadschedule }
+    methods:  [GET, POST]
+    schemes: [https]
+bo_superadmin_homepage:
+    path:     /override/
+    defaults: { _controller: BoAdminBundle:Default:override }
+    schemes: [https]
+bo_admin_maintenance:
+    path:     /maintenance/inprogress/
+    defaults: { _controller: BoAdminBundle:Default:maintenance }
+    schemes: [https]
+bo_admin_firsttime:
+    path:     /first/connexion/
+    defaults: { _controller: BoAdminBundle:Default:firsttime }
+    schemes: [https]
+bo_admin_edit:
+    path:     /account/edit
+    defaults: { _controller: "BoAdminBundle:Default:edit" }
+    methods:  [GET, POST]
+    schemes: [https]
+bo_admin_language:
+    path:     /{_locale}/
+    defaults: { _controller: BoAdminBundle:Default:language }
+    methods:  [GET, POST]
+    requirements:
+        _locale: en|fr  
+    schemes: [https]        
+bo_admin_user_update:
+    path:     /user/update/{idemployee}
+    defaults: { _controller: BoAdminBundle:Default:update }
+    schemes: [https]
+bo_admin_campus:
+    resource: "@BoAdminBundle/Resources/config/routing/campus.yml"
+    prefix:   /campus/
+    schemes: [https]
+bo_admin_teamcontacts:
+    resource: "@BoAdminBundle/Resources/config/routing/teamcontacts.yml"
+    prefix:   /teamcontacts/
+    schemes: [https]    
+bo_admin_employee:
+    resource: "@BoAdminBundle/Resources/config/routing/employee.yml"
+    prefix:   /employees/
+    schemes: [https]
+bo_admin_epj:
+    resource: "@BoAdminBundle/Resources/config/routing/epj.yml"
+    prefix:   /epj/
+    schemes: [https]
+bo_admin_supemployee:
+    resource: "@BoAdminBundle/Resources/config/routing/supemployee.yml"
+    prefix:   /supemployees/
+    schemes: [https]
+bo_admin_contracts:
+    resource: "@BoAdminBundle/Resources/config/routing/contracts.yml"
+    prefix:   /contracts/
+    schemes: [https]
+bo_admin_client:
+    resource: "@BoAdminBundle/Resources/config/routing/client.yml"
+    prefix:   /customer/
+    schemes: [https]
+bo_admin_local:
+    resource: "@BoAdminBundle/Resources/config/routing/local.yml"
+    prefix:   /rooms/
+    schemes: [https]
+bo_admin_company:
+    resource: "@BoAdminBundle/Resources/config/routing/company.yml"
+    prefix:   /company/
+    schemes: [https]
+bo_admin_mobiliers:
+    resource: "@BoAdminBundle/Resources/config/routing/mobiliers.yml"
+    prefix:   /furniture/
+    schemes: [https]
+bo_admin_profil:
+    resource: "@BoAdminBundle/Resources/config/routing/profil.yml"
+    prefix:   /profil/
+    schemes: [https]
+bo_admin_status:
+    resource: "@BoAdminBundle/Resources/config/routing/status.yml"
+    prefix:   /status/
+    schemes: [https]
+bo_admin_level:
+    resource: "@BoAdminBundle/Resources/config/routing/level.yml"
+    prefix:   /level/
+    schemes: [https]
+bo_admin_students:
+    resource: "@BoAdminBundle/Resources/config/routing/students.yml"
+    prefix:   /students/
+    schemes: [https]
+bo_admin_securitycote:
+    resource: "@BoAdminBundle/Resources/config/routing/securitycote.yml"
+    prefix:   /clearance/
+    schemes: [https]
+bo_admin_qualification:
+    resource: "@BoAdminBundle/Resources/config/routing/qualification.yml"
+    prefix:   /qualification/
+    schemes: [https]
+bo_admin_categoryroom:
+    resource: "@BoAdminBundle/Resources/config/routing/categoryroom.yml"
+    prefix:   /categoryroom/
+    schemes: [https]
+bo_admin_categoryteacher:
+    resource: "@BoAdminBundle/Resources/config/routing/categoryteacher.yml"
+    prefix:   /categoryteacher/
+    schemes: [https]
+bo_admin_etatmobiliers:
+    resource: "@BoAdminBundle/Resources/config/routing/etatmobiliers.yml"
+    prefix:   /furniturestate/
+    schemes: [https]
+bo_admin_workfields:
+    resource: "@BoAdminBundle/Resources/config/routing/workfields.yml"
+    prefix:   /workfields/
+    schemes: [https]
+bo_admin_typecontract:
+    resource: "@BoAdminBundle/Resources/config/routing/typecontract.yml"
+    prefix:   /typecontract/
+    schemes: [https]
+bo_admin_revision:
+    resource: "@BoAdminBundle/Resources/config/routing/revision.yml"
+    prefix:   /revision/
+    schemes: [https]
+bo_admin_param:
+    resource: "@BoAdminBundle/Resources/config/routing/param.yml"
+    prefix:   /setting/
+    schemes: [https]
+bo_admin_activities:
+    resource: "@BoAdminBundle/Resources/config/routing/activities.yml"
+    prefix:   /activities/
+    schemes: [https]
+bo_admin_events:
+    resource: "@BoAdminBundle/Resources/config/routing/events.yml"
+    prefix:   /events/
+    schemes: [https]
+bo_admin_schedule:
+    resource: "@BoAdminBundle/Resources/config/routing/schedule.yml"
+    prefix:   /schedule/
+    schemes: [https]
+bo_admin_contractschedule:
+    resource: "@BoAdminBundle/Resources/config/routing/contractschedule.yml"
+    prefix:   /contractschedule/
+    schemes: [https]
+bo_admin_typets:
+    resource: "@BoAdminBundle/Resources/config/routing/typets.yml"
+    prefix:   /typets/
+    schemes: [https]
+bo_admin_tmonth:
+    resource: "@BoAdminBundle/Resources/config/routing/tmonth.yml"
+    prefix:   /tmonth/
+    schemes: [https]
+bo_admin_errors:
+    resource: "@BoAdminBundle/Resources/config/routing/errors.yml"
+    prefix:   /errors/
+    schemes: [https]
+bo_admin_tday:
+    resource: "@BoAdminBundle/Resources/config/routing/tday.yml"
+    prefix:   /tday/
+    schemes: [https]
+bo_admin_teachers:
+    resource: "@BoAdminBundle/Resources/config/routing/teachers.yml"
+    prefix:   /teachers/
+    schemes: [https]
+bo_admin_coordinator:
+    resource: "@BoAdminBundle/Resources/config/routing/coordinator.yml"
+    prefix:   /coordinator/
+    schemes: [https]
+bo_admin_contractual:
+    resource: "@BoAdminBundle/Resources/config/routing/contractual.yml"
+    prefix:   /contractual/
+    schemes: [https]
+bo_admin_group:
+    resource: "@BoAdminBundle/Resources/config/routing/group.yml"
+    prefix:   /group/
+    schemes: [https]
+bo_admin_absences:
+    resource: "@BoAdminBundle/Resources/config/routing/absences.yml"
+    prefix:   /absences/
+    schemes: [https]
+bo_admin_tday:
+    resource: "@BoAdminBundle/Resources/config/routing/tday.yml"
+    prefix:   /tday/
+    schemes: [https]
+bo_admin_timesheet:
+    resource: "@BoAdminBundle/Resources/config/routing/timesheet.yml"
+    prefix:   /timesheet/
+    schemes: [https]
+bo_admin_substitution:
+    resource: "@BoAdminBundle/Resources/config/routing/substitution.yml"
+    prefix:   /substitution/
+    schemes: [https]
+bo_admin_payroll:
+    resource: "@BoAdminBundle/Resources/config/routing/payroll.yml"
+    prefix:   /payroll/
+    schemes: [https]
+bo_admin_training:
+    resource: "@BoAdminBundle/Resources/config/routing/training.yml"
+    prefix:   /training/
+    schemes: [https]
+bo_admin_billing:
+    resource: "@BoAdminBundle/Resources/config/routing/billing.yml"
+    prefix:   /billing/
+    schemes: [https]
+bo_admin_cyclepay:
+    resource: "@BoAdminBundle/Resources/config/routing/cyclepay.yml"
+    prefix:   /cyclepay/
+    schemes: [https]
+bo_admin_message:
+    resource: "@BoAdminBundle/Resources/config/routing/message.yml"
+    prefix:   /message/
+    schemes: [https]
+bo_admin_periodpay:
+    resource: "@BoAdminBundle/Resources/config/routing/periodpay.yml"
+    prefix:   /periodpay/
+    schemes: [https]
+bo_admin_rubric:
+    resource: "@BoAdminBundle/Resources/config/routing/rubric.yml"
+    prefix:   /rubric/
+    schemes: [https]
+bo_admin_advisors:
+    resource: "@BoAdminBundle/Resources/config/routing/advisors.yml"
+    prefix:   /advisors/
+    schemes: [https]
+bo_admin_holidayslist:
+    resource: "@BoAdminBundle/Resources/config/routing/holidayslist.yml"
+    prefix:   /holidayslist/
+    schemes: [https]
+bo_admin_billingcontact:
+    resource: "@BoAdminBundle/Resources/config/routing/billingcontact.yml"
+    prefix:   /billingcontact/
+    schemes: [https]
+bo_admin_test:
+    path:     /test/
+    defaults: { _controller: BoAdminBundle:Test:index }
+    schemes: [https]
+bo_admin_hadmin:
+    resource: "@BoAdminBundle/Resources/config/routing/hadmin.yml"
+    prefix:   /payroll/admin/
+    schemes: [https]
+bo_admin_hteaching:
+    resource: "@BoAdminBundle/Resources/config/routing/hteaching.yml"
+    prefix:   /payroll/teaching/
+    schemes: [https]
+bo_admin_hnoshow:
+    resource: "@BoAdminBundle/Resources/config/routing/hnoshow.yml"
+    prefix:   /payroll/noshow/
+    schemes: [https]
+bo_admin_hholiday:
+    resource: "@BoAdminBundle/Resources/config/routing/hholiday.yml"
+    prefix:   /payroll/holiday/
+    schemes: [https]
+bo_admin_hothers:
+    resource: "@BoAdminBundle/Resources/config/routing/hothers.yml"
+    prefix:   /payroll/others/
+    schemes: [https]
+bo_admin_teacherschedule:
+    resource: "@BoAdminBundle/Resources/config/routing/teacherschedule.yml"
+    prefix:   /teachers/schedule/
+    schemes: [https]
+bo_admin_mails:
+    resource: "@BoAdminBundle/Resources/config/routing/mails.yml"
+    prefix:   /mails/
+    schemes: [https]
+bo_admin_languagebis:
+    resource: "@BoAdminBundle/Resources/config/routing/language.yml"
+    prefix:   /language/
+    schemes: [https]
+bo_admin_tickets:
+    resource: "@BoAdminBundle/Resources/config/routing/tickets.yml"
+    prefix:   /tickets/
+    schemes: [https]
+bo_admin_documents:
+    resource: "@BoAdminBundle/Resources/config/routing/documents.yml"
+    prefix:   /documents/
+    schemes: [https]
+bo_admin_tools:
+    resource: "@BoAdminBundle/Resources/config/routing/tools.yml"
+    prefix:   /tools/
+    schemes: [https]
+bo_admin_modelts:
+    resource: "@BoAdminBundle/Resources/config/routing/modelts.yml"
+    prefix:   /model/timesheet/
+    schemes: [https]
+bo_admin_usermessage:
+    resource: "@BoAdminBundle/Resources/config/routing/usermessage.yml"
+    prefix:   /model/usermessage/
+    schemes: [https]
+bo_admin_evaluation:
+    resource: "@BoAdminBundle/Resources/config/routing/evaluation.yml"
+    prefix:   /evaluation/
+    schemes: [https]
+bo_admin_ticketcontacts:
+    resource: "@BoAdminBundle/Resources/config/routing/ticketcontacts.yml"
+    prefix:   /tickets/contacts/
+    schemes: [https]
+bo_admin_pricesreference:
+    resource: "@BoAdminBundle/Resources/config/routing/pricesreference.yml"
+    prefix:   /prices/
+    schemes: [https]
+bo_admin_otherprices:
+    resource: "@BoAdminBundle/Resources/config/routing/otherprices.yml"
+    prefix:   /prices/others/
+    schemes: [https]
+bo_admin_orderform:
+    resource: "@BoAdminBundle/Resources/config/routing/orderform.yml"
+    prefix:   /orderform/
+    schemes: [https]
+bo_admin_steps:
+    resource: "@BoAdminBundle/Resources/config/routing/steps.yml"
+    prefix:   /steps/
+    schemes: [https]
+bo_admin_specification:
+    resource: "@BoAdminBundle/Resources/config/routing/specification.yml"
+    prefix:   /specification/
+    schemes: [https]
+bo_admin_tadmin:
+    resource: "@BoAdminBundle/Resources/config/routing/tadmin.yml"
+    prefix:   /tadmin/
+    schemes: [https]
+bo_admin_color:
+    resource: "@BoAdminBundle/Resources/config/routing/color.yml"
+    prefix:   /color/
+    schemes: [https]
+bo_admin_agenda:
+    resource: "@BoAdminBundle/Resources/config/routing/agenda.yml"
+    prefix:   /agenda/                                                                  
+    schemes: [https]
+bo_quiz_quiz:
+    resource: "@BoQuizBundle/Resources/config/routing/quiz.yml"
+    prefix:   /quiz
+    schemes: [https]
+bo_quiz_question:
+    resource: "@BoQuizBundle/Resources/config/routing/question.yml"
+    prefix:   /quiz/question
+    schemes: [https]
+bo_quiz_answer:
+    resource: "@BoQuizBundle/Resources/config/routing/answer.yml"
+    prefix:   /quiz/answer
+    schemes: [https]
+bo_quiz_category:
+    resource: "@BoQuizBundle/Resources/config/routing/category.yml"
+    prefix:   /quiz/category
+    schemes: [https]
+bo_quiz_evalquiz:
+    resource: "@BoQuizBundle/Resources/config/routing/evalquiz.yml"
+    prefix:   /quiz/evaluation
+    schemes: [https]
+bo_quiz_userqz:
+    resource: "@BoQuizBundle/Resources/config/routing/user.yml"
+    prefix:   /quiz/user/
+    schemes: [https]
+bo_quiz_typequiz:
+    resource: "@BoQuizBundle/Resources/config/routing/typequiz.yml"
+    prefix:   /typequiz/
+    schemes: [https]
+bo_quiz_resultsquiz:
+    resource: "@BoQuizBundle/Resources/config/routing/resultsquiz.yml"
+    prefix:   /resultsquiz
+    schemes: [https]
+bo_quiz_scoring:
+    resource: "@BoQuizBundle/Resources/config/routing/scoring.yml"
+    prefix:   /scoring
+    schemes: [https]   
+bo_admin_diary:
+    resource: "@BoAdminBundle/Resources/config/routing/diary.yml"
+    prefix:   /diary 
+    schemes: [https]    
+bo_admin_motifabsence:
+    resource: "@BoAdminBundle/Resources/config/routing/motifabsence.yml"
+    prefix:   /motifabsence
+    schemes: [https]   
+bo_admin_tsdoc:
+    resource: "@BoAdminBundle/Resources/config/routing/tsdoc.yml"
+    prefix:   /tsdoc    
+    schemes: [https]
+bo_admin_robot:
+    resource: "@BoAdminBundle/Resources/config/routing/robot.yml"
+    prefix:   /robot/
+    schemes: [https]

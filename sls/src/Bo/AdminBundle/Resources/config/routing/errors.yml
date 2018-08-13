@@ -1,0 +1,26 @@
+errors_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Errors:index" }
+    methods:  GET
+errors_list:
+    path:     /list/
+    defaults: { _controller: "BoAdminBundle:Errors:list" }
+    methods:  GET
+errors_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdminBundle:Errors:page" }
+errors_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Errors:show" }
+errors_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Errors:search" }
+    methods:  [GET, POST]
+errors_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Errors:pagesearch" }
+    methods:  [GET, POST]
+errors_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Errors:delete" }
+    methods:  DELETE

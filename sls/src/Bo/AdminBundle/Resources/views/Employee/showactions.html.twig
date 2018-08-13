@@ -1,0 +1,66 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['STAFF']['Employees'] is defined and app.session.get('rights')['STAFF']['Employees'].ddelete==1%}
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#myModal">
+							{{'action.archive'|trans([],'BoAdminBundle')}}
+						</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#setting">
+							{{'label.setting'|trans([],'BoAdminBundle')}}
+						</button>
+					</td>
+				{%endif%}
+				<td>
+					{%if app.session.get('search') is defined and app.session.get('search') is not null%}	
+						<a href="{{ path('employee_back') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					{%elseif app.session.get('wcont') is defined and app.session.get('wcont')==1%}
+						<a href="{{ path('employee_active') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					{%else%}
+						<a href="{{ path('employee_list') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+				</td>
+				<td>
+					<a href="{{ path('employee_schedule',{ 'id': employee.id }) }}">
+						{{'layout.menu.teacherschedule'|trans([],'BoAdminBundle')}}
+					</a>
+				</td>
+				{%if app.session.get('dat') is defined and app.session.get('dts')==1%}
+				<td>
+					<a href="{{ path('tsdoc_index',{ 'idemployee': employee.id }) }}">{{'label.timesheet'|trans([],'BoAdminBundle')}}</a>
+				</td>	
+				{%endif%}			
+				<td>
+					<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_spec">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.adminhours'|trans([],'BoAdminBundle')}}</button>
+				</td>
+				{%if user is null%}
+					<td>
+						<a href="{{ path('employee_user_create', { 'id': employee.id }) }}">{{'action.createuser'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				{%endif%}
+				{%if app.session.get('rights')['STAFF']['Employees'] is defined and app.session.get('rights')['STAFF']['Employees'].others==1%}
+					<td>
+						<a href="{{ path('employee_sendlogin', { 'id': employee.id }) }}">{{'action.sendlogin'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_absence">{{'label.addabsence'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				{%endif%}
+					<td>
+						{%if employee.active==false%}
+							<span class="btn ping-color">
+								{{'label.disable'|trans([],'BoAdminBundle')}}
+							</span>
+						{%elseif employee.available==false%}
+							<span class="btn enquiry_processed">
+								{{'label.unavailable'|trans([],'BoAdminBundle')}}
+							</span>
+						{%endif%}
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

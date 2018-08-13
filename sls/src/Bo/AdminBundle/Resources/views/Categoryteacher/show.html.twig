@@ -1,0 +1,18 @@
+    <table>
+        <tbody>
+            <tr>
+                <th width="120px">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <td>{{ categoryteacher.id }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>Catname</th>
+                <td>{{ categoryteacher.catname }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <td>{% if categoryteacher.creationdate %}{{ categoryteacher.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>

@@ -1,0 +1,11 @@
+<li {%if sm=="contract"%} class="active"{%endif%}>
+	<a href="{{ path('coordinator_supervision_contracts',{'status':1}) }}">
+		{{'layout.menu.contracts'|trans([],'BoAdminBundle')}}
+	</a>
+</li>
+<li {%if sm=="student"%} class="active"{%endif%}>
+	<a href="{{ path('coordinator_supervision_students') }}">
+		{{'layout.menu.student'|trans([],'BoAdminBundle')}}
+	</a>
+</li>
+

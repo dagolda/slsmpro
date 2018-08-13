@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- Timesheet creation{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}	{%if employee!=null%}{%include "BoAdminBundle:User:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>Timesheet creation</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('timesheet_new') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Timesheet:newactions.html.twig"%}
+			<div class="search_content"></div>
+			<div class="show_content">
+				{%include "BoAdminBundle:Timesheet:newform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#btn-create").click(function(){
+				startam=$(".startamclass").val();
+				endam=$(".endamclass").val();
+				startpm=$(".startpmclass").val();
+				endpm=$(".endpmclass").val();
+				if(startam=="00:00" && endam=="00:00" && startpm=="00:00" && endpm=="00:00"){
+					alert("All time fields must not be empty!");
+					return false;
+				}	
+				if((startam!="00:00" && endam=="00:00") || (startam=="00:00" && endam!="00:00")){
+					alert("Both Start Am and End Am fields must be filled!");
+					return false;
+				}	
+				if((startpm!="00:00" && endpm=="00:00") || (startpm=="00:00" && endpm!="00:00")){
+					alert("Both Start Pm and End Pm fields must be filled!");
+					return false;
+				}	
+				return true;
+			});	
+			$("#btn-search").click(function(){
+				if($("#inp-search").val()==""){
+					alert("Search fields is empty!");
+					return false;
+				}
+				var criteria = $("#inp-search").val();	
+				$('.show_content').hide();
+				//$(".list_link").show();
+				//alert(criteria);
+				//return false;
+				$('.search_content').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var DATA = 'data=' + criteria;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('timesheet_contractsearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('.search_content').html(data);
+					}
+				});
+				return false;
+			});			
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

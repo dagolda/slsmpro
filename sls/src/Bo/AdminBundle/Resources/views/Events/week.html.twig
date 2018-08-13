@@ -1,0 +1,32 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Lundi </th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for events in eventss %}
+            <tr>
+                <td><a href="{{ path('events_show', { 'id': events.id }) }}">{{ events.id }}</a></td>
+                <td>{{ events.employee.name }} {{ events.employee.firstname }}</td>
+                <td>{%if events.contract %}{{ events.contract.contractnumber }}{%else%}---{%endif%}</td>
+                <td>{%if events.local %}{{ events.local.reference }}{%else%}---{%endif%}</td>
+                <td>{% if events.ddate %}{{ events.ddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if events.startam %}{{ events.startam|date('H:i') }}{% endif %}</td>
+                <td>{% if events.endam %}{{ events.endam|date('H:i') }}{% endif %}</td>
+                <td>{% if events.startam %}{{ events.startam|date('H:i') }}{% endif %}</td>
+                <td>{% if events.endam %}{{ events.endam|date('H:i') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('events_show', { 'id': events.id }) }}">show</a>
+                    <a href="{{ path('events_edit', { 'id': events.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

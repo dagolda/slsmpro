@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.enquiry'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block stylesheets %}
+	{{parent()}}
+	<style>
+		.row .content {min-height: 700px}
+	</style>
+{% endblock %}
+{% block nav %}	{%if employee is defined and employee!=null%}{%include "BoAdminBundle:Employee:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>{{'entity.enquiry'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdvisorsBundle:Enquiry:showactions.html.twig"%}
+		<div class="show_content">
+			{%include "BoAdvisorsBundle:Enquiry:tbshow.html.twig"%}
+		</div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(delete_form) }}
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(delete_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+
+	{% block javascripts %}
+		<script>
+			$("#btn_resolved").click(function(){
+				$(".btn_resolved").hide();
+				$('.show_content').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				idenquiry = $("#btn_resolved").val();
+				var DATA = 'id='+idenquiry;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_enquiry_resolved')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('.show_content').html(data);
+					}
+				});
+				return false;			
+			});
+			$("#btn_notresolved").click(function(){
+				$(".btn_notresolved").hide();
+				$(".btn_resolved").hide();
+				$('.show_content').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				idenquiry = $("#btn_notresolved").val();
+				var DATA = 'id='+idenquiry;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_enquiry_notresolved')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('.show_content').html(data);
+					}
+				});
+				return false;			
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

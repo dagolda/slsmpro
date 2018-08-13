@@ -1,0 +1,85 @@
+<div class="employee-identity">{{ group.name }}</div>
+    <table>
+        <tbody>
+            <tr>
+                <th class='sty_label'>{{'label.id'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ group.id }}</td>
+            </tr>
+            <tr>
+                <th class='sty_label'>{{'label.name'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ group.name }}</td>
+            </tr>
+			{% if group.typecontract%}
+            <tr>
+                <th class='sty_label'>{{'label.contracttype'|trans([],'BoAdminBundle')}}:</th>
+		<td>{{ group.typecontract.reference }}</td>
+            </tr>
+			{% endif %}
+			{% if group.advisor%}
+            <tr>
+                <th class='sty_label'>{{'label.pa'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ group.advisor.firstname }} {{ group.advisor.name }}</td>
+            </tr>
+			{% endif %}
+			{% if group.enddate %}
+				<tr>
+					<th class='sty_label'>{{'label.targetlevel'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ group.targetlevel }}</td>
+				</tr>
+			{% endif %}
+			{% if group.startdate %}
+				<tr>
+					<th class='sty_label'>{{'label.startdate'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ group.startdate|date('Y-m-d') }}</td>
+				</tr>
+			{% endif %}
+			{% if group.enddate %}
+				<tr>
+					<th class='sty_label'>{{'label.enddate'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ group.enddate|date('Y-m-d') }}</td>
+				</tr>
+			{% endif %}
+			{% if status and status[group.status] is defined %}
+				<tr>
+					<th class='sty_label'>{{'label.status'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ status[group.status] }}</td>
+				</tr>
+			{% endif %}
+			{% if group.createby %}
+				<tr>
+					<th class='sty_label'>{{'label.createdby'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ group.createby }}</td>
+				</tr>
+			{% endif %}
+		    <tr>
+		        <th class='sty_label'>{{'label.creationdate'|trans([],'BoAdminBundle')}}:</th>
+		        <td>{% if group.creationdate %}{{ group.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+		    </tr>
+			{%for closegroup in closegroups%}
+				{% if closegroup.closedby %}
+					<tr>
+						<th class='sty_label'>{{'label.closedby'|trans([],'BoAdminBundle')}}:</th>
+						<td>{{ closegroup.closedby }}</td>
+					</tr>
+				{% endif %}
+				{% if closegroup.closeddate %}
+					<tr>
+						<th class='sty_label'>{{'label.closeddate'|trans([],'BoAdminBundle')}}:</th>
+						<td>{{ closegroup.closeddate|date('Y-m-d') }}</td>
+					</tr>
+				{% endif %}
+				{% if closegroup.reopenby %}
+					<tr>
+						<th class='sty_label'>{{'label.reopenby'|trans([],'BoAdminBundle')}}:</th>
+						<td>{{ closegroup.reopenby }}</td>
+					</tr>
+				{% endif %}
+				{% if closegroup.reopendate %}
+					<tr>
+						<th class='sty_label'>{{'label.reopendate'|trans([],'BoAdminBundle')}}:</th>
+						<td>{{ closegroup.reopendate|date('Y-m-d') }}</td>
+					</tr>
+				{% endif %}
+			{%endfor%}
+        </tbody>
+    </table>

@@ -1,0 +1,4 @@
+home_schedule_load:
+    path:     /load/
+    defaults: { _controller: BoHomeBundle:Default:loadschedule }
+    methods:  [GET, POST]

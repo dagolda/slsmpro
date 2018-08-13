@@ -1,0 +1,39 @@
+bo_advisors_advisorspage:
+    path:     /
+    defaults: { _controller: BoAdvisorsBundle:Default:index }
+bo_advisors_mycontracts:
+    path:     /mycontracts/
+    defaults: { _controller: BoAdvisorsBundle:Default:mycontracts }
+bo_advisors_timesheet:
+    resource: "@BoAdvisorsBundle/Resources/config/routing/timesheet.yml"
+    prefix:   /timesheet/
+bo_advisors_absences:
+    resource: "@BoAdvisorsBundle/Resources/config/routing/absences.yml"
+    prefix:   /absences/
+bo_advisors_substitution:
+    resource: "@BoAdvisorsBundle/Resources/config/routing/substitution.yml"
+    prefix:   /substitution/
+bo_advisors_employee:
+    resource: "@BoAdvisorsBundle/Resources/config/routing/employee.yml"
+    prefix:   /employee/
+bo_advisors_validation:
+    resource: "@BoAdvisorsBundle/Resources/config/routing/validation.yml"
+    prefix:   /validation/
+bo_advisors_supervision:
+    resource: "@BoAdvisorsBundle/Resources/config/routing/supervision.yml"
+    prefix:   /supervision/
+bo_advisors_enquiry:
+    resource: "@BoAdvisorsBundle/Resources/config/routing/enquiry.yml"
+    prefix:   /enquiry/
+bo_advisors_orderform:
+    resource: "@BoAdvisorsBundle/Resources/config/routing/orderform.yml"
+    prefix:   /orderform/
+bo_advisors_modelts:
+    resource: "@BoAdvisorsBundle/Resources/config/routing/modelts.yml"
+    prefix:   /modelts/
+bo_advisors_tickets:
+    resource: "@BoAdvisorsBundle/Resources/config/routing/tickets.yml"
+    prefix:   /tickets/
+bo_advisors_help:
+    resource: "@BoAdvisorsBundle/Resources/config/routing/help.yml"
+    prefix:   /help/

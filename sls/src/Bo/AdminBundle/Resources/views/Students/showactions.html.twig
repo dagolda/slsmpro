@@ -1,0 +1,37 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['CONTRACTS']['Students'] is defined and app.session.get('rights')['CONTRACTS']['Students'].ddelete==1%}
+					<td class="delete-action">
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#myModal">{{'action.delete'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				{%endif%}
+				{%if app.session.get('search') is defined and app.session.get('search') is not null%}	
+					<td>
+						<a href="{{ path('students_back') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				{%endif%}
+				<td>
+					<a href="{{ path('students_index') }}">{{'action.list'|trans([],'BoAdminBundle')}}</a>
+				</td>	
+				<td>
+					<a href="{{ path('students_schedule',{ 'id': student.id }) }}">{{'label.schedule'|trans([],'BoAdminBundle')}}</a>
+				</td>				
+				{%if app.session.get('rights')['CONTRACTS']['Students'] is defined and app.session.get('rights')['CONTRACTS']['Students'].others==1%}
+					{%if user[0] is not defined%}
+						<td>
+							<button id="btn_create">{{'action.createuser'|trans([],'BoAdminBundle')}}</button>
+							<input type="hidden" id="idstudent" value="{{ student.id }}"/>
+						</td>
+					{%endif%}
+				{%endif%}
+				{%if app.session.get('rights')['CONTRACTS']['Students'] is defined and app.session.get('rights')['CONTRACTS']['Students'].others==1 and dispabsbtn==true%}
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_absence">{{'label.addabsence'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

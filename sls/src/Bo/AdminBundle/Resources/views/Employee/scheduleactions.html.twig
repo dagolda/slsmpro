@@ -1,0 +1,29 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td>
+						<a href="{{ path('employee_show',{ 'id': employee.id }) }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td class="sty-label" align="left">
+						<a href="{{ path('employee_schedule',{'id':employee.id}) }}">{{'label.currentweek'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td class="sty-label" align="left">
+						<button type="submit" id="btn_previous" title="{{'label.previouspage'|trans([],'BoAdminBundle')}}">
+							{{'label.previous'|trans([],'BoAdminBundle')}}
+						</button>
+					</td>
+					<td class="sty-label" align="left">
+						<button type="submit" id="btn_next"  title="{{'label.nextpage'|trans([],'BoAdminBundle')}}">
+							{{'label.next'|trans([],'BoAdminBundle')}}
+						</button>					
+					</td>
+					{%if app.session.get('rights')['CONTRACTS']['Teacher Schedule'] is defined and app.session.get('rights')['CONTRACTS']['Teacher Schedule'].creation==1%}
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_schedule">{{'label.addschedule'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					{%endif%}				
+				</tr>
+			</table>		
+		</div>
+	</div>	

@@ -1,0 +1,24 @@
+schedule_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Schedule:index" }
+    methods:  GET
+
+schedule_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Schedule:show" }
+    methods:  GET
+
+schedule_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Schedule:new" }
+    methods:  [GET, POST]
+
+schedule_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Schedule:edit" }
+    methods:  [GET, POST]
+
+schedule_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Schedule:delete" }
+    methods:  DELETE

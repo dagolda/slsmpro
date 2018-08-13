@@ -1,0 +1,32 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.user'|trans([],'BoAdminBundle')}}</th>
+                <th>Ip</th>
+                <th>Session id</th>
+                <th>{{'label.rubric'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.subrubric'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for activity in activities %}
+            <tr>
+                <td><a href="{{ path('activities_show', { 'id': activity.id }) }}">{{ activity.id }}</a></td>
+                <td>{%if users[activity.user] is defined %}{{ users[activity.user]}}{%endif%}</td>
+                <td>{{ activity.ip }}</td>
+                <td>{{ activity.sessionid }}</td>
+                <td>{{ activity.rubric|raw }}</td>
+                <td class='wrap' width="12%">{{ activity.subrubric|raw }}</td>
+                <td>{% if activity.creationdate %}{{ activity.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+					<a href="{{ path('activities_show', { 'id': activity.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="8">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

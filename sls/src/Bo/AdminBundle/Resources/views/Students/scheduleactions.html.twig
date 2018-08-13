@@ -1,0 +1,24 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td>
+						<a href="{{ path('students_show',{ 'id': student.id }) }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td class="sty-label" align="left">
+						<a href="{{ path('students_schedule',{'id':student.id}) }}">{{'label.currentweek'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td class="sty-label" align="left">
+						<button type="submit" id="btn_previous" title="{{'label.previouspage'|trans([],'BoAdminBundle')}}">
+							{{'label.previous'|trans([],'BoAdminBundle')}}
+						</button>
+					</td>
+					<td class="sty-label" align="left">
+						<button type="submit" id="btn_next"  title="{{'label.nextpage'|trans([],'BoAdminBundle')}}">
+							{{'label.next'|trans([],'BoAdminBundle')}}
+						</button>					
+					</td>				
+				</tr>
+			</table>		
+		</div>
+	</div>	

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.company'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tools.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.company'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}} {{'label.homemessage'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block actions %}
+	{%include "BoAdminBundle:Company:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div id="content-liste">
+		{%include "BoAdminBundle:Company:tbliste.html.twig"%}
+	</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.accounting'|trans([],'BoAdminBundle')}} >> {{'title.tscreation'|trans([],'BoAdminBundle')}} >> {{'label.bycontract'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}	
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'entity.accounting'|trans([],'BoAdminBundle')}} >> {{'title.tscreation'|trans([],'BoAdminBundle')}} >> {{'label.bycontract'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdminBundle:Test:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div id="content-liste">
+		{%if idfield is defined%}
+			<div class='numberfound'><b>{{'message.searchresult'|trans([],'BoAdminBundle')}}</b> : <span>{{contracts|length}} {{'message.found'|trans([],'BoAdminBundle')}}</span></div>	
+		{%endif%}
+		{%include "BoAdminBundle:Test:tbliste.html.twig"%}
+	</div>
+	{% block javascripts %}
+		<script>
+
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

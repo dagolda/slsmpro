@@ -1,0 +1,49 @@
+{%if group!=null%}{%set contracts=group.contracts%}{%endif%}
+{%if countracts is defined%}{%set contract=contracts[0]%}{%endif%}
+<p>Bonjour / Hello {{employee.firstname}} {{employee.name}},</p>
+{%if mailhead!=null%}
+	<p>
+	{{mailhead|raw}}
+	</p>
+{%endif%}
+<p>
+	{%if contract.language%}
+		<div><b>Langue / Language </b>: {{contract.language}}</div>
+	{%endif%}
+	{%if group%}
+		<div><b>Group / group</b>:{{group.name}}</div>
+		<div><b>Niveau vis&#233; / Target Level</b>:{{group.targetlevel}}</div>
+		<div><b>Conseiller p&#233;dagogique / Pedagogical Advisor</b>: {{group.advisor}}</div>
+	{%elseif contract%}
+		{%if contract.group%}
+			<div><b>Groupe / Group</b>:{{contract.group.name}}</div>
+		{%else%}
+			<div><b>Apprenant / Student</b>:{{studentname}}</div>
+		{%endif%}
+		<div><b>Niveau vis&#233; / Target Level</b>:{{contract.targetlevel}}</div>
+		<div><b>Conseiller p&#233;dagogique / Pedagogical Advisor</b>: {{contract.advisor}}</div>
+	{%endif%}
+	<div><b>Date de D&#233;but / Start Date</b>: {{agenda.startdate|date("d-m-Y")}}</div>
+	<div><b>Date de Fin / End Date</b>:{{agenda.enddate|date("d-m-Y")}}</div>
+	{%if agenda.startam and agenda.endam%}
+		<div><b><u>AM / Matin</u></b>:</div>
+		<div><b>D&#233;but / Start </b>:{{agenda.startam|date("H:i")}}</div>
+		<div><b>Fin / End </b>:{{agenda.endam|date("H:i")}}</div>
+	{%endif%}
+	{%if agenda.startpm and agenda.endpm%}
+		<div><b><u>PM / Apres-Midi</u></b>:</div>
+		<div><b>D&#233;but / Start </b>:{{agenda.startpm|date("H:i")}}</div>
+		<div><b>Fin / End </b>:{{agenda.endpm|date("H:i")}}</div>
+	{%endif%}
+	{%set schedule=agenda%}
+	<div><b>Jours / Days </b>:{%include "BoAdminBundle:Agenda:days.html.twig"%}</div>
+	{%if contract.adresse%}
+		<div><b>Lieu / Address</b>:{{contract.adresse}}</div>
+	{%elseif contract.location and contract.location=="Campus" and contract.campus%}
+		<div><b>Lieu / Address</b>:{{contract.campus.address}}</div>
+	{%endif%}
+	{%if contract.location=="Campus" and contract.local%}
+		<div><b>Salle de classe</b>: contract.local.reference</div>
+	{%endif%}
+</p>
+

@@ -1,0 +1,63 @@
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Firstname</th>
+                <th>Targetlevel</th>
+                <th>Ftorpt</th>
+                <th>Privateorgroup</th>
+                <th>Gouvemp</th>
+                <th>Gtso</th>
+                <th>Language</th>
+                <th>Schedule</th>
+                <th>Hours</th>
+                <th>Location</th>
+                <th>Workon</th>
+                <th>Startdate</th>
+                <th>Enddate</th>
+                <th>Starttime</th>
+                <th>Endtime</th>
+                <th>Comment</th>
+                <th>Status</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for enquiry in enquiries %}
+            <tr>
+                <td><a href="{{ path('enquiry_show', { 'id': enquiry.id }) }}">{{ enquiry.id }}</a></td>
+                <td>{{ enquiry.name }}</td>
+                <td>{{ enquiry.firstname }}</td>
+                <td>{{ enquiry.targetlevel }}</td>
+                <td>{{ enquiry.ftorpt }}</td>
+                <td>{{ enquiry.privateorgroup }}</td>
+                <td>{{ enquiry.gouvemp }}</td>
+                <td>{{ enquiry.gtso }}</td>
+                <td>{{ enquiry.language }}</td>
+                <td>{{ enquiry.schedule }}</td>
+                <td>{{ enquiry.hours }}</td>
+                <td>{{ enquiry.location }}</td>
+                <td>{{ enquiry.workon }}</td>
+                <td>{% if enquiry.startdate %}{{ enquiry.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if enquiry.enddate %}{{ enquiry.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if enquiry.starttime %}{{ enquiry.starttime|date('H:i:s') }}{% endif %}</td>
+                <td>{% if enquiry.endtime %}{{ enquiry.endtime|date('H:i:s') }}{% endif %}</td>
+                <td>{{ enquiry.comment }}</td>
+                <td>{{ enquiry.status }}</td>
+                <td>{% if enquiry.creationdate %}{{ enquiry.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('enquiry_show', { 'id': enquiry.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('enquiry_edit', { 'id': enquiry.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

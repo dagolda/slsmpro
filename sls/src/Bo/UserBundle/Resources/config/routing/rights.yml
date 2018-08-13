@@ -1,0 +1,36 @@
+rights_new:
+    path:     /new
+    defaults: { _controller: "BoUserBundle:Rights:new" }
+    methods:  [GET, POST]
+rights_update:
+    path:     /update
+    defaults: { _controller: "BoUserBundle:Rights:update" }
+    methods:  [GET, POST]
+rights_create:
+    path:     /{idprofil}/create
+    defaults: { _controller: "BoUserBundle:Rights:create" }
+    methods:  [GET, POST]
+rights_add:
+    path:     /{idprofil}/add
+    defaults: { _controller: "BoUserBundle:Rights:add" }
+    methods:  [GET, POST]
+rights_show:
+    path:     /show
+    defaults: { _controller: "BoUserBundle:Rights:show" }
+    methods:  [GET]
+rights_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoUserBundle:Rights:edit" }
+    methods:  [GET, POST]
+rights_enableall:
+    path:     /{id}/enableall
+    defaults: { _controller: "BoUserBundle:Rights:enableall" }
+    methods:  [GET, POST]
+rights_disable:
+    path:     /{id}/disable
+    defaults: { _controller: "BoUserBundle:Rights:disable" }
+    methods:  [GET, POST]
+rights_srubric_load:
+    path:     /rubric/reload/
+    defaults: { _controller: "BoUserBundle:Rights:srubric" }
+    methods:  [GET, POST]

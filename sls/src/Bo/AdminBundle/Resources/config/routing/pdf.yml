@@ -1,0 +1,29 @@
+pdf_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Pdf:index" }
+    methods:  GET
+
+pdf_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Pdf:show" }
+    methods:  GET
+
+pdf_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Pdf:new" }
+    methods:  [GET, POST]
+    
+pdf_create:
+    path:     /create
+    defaults: { _controller: "BoAdminBundle:Pdf:create" }
+    methods:  [GET, POST]
+
+pdf_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Pdf:edit" }
+    methods:  [GET, POST]
+
+pdf_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Pdf:delete" }
+    methods:  DELETE

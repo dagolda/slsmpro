@@ -1,0 +1,27 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.subject'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.from'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for userMessage in userMessages %}
+            <tr>
+                <td>{{ userMessage.subject }}</td>
+                <td>{{ userMessage.from }}</td>
+                <td>{% if userMessage.dateCreation %}{{ userMessage.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if userMessage.status %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <a href="{{ path('usermessage_show', { 'id': absence.id }) }}"><img src="{{ asset('images/actions/afficher.jpg') }}" alt="{{'action.show'|trans([],'BoAdminBundle')}}"/></a>
+					<a href="{{ path('usermessage_edit', { 'id': absence.id }) }}"><img src="{{ asset('images/actions/afficher.jpg') }}" alt="{{'action.reply'|trans([],'BoAdminBundle')}}"/></a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="9">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

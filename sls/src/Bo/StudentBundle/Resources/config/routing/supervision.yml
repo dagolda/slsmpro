@@ -1,0 +1,32 @@
+coordinator_supervision_index:
+    path:     /{status}/index/
+    defaults: { _controller: "BoCoordinatorBundle:Supervision:index" }
+    methods:  GET
+coordinator_supervision_list:
+    path:     /{status}/list/
+    defaults: { _controller: "BoCoordinatorBundle:Supervision:contracts" }
+    methods:  GET
+coordinator_supervision_contract_show:
+    path:     /{id}/contract/show
+    defaults: { _controller: "BoCoordinatorBundle:Supervision:showcontract" }
+    methods:  GET
+coordinator_supervision_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoCoordinatorBundle:Supervision:page" }
+coordinator_supervision_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoCoordinatorBundle:Supervision:pagesearch" }
+    methods:  [GET, POST]
+coordinator_supervision_group:
+    path:     /{id}/group
+    defaults: { _controller: "BoCoordinatorBundle:Supervision:group" }
+    methods:  GET
+coordinator_supervision_teachers:
+    path:     /teachers
+    defaults: { _controller: "BoCoordinatorBundle:Supervision:teachers" }
+    methods:  [GET, POST]
+coordinator_supervision_students:
+    path:     /{id}/students
+    defaults: { _controller: "BoCoordinatorBundle:Supervision:students" }
+    methods:  [GET, POST]
+

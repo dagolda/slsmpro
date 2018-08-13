@@ -1,0 +1,23 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['ACCOUNTING']['TS Validation'] is defined and app.session.get('rights')['ACCOUNTING']['TS Validation'].edit==1%}	
+					<td class="delete-action">
+						{{ form_start(validate_form) }}
+							<input type="submit" value="Confirm">
+						{{ form_end(validate_form) }}
+					</td>
+				{%endif%}
+					<td>
+						<a href="{{ path('payroll_employee_show', { 'id': employee.id }) }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td class="total_number">
+						<button type="button" class="btn btn-primary">
+							Total timesheets <span class="badge">{{timesheets|length|number_format(0,""," ")}}</span>
+						</button>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

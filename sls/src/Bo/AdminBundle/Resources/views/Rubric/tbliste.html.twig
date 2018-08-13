@@ -1,0 +1,25 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>Name (english)</th>
+                <th>Name (french)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rubric in rubrics %}
+            <tr>
+                <td><a href="{{ path('rubric_show', { 'id': rubric.id }) }}">{{ rubric.id }}</a></td>
+                <td>{{ rubric.nameen }}</td>
+                <td>{{ rubric.namefr }}</td>
+                <td class="list-action">
+                    <a href="{{ path('rubric_show', { 'id': rubric.id }) }}">show</a>
+                    <a href="{{ path('rubric_edit', { 'id': rubric.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="4">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

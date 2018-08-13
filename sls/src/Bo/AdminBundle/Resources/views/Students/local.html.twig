@@ -1,0 +1,26 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.reference'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.designation'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.dimension'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.capacity'|trans([],'BoAdminBundle')}}</th>
+                <th>Max</th>
+                <th>Campus</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for local in locals %}
+			<tr>
+                <td>{{ local.reference }}</td>
+                <td>{{ local.designation }}</td>
+                <td>{{ local.dimension }}</td>
+                <td>{{ local.capability }}</td>
+                <td>{{ local.max }}</td>
+                <td>{{ local.campus.designation }}</td>
+            </tr>
+		{%else%}
+			<tr><td colspan="6">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

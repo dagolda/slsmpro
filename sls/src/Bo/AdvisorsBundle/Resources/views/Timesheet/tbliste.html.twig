@@ -1,0 +1,40 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>{{'label.student'|trans([],'BoAdminBundle')}} or {{'label.group'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hour'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+				<th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for timesheet in timesheets %}
+			{%if timesheet.status and timesheet.status==4%}{%set style="rejected"%}{%elseif timesheet.status and timesheet.status>2%}{%set style="validated"%}{%else%}{%set style="normal"%}{%endif%}
+            <tr>
+                <td class="{{style}}">{{ timesheet.ddate|date('Y-m-d') }}</td>
+                <td  class="{{style}}">{%if timesheet.group%}{{ timesheet.group.name }}{%elseif timesheet.student is defined%}{{ timesheet.student.firstname }} {{ timesheet.students.name }}{%else%}N/A{%endif%}</td>
+                <td  class="{{style}}">{{ timesheet.startam|date('H:i') }}</td>
+                <td  class="{{style}}">{{ timesheet.endam|date('H:i') }}</td>
+                <td  class="{{style}}">{{ timesheet.startpm|date('H:i') }}</td>
+                <td  class="{{style}}">{{ timesheet.endpm|date('H:i') }}</td>
+                <td  class="{{style}}">{{ timesheet.hour }}</td>
+                <td  class="{{style}}">{% if timesheet.creationdate %}{{ timesheet.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td  class="{{style}}">{%if timesheet.status>0 %}{{std[timesheet.status]|trans([],'BoAdminBundle')}}{%endif%}</td>
+                <td class="list-action">
+                    <a href="{{ path('dash_timesheet_show', { 'id': timesheet.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+					{%if timesheet.status==1 or timesheet.status==4%}
+						<a href="{{ path('dash_timesheet_edit', { 'id': timesheet.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="10">No data found</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

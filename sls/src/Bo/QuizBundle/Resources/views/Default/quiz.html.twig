@@ -1,0 +1,16 @@
+{% extends 'quiz.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.quiz'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block label %}<h1>{{'entity.quiz'|trans([],'BoAdminBundle')}} >> Id {{ quiz.id }}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<h2 class="quiz">{{quiz.name}}</h2>
+		<form action="{{ path('bo_quiz_reckon',{'id':quiz.id,'idevalquiz':idevalquiz}) }}" method="post" class="style">
+			<div class="quiz_question">
+				{%include "BoQuizBundle:Default:tbshow.html.twig"%}	
+			</div>
+			<div class="quiz_question">
+				<button type="submit" id="btn-create">{{'label.finish'|trans([],'BoAdminBundle')}} {{'label.quiz'|trans([],'BoAdminBundle')}}</button>
+			</div>
+		</form>
+	</div>
+{% endblock %}

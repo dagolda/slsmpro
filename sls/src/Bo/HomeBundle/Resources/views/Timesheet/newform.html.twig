@@ -1,0 +1,46 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="20%" class="sty_label">{{'label.date'|trans([],'BoAdminBundle')}}</th>
+			<th width="20%" class="sty_label">{{'label.category'|trans([],'BoAdminBundle')}}</th>
+			<th width="20%" class="sty_label">{{'label.group'|trans([],'BoAdminBundle')}}</th>
+			<th width="20%" class="sty_label">{{'label.student'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.ddate, {'attr' : {'class' : 'date span3'}}) }}</td>
+			<td>{{ form_widget(form.typets, {'attr' : {'class' : 'typeclass span3'}}) }}</td>
+			<td>{%include "BoAdminBundle:Timesheet:selectgroup.html.twig"%}</td>		
+			<td id="select-student2">{%include "BoAdminBundle:Timesheet:selectstudent.html.twig"%}</td>
+		</tr>
+		<tr><td colspan="4">&nbsp;</td></tr>
+	</table>
+	<div class="ts_schedule">
+		<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+			<tr>
+				<th width="20%" class="sty_label">{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+				<th width="20%" class="sty_label">{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+				<th width="20%" class="sty_label">{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+				<th width="20%" class="sty_label">{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+			</tr>
+			<tr>
+				<td>{{ form_widget(form.startam, {'attr' : {'class' : 'startam span3'}}) }}</td>
+				<td>{{ form_widget(form.endam, {'attr' : {'class' : 'endam span3'}}) }}</td>
+				<td>{{ form_widget(form.startpm, {'attr' : {'class' : 'startpm span3'}}) }}</td>
+				<td>{{ form_widget(form.endpm, {'attr' : {'class' : 'endpm span3'}}) }}</td>
+			</tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+			<tr>
+				<th class="sty_label">{{'label.numberofhour'|trans([],'BoAdminBundle')}}</th>
+				<th class="sty_label">Legende</th>
+			</tr>
+			<tr>
+				<td>{{ form_widget(form.hour, {'attr' : {'class' : 'hour span3'}}) }}</td>
+				<td>{{ form_widget(form.legende, {'attr' : {'class' : 'legende span3'}}) }}</td>
+			</tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+		</table>
+		{%if students%}
+		<div id='learner_attendance'>
+			{%include "BoHomeBundle:Timesheet:attendance.html.twig"%}	
+		</div>
+		{%endif%}
+	</div>

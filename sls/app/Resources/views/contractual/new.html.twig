@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.contractual'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.contractual'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('contracts_contractual_new',{'idcontract':idcontract}) }}" method="post" class="style">
+			{%include "BoAdminBundle:Contractual:newactions.html.twig"%}
+			{%if contractuals is not null%}
+				{%include "BoAdminBundle:Contractual:select.html.twig"%}
+			{%else%}
+				{{ form_errors(contractual_form) }}
+					<div class="show_content">
+						{%include "BoAdminBundle:Contractual:newform.html.twig"%}
+					</div>
+				{{ form_rest(contractual_form) }}
+			{%endif%}
+		</form>	
+	</div>
+{% endblock %}

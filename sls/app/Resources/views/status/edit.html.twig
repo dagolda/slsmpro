@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.status'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:setting.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.status'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('status_edit',{'id':status.id}) }}" method="post" class="style">
+			{{ form_errors(edit_form) }}
+			{%include "BoAdminBundle:Status:editactions.html.twig"%}
+			{%include "BoAdminBundle:Status:editform.html.twig"%}
+			{{ form_rest(edit_form) }}
+		</form>	
+	</div>
+{% endblock %}

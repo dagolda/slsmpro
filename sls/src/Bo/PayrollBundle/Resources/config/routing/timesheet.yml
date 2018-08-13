@@ -1,0 +1,48 @@
+payroll_timesheet_index:
+    path:     /
+    defaults: { _controller: "BoPayrollBundle:Timesheet:index" }
+    methods:  GET
+payroll_timesheet_back:
+    path:     /back
+    defaults: { _controller: "BoPayrollBundle:Timesheet:back" }
+    methods:  GET
+payroll_timesheet_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoPayrollBundle:Timesheet:show" }
+    methods:  GET
+payroll_timesheet_edit:
+    path:     /{id}/edit/
+    defaults: { _controller: "BoPayrollBundle:Timesheet:edit" }
+    methods:  [GET, POST]
+payroll_timesheet_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoPayrollBundle:Timesheet:page" }
+    methods:  GET
+payroll_timesheet_search:
+    path:  /search/
+    defaults: { _controller: "BoPayrollBundle:Timesheet:search" }
+    methods:  [GET, POST]
+payroll_timesheet_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoPayrollBundle:Timesheet:pagesearch" }
+    methods:  [GET, POST]
+payroll_timesheet_extrasearch:
+    path:  /extrasearch/
+    defaults: { _controller: "BoPayrollBundle:Timesheet:extrasearch" }
+    methods:  [GET, POST]
+payroll_timesheet_navdate:
+    path:  /navdate/
+    defaults: { _controller: "BoPayrollBundle:Timesheet:navdate" }
+    methods:  [GET, POST]
+payroll_timesheet_validate:
+    path:     /{id}/validate
+    defaults: { _controller: "BoPayrollBundle:Timesheet:validate" }
+    methods:  [GET, POST]
+payroll_timesheet_reject:
+    path:     /{id}/reject
+    defaults: { _controller: "BoPayrollBundle:Timesheet:reject" }
+    methods:  [GET, POST]
+payroll_timesheet_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoPayrollBundle:Timesheet:delete" }
+    methods:  DELETE

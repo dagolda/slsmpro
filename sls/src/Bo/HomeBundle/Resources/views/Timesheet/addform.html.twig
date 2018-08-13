@@ -1,0 +1,73 @@
+	<!--if individual contract then set student object  -->
+	{%if students|length==1%}
+		{%set student=students[0]%}
+		{%if presence[student.id]['am']=='ABS' and presence[student.id]['pm']=='ABS'%}
+			<input type="hidden" name="hour" value="-"/>
+			<input type="hidden" name="am" value="1"/>
+			<input type="hidden" name="pm" value="1"/>
+		{%elseif presence[student.id]['am']=='ABS' and tpm is defined%}
+			<input type="hidden" name="hour" value="{{tpm}}"/>
+			<input type="hidden" name="am" value="1"/>
+		{%elseif presence[student.id]['pm']=='ABS' and tam is defined%}
+			<input type="hidden" name="hour" value="{{tam}}"/>
+			<input type="hidden" name="pm" value="1"/>
+		{%endif%}
+	{%endif%}
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="20%" class="sty_label">Date</th>
+			<th width="20%" class="sty_label">{{'label.category'|trans([],'BoAdminBundle')}}</th>
+			<th width="20%" class="sty_label">{{'label.contract'|trans([],'BoAdminBundle')}}</th>
+			<td width="20%">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+				{%if authorization==0%}
+					<input type="text" value="{{ddate|date('Y-m-d')}}" disabled="disabled"/>
+				{%else%}
+					{{ form_widget(form.ddate,{'attr':{'class': "ddate span3"}}) }}
+				{%endif%}
+			</td>
+			<td><input type="text" value="Teaching" disabled="disabled"/></td>
+			<td><input type="text" value="{%if contract is defined and contract!=null%}{{contract.contractnumber}}{%else%}N/A{%endif%}" disabled="disabled"/></td>
+		</tr>
+		<tr><td colspan="4">&nbsp;</td></tr>
+		<tr>
+			<th width="20%" class="sty_label">Group</th>
+			<th width="20%" class="sty_label">{{'label.studentnumber'|trans([],'BoAdminBundle')}}</th>
+			<th width="20%" class="sty_label">{{'label.numberofhour'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td><input type="text" value="{%if group%}{{group.name}}{%else%}N/A{%endif%}" disabled="disabled"/></td>			
+			<td><input type="text" value="{{students|length}}" disabled="disabled"/></td>
+			<td>
+				<input type="text" value="{%if student is defined and presence[student.id]['am']=='ABS' and presence[student.id]['pm']=='ABS' %}0{%elseif student is defined and presence[student.id]['am']=='ABS' and tpm is defined%}{{tpm}}{%elseif student is defined and presence[student.id]['pm']=='ABS' and tam is defined%}{{tam}}{%elseif timesheet.hour%}{{timesheet.hour}}{%else%}{{'label.notfound'|trans([],'BoAdminBundle')}}{%endif%}" disabled="disabled" {%if timesheet.hour=="" or timesheet.hour==null%}class="notfound"{%endif%}/>
+			</td>
+		</tr>
+		<tr><td colspan="4">&nbsp;</td></tr>
+		<tr>
+			<th width="20%" class="sty_label">{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+			<th width="20%" class="sty_label">{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+			<th width="20%" class="sty_label">{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+			<th width="20%" class="sty_label">{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td><input type="text" value="{%if student is defined and presence[student.id]['am']=='ABS'%}00:00{%else%}{{timesheet.startam|date("H:i")}}{%endif%}" disabled="disabled"/></td>
+			<td><input type="text" value="{%if student is defined and presence[student.id]['am']=='ABS'%}00:00{%else%}{{timesheet.endam|date("H:i")}}{%endif%}" disabled="disabled"/></td>
+			<td><input type="text" value="{%if student is defined and presence[student.id]['pm']=='ABS'%}00:00{%else%}{{timesheet.startpm|date("H:i")}}{%endif%}" disabled="disabled"/></td>
+			<td><input type="text" value="{%if student is defined and presence[student.id]['pm']=='ABS'%}00:00{%else%}{{timesheet.endpm|date("H:i")}}{%endif%}" disabled="disabled"/></td>
+		</tr>
+		<tr><td colspan="4">&nbsp;</td></tr>
+		<tr>
+			<th width="100%" class="sty_label" colspan="4">{{'label.note'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td colspan="4">{{form_widget(form.note)}}</td>
+		</tr>
+		<tr><td colspan="4">&nbsp;</td></tr>
+	</table>
+	{%if students is defined and students|length>0%}
+		<div id='learner_attendance'>
+			{%include "BoHomeBundle:Timesheet:attendance.html.twig"%}	
+		</div>
+	{%endif%}

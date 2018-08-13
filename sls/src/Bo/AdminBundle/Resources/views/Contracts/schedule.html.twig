@@ -1,0 +1,22 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+				<th>{{'label.from'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.to'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hours'|trans([],'BoAdminBundle')}}</th>
+				<th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for schedule in schedules %}
+			{% include 'BoAdminBundle:Contracts:scheduleliste.html.twig' %}
+        {% endfor %}
+		{%if schedules|length==0%}
+			{% include 'BoAdminBundle:Contracts:schedulenew.html.twig' %}
+		{%endif%}
+        </tbody>
+    </table>

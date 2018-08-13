@@ -1,0 +1,23 @@
+	<table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Name (english)</th>
+                <th>Name (french)</th>
+                <th>Ordre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for subrubric in subrubrics %}
+            <tr>
+                <td>{{ subrubric.nameen }}</td>
+                <td>{{ subrubric.namefr }}</td>
+                <td>{{ subrubric.ordre }}</td>
+                <td class="list-action">
+                    <a href="{{ path('subrubric_edit', { 'id': subrubric.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+        {% endfor %}
+			{% include 'BoAdminBundle:Rubric:srubricnew.html.twig' %}		
+        </tbody>
+    </table>

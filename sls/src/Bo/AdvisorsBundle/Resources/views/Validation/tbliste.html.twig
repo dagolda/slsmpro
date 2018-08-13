@@ -1,0 +1,32 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="4%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="11%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th width="11%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.homenumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.cellnumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="5%">{{'label.status'|trans([],'BoAdminBundle')}}</th>
+                <th width="126px">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td><a href="{{ path('employee_show', { 'id': employee.id }) }}">{{ employee.id }}</a></td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.firstname }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.homenumber }}</td>
+                <td>{{ employee.cellnumber }}</td>
+                <td>{{ employee.status }}</td>
+                <td class="list-action"  width="126px">
+                    <a href="{{ path('dash_employee_show', { 'id': employee.id }) }}">Show TS</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="9">No data found</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

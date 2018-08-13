@@ -1,0 +1,30 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th width="24%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+				<th width="24%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+				<th width="24%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+				<th width="24%">{{'label.email'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ advisors.id }}</td>
+                <td>{{ advisors.advisor.name }}</td>
+				<td>{{ advisors.advisor.firstname }}</td>
+				<td>{{ advisors.advisor.email }}</td>
+            </tr>
+            <tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+				<th class="sty_label">{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+				<th class="sty_label">{{'label.numbercontract'|trans([],'BoAdminBundle')}}</th>
+				<th class="sty_label">{{'label.adminhour'|trans([],'BoAdminBundle')}}</th>
+				<th class="sty_label">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{%if advisors.typecontract %}{{ advisors.typecontract }}{%else%}---{% endif %}</td>
+                <td>{%if advisors.numbercontract %}{{ advisors.numbercontract }}{%else%}---{% endif %}</td>
+                <td>{%if advisors.adminhour %}{{ advisors.adminhour }}{%else%}---{% endif %}</td>
+                <td>{%if advisors.creationdate %}{{ advisors.creationdate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+        </tbody>
+    </table>

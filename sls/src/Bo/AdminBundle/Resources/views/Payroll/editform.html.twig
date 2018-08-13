@@ -1,0 +1,37 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="25%" class="sty_label">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+			<th width="25%" class="sty_label">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+			<th width="25%" class="sty_label">Sex</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.name) }}</td>
+			<td>{{ form_widget(edit_form.firstname) }}</td>
+			<td>{{ form_widget(edit_form.sexe) }}</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.status'|trans([],'BoAdminBundle')}}</th>
+            <th class="sty_label">{{'label.profile'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.email'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.status) }}
+			<a href="{{ path('status_new') }}" title="Add a status"><img src="{{ asset('images/actions/add.jpg') }}" border="0" alt="Add a status" />	
+			</td>
+			<td valign="top">{{ form_widget(edit_form.profil) }}</td>
+			<td valign="top">{{ form_widget(edit_form.email) }}</td>	
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">{{'label.hiringdate'|trans([],'BoAdminBundle')}}</th>
+            <th class="sty_label">{{'label.birthdate'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">Active</th>
+		</tr>
+		<tr>					
+			<td>{{ form_widget(edit_form.hiringdate) }}</td>
+			<td>{{ form_widget(edit_form.birthdate) }}</td>
+			<td>{{ form_widget(edit_form.active) }}</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+	</table>

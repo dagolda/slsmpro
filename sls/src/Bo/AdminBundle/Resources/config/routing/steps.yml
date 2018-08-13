@@ -1,0 +1,24 @@
+steps_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Steps:index" }
+    methods:  GET
+
+steps_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Steps:show" }
+    methods:  GET
+
+steps_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Steps:new" }
+    methods:  [GET, POST]
+
+steps_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Steps:edit" }
+    methods:  [GET, POST]
+
+steps_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Steps:delete" }
+    methods:  DELETE

@@ -1,0 +1,18 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					</a></td>
+					{%if etsc is defined and etsc==false%}
+						<td><a href="{{ path('payroll_contracts_list') }}">{{'action.back'|trans([],'BoAdminBundle')}}
+						<td><button type="submit">{{'action.generate'|trans([],'BoAdminBundle')}} TS</button></td>
+					{%endif%}
+					{%if etsg is defined and etsg==false%}
+						<td><a href="{{ path('payroll_contracts_group') }}">{{'action.back'|trans([],'BoAdminBundle')}}
+						<td><button type="submit">{{'action.generate'|trans([],'BoAdminBundle')}} TS</button></td>
+					{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>
+	

@@ -1,0 +1,21 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="40%" class="sty_label">{{'label.fullname'|trans([],'BoAdminBundle')}}</th>
+			<th width="40%" class="sty_label">{{'label.email'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.name, {'attr' : {'class' : 'fullname span3'}}) }}</td>
+			<td>{{ form_widget(form.email) }}</td>		
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">Phone</th>
+			<th class="sty_label">Contract type</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.phone) }}</td>
+			<td>{{ form_widget(form.typecontract) }}
+			</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+	</table>

@@ -1,0 +1,44 @@
+    <table class="show_table">
+        <tbody>
+            <tr>
+				<th>{{'label.week'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.teacher'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.studentname'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{%if timesheet.tsweek %}{{ timesheet.tsweek.numberweek }} | {{ timesheet.ddate|date('Y') }}{%endif%}</td>
+				<td>{%if timesheet.employee %}{{ timesheet.employee.firstname }} {{ timesheet.employee.name }}{%else%}---{%endif%}</td>
+				<td>{%if timesheet.group %}{{ timesheet.group.name }}{%elseif timesheet.students%}{{ timesheet.students.firstname }} {{ timesheet.students.name }}{%endif%}</td>
+				<td>{%if timesheet.status and timesheet.status==1 %}Submitted{%elseif timesheet.status and timesheet.status==2 %}Validated by student {%elseif timesheet.status and timesheet.status==3 %}Validated by payroll{%elseif timesheet.status and timesheet.status==4 %}Rejected{%elseif timesheet.status and timesheet.status==5 %}Paid{%elseif timesheet.status and timesheet.status==6 %}Billed{%elseif timesheet.status and timesheet.status==7 %}Paid and billed{%endif%}</td>
+            </tr>
+            </tr>
+            <tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <th width="20%">{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th width="20%">{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+				<th width="20%">{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+				<th width="20%">{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>                
+				<td>{{ timesheet.startam|date('H:i') }}</td>
+                <td>{{ timesheet.endam|date('H:i') }}</td>
+				<td>{{ timesheet.startpm|date('H:i') }}</td>
+				<td>{{ timesheet.endpm|date('H:i') }}</td>
+            </tr>
+            <tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+				<th>{{'label.trainingdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hour'|trans([],'BoAdminBundle')}}</th>
+				<th>Legende</th>
+				<th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ timesheet.ddate|date('Y-m-d H:i:s') }}</td>
+                <td>{{ timesheet.hour }} hrs</td>
+                <td>{{ timesheet.legende }}</td>
+				<td>{% if timesheet.creationdate %}{{ timesheet.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr><td colspan="4">&nbsp;</td></tr>
+        </tbody>
+    </table>

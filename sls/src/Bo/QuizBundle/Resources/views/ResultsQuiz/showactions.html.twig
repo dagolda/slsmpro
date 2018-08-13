@@ -1,0 +1,42 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td>
+						<a href="{{ path('evalquiz_show',{'id':evalquiz.id}) }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					{%if resultsquiz.start%}
+					<td>
+						<button type="button" class="btn btn-primary">
+							{{'label.startdate'|trans([],'BoAdminBundle')}}: <span class="badge">{{resultsquiz.start|date('d-m-Y')}}</span>
+						</button>
+					</td>
+					{%endif%}
+					{%if resultsquiz.end%}
+					<td>
+						<button type="button" class="btn btn-primary">
+							{{'label.enddate'|trans([],'BoAdminBundle')}}: <span class="badge">{{resultsquiz.end|date('d-m-Y')}}</span>
+						</button>
+					</td>
+					{%endif%}
+					{%if resultsquiz.ttime%}
+					<td>
+						<button type="button" class="btn btn-primary">
+							{{'label.time'|trans([],'BoAdminBundle')}}: <span class="badge">{{ttime|number_format(2,"."," ")}} mn</span>
+						</button>
+					</td>
+					{%endif%}
+					<td>
+						<button type="button" class="btn btn-primary">
+							{{'label.score'|trans([],'BoAdminBundle')}}: <span class="badge">{{resultsquiz.result}}</span>
+						</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-primary">
+							{{'label.result'|trans([],'BoAdminBundle')}}: <span class="badge">{{lresult}}</span>
+						</button>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

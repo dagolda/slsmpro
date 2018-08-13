@@ -1,0 +1,144 @@
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<th width=40%>{{'label.evaltype'|trans([],'BoAdminBundle')}}/{{'label.options'|trans([],'BoAdminBundle')}}</th>		
+			<th width=40%>{{'label.evaluator'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>		
+			<td>{{ form_widget(edit_form.evaltype, {'attr' : {'class' : 'evaltype span3'}}) }}/{{ form_widget(edit_form.options) }}</td>
+			<td>{{ form_widget(edit_form.evaluator, {'attr' : {'class' : 'evaluator span3'}}) }}</td>	
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.evaldate'|trans([],'BoAdminBundle')}}</th>  
+			<th>{{'label.duration'|trans([],'BoAdminBundle')}}</th>  			
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.evaldate) }}</td>	
+			<td>{{ form_widget(edit_form.duration) }}</td>					
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.start'|trans([],'BoAdminBundle')}}</th> 
+			<th>{{'label.end'|trans([],'BoAdminBundle')}}</th>   			
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.evaltime) }}</td>
+			<td>{{ form_widget(edit_form.endtime) }}</td>				
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.online'|trans([],'BoAdminBundle')}}</th>
+            		<th>{{'label.notification'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.online) }}</td>
+			<td>{{ form_widget(edit_form.notification) }}</td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.language'|trans([],'BoAdminBundle')}}</th>	
+			<th>{{'label.ftorpt'|trans([],'BoAdminBundle')}}</th>			
+		</tr>
+		<tr>			
+			<td>{{ form_widget(edit_form.languages) }}</td>
+			<td>{{ form_widget(edit_form.typetime) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.typeoftraining'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.situation'|trans([],'BoAdminBundle')}}</th>		
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.typeoftraining) }}</td>
+			<td>{{ form_widget(edit_form.situation) }}</td>		
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.name'|trans([],'BoAdminBundle')}}</th>		
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.firstname, {'attr' : {'class' : 'firstname span3'}}) }}</td>			
+			<td>{{ form_widget(edit_form.name, {'attr' : {'class' : 'name span3'}}) }}</td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.title'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.phone'|trans([],'BoAdminBundle')}}</th>	
+		</tr>
+		<tr>		
+			<td>{{ form_widget(edit_form.title) }}</td>
+			<td>{{ form_widget(edit_form.phone) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.studentemail'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.expenses'|trans([],'BoAdminBundle')}}</th>	
+		</tr>
+		<tr>		
+			<td>{{ form_widget(edit_form.emailstudent) }}</td>
+			<td>{{ form_widget(edit_form.expenses) }}</td>		
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.currentprofile'|trans([],'BoAdminBundle')}}</th>
+            <th>{{'label.targetprofile'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.currentprofile) }}</td>		
+			<td>{{ form_widget(edit_form.targetprofile) }}</td>				
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.customer'|trans([],'BoAdminBundle')}} (<span class="customer_detail">{{'label.customerdetail'|trans([],'BoAdminBundle')}}</span>)</th>
+            <th>{{'label.contact'|trans([],'BoAdminBundle')}}</th>			
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.customer) }}</td>	
+			<td>{{ form_widget(edit_form.contact) }}</td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.contactemail'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.contactphone'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.emailcontact) }}</td>
+			<td>{{ form_widget(edit_form.phonecontact) }}</td>					
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.billingcontact'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.billingemail'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.billingcontact) }}</td>
+			<td>{{ form_widget(edit_form.billingemail) }}</td>					
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.billingphone'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.location'|trans([],'BoAdminBundle')}}</th>			
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.billingphone) }}</td>	
+			<td>{{ form_widget(edit_form.evallocation, {'attr' : {'class' : 'evallocation span3'}}) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>	
+		<tr>
+			<th>{{'label.campus'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.address'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.campus, {'attr' : {'class' : 'campusclass span3'}}) }}</td>
+			<td>{{ form_widget(edit_form.addresse, {'attr' : {'class' : 'addressclass span3'}}) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>	
+		<tr>
+			<th colspan="2">{{'label.comment'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>		
+			<td colspan="2">{{ form_widget(edit_form.comment) }}</td>	
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>		
+	</table>

@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.profile'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'entity.profile'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+	<form action="{{ path('pdf_create') }}" method="post" {{ form_enctype(form) }}>
+		{{ form_errors(form) }}	
+		{% include "BoAdminBundle:Pdf:editform.html.twig" %}		
+	</form>
+{% endblock %}

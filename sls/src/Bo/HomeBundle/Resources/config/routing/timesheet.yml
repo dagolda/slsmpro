@@ -1,0 +1,72 @@
+home_timesheet_index:
+    path:     /
+    defaults: { _controller: "BoHomeBundle:Timesheet:index" }
+    methods:  GET
+home_timesheet_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoHomeBundle:Timesheet:show" }
+    methods:  GET
+home_timesheet_newbysearch:
+    path:     /{idcontract}/newbysearch
+    defaults: { _controller: "BoHomeBundle:Timesheet:newbysearch" }
+    methods:  GET
+home_timesheet_new:
+    path:     /new
+    defaults: { _controller: "BoHomeBundle:Timesheet:new" }
+    methods:  [GET, POST]
+home_timesheet_other:
+    path:     /other
+    defaults: { _controller: "BoHomeBundle:Timesheet:other" }
+    methods:  [GET, POST]
+home_timesheet_add:
+    path:     /add/{idcontract}/
+    defaults: { _controller: "BoHomeBundle:Timesheet:addts" }
+    methods:  [GET, POST]
+home_timesheet_group:
+    path:     /{idgroup}/group/
+    defaults: { _controller: "BoHomeBundle:Timesheet:addtsgroup" }
+    methods:  [GET, POST]
+home_timesheet_create:
+    path:     /create
+    defaults: { _controller: "BoHomeBundle:Timesheet:create" }
+    methods:  [GET, POST]
+home_timesheet_addmany:
+    path:     /new/many/
+    defaults: { _controller: "BoHomeBundle:Timesheet:addmany" }
+    methods:  [GET, POST]
+home_timesheet_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoHomeBundle:Timesheet:edit" }
+    methods:  [GET, POST]
+home_timesheet_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoHomeBundle:Timesheet:delete" }
+    methods:  DELETE
+home_timesheet_message:
+    path:     /message/
+    defaults: { _controller: "BoHomeBundle:Timesheet:message" }
+    methods:  [GET, POST]
+home_timesheet_contractsearch:
+    path:     /contractsearch/
+    defaults: { _controller: "BoHomeBundle:Timesheet:contractsearch" }
+    methods:  POST
+home_timesheet_search:
+    path:     /search/
+    defaults: { _controller: "BoHomeBundle:Timesheet:search" }
+    methods:  POST
+home_timesheet_extrasearch:
+    path:     /extrasearch/
+    defaults: { _controller: "BoHomeBundle:Timesheet:extrasearch" }
+    methods:  POST
+home_timesheet_datesearch:
+    path:     /datesearch/
+    defaults: { _controller: "BoHomeBundle:Timesheet:datesearch" }
+    methods:  POST
+home_timesheet_reloaddata:
+    path:     /reloaddata/
+    defaults: { _controller: "BoHomeBundle:Timesheet:reloaddata" }
+    methods:  [GET, POST]
+home_timesheet_reloadatt:
+    path:     /reloadatt/
+    defaults: { _controller: "BoHomeBundle:Timesheet:reloadatt" }
+    methods:  [GET, POST]

@@ -1,0 +1,48 @@
+	{%set i=1%}
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.motif'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.employee'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.amorpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.numberday'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for absence in absences %}
+			{%set i=i+1%}
+            <tr>
+                <td>{{ absence.motif }}</td>
+                <td>{%if absence.employee %}{{ absence.employee.firstname }} {{ absence.employee.name }}{%else%}---{% endif %}</td>
+                <td>{% if absence.startdate %}{{ absence.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if absence.enddate %}{{ absence.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ absence.amorpm }}</td>
+                <td>{{ absence.numberday }}</td>
+                <td>{% if absence.creationdate %}{{ absence.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('employee_show_absence', { 'id': absence.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+					{%if app.session.get('rights')['STAFF']['Absences'] is defined and app.session.get('rights')['STAFF']['Absences'].edit==1%}
+						<a href="{{ path('employee_edit_absence', { 'id': absence.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+			<input type="hidden" id="absence{{i}}" name="absence{{i}}" value="absence.startdate|date('Y-m-d')" />
+		{%else%}
+			<tr><td colspan="10">{{'No data found'|trans([],'BoAdminBundle')}} in database</td></tr>
+        {% endfor %}
+	{%if absences|length>0 and allabsences|length<20%}
+		<tr><td colspan="9" class="list-action">
+			{%if offset is defined and offset==20%}
+				<a href="{{ path('employee_list_absence', { 'id': employee.id,'offset':5 }) }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+			{%else%}
+				<a href="{{ path('employee_list_absence', { 'id': employee.id,'offset':20 }) }}">{{'label.allabsences'|trans([],'BoAdminBundle')}}</a> <span color='red'>* List limited to 20</span> 
+			{% endif %}
+		</td></tr>
+	{% endif %}
+        </tbody>
+    </table>
+	<input type="hidden" id="ta"  name="ta" value="i" />

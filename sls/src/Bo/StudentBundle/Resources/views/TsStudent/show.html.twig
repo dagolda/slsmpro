@@ -1,0 +1,15 @@
+{% extends 'student.html.twig' %}
+{% block title %}{{parent()}} - {{'title.coursesgiven'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoStudentBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}	
+	{%if user.students is defined and user.students!=null%}{%include "BoStudentBundle:Default:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block label %}<h1>{{'title.coursesgiven'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoStudentBundle:Timesheet:showactions.html.twig"%}
+		<div class="show_content">
+			{%include "BoStudentBundle:Timesheet:show.html.twig"%}
+		</div>			
+	</div>
+{% endblock %}

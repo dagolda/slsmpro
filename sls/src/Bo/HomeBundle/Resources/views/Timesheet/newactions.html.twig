@@ -1,0 +1,19 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td class="form-group">
+						<input type="text" class="form-control" id="inp-search">
+					</td>
+					<td><button type="submit" id="btn-search">{{'action.search'|trans([],'BoAdminBundle')}}</button></td>
+					<td><button type="submit" id="btn-create">{{'action.create'|trans([],'BoAdminBundle')}}</button></td>
+					<td>
+						<a href="{{ path('home_timesheet_index') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td class="list_link">
+						<a href="{{ path('home_timesheet_new') }}">{{'action.return'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

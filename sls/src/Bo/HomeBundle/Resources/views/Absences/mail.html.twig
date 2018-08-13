@@ -1,0 +1,24 @@
+<p>Bonjour / Hello Cancel,</p>
+<p>
+	The teacher : {{absence.employee.firstname}} {{absence.employee.name}} will be absent for {{absence.numberday}} day{%if absence.numberday>1%}s{%endif%} form {{absence.startdate|date("d-m-Y")}}<br/> Le professeur : {{absence.employee.firstname}} {{absence.employee.name}} sera absent pour {{absence.numberday}} jour{%if absence.numberday>1%}s{%endif%} à compter de la date : {{absence.startdate|date("d-m-Y")}}
+</p>
+<p>
+	{%if absence.motif%}
+		<div><b>Motif / Reason</b>: {{absence.motif|trans([],'BoAdminBundle')}}</div>
+	{%endif%}
+	{%if absence.startdate%}
+		<div><b>Date de D&#233;but / Start Date</b>: {{absence.startdate|date("d-m-Y")}}</div>
+	{%endif%}
+	{%if absence.enddate%}
+		<div><b>Date de Fin / End Date</b>: {{absence.enddate|date("d-m-Y")}}</div>
+	{%endif%}
+	{%if absence.amorpm%}
+		<div><b>Matin ou après-midi / AM or PM</b>: {%if absence.amorpm=="ALL"%}Toute la journée{%elseif absence.amorpm=="AM"%}Matin{%elseif absence.amorpm=="PM"%}Après-midi{%endif%}</div>
+	{%endif%}
+	{%if absence.numberday%}
+		<div><b>Nombre de jour / Number of days</b>: {{absence.numberday}}</div>
+	{%endif%}
+	{%if absence.comment%}
+		<div><b>Message</b>:<br/>{{absence.comment}}</div>
+	{%endif%}
+</p>

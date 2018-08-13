@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- Timesheet edit{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>Timesheet edit</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('timesheet_edit',{'id':timesheet.id}) }}" method="post" class="style">
+			{{ form_errors(edit_form) }}
+			{%include "BoAdminBundle:Timesheet:editactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Timesheet:editform.html.twig"%}
+			</div>
+			{{ form_rest(edit_form) }}
+		</form>	
+	</div>
+{% endblock %}

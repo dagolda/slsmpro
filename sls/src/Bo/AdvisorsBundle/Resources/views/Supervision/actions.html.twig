@@ -1,0 +1,20 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td>
+						{%if status==1%}
+							<a href="{{ path('dash_supervision_list',{'status':0}) }}"">{{'action.archived'|trans([],'BoAdminBundle')}}</a>
+						{%elseif status==0%}
+							<a href="{{ path('dash_supervision_list',{'status':1}) }}"">{{'label.inprogress'|trans([],'BoAdminBundle')}}</a>
+						{%endif%}
+					</td>
+					<td class="total_number">
+						<button type="button" class="btn btn-primary">
+							{{'label.curentcontract'|trans([],'BoAdminBundle')}} <span class="badge">{{total}}</span>
+						</button>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

@@ -1,0 +1,56 @@
+dash_tickets_index:
+    path:     /
+    defaults: { _controller: "BoAdvisorsBundle:Tickets:index" }
+    methods:  GET
+dash_tickets_list:
+    path:     /list/
+    defaults: { _controller: "BoAdvisorsBundle:Tickets:list" }
+    methods:  GET
+dash_tickets_blocklist:
+    path:     /blocklist/
+    defaults: { _controller: "BoAdvisorsBundle:Tickets:blocklist" }
+    methods:  GET
+dash_tickets_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdvisorsBundle:Tickets:page" }
+dash_tickets_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdvisorsBundle:Tickets:show" }
+    methods:  GET
+dash_tickets_new:
+    path:     /new
+    defaults: { _controller: "BoAdvisorsBundle:Tickets:new" }
+    methods:  [GET, POST]
+dash_tickets_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdvisorsBundle:Tickets:edit" }
+    methods:  [GET, POST]
+dash_tickets_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdvisorsBundle:Tickets:delete" }
+    methods:  DELETE
+dash_tickets_back:
+    path:     /back/
+    defaults: { _controller: "BoAdvisorsBundle:Tickets:back" }
+    methods:  GET
+dash_tickets_search:
+    path:  /search/
+    defaults: { _controller: "BoAdvisorsBundle:Tickets:search" }
+    methods:  [GET, POST]
+dash_tickets_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdvisorsBundle:Tickets:pagesearch" }
+    methods:  [GET, POST]
+dash_tickets_blocked:
+    path:     /{id}/block/
+    defaults: { _controller: "BoAdvisorsBundle:Tickets:block" }
+dash_tickets_resolve:
+    path:     /{id}/resolve/
+    defaults: { _controller: "BoAdvisorsBundle:Tickets:resolve" }
+dash_tickets_close:
+    path:     /{id}/close/
+    defaults: { _controller: "BoAdvisorsBundle:Tickets:close" }
+dash_tickets_extrasearch:
+    path:     /extrasearch/
+    defaults: { _controller: "BoAdvisorsBundle:Tickets:extrasearch" }
+    methods:  [GET, POST]

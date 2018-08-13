@@ -1,0 +1,20 @@
+tsstudent_index:
+    path:     /
+    defaults: { _controller: "BoStudentBundle:TsStudent:index" }
+    methods:  GET
+tsstudent_validate:
+    path:     /{id}/validate
+    defaults: { _controller: "BoStudentBundle:TsStudent:validate" }
+    methods:  [GET, POST]
+tsstudent_reject:
+    path:     /{id}/reject
+    defaults: { _controller: "BoStudentBundle:TsStudent:reject" }
+    methods:  [GET, POST]
+tsstudent_allvalidate:
+    path:     /allvalidate
+    defaults: { _controller: "BoStudentBundle:TsStudent:allvalidate" }
+    methods:  [GET, POST]
+tsstudent_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoStudentBundle:TsStudent:show" }
+    methods:  GET

@@ -1,0 +1,62 @@
+<li {%if sm=="setting"%}class="active"{%endif%}>
+	<a href="{{ path('param_index') }}">
+		{{'layout.menu.setting'|trans([],'BoAdminBundle')}}
+	</a>
+</li>
+<li {%if sm=="message"%}class="active"{%endif%}>
+	<a href="{{ path('message_index') }}">
+		Messages
+	</a>
+</li>
+<li {%if sm=="rubrique"%}class="active"{%endif%}>
+	<a href="{{ path('rubric_index') }}">
+		{{'layout.menu.rubrics'|trans([],'BoAdminBundle')}}
+	</a>
+</li>
+<li {%if sm=="language"%}class="active"{%endif%}>
+	<a href="{{ path('language_index') }}">
+		{{'layout.menu.language'|trans([],'BoAdminBundle')}}
+	</a>
+</li>
+{%if app.session.get('rights')['CONTRACTS']['NMSO Field'] is defined and app.session.get('rights')['CONTRACTS']['NMSO Field'].active==1%}
+	<li {%if sm=="workfields"%}class="active"{%endif%}>
+		<a href="{{ path('workfields_index') }}">
+			{{'layout.menu.workfields'|trans([],'BoAdminBundle')}}
+		</a>
+	</li>
+{%endif%}
+{%if app.session.get('rights')['CONTRACTS']['Contract Type'] is defined and app.session.get('rights')['CONTRACTS']['Contract Type'].active==1%}
+	<li {%if sm=="typecontract"%}class="active"{%endif%}>
+		<a href="{{ path('typecontract_index') }}">
+			{{'layout.menu.contracttype'|trans([],'BoAdminBundle')}}
+		</a>
+	</li>
+{%endif%}
+{%if app.session.get('rights')['STAFF']['Status'] is defined and app.session.get('rights')['STAFF']['Status'].active==1%}
+	<li {%if sm=="status"%}class="active"{%endif%}>
+		<a href="{{ path('status_index') }}">
+			{{'layout.menu.status'|trans([],'BoAdminBundle')}}
+		</a>
+	</li>
+{%endif%}
+{%if app.session.get('rights')['STAFF']['Category teacher'] is defined and app.session.get('rights')['STAFF']['Category teacher'].active==1%}
+	<li {%if sm=="category"%}class="active"{%endif%}>
+		<a href="{{ path('categoryteacher_index') }}">
+			{{'layout.menu.categoryteacher'|trans([],'BoAdminBundle')}}
+		</a>
+	</li>
+{%endif%}
+{%if app.session.get('rights')['STAFF']['Dayoff'] is defined and app.session.get('rights')['STAFF']['Dayoff'].active==1%}
+	<li {%if sm=="dayoff"%}class="active"{%endif%}>
+		<a href="{{ path('holidayslist_index') }}">
+			{{'layout.menu.dayoff'|trans([],'BoAdminBundle')}}
+		</a>
+	</li>
+{%endif%}
+{%if app.session.get('rights')['TOOLS']['Motif'] is defined and app.session.get('rights')['TOOLS']['Motif'].active==1%}
+	<li {%if sm=="motifabsence"%}class="active"{%endif%}>
+		<a href="{{ path('motifabsence_index') }}">
+			{{'layout.menu.motifabs'|trans([],'BoAdminBundle')}}
+		</a>
+	</li>
+{%endif%}

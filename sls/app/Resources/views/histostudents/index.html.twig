@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>HistoStudents list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idgroup</th>
+                <th>Name</th>
+                <th>Firstname</th>
+                <th>Startlevel</th>
+                <th>Targetlevel</th>
+                <th>Startdate</th>
+                <th>Enddate</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for histoStudent in histoStudents %}
+            <tr>
+                <td><a href="{{ path('histostudents_show', { 'id': histoStudent.id }) }}">{{ histoStudent.id }}</a></td>
+                <td>{{ histoStudent.idgroup }}</td>
+                <td>{{ histoStudent.name }}</td>
+                <td>{{ histoStudent.firstname }}</td>
+                <td>{{ histoStudent.startlevel }}</td>
+                <td>{{ histoStudent.targetlevel }}</td>
+                <td>{% if histoStudent.startdate %}{{ histoStudent.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if histoStudent.enddate %}{{ histoStudent.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if histoStudent.creationdate %}{{ histoStudent.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('histostudents_show', { 'id': histoStudent.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('histostudents_edit', { 'id': histoStudent.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('histostudents_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

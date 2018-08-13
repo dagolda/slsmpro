@@ -1,0 +1,38 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.subject'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.affectedto'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.openeddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.resolveddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ticket in tickets %}
+            <tr>
+                <td>{{ ticket.subject }}</td>
+		<td>
+			{%if ticket.contacts %}{%set contact=ticket.contacts%}{%endif%}
+			{%if contact and contact.employee%}
+				{%set i=1%}
+				{%for employee in contact.employee%}
+					{{ employee.firstname }} {{ employee.name }}
+					{%set i=i+1%}
+					{%if i<contact.employee|length%}, {%endif%}					
+				{%endfor%}
+			{%else%}
+				---
+			{%endif%}
+		</td>
+                <td>{% if ticket.openeddate %}{{ ticket.openeddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if ticket.resolveddate %}{{ ticket.resolveddate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+                <td>{{ status[ticket.status] }}</td>
+                <td>{% if ticket.creationdate %}{{ ticket.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+		{%else%}
+			<tr><td colspan="6">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

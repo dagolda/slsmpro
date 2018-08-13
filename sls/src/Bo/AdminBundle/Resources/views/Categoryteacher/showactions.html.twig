@@ -1,0 +1,22 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td class="delete-action">
+						{{ form_start(delete_form) }}
+							<input type="submit" value="Delete">
+						{{ form_end(delete_form) }}
+					</td>
+					<td>
+						<a href="{{ path('categoryteacher_index') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td>
+						<a href="{{ path('categoryteacher_edit', { 'id': categoryteacher.id }) }}">Edit</a>
+					</td>
+					<td>
+						<a href="{{ path('categoryteacher_new') }}">{{'action.add'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

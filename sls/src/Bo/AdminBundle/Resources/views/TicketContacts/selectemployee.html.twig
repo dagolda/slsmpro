@@ -1,0 +1,5 @@
+				<select name='idsemployee[ ]' id='idsemployee' multiple>
+					{%for employee in adminteams%}
+						<option value="{{employee.id}}" {%if idemploye is defined and employee.id ==idemployee%}selected='selected'{%endif%}>{{employee.firstname}} {{employee.name}}</option>
+					{%endfor%}
+				</select>	

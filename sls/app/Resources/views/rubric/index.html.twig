@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.rubric'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:setting.html.twig"%}{% endblock %}
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'entity.rubric'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdminBundle:Rubric:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div id="content-liste">
+		{%include "BoAdminBundle:Rubric:tbliste.html.twig"%}
+	</div>
+{% endblock %}

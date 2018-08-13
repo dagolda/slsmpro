@@ -1,0 +1,35 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.reference'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+                <th>Workfield</th>
+                <th>Hour's number</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contract in contracts %}
+            <tr>
+                <td><a href="{{ path('contracts_show', { 'id': contract.id }) }}">{{ contract.id }}</a></td>
+                <td>{{ contract.reference }}</td>
+                <td>{{ contract.typecontract }}</td>
+                <td>{{ contract.workfields }}</td>
+                <td>{{ contract.hoursnumber }}</td>
+                <td>{% if contract.startdate %}{{ contract.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if contract.enddate %}{{ contract.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if contract.creationdate %}{{ contract.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('contracts_show', { 'id': contract.id }) }}">show</a>
+                    <a href="{{ path('contracts_edit', { 'id': contract.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="9">Aucune entrée de contrat trouvée dans la base de données</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

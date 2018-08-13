@@ -1,0 +1,183 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.student'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}
+{% block nav %}	{%include "BoAdminBundle:Students:rightshow.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.student'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Students:showactions.html.twig"%}
+		{%if contract is defined and contract!=null%}
+			<div class="display_content">
+				<legend>{{'label.advisor'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Students:advisor.html.twig"%}
+			</div>
+		{%endif%}
+		<div class="display_content">
+			<legend>{{'entity.contract'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Students:contract.html.twig"%}
+		</div>
+		{%if coordinator and coordinator!=null%}
+			<div class="display_content">
+				<legend>{{'title.departmentcontact'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Contracts:coordinator.html.twig"%}
+			</div>	
+		{%endif%}
+		{%if group is defined and group!=null%}
+			<div class="display_content">
+				<legend>{{'label.group'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Contracts:group.html.twig"%}
+			</div>
+		{%endif%}
+		{%if teachers|length>0%}
+			<div class="display_content">
+				<legend>{{'Teacher'|trans([],'BoAdminBundle')}}</legend>
+				<div id="teacher_content">
+					{%include "BoAdminBundle:Students:teachers.html.twig"%}
+				</div>
+			</div>
+		{%endif%}
+		{%if contract.campus is defined and contract.campus!=null%}
+		<div class="display_content">
+			<legend>{{'label.room'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Students:local.html.twig"%}
+		</div>
+		{%endif%}
+		{%if evaluations %}
+		<div class="display_content">
+			<legend>{{'label.evaluation'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Students:tbeval.html.twig"%}
+		</div>
+		{%endif%}
+		{%if absences|length>0 %}
+		<div class="display_content">
+			<legend>{{'label.recentabsences'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Students:absences.html.twig"%}
+		</div>
+		{%endif%}
+		{%if timesheets!=null%}
+		<div class="display_content">
+			<legend>{{'entity.timesheet'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Students:timesheet.html.twig"%}
+		</div>
+		{%endif%}
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(delete_form) }}
+					<button type="button" class="close" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(delete_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_absence" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.addabsence'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('students_create_absence',{'idstudent':student.id}) }}" method="post" class="style">
+				<div class="modal-body">
+					{{ form_errors(absence_form) }}
+						{%include "BoAdminBundle:Students:absenceform.html.twig"%}
+					{{ form_rest(absence_form) }}
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+
+	{% block javascripts %}
+		<script>
+			$("#btn_create").click(function(){		
+				$('.message-content').html("<div class='alert alert-info'><center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center></div>");
+				idstudent=$("#idstudent").val();
+				var DATA = 'id='+idstudent;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('students_user_new')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('.message-content').html(data);
+					}
+				});
+				return false;
+			});
+			$(".abstart").change(function(){
+				startdate = new Date($(".abstart").val());
+				enddate = new Date($(".abend").val());
+				diff = enddate - startdate;
+				numerday = diff/(24*60*60*1000); 
+				if(numerday<0){
+					alert("Absence start date can not be greater than the end date!");
+					return false;
+				}else{
+					numerday++;
+					$(".numberday").val(numerday)
+				}
+				return true;
+			});	
+			$(".abend").change(function(){
+				startdate = new Date($(".abstart").val());
+				enddate = new Date($(".abend").val());
+				diff = enddate - startdate;
+				numerday = diff/(24*60*60*1000); 
+				if(numerday<0){
+					alert("Absence start date can not be greater than the end date!");
+					return false;
+				}else{
+					numerday++;
+					$(".numberday").val(numerday)
+				}
+				return true;
+			});
+			$(".amorpm").change(function(){
+				var str=$(".amorpm input:checked");
+				var amorpm = str.val();
+				if(amorpm=="ALL"){
+					$(".am-data").hide();
+					$(".pm-data").hide();
+				}
+				if(amorpm=="AM"){
+					$(".am-data").show();
+					$(".pm-data").hide();
+				}
+				if(amorpm=="PM"){
+					$(".am-data").hide();
+					$(".pm-data").show();
+				}
+				return false;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

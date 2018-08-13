@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.billingcontact'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.billingcontact'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('contracts_billingcontact_edit',{'id':billingContact.id,'idcontract':idcontract}) }}" method="post" class="style">
+			{{ form_errors(edit_form) }}
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<table>
+						<tr>
+							<td><button type="submit" id="btn-create">{{'action.update'|trans([],'BoAdminBundle')}}</button></td>
+							<td>
+								<a href="{{ path('contracts_show',{'id':idcontract}) }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+							</td>
+						</tr>
+					</table>		
+				</div>
+			</div>	
+			<div class="show_content">
+				{%include "BoAdminBundle:BillingContact:editform.html.twig"%}
+			</div>
+			{{ form_rest(edit_form) }}
+		</form>	
+	</div>
+{% endblock %}

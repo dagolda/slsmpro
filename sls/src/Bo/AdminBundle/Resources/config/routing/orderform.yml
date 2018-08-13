@@ -1,0 +1,24 @@
+orderform_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Orderform:index" }
+    methods:  GET
+
+orderform_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Orderform:show" }
+    methods:  GET
+
+orderform_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Orderform:new" }
+    methods:  [GET, POST]
+
+orderform_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Orderform:edit" }
+    methods:  [GET, POST]
+
+orderform_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Orderform:delete" }
+    methods:  DELETE

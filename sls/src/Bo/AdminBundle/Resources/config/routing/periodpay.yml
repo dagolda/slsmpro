@@ -1,0 +1,24 @@
+periodpay_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:PeriodPay:index" }
+    methods:  GET
+
+periodpay_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:PeriodPay:show" }
+    methods:  GET
+
+periodpay_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:PeriodPay:new" }
+    methods:  [GET, POST]
+
+periodpay_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:PeriodPay:edit" }
+    methods:  [GET, POST]
+
+periodpay_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:PeriodPay:delete" }
+    methods:  DELETE

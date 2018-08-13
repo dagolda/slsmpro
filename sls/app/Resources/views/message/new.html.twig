@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:setting.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>Message creation</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('message_new') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Message:newactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Message:newform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

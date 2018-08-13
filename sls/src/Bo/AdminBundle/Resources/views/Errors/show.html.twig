@@ -1,0 +1,28 @@
+    <table>
+        <tbody>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <td>{{ error.id }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ error.code }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>Action</th>
+                <td>{{ error.action }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ error.comment }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <td>{% if error.creationdate %}{{ error.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>

@@ -1,0 +1,17 @@
+{% extends 'home2.html.twig' %}
+{% block title %}{{parent()}}- Timesheet edit{% endblock %}
+{% block smenu %}{%include "BoHomeBundle:Default:contract.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>Timesheet edit</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('home_timesheet_edit',{'id':timesheet.id}) }}" method="post" class="style">
+			{{ form_errors(edit_form) }}
+			{%include "BoHomeBundle:Timesheet:editactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoHomeBundle:Timesheet:editform.html.twig"%}
+			</div>
+			{{ form_rest(edit_form) }}
+		</form>	
+	</div>
+{% endblock %}

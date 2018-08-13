@@ -1,0 +1,17 @@
+{% extends 'home2.html.twig' %}
+{% block title %}{{parent()}}- Absences edit{% endblock %}
+{% block smenu %}{%include "BoHomeBundle:Default:request.html.twig"%}{% endblock %}
+{% block nav %}{%if employee!=null%}{%include "BoHomeBundle:Default:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>Absences edit</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('home_absences_edit',{'id':absence.id}) }}" method="post" class="style">
+			{{ form_errors(edit_form) }}
+			{%include "BoHomeBundle:Absences:editactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoHomeBundle:Absences:editform.html.twig"%}
+			</div>
+			{{ form_rest(edit_form) }}
+		</form>	
+	</div>
+{% endblock %}

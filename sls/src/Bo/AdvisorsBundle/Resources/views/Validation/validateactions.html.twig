@@ -1,0 +1,18 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>			
+					{%if timesheet.status and timesheet.status==2%}
+						<td class="delete-action">
+							{{ form_start(validate_form) }}
+								<input type="submit" value="Confirm">
+							{{ form_end(validate_form) }}
+						</td>
+					{%endif%}
+					<td>
+						<a href="{{ path('dash_employee_show', { 'id': timesheet.employee.id }) }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

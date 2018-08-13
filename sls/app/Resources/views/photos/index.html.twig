@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block nav %}	
+    <ul>
+        <li>
+            <a href="{{ path('photos_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>Photos list</h1>
+
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Path</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for photo in photos %}
+            <tr>
+                <td><a href="{{ path('photos_show', { 'id': photo.id }) }}">{{ photo.id }}</a></td>
+                <td>{{ photo.path }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('photos_show', { 'id': photo.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('photos_edit', { 'id': photo.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="3">Aucune de photo trouvée dans la base de données</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

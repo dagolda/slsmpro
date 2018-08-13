@@ -1,0 +1,24 @@
+scoring_index:
+    path:     /
+    defaults: { _controller: "BoQuizBundle:Scoring:index" }
+    methods:  GET
+
+scoring_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoQuizBundle:Scoring:show" }
+    methods:  GET
+
+scoring_new:
+    path:     /new
+    defaults: { _controller: "BoQuizBundle:Scoring:new" }
+    methods:  [GET, POST]
+
+scoring_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoQuizBundle:Scoring:edit" }
+    methods:  [GET, POST]
+
+scoring_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoQuizBundle:Scoring:delete" }
+    methods:  DELETE

@@ -1,0 +1,35 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="5%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="15%">{{'label.firstname'|trans([],'BoAdminBundle')}} {{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th width="17%">{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.location'|trans([],'BoAdminBundle')}}</th>
+                <th width="8%">Extension</th>
+                <th width="15%">{{'label.room'|trans([],'BoAdminBundle')}}</th>
+                <th width="15%">{{'label.title'|trans([],'BoAdminBundle')}}</th>
+                <th width="110px">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for teamcontact in teamcontacts %}
+            <tr>
+                <td><a href="{{ path('teamcontacts_show', { 'id': teamcontact.id }) }}">{{ teamcontact.id }}</a></td>
+                <td>{%if teamcontact.employee%}{{ teamcontact.employee.firstname }} {{ teamcontact.employee.name }}{%else%}---{%endif%}</td>
+                <td>{{ teamcontact.email }}</td>
+                <td>{{ teamcontact.location }}</td>
+                <td>{{ teamcontact.extension }}</td>
+                <td>{{ teamcontact.room }}</td>
+                <td>{{ teamcontact.title }}</td>
+                <td class="list-action">
+                    <a href="{{ path('teamcontacts_show', { 'id': teamcontact.id }) }}">show</a>
+					{%if app.session.get('rights')['CONTRACTS']['Students'] is defined and app.session.get('rights')['CONTRACTS']['Students'].edit==1%}
+						<a href="{{ path('teamcontacts_edit', { 'id': teamcontact.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="9">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

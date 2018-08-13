@@ -1,0 +1,56 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hourperday'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.contract'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.group'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.mon'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.tue'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.wed'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.thu'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.fri'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for schedule in schedules %}
+		{%if schedule.contracts %}{%set contract = schedule.contracts%}{%endif%}
+            <tr>
+                <td {%if overlap[schedule.id] is defined%}class="ping-color"{%endif%}>{{ schedule.id }}</a></td>
+                <td {%if overlap[schedule.id] is defined%}class="ping-color"{%endif%}>{% if schedule.startdate %}{{ schedule.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td {%if overlap[schedule.id] is defined%}class="ping-color"{%endif%}>{% if schedule.enddate %}{{ schedule.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td {%if overlap[schedule.id] is defined%}class="ping-color"{%endif%}>{{ schedule.hourperday }}</td>
+                <td {%if overlap[schedule.id] is defined%}class="ping-color"{%endif%}>
+			{% if schedule.group==null and contract is defined%}
+				{%set students = contract.students%}
+					{%if students|length==1%}
+						{%set student=students[0]%}
+						{{student.firstname}} {{student.name}}
+					{%elseif contract.group%}
+						{{contract.group.name}} 
+					{%endif%}					
+			{%else%}---{%endif%}</td>
+                <td {%if overlap[schedule.id] is defined%}class="ping-color"{%endif%}>
+			{% if schedule.group!=null and groups[schedule.group.id] is defined%}{{ groups[schedule.idgroup].name }}{%else%}---{%endif%}
+		</td>
+                <td {%if overlap[schedule.id] is defined%}class="ping-color"{%endif%}>{% if schedule.monday %}Yes{% else %}No{% endif %}</td>
+                <td {%if overlap[schedule.id] is defined%}class="ping-color"{%endif%}>{% if schedule.tuesday %}Yes{% else %}No{% endif %}</td>
+                <td {%if overlap[schedule.id] is defined%}class="ping-color"{%endif%}>{% if schedule.wednesday %}Yes{% else %}No{% endif %}</td>
+                <td {%if overlap[schedule.id] is defined%}class="ping-color"{%endif%}>{% if schedule.thursday %}Yes{% else %}No{% endif %}</td>
+                <td {%if overlap[schedule.id] is defined%}class="ping-color"{%endif%}>{% if schedule.friday %}Yes{% else %}No{% endif %}</td>
+                <td {%if overlap[schedule.id] is defined%}class="ping-color"{%endif%}>{% if schedule.startam %}{{ schedule.startam|date('H:i') }}{% endif %}</td>
+                <td {%if overlap[schedule.id] is defined%}class="ping-color"{%endif%}>{% if schedule.endam %}{{ schedule.endam|date('H:i') }}{% endif %}</td>
+                <td {%if overlap[schedule.id] is defined%}class="ping-color"{%endif%}>{% if schedule.startpm %}{{ schedule.startpm|date('H:i') }}{% endif %}</td>
+                <td {%if overlap[schedule.id] is defined%}class="ping-color"{%endif%}>{% if schedule.endpm %}{{ schedule.endpm|date('H:i') }}{% endif %}</td>
+            </tr>
+		{%else%}
+			<tr><td colspan="15">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

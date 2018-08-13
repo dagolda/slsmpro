@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.company'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tools.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.company'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}} {{'label.homemessage'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form id="edit_form" action="{{ path('company_edit',{'id':company.id}) }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Company:editactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Company:editform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

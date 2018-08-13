@@ -1,0 +1,27 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th width="30%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="30%">{{'label.language'|trans([],'BoAdminBundle')}}</th>
+                <th width="30%">{{'label.noq'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                
+ 		<td>{{ scoring.id }}</td>
+                <td>{{ scoring.language }}</td>
+                <td>{{ scoring.noq }}</td>
+            </tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+            <tr>
+                <th width="30%">{{'label.from'|trans([],'BoAdminBundle')}}</th>
+                <th width="30%">{{'label.to'|trans([],'BoAdminBundle')}}</th>
+                <th width="30%">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ scoring.binf }}</td>
+                <td>{{ scoring.bsup }}</td>
+                <td>{% if scoring.creationdate %}{{ scoring.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+        </tbody>
+    </table>

@@ -1,0 +1,11 @@
+<li {%if sm=="home"%} class="active"{%endif%}>
+	<a href="{{ path('bo_coordinator_homepage') }}">
+		{{'layout.menu.home'|trans([],'BoAdminBundle')}}
+	</a>
+</li>
+<li {%if sm=="teamcontact"%} class="active"{%endif%}>
+	<a href="{{ path('bo_coordinator_teamcontact') }}">
+		{{'layout.menu.teamcontacts'|trans([],'BoAdminBundle')}}
+	</a>
+</li>
+

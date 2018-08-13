@@ -1,0 +1,8 @@
+		{% for i in range(0,4) %}
+			<td class='events-value {%if tab[i] is defined and tab[i]['absence'] is defined and tab[i]['absence']==1%}agenda-week-a{%elseif tab[i] is defined and tab[i]['s_absence'] is defined and tab[i]['s_absence']==1 and tab[i]['idgroup']==null%}agenda-week-a{%elseif dates[i]<today %}agenda-week-p{%elseif tab[i] is defined and tab[i]['option'] is defined and tab[i]['option']==1%}agenda-week{%elseif tab[i] is defined and tab[i]['option'] is defined and tab[i]['option']==2%}agenda-week-s{%else%}agenda-week-p{%endif%}'>
+				<div>
+				{%if tab[i] is defined and tab[i]['label'] is defined%}{{tab[i]['label']|raw}}{%else%}&nbsp;{%endif%}
+				</div>
+				<br/>
+			</td>
+		{%endfor%}

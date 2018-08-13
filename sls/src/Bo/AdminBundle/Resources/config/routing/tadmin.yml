@@ -1,0 +1,24 @@
+tadmin_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Tadmin:index" }
+    methods:  GET
+
+tadmin_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Tadmin:show" }
+    methods:  GET
+
+tadmin_new:
+    path:     /{id}/new
+    defaults: { _controller: "BoAdminBundle:Tadmin:new" }
+    methods:  [GET, POST]
+
+tadmin_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Tadmin:edit" }
+    methods:  [GET, POST]
+
+tadmin_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Tadmin:delete" }
+    methods:  DELETE

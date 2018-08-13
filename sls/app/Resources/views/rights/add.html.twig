@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.rights'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tools.html.twig"%}{% endblock %}
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'entity.rights'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('rights_add', { 'idprofil': idprofil }) }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoUserBundle:Rights:newactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoUserBundle:Rights:addform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+	{% block javascripts %}
+		<script>
+			$(".idrubric").change(function(){
+				$('.select_srubric').html("{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' />");
+				var str=$(".idrubric option:selected");
+				rubric=str.val();
+				var profil = $("#idprofil").val();	
+				var DATA = 'data='+rubric+":"+profil;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('rights_srubric_load')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('.select_srubric').html(data);
+					}
+				});
+				return false;
+			});
+			$("#idsrubric").change(function(){
+				var str=$("#idsrubric option:selected");
+				srubric=str.val();
+				alert(srubric);
+				return false;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

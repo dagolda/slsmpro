@@ -1,0 +1,26 @@
+    <table class="table table-bordered acceuil_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.filenumber'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.requesteddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.receiveddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.expireddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for securityCote in securityCotes %}
+            <tr>
+                <td>{{ securityCote.id }}</td>
+                <td>{{ securityCote.filenumber }}</td>
+                <td>{% if securityCote.requestdate %}{{ securityCote.requestdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if securityCote.receivedate %}{{ securityCote.receivedate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if securityCote.expirydate %}{{ securityCote.expirydate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if securityCote.creationdate %}{{ securityCote.creationdate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+		{%else%}
+			<tr><td colspan="6">No security cote found.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

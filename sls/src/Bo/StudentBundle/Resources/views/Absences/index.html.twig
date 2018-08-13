@@ -1,0 +1,65 @@
+{% extends 'student.html.twig' %}
+{% block title %}{{parent()}}- Absences >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoStudentBundle:Default:request.html.twig"%}{% endblock %}
+{% block nav %}{%if student is defined and student!=null%}{%include "BoStudentBundle:Default:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>Absences >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoStudentBundle:Absences:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div id="content-liste">
+		{%include "BoStudentBundle:Absences:tbliste.html.twig"%}
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_absence" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">{{'label.addabsence'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-message"></div>
+			<form action="{{ path('student_absences_new') }}" method="post" class="style">
+				<div class="modal-body">
+					{{ form_errors(absence_form) }}
+						{%include "BoAdminBundle:Employee:absenceform.html.twig"%}
+					{{ form_rest(absence_form) }}
+				</div>
+				<div class="modal-footer">
+					<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+					<input id="modal-create" type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	{%if contract%}
+		<input type="hidden" id="startdate" value="{{contract.startdate|date('Y-m-d')}}" />
+		<input type="hidden" id="enddate" value="{{contract.enddate|date('Y-m-d')}}" />
+	{%endif%}
+	{% block javascripts %}
+		<script>
+			$("#modal-create").click(function(){
+				var startdate = date($("#startdate").val());
+				var abstart = date($(".abstart").val());
+				var enddate = date($("#enddate").val());
+				alert(startdate+" "+abstart+" "+enddate);
+				return false;
+				if(startdate<=abstart && abstart<=enddate){
+					return true;
+				}else{
+					$(".modal-message").html("The start date entered is earlier than the start and end date of your contract.");
+					return false;
+				}
+				return false;
+			});		
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

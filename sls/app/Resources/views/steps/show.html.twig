@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Steps</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ step.id }}</td>
+            </tr>
+            <tr>
+                <th>Number</th>
+                <td>{{ step.number }}</td>
+            </tr>
+            <tr>
+                <th>Resultat</th>
+                <td>{{ step.resultat }}</td>
+            </tr>
+            <tr>
+                <th>Numberofhours</th>
+                <td>{{ step.numberofhours }}</td>
+            </tr>
+            <tr>
+                <th>Startpoint</th>
+                <td>{% if step.startpoint %}{{ step.startpoint|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Createby</th>
+                <td>{{ step.createby }}</td>
+            </tr>
+            <tr>
+                <th>Creationdate</th>
+                <td>{% if step.creationdate %}{{ step.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('steps_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('steps_edit', { 'id': step.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

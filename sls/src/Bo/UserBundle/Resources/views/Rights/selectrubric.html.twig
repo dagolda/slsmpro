@@ -1,0 +1,6 @@
+				<select name='idrubric' id='idrubric'>
+					<option value="0" selected="delected">{{'action.selectrubric'|trans([],'BoAdminBundle')}}</option>
+					{%for rubric in rubrics%}
+						<option value="{{rubric.id}}" {%if idrubric is defined and rubric.id ==idrubric%}selected='selected'{%endif%}>{{rubric.nameen}}</option>
+					{%endfor%}
+				</select>	

@@ -1,0 +1,28 @@
+home_substitution_index:
+    path:     /index/
+    defaults: { _controller: "BoHomeBundle:Substitution:index" }
+    methods:  GET
+home_substitution_list:
+    path:     /liste/
+    defaults: { _controller: "BoHomeBundle:Substitution:list" }
+    methods:  GET
+home_substitution_page:
+    path:     /{option}/page
+    defaults: { _controller: "BoHomeBundle:Substitution:page" }
+    methods:  GET
+home_substitution_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoHomeBundle:Substitution:show" }
+    methods:  GET
+home_substitution_search:
+    path:  /search/
+    defaults: { _controller: "BoHomeBundle:Substitution:search" }
+    methods:  [GET, POST]
+home_substitution_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoHomeBundle:Substitution:pagesearch" }
+    methods:  [GET, POST]
+home_substitution_newts:
+    path:     /{id}/newts/
+    defaults: { _controller: "BoHomeBundle:Substitution:newts" }
+    methods:  [GET, POST]

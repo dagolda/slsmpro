@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- Payroll{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}
+{% block nav %}
+	{%include "BoAdminBundle:Payroll:rightshow.html.twig"%}
+{% endblock %}
+{% block label %}<h1>Payroll</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Payroll:showactions.html.twig"%}
+		<div class="display_content">
+			{%include "BoAdminBundle:Payroll:show.html.twig"%}
+		</div>		
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(delete_form) }}
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(delete_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+
+	{% block javascripts %}
+		<script>
+			$("#btn-admin").click(function(){
+				$('.payroll_extract').html("<a href=\"{{ path('payroll_extract',{'id': periodPay.id,'action':'Admin'}) }}\">{{'action.extract'|trans([],'BoAdminBundle')}}</a>");
+				action = $("#btn-admin").val();
+				return doAjax(action);
+			});
+			$("#btn-noshow").click(function(){
+				$('.payroll_extract').html("<a href=\"{{ path('payroll_extract',{'id': periodPay.id,'action':'Noshow'}) }}\">{{'action.extract'|trans([],'BoAdminBundle')}}</a>");
+				action = $("#btn-noshow").val();
+				return doAjax(action);
+			});
+			$("#btn-others").click(function(){
+				$('.payroll_extract').html("<a href=\"{{ path('payroll_extract',{'id': periodPay.id,'action':'Others'}) }}\">{{'action.extract'|trans([],'BoAdminBundle')}}</a>");
+				action = $("#btn-others").val();
+				return doAjax(action);
+			});
+			$("#btn-teaching").click(function(){
+				$('.payroll_extract').html("<a href=\"{{ path('payroll_extract',{'id': periodPay.id,'action':'Teaching'}) }}\">{{'action.extract'|trans([],'BoAdminBundle')}}</a>");
+				action = $("#btn-teaching").val();
+				return doAjax(action);
+			});
+			$("#btn-holiday").click(function(){
+				$('.payroll_extract').html("<a href=\"{{ path('payroll_extract',{'id': periodPay.id,'action':'Holiday'}) }}\">{{'action.extract'|trans([],'BoAdminBundle')}}</a>");
+				action = $("#btn-holiday").val();
+				return doAjax(action);
+			});
+			function doAjax(action){
+				periodpay = $("#idperiodpay").val();
+				$('.display_content').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var DATA = 'param='+action+'-'+periodpay;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('payroll_tshours')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('.display_content').html(data);
+					}
+				});
+				return false;			
+			}
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

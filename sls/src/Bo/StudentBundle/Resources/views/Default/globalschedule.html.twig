@@ -1,0 +1,29 @@
+{% extends 'student.html.twig' %}
+{% block title %}{{parent()}}- {{'admin.default.home'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoStudentBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}	
+	{%if user.students is defined and user.students!=null%}{%include "BoStudentBundle:Default:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block label %}<h1>{{'admin.default.home'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+	<div class="home-content">
+		<h2>Notifications</h2>
+		<div class="panel panel-default notif">
+			<div class="panel-body">{{"no notification found"|trans()}}</div>
+		</div>
+	</div>
+	{%if schedule!=null%}
+		<div class="display_content">
+			<legend>{{'title.schedule'|trans([],'BoAdminBundle')}}s</legend>
+			{%include "BoStudentBundle:Default:schedule.html.twig"%}
+		</div>
+	{%endif%}
+	{%if teacher_1!=null or teacher_2!=null%}
+		<div class="display_content">
+			<legend>{{'Teachers'|trans([],'BoAdminBundle')}}</legend>
+			<div id="teacher_content">
+				{%include "BoStudentBundle:Default:teacher.html.twig"%}
+			</div>
+		</div>
+	{%endif%}
+{% endblock %}

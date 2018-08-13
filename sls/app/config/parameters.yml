@@ -1,0 +1,14 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: slsmp586_2
+    database_user: slsmp586_2
+    database_password: 19031966_0651370099_jesus_roi_33
+    mailer_transport: smtp
+    mailer_host: mail.slsmpro.com
+    mailer_user: noreply@slsmpro.com
+    mailer_password: null
+    mailer_password: jesus_est_roi1
+    locale: en
+    secret: c843e36167e9093796e2319b269378b64aaa9451

@@ -1,0 +1,70 @@
+				<div class="collapse navbar-collapse" id="myNavbar">
+					  <ul class="nav navbar-nav">
+						<li {%if pm is defined and pm=="tabeau-bord"%}class="active"{%endif%}>
+							<a href="{{ path('bo_admin_homepage') }}">
+								{{'layout.menu.dashboard'|trans([],'BoAdminBundle')|upper}}
+							</a>
+						</li>
+						{%if pm is defined and  app.session.get('rights')['STAFF'] is defined%}
+						<li {%if pm=="personnel"%}class="active"{%endif%}>
+							<a href="{{ path('employee_index') }}">
+								{{'layout.menu.staff'|trans([],'BoAdminBundle')|upper}}
+							</a>
+						</li>
+						{%endif%}
+						{%if pm is defined and  app.session.get('rights')['CONTRACTS'] is defined%}
+							<li {%if pm=="contracts"%}class="active"{%endif%}>
+								<a href="{{ path('contracts_index') }}">
+									{{'layout.menu.contracts'|trans([],'BoAdminBundle')|upper}}
+								</a>
+							</li>
+						{%endif%}
+						{%if pm is defined and  app.session.get('rights')['ROOMS'] is defined%}
+						<li {%if pm=="local"%}class="active"{%endif%}>
+							<a href="{{ path('local_index') }}">
+								{{'layout.menu.rooms'|trans([],'BoAdminBundle')|upper}}
+							</a>
+						</li>
+						{%endif%}
+						{%if pm is defined and  app.session.get('rights')['ACCOUNTING'] is defined and app.session.get('dts') is defined and app.session.get('dts')==1%}
+						<li {%if pm=="accounting"%}class="active"{%endif%}>
+							<a href="{{ path('payroll_timesheet_index') }}">
+								{{'layout.menu.accounting'|trans([],'BoAdminBundle')|upper}}
+							</a>
+						</li>
+						{%endif%}
+						{%if pm is defined and  app.session.get('profile') is defined and app.session.get('profile')=="Superadmin" or app.session.get('profile')=="Executive"%}
+						<li {%if pm is defined and  pm=="setting"%}class="active"{%endif%}>
+							<a href="{{ path('param_index') }}">
+								{{'layout.menu.setting'|trans([],'BoAdminBundle')|upper}}
+							</a>
+						</li>
+						{%endif%}
+						<li {%if pm is defined and  pm is defined and  pm=="admin"%}class="active"{%endif%}>
+							<a href="{{ path('evaluation_index') }}">
+								ADMIN
+							</a>
+						</li>
+						{%if pm is defined and  app.session.get('profile') is defined and app.session.get('profile')=="Superadmin" or app.session.get('profile')=="Executive"%}
+						<li {%if pm=="tools"%}class="active"{%endif%}>
+							<a href="{{ path('activities_index') }}">
+								{{'layout.menu.tools'|trans([],'BoAdminBundle')|upper}}
+							</a>
+						</li>
+						{%endif%}
+						{%if pm is defined and  app.session.get('profile') is defined and app.session.get('profile')=="Superadmin" or app.session.get('profile')=="Executive"%}
+						<li {%if pm=="archives"%}class="active"{%endif%}>
+							<a href="{{ path('supemployee_index') }}">
+								ARCHIVES
+							</a>
+						</li>
+						{%endif%}
+						<li>
+							<a href="https://slsmpro.com/wpslsm/" target="_blank">
+								{{'layout.menu.documents'|trans([],'BoAdminBundle')|upper}}
+							</a>
+						</li>
+					  </ul>
+				</div>
+				
+				

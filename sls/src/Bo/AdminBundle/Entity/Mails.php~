@@ -1,0 +1,46 @@
+<?php
+namespace Bo\AdminBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+/**
+* @ORM\Entity
+* @ORM\Table(name="adm_mails")
+* @ORM\Entity(repositoryClass="Bo\AdminBundle\Repository\MailsRepository")
+*/
+class Mails
+{
+    /**
+     * @ORM\GeneratedValue
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+    
+    /**
+     * @ORM\Column(type="string",length=255)
+     */    
+    private $name;
+	
+    /**
+     * @ORM\Column(type="text",length=2500,nullable=true)
+     */    
+    private $messageen;
+		
+    /**
+     * @ORM\Column(type="text",length=2500,nullable=true)
+     */    
+    private $messagefr;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */    
+	protected $dateCreation;
+	
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+		$this->dateCreation=new \DateTime();
+    }
+}

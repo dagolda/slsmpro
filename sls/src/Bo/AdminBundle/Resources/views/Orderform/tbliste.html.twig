@@ -1,0 +1,35 @@
+    <table>
+        <thead>
+            <tr>
+                <th>Ordernumber</th>
+                <th>Nbstudent</th>
+                <th>Program</th>
+                <th>Totalhours</th>
+                <th>Totalcost</th>
+                <th>Schedule</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for orderform in orderforms %}
+            <tr>
+                <td>{{ orderform.ordernumber }}</td>
+                <td>{{ orderform.nbstudent }}</td>
+                <td>{{ orderform.program }}</td>
+                <td>{{ orderform.totalhours }}</td>
+                <td>{{ orderform.totalcost }}</td>
+                <td>{{ orderform.schedule }}</td>
+                <td>{{ orderform.status }}</td>
+                <td class="list-action" nowrap>
+                    <a href="{{ path('orderform_show', { 'id': absence.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+					{%if app.session.get('rights')['CONTRACTS']['Students'] is defined and app.session.get('rights')['CONTRACTS']['Students'].edit==1%}
+						<a href="{{ path('orderform_edit', { 'id': absence.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="9">{{'message.no.found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

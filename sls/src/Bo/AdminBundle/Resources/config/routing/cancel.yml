@@ -1,0 +1,32 @@
+cancel_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Cancel:index" }
+    methods:  GET
+cancel_list:
+    path:     /list/
+    defaults: { _controller: "BoAdminBundle:Cancel:list" }
+    methods:  GET
+cancel_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Cancel:show" }
+    methods:  GET
+cancel_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Cancel:new" }
+    methods:  [GET, POST]
+cancel_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Cancel:edit" }
+    methods:  [GET, POST]
+cancel_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Cancel:search" }
+    methods:  [GET, POST]
+cancel_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Cancel:pagesearch" }
+    methods:  [GET, POST]
+cancel_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Cancel:delete" }
+    methods:  DELETE

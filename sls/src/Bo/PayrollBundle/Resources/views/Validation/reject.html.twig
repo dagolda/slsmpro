@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}
+{% block nav %}	
+	{%if employee!=null%}{%include "BoAdminBundle:Employee:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block label %}<h1>Timesheet N°{{ timesheet.id }}</h1>{% endblock %}
+{% block body %}
+	<form action="{{ path('payroll_timesheet_reject',{'id':timesheet.id}) }}" method="post" class="style">
+		<div id="body-content">
+			{%include "BoPayrollBundle:Timesheet:rejectactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoPayrollBundle:Timesheet:tbshow.html.twig"%}
+			</div>	
+			{%if timesheet.status==2%}
+			<br/>
+			<div class="container">
+				{%include "BoAdminBundle:TsValidation:newform.html.twig"%}
+			</div>
+			{%elseif tsv%}
+				<div id="content-liste">
+					{%include "BoAdminBundle:TsValidation:tbliste.html.twig"%}
+				</div>
+			{%endif%}
+		</div>
+	</form>
+	{% block javascripts %}
+		<script>
+			$(document).ready(function(){
+				$('[data-toggle="popover"]').popover();   
+			});
+		</script>
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	{% endblock %}
+{% endblock %}

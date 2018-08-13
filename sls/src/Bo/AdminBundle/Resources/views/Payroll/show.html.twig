@@ -1,0 +1,47 @@
+	<legend>{{title|trans([],'BoAdminBundle')}}</legend>
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th class='payroll_label'>{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th class='payroll_label'>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+				{% for week in weeks %}
+					<th>{{week.firstdate|date('Y-m-d')}}<br>{{week.lastdate|date('Y-m-d')}}</th>
+				{% endfor %}
+                <th class='payroll_label'>Extra</th>
+                <th class='payroll_label'>Total</th>
+                <th class='payroll_label'>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for payroll in payrolls %}
+            <tr>
+                <td>{{ payroll.employee.firstname }}</td>
+                <td>{{ payroll.employee.name }}</td>
+				<td>{{ payroll.hw0 }}</td>
+				<td>{{ payroll.hw1 }}</td>
+				<td>{{ payroll.hw2 }}</td>
+				<td>{{ payroll.hw3 }}</td>
+				{%if weeks|length>4 %}<td>{{ payroll.hw4 }}</td>{% endif %}
+				{%if weeks|length>5 %}<td>{{ payroll.hw5 }}</td>{% endif %}
+				<td>{%if payroll.extra is defined%}{{ payroll.extra }}{%else%}---{% endif %}</td>
+                <td>{{ payroll.total }}</td>
+                <td class="list-action">
+					{%if action=="Admin"%}
+						<a href="{{ path('hadmin_edit', { 'id': payroll.id }) }}">edit</a>
+					{%elseif action=="Teaching"%}
+						<a href="{{ path('hteaching_edit', { 'id': payroll.id }) }}">edit</a>
+					{%elseif action=="Noshow"%}
+						<a href="{{ path('hnoshow_edit', { 'id': payroll.id }) }}">edit</a>
+					{%elseif action=="Holiday"%}
+						<a href="{{ path('hholiday_edit', { 'id': payroll.id }) }}">edit</a>
+					{%elseif action=="Others"%}
+						<a href="{{ path('hothers_edit', { 'id': payroll.id }) }}">edit</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			{%set i=weeks|length+5%}
+			<tr><td colspan="{{i}}">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>		
+        {% endfor %}
+        </tbody>
+    </table>

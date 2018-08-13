@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.orderform'|trans([],'BoAdminBundle')}} >> {{'label.headsup'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block nav %}	{%if enquiry!=null%}{%include "BoAdvisorsBundle:Orderform:rightshow.html.twig"%}{%endif%}	{% endblock %}
+{% block label %}<h1>{{'entity.orderform'|trans([],'BoAdminBundle')}} >> {{'label.headsup'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdvisorsBundle:Orderform:showheadactions.html.twig"%}
+		<div class="show_content">
+			{%include "BoAdvisorsBundle:Orderform:tbshow.html.twig"%}
+		</div>
+	</div>
+{% endblock %}

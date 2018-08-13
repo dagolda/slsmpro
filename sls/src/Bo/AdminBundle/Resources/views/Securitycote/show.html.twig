@@ -1,0 +1,36 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th width="30%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+				<th width="30%">{{'label.employee'|trans([],'BoAdminBundle')}}</th>
+                <th width="30%">{{'label.filenumber'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ securityCote.id }}</td>
+                <td>{{ securityCote.employee.firstname }} {{ securityCote.employee.name }}</td>
+				 <td>{{ securityCote.filenumber }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+				<th class="sty_label">{{'label.requesteddate'|trans([],'BoAdminBundle')}}</th>
+				<th class="sty_label">{{'label.receiveddate'|trans([],'BoAdminBundle')}}</th>
+				<th class="sty_label">{{'label.expireddate'|trans([],'BoAdminBundle')}}</th>
+                
+            </tr>
+            <tr>
+                <td>{% if securityCote.requestdate %}{{ securityCote.requestdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if securityCote.receivedate %}{{ securityCote.receivedate|date('Y-m-d H:i:s') }}{% endif %}</td>
+				<td>{% if securityCote.creationdate %}{{ securityCote.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+				<th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.comment'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+				<td>{% if securityCote.creationdate %}{{ securityCote.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td colspan="2">{{ securityCote.comment }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+        </tbody>
+    </table>

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}
+{% block nav %}
+	{%include "BoPayrollBundle:Validation:rightshow.html.twig"%}
+{% endblock %}
+{% block label %}<h1>Timesheet Validation</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoPayrollBundle:Validation:showactions.html.twig"%}
+		<div id="disp-content">
+			{%include "BoPayrollBundle:Validation:timesheet.html.twig"%}	
+		</div>
+	</div>
+	
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="all_validate" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.validation'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.validation'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(confirm_form) }}
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(confirm_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}	
+{% endblock %}

@@ -1,0 +1,25 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                	<th width="24%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+			<th width="24%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+			<th width="24%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                	<td>{{ cancel.id }}</td>
+                	<td>{{ cancel.startdate }}</td>
+			<td>{{ cancel.enddate }}</td>
+			<td>{%if cancel.creationdate %}{{ cancel.creationdate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+            </tr>
+            <tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+			<th colspan="4" class="sty_label">{{'label.motif'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                	<td colspan="4">{%if cancel.motif %}{{ cancel.motif }}{%else%}---{% endif %}</td>
+
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+        </tbody>
+    </table>

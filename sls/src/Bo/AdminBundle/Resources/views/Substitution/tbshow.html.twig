@@ -1,0 +1,58 @@
+	 <table  width="100%">
+		<tbody>
+		    <tr>
+		        <th width="20%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+					<th width="20%">{{'label.holder'|trans([],'BoAdminBundle')}}</th>
+		        <th width="20%">{{'label.substitute'|trans([],'BoAdminBundle')}}</th>
+					<th width="20%">Date</th>
+		    </tr>
+		    <tr>
+		        <td>{{ substitution.id }}</td>
+		        <td>{{ holder.firstname }} {{ holder.name }}</td>
+			<td>{{ substitute.firstname }} {{ substitute.name }}</td>
+			<td>{% if substitution.startdate %}{{ substitution.startdate|date('Y-m-d') }}{% endif %}</td>
+		    </tr>
+		    <tr><td colspan="4">&nbsp;</td></tr>
+		    <tr>
+		        <th>{{'label.stratam'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+		    </tr>
+		    <tr>
+		        <td>{% if substitution.startam %}{{ substitution.startam|date('H:i:s') }}{% endif %}</td>
+		        <td>{% if substitution.endam %}{{ substitution.endam|date('H:i:s') }}{% endif %}</td>
+					<td>{% if substitution.startpm %}{{ substitution.startpm|date('H:i:s') }}{% endif %}</td>
+					<td>{% if substitution.endpm %}{{ substitution.endpm|date('H:i:s') }}{% endif %}</td>
+		    </tr>
+		    <tr><td colspan="4">&nbsp;</td></tr>
+		    <tr>
+		        <th>{{'label.hour'|trans([],'BoAdminBundle')}}</th>
+					<th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+		        <th colspan="2">&nbsp;</th>
+		    </tr>
+		    <tr>
+		        <td>{{ substitution.hour }}</td>
+		        <td>{% if substitution.creationdate %}{{ substitution.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+			<th colspan="2">&nbsp;</th>
+		    </tr>
+		    <tr><td colspan="4">&nbsp;</td></tr>			
+		</tbody>
+	</table>
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+            <tr>
+                <th>{{'Monday'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'Tuesday'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'Wednesday'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'Thursday'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'Friday'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>               
+		<td><input type="checkbox" {% if substitution.monday %}checked{% endif %} disabled="disabled"></td>
+                <td><input type="checkbox" {% if substitution.tuesday %}checked{% endif %} disabled="disabled"></td>
+		<td><input type="checkbox" {% if substitution.wednesday %}checked{% endif %} disabled="disabled"></td>
+                <td><input type="checkbox" {% if substitution.thursday %}checked{% endif %} disabled="disabled"></td>
+                <td><input type="checkbox" {% if substitution.friday %}checked{% endif %} disabled="disabled"></td>
+            </tr>
+	    <tr><td colspan="5">&nbsp;</td></tr>
+	</table>

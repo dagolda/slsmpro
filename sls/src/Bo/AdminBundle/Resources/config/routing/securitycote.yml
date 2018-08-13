@@ -1,0 +1,35 @@
+securitycote_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:SecurityCote:index" }
+    methods:  GET
+securitycote_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdminBundle:SecurityCote:page" }
+securitycote_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:SecurityCote:show" }
+    methods:  GET
+securitycote_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:SecurityCote:new" }
+    methods:  [GET, POST]
+securitycote_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:SecurityCote:edit" }
+    methods:  [GET, POST]
+securitycote_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:SecurityCote:delete" }
+    methods:  DELETE
+securitycote_newbatch:
+    path:     /newbatch
+    defaults: { _controller: "BoAdminBundle:SecurityCote:newbatch" }
+    methods:  [GET, POST]
+securitycote_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:SecurityCote:search" }
+    methods:  [GET, POST]
+securitycote_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:SecurityCote:pagesearch" }
+    methods:  [GET, POST]

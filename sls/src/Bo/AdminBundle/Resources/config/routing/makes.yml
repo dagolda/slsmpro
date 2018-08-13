@@ -1,0 +1,32 @@
+makes_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Makes:index" }
+    methods:  GET
+makes_back:
+    path:     /back/
+    defaults: { _controller: "BoAdminBundle:Makes:back" }
+    methods:  GET
+makes_psearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Makes:pagesearch" }
+    methods:  [GET, POST]
+makes_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Makes:search" }
+    methods:  [GET, POST]
+makes_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Makes:show" }
+    methods:  GET
+makes_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Makes:new" }
+    methods:  [GET, POST]
+makes_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Makes:edit" }
+    methods:  [GET, POST]
+makes_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Makes:delete" }
+    methods:  DELETE

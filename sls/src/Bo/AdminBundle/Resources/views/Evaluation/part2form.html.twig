@@ -1,0 +1,95 @@
+	<table border="0" cellpadding="0" cellspacing="0">			
+		<tr>
+            <th>{{'label.readingcomprehension'|trans([],'BoAdminBundle')}} (<span class="customer_detail">{{'label.scoreon30'|trans([],'BoAdminBundle')}}</span>)</th>
+            <th>{{'label.writenexpression'|trans([],'BoAdminBundle')}} (<span class="customer_detail">{{'label.scoreon30'|trans([],'BoAdminBundle')}}</span>)</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(eval_form.writencomprehension) }}</td>
+			<td>{{ form_widget(eval_form.writenexpression) }}</td>
+		</tr>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.rcresult'|trans([],'BoAdminBundle')}}</th>
+            <th>{{'label.eeresult'|trans([],'BoAdminBundle')}}</th>
+
+		</tr>
+		<tr>
+			<td>{{ form_widget(eval_form.rcresult) }}</td>	
+			<td>{{ form_widget(eval_form.eeresult) }}</td>	
+		</tr>
+		<tr><td colspan='2'>&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.s'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.orc'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(eval_form.syntaxe) }}</td>
+			<td>{{ form_widget(eval_form.oralunderstanding) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.qsp'|trans([],'BoAdminBundle')}}</th>		
+            <th>{{'label.pr'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(eval_form.qualityofdiscourse) }}</td>		
+			<td>{{ form_widget(eval_form.prononciation) }}</td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.gr'|trans([],'BoAdminBundle')}}</th>		
+            <th>{{'label.vb'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(eval_form.grammar) }}</td>	
+			<td>{{ form_widget(eval_form.verbs) }}</td>		
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.voc'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.ryacc'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(eval_form.vocabulary) }}</td>	
+			<td>{{ form_widget(eval_form.ryacc) }}</td>	
+		</tr>
+		<tr><td colspan='2'>&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.ftgroup'|trans([],'BoAdminBundle')}}<!--br/><span class="customer_detail">{{'label.ftgroup.detail'|trans([],'BoAdminBundle')}}</span--!></th>
+            <th>{{'label.hourgroup'|trans([],'BoAdminBundle')}}<!--br/><span class="customer_detail">{{'label.hourgroup.detail'|trans([],'BoAdminBundle')}}</span--></th>
+
+		</tr>
+		<tr>
+			<td>{{ form_widget(eval_form.ftgroup) }}</td>	
+			<td>{{ form_widget(eval_form.hourgroup) }}</td>		
+		</tr>
+		<tr><td colspan='2'>&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.ftindividual'|trans([],'BoAdminBundle')}}<!--br/><span class="customer_detail">{{'label.ftindividual.detail'|trans([],'BoAdminBundle')}}</span--!></th>
+            <th>{{'label.hourftindividual'|trans([],'BoAdminBundle')}}<!--br/><span class="customer_detail">{{'label.hourftindividual.detail'|trans([],'BoAdminBundle')}}</span--></th>
+
+		</tr>
+		<tr>
+			<td>{{ form_widget(eval_form.ftindividual) }}</td>	
+			<td>{{ form_widget(eval_form.hourftindividual) }}</td>
+		</tr>
+		<tr><td colspan='2'>&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.ptstarting'|trans([],'BoAdminBundle')}}<!--br/><span class="customer_detail">{{'label.ptstarting.detail'|trans([],'BoAdminBundle')}}</span--></th>
+            <th>{{'label.hourptindividual'|trans([],'BoAdminBundle')}}<!--br/><span class="customer_detail">{{'label.hourptindividual.detail'|trans([],'BoAdminBundle')}}</span--></th>
+
+		</tr>
+		<tr>
+			<td>{{ form_widget(eval_form.ptstarting) }}</td>	
+			<td>{{ form_widget(eval_form.hourptindividual) }}</td>
+		</tr>
+		<tr><td colspan='2'>&nbsp;</td></tr>
+		<tr>
+			<th colspan='2'>{{'label.comment'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td colspan='2'>{{ form_widget(eval_form.comment) }}</td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+	</table>

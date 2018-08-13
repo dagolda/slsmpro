@@ -1,0 +1,44 @@
+	<form action="{{ path('contracts_xls') }}" method="post" }} >
+		<table width="100%">
+			<tr>
+				{%if nb_pages is defined%}
+				<td class="sty-label">Page:</td>
+				<td class="page_first">
+					<a href="{{ path('contracts_page', {'option': 1}) }}" title="{{'label.firstpage'|trans([],'BoAdminBundle')}}">
+						<img src="{{ asset('images/actions/first.gif') }}"/>
+					</a>
+				</td>
+				<td>
+					<a href="{{ path('contracts_page', {'option': 2}) }}" title="{{'label.previouspage'|trans([],'BoAdminBundle')}}">
+						<img src="{{ asset('images/actions/prev.gif') }}" />
+					</a>
+				</td>
+				<td><select id="idpage" name="idpage">{%for i in range(1,nb_pages)%}<option value="{{i}}" {%if i==page%}selected="selected"{%endif%}>{{i}}</option>{%endfor%}</select>/{{nb_pages}}
+				</td>
+				<td>
+					<a href="{{ path('contracts_page', {'option': 3}) }}" title="{{'label.nextpage'|trans([],'BoAdminBundle')}}">
+						<img src="{{ asset('images/actions/next.gif') }}"/>
+					</a>
+				</td>
+				<td>
+					<a href="{{ path('contracts_page', {'option': nb_pages}) }}" title="{{'label.lastpage'|trans([],'BoAdminBundle')}}">
+						<img src="{{ asset('images/actions/last.gif') }}"/>
+					</a>
+				</td>
+				{%endif%}
+				<td width="20">&nbsp;</td>
+				<td class="sty_label">{% include "BoAdminBundle:Contracts:selecttype.html.twig" %}</td>
+				<td width="20">&nbsp;</td>
+				<td class="sty_label">{% include "BoAdminBundle:Contracts:selectfield.html.twig" %}</td>
+				<td width="20">&nbsp;</td>
+				<td class="sty_label">{% include "BoAdminBundle:Contracts:selectstatus.html.twig" %}</td>
+				<td width="20">&nbsp;</td>
+				<td class="sty_label" align="right">{{'label.startdate'|trans([],'BoAdminBundle')}}:&nbsp;</td>
+				<td class="sty_value">{{ form_widget(ccd_form.startdate, {'attr' : {'class' : 'startdate span3'}}) }}</td>
+				<td width="20">&nbsp;</td>
+				<td class="sty_label" align="right">{{'label.enddate'|trans([],'BoAdminBundle')}}:&nbsp;</td>
+				<td class="sty_value">{{ form_widget(ccd_form.enddate, {'attr' : {'class' : 'enddate span3'}}) }}</td>
+				<td class="extract_btn"><button type="submit"><img src="{{ asset('images/actions/xls.gif') }}" /></button></td>	
+			</tr>
+		</table>
+	</form>

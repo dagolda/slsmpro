@@ -1,0 +1,116 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.absence'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block label %}<h1>{{'entity.absence'|trans([],'BoAdminBundle')}} >> {%if now is defined%}{{now|date("Y-m-d")}}{%else%}{{'title.list'|trans([],'BoAdminBundle')}}{%endif%}</h1>{% endblock %}
+{% block body %}
+
+	<div id="body-content">
+		{%include "BoAdminBundle:Students:absenceactions.html.twig"%}
+		<div id="content-liste">
+			{%include "BoAdminBundle:Students:listabsences.html.twig"%}
+		</div>
+	</div>
+	
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_absence" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.addabsence'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<h5 id="error-message" color="#FF3366" align="center"></h5>
+			<form action="{{ path('students_add_absence') }}" method="post" class="style">
+				<div class="modal-body">
+					{{ form_errors(absence_form) }}
+						{%include "BoAdminBundle:Students:absenceform2.html.twig"%}
+					{{ form_rest(absence_form) }}
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}" id="btn_create_absence">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+
+	{% block javascripts %}
+		<script>
+			$("#btn_create_absence").click(function(){
+				var str=$(".student option:selected");
+				student=str.text();
+				var numberday= $(".numberday").val();
+				if(student==null || student==""){
+					$('#error-message').html("You must select a student");
+					return false;
+				}
+				if(numberday==null || numberday==""){
+					$('#error-message').html("You must enter a number of day");
+					return false;
+				}				
+				return true;
+			});
+			$("#idpage").change(function(){
+				var str=$("#idpage option:selected");
+				page=str.text();
+				var DATA = 'motcle=' + page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('students_absence_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});	
+			$("#btn_search").click(function(){
+				if($("#inp-search").val()==""){
+					alert("Search fields is empty!");
+					return false;
+				}
+				var criteria = $("#inp-search").val();		
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				$(".pagination_content").hide();
+				$(".list_link").show();
+				var DATA = 'description=' + criteria;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('students_absence_search')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$(".amorpm").change(function(){
+				var str=$(".amorpm input:checked");
+				var amorpm = str.val();
+				if(amorpm=="ALL"){
+					$(".am-data").hide();
+					$(".pm-data").hide();
+				}
+				if(amorpm=="AM"){
+					$(".am-data").show();
+					$(".pm-data").hide();
+				}
+				if(amorpm=="PM"){
+					$(".am-data").hide();
+					$(".pm-data").show();
+				}
+				return false;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

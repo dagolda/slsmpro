@@ -1,0 +1,25 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td class="sty-label" align="left">
+						<button type="submit" id="btn_current" title="{{'label.previouspage'|trans([],'BoAdminBundle')}}">
+							{{'label.currentweek'|trans([],'BoAdminBundle')}}
+						</button>
+					</td>
+					<td class="sty-label" align="left">
+						<button type="submit" id="btn_previous" title="{{'label.previouspage'|trans([],'BoAdminBundle')}}">
+							{{'label.previous'|trans([],'BoAdminBundle')}}
+						</button>
+					</td>
+					<td class="sty-label" align="left">
+						<button type="submit" id="btn_next"  title="{{'label.nextpage'|trans([],'BoAdminBundle')}}">
+							{{'label.next'|trans([],'BoAdminBundle')}}
+						</button>					
+					</td>						
+				</tr>
+			</table>		
+		</div>
+	</div>	
+	<input id="csd" type="hidden" value="{{dates[0]|date("d-m-Y")}}" />
+	<input id="ced" type="hidden" value="{{dates[5]|date("d-m-Y")}}" />

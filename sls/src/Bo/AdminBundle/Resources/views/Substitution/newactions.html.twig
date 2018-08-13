@@ -1,0 +1,18 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['STAFF']['Substitution'] is defined and app.session.get('rights')['STAFF']['Substitution'].creation==1%}
+					<td><button type="submit" id="btn-create">{{'action.create'|trans([],'BoAdminBundle')}}</button></td>
+				{%endif%}
+					<td>
+						{%if contract is defined and contract%}
+							<a href="{{ path('contracts_show', { 'id': contract.id }) }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+						{%elseif url is defined%}
+							<a href="{{ url }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+						{%endif%}
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

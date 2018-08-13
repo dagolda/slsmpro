@@ -1,0 +1,10 @@
+		{%for invitation in invitations %}
+			{%set schedule=invitation.agenda%}
+			{%set nbd=1%}
+			<div class="panel panel-default">
+				<div class="panel-heading">{{'label.invitation'|trans([],'BoAdminBundle')}}</div>
+				<div class="panel-body noframe">
+					{%include "BoHomeBundle:Default:showinvite.html.twig"%}
+				</div>
+			</div>
+		{%endfor%}

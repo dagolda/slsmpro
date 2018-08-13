@@ -1,0 +1,24 @@
+assign_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Assign:index" }
+    methods:  GET
+
+assign_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Assign:show" }
+    methods:  GET
+
+assign_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Assign:new" }
+    methods:  [GET, POST]
+
+assign_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Assign:edit" }
+    methods:  [GET, POST]
+
+assign_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Assign:delete" }
+    methods:  DELETE

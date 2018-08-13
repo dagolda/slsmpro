@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}
+	{%include "BoAdminBundle:Validation:rightshow.html.twig"%}
+{% endblock %}
+{% block label %}<h1>Timesheet Validation</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdvisorsBundle:Validation:showactions.html.twig"%}
+		<div id="disp-content">
+			{%include "BoAdvisorsBundle:Validation:timesheet.html.twig"%}	
+		</div>
+	</div>
+{% endblock %}

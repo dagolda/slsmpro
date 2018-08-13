@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'label.tadmin'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'label.tadmin'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('tadmin_edit',{'id':tadmin.id}) }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Tadmin:editactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Tadmin:editform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

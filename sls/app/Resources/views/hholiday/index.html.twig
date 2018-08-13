@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Hholiday list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idperiodpay</th>
+                <th>Hw0</th>
+                <th>Hw1</th>
+                <th>Hw2</th>
+                <th>Hw3</th>
+                <th>Hw4</th>
+                <th>Hw5</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hholiday in hholidays %}
+            <tr>
+                <td><a href="{{ path('hholiday_show', { 'id': hholiday.id }) }}">{{ hholiday.id }}</a></td>
+                <td>{{ hholiday.idperiodpay }}</td>
+                <td>{{ hholiday.hw0 }}</td>
+                <td>{{ hholiday.hw1 }}</td>
+                <td>{{ hholiday.hw2 }}</td>
+                <td>{{ hholiday.hw3 }}</td>
+                <td>{{ hholiday.hw4 }}</td>
+                <td>{{ hholiday.hw5 }}</td>
+                <td>{{ hholiday.total }}</td>
+                <td>{{ hholiday.status }}</td>
+                <td>{% if hholiday.creationdate %}{{ hholiday.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('hholiday_show', { 'id': hholiday.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('hholiday_edit', { 'id': hholiday.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('hholiday_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

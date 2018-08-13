@@ -1,0 +1,16 @@
+home_tickets_index:
+    path:     /
+    defaults: { _controller: "BoHomeBundle:Tickets:index" }
+    methods:  GET
+home_tickets_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoHomeBundle:Tickets:show" }
+    methods:  GET
+home_tickets_new:
+    path:     /new
+    defaults: { _controller: "BoHomeBundle:Tickets:new" }
+    methods:  [GET, POST]
+home_tickets_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoHomeBundle:Tickets:edit" }
+    methods:  [GET, POST]

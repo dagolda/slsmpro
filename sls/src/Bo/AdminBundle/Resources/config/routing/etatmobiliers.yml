@@ -1,0 +1,24 @@
+etatmobiliers_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:EtatMobiliers:index" }
+    methods:  GET
+
+etatmobiliers_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:EtatMobiliers:show" }
+    methods:  GET
+
+etatmobiliers_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:EtatMobiliers:new" }
+    methods:  [GET, POST]
+
+etatmobiliers_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:EtatMobiliers:edit" }
+    methods:  [GET, POST]
+
+etatmobiliers_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:EtatMobiliers:delete" }
+    methods:  DELETE

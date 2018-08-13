@@ -1,0 +1,21 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="12%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.phonenumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.cellnumber'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+			{% set evaluator=evaluation.evaluator %}
+            <tr>
+                <td>{{ evaluator.firstname }}</td>
+                <td>{{ evaluator.name }}</td>
+                <td>{{ evaluator.email }}</td>
+                <td>{{ evaluator.homenumber }}</td>
+                <td>{{ evaluator.cellnumber }}</td>
+			</tr>
+        </tbody>
+    </table>

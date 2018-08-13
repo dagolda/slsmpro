@@ -1,0 +1,220 @@
+{% extends 'home2.html.twig' %}
+{% block title %}{{parent()}}-{{'layout.menu.contracts'|trans([],'BoAdminBundle')}} >> {{'entity.timesheet'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoHomeBundle:Default:contract.html.twig"%}{% endblock %}
+{% block nav %}	{%if employee!=null%}{%include "BoHomeBundle:Default:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block label %}<h1>{{'layout.menu.contracts'|trans([],'BoAdminBundle')}} >> {{'entity.timesheet'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoHomeBundle:Timesheet:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div class="pagination_content">
+		{% include 'BoHomeBundle:Timesheet:criteria.html.twig' %}
+	</div>
+	<div id="content-liste">
+		{%include "BoHomeBundle:Timesheet:tbliste.html.twig"%}
+	</div>
+	<input id="idemployee" name="idemployee" type="hidden" value="{{employee.id}}" />
+	
+	<!--Begin admin timesheet creation --!>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_tsother" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'title.timesheet'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('dash_timesheet_other') }}" method="post" class="style">
+				<div class="modal-body">
+					<div class="modal-message"></div>
+					{{ form_errors(form) }}
+						{%include "BoHomeBundle:Timesheet:admintsform.html.twig"%}
+					{{ form_rest(form) }}
+				</div>
+				<div class="modal-footer">
+					<input type="submit" id="add_ts" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>	
+	<!--End admin timesheet creation --!>
+	
+	{% block javascripts %}
+		<script>
+			$(".month").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$(".month option:selected");
+				month=str.text();
+				var str=$(".year option:selected");
+				year=str.text();
+				var str=$(".week option:selected");
+				week=str.text();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();
+				var DATA = 'data='+month+':'+year+":"+week+":"+start+":"+end+":"+status+":"+type;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('home_timesheet_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#idstatus").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$(".month option:selected");
+				month=str.text();
+				var str=$(".year option:selected");
+				year=str.text();
+				var str=$(".week option:selected");
+				week=str.text();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();
+				var DATA = 'data='+month+':'+year+":"+week+":"+start+":"+end+":"+status+":"+type;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('home_timesheet_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#idtype").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$(".month option:selected");
+				month=str.text();
+				var str=$(".year option:selected");
+				year=str.text();
+				var str=$(".week option:selected");
+				week=str.text();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();
+				var DATA = 'data='+month+':'+year+":"+week+":"+start+":"+end+":"+status+":"+type;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('home_timesheet_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$(".year").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$(".month option:selected");
+				month=str.text();
+				var str=$(".year option:selected");
+				year=str.text();
+				var str=$(".week option:selected");
+				week=str.text();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();
+				var DATA = 'data='+month+':'+year+":"+week+":"+start+":"+end+":"+status+":"+type;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('home_timesheet_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$(".startdate").change(function(){
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();
+				if(start>end){
+					alert("The end date can not be less than the start date");
+					return false;
+				}
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$(".month option:selected");
+				month=str.text();
+				var str=$(".year option:selected");
+				year=str.text();
+				var str=$(".week option:selected");
+				week=str.text();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var DATA = 'data='+month+':'+year+":"+week+":"+start+":"+end+":"+status+":"+type;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('home_timesheet_datesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$(".enddate").change(function(){
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();
+				if(start>end){
+					alert("The end date can not be less than the start date");
+					return false;
+				}
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$(".month option:selected");
+				month=str.text();
+				var str=$(".year option:selected");
+				year=str.text();
+				var str=$(".week option:selected");
+				week=str.text();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var DATA = 'data='+month+':'+year+":"+week+":"+start+":"+end+":"+status+":"+type;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('home_timesheet_datesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

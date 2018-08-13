@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.enquiry'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block nav %}	{%if employee!=null%}{%include "BoAdminBundle:Employee:rightshow.html.twig"%}{%endif%}	{% endblock %}
+{% block label %}<h1>{{'entity.enquiry'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('dash_enquiry_new') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdvisorsBundle:Enquiry:newactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdvisorsBundle:Enquiry:newform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+
+	{% block javascripts %}
+		<script>	
+			$(".field").change(function(){
+				var str=$(".field option:selected");
+				field=str.val();
+				if(field==1){
+					$(".language").val("French");
+					$(".ftorpt").val("Full Time");
+					$(".privateorgroup").val("Group");
+					$(".typecontract").val("NMSO");
+					$(".schedule").val("From Monday to Friday, 8h00-12h00 & 13h00-16h30 (7 hours per day) 1 hour for lunch time & 15 minutes for break time in the morning & afternoon");
+					$(".hourperday").val(7);
+					$(".hourperweek").val(35);
+					return false;
+				}
+				if(field==2){
+					$(".language").val("English");
+					$(".ftorpt").val("Full Time");
+					$(".privateorgroup").val("Group");
+					$(".typecontract").val("NMSO");
+					$(".schedule").val("From Monday to Friday, 8h00-12h00 & 13h00-16h30 (7 hours per day) 1 hour for lunch time & 15 minutes for break time in the morning & afternoon");
+					$(".schedule").val("");
+					$(".hourperday").val(7);
+					$(".hourperweek").val(35);
+					return false;
+				}
+				if(field==3){
+					$(".language").val("French");
+					$(".ftorpt").val("Full Time");
+					$(".typecontract").val("NMSO");
+					$(".schedule").val("From Monday to Friday, 8h00-12h00 & 13h00-16h30 (7 hours per day) 1 hour for lunch time & 15 minutes for break time in the morning & afternoon");
+					$(".privateorgroup").val("Private");
+					$(".hourperday").val(7);
+					$(".hourperweek").val(35);
+					return false;
+				}
+				if(field==4){
+					$(".language").val("English");
+					$(".ftorpt").val("Full Time");
+					$(".privateorgroup").val("Private");
+					$(".typecontract").val("NMSO");
+					$(".schedule").val("From Monday to Friday, 8h00-12h00 & 13h00-16h30 (7 hours per day) 1 hour for lunch time & 15 minutes for break time in the morning & afternoon");
+					$(".schedule").val("");
+					$(".hourperday").val(7);
+					$(".hourperweek").val(35);
+					return false;
+				}	
+				if(field==6){
+					$(".typecontract").val("NMSO");
+					$(".language").val("French");
+					$(".ftorpt").val("Part Time");
+					$(".schedule").val("");
+					return false;
+				}					
+				return false;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

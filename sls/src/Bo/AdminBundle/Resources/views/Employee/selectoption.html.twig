@@ -1,0 +1,5 @@
+				<select name='idoption' id='idoption'>
+					<option value="0" {%if idoption is defined and option.id ==0%}selected='selected'{%endif%}>{{'label.all'|trans([],'BoAdminBundle')}}</option>
+					<option value="1" {%if idoption is defined and option.id ==1%}selected='selected'{%endif%}>{{'label.withcontract'|trans([],'BoAdminBundle')}}</option>
+					<option value="2" {%if idoption is defined and option.id ==2%}selected='selected'{%endif%}>{{'label.without'|trans([],'BoAdminBundle')}}</option>
+				</select>	

@@ -1,0 +1,15 @@
+<li {%if sm=="absences"%} class="active"{%endif%}>
+	<a href="{{ path('home_absences_index') }}">
+		{{'layout.menu.absences'|trans([],'BoAdminBundle')}}
+	</a>
+</li>
+<li {%if sm=="message"%}class="active"{%endif%}>
+	<a href="{{ path('home_message_index') }}">
+		{{'layout.menu.message'|trans([],'BoAdminBundle')}}
+	</a>
+</li>
+<li {%if sm=="tickets"%} class="active"{%endif%}>
+	<a href="{{ path('home_tickets_index') }}">
+		{{'layout.menu.help'|trans([],'BoAdminBundle')}}
+	</a>
+</li>

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.status'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:setting.html.twig"%}{% endblock %}
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'entity.status'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdminBundle:Status:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div id="content-liste">
+		{%include "BoAdminBundle:Status:tbliste.html.twig"%}
+	</div>
+	
+	<!-- begin add status creation form by modal dialog-->
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_status" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.status'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('status_new')}}" method="post" class="style">
+				<div class="modal-body">
+					{{ form_errors(form) }}
+						{%include "BoAdminBundle:Status:newform.html.twig"%}
+					{{ form_rest(form) }}
+				</div>
+				<div class="modal-footer">
+					<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+					<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<!-- end status creation form by modal dialog-->
+
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}	
+{% endblock %}

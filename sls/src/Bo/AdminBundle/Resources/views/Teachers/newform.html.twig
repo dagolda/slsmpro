@@ -1,0 +1,81 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+			<th width="25%" class="sty_label">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+            <th width="25%" class="sty_label">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+			<th width="25%" class="sty_label">{{'label.sex'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.firstname) }}</td>
+			<td>{{ form_widget(form.name) }}</td>
+			<td>{{ form_widget(form.sexe) }}</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.email'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.category'|trans([],'BoAdminBundle')}}</th>	
+			<th class="sty_label">{{'label.language'|trans([],'BoAdminBundle')}}</th>	
+		</tr>
+		<tr>		
+			<td>{{ form_widget(form.email) }}</td>	
+			<td valign="top">
+				{{ form_widget(form.categoryteacher) }}
+				<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_category"><img src="{{ asset('images/actions/add.jpg') }}" border="0" alt="{{'title.add.category'|trans([],'BoAdminBundle')}}" /></button>
+			</td>
+			<td valign="top">{{ form_widget(form.language) }}</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>			
+            <th class="sty_label">{{'label.hiringdate'|trans([],'BoAdminBundle')}}</th>
+            <th class="sty_label">{{'label.birthdate'|trans([],'BoAdminBundle')}}</th>	
+			<th class="sty_label">{{'label.active'|trans([],'BoAdminBundle')}}</th>	
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.hiringdate) }}</td>
+			<td>{{ form_widget(form.birthdate) }}</td>
+			<td>{{ form_widget(form.active) }}</td>	
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label" colspan="3">Qualification</th>				
+		</tr>
+		<tr>
+			<td colspan="3">{{ form_widget(form.typecontract) }}</td>								
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+	</table>
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="40%" class="sty_label">{{'label.englishlevel'|trans([],'BoAdminBundle')}}</th>
+			<th width="40%" class="sty_label">{{'label.frenchlevel'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.englishlevel) }}</td>
+			<td>{{ form_widget(form.frenchlevel) }}</td>	
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th width="40%" class="sty_label">{{'label.address'|trans([],'BoAdminBundle')}} 1</th>
+			<th width="40%" class="sty_label">{{'label.address'|trans([],'BoAdminBundle')}} 2</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.address1) }}</td>
+			<td>{{ form_widget(form.address2) }}</td>	
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">{{'label.phonenumber'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.cellnumber'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.homenumber) }}</td>
+			<td>{{ form_widget(form.cellnumber) }}</td>	
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th colspan="2" class="sty_label">Note</th>
+		</tr>
+		<tr>
+			<td colspan="2">{{ form_widget(form.note) }}</td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+	</table>

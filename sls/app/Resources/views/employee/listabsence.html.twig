@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.absence'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}	
+{% block label %}<h1>{{'entity.absences'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Employee:absenceactions.html.twig"%}
+		{%if total is defined and total>nb_cpp%}
+			<div class="pagination_content">
+				{% include 'BoAdminBundle:Absences:pagination.html.twig' %}
+			</div>
+		{%endif%}
+		<div id="content-liste">
+			{%include "BoAdminBundle:Employee:listabsences.html.twig"%}
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+student_activities_index:
+    path:     /
+    defaults: { _controller: "BoStudentBundle:Activities:index" }
+    methods:  GET
+student_activities_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoStudentBundle:Activities:page" }
+student_activities_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoStudentBundle:Activities:show" }
+    methods:  GET

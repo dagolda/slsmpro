@@ -1,0 +1,24 @@
+hadmin_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Hadmin:index" }
+    methods:  GET
+
+hadmin_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Hadmin:show" }
+    methods:  GET
+
+hadmin_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Hadmin:new" }
+    methods:  [GET, POST]
+
+hadmin_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Hadmin:edit" }
+    methods:  [GET, POST]
+
+hadmin_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Hadmin:delete" }
+    methods:  DELETE

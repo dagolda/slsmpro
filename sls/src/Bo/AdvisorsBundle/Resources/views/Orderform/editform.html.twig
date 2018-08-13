@@ -1,0 +1,130 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+			<th width="30%" class="sty_label">{{'label.ordernumber'|trans([],'BoAdminBundle')}}</th>
+            <th width="30%" class="sty_label">{{'label.nbstudent'|trans([],'BoAdminBundle')}}</th>
+			<th width="30%" class="sty_label">{{'label.program'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.ordernumber) }}</td>
+			<td>{{ form_widget(form.nbstudent) }}</td>	
+			<td>{{ form_widget(form.program) }}</td>				
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.daterate'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.numberhour'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.hourlyrate'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.startrate) }}</td>
+			<td>{{ form_widget(form.hoursnumber, {'attr' : {'class' : 'hoursnumber span3'}}) }}</td>
+			<td>{{ form_widget(form.hourlyrate, {'attr' : {'class' : 'hourlyrate span3'}}) }}</td>
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.daterate'|trans([],'BoAdminBundle')}} 1</th>
+			<th class="sty_label">{{'label.numberhour'|trans([],'BoAdminBundle')}} 1</th>
+			<th class="sty_label">{{'label.hourlyrate'|trans([],'BoAdminBundle')}} 1</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.startrate1) }}</td>
+			<td>{{ form_widget(form.hoursnumber1, {'attr' : {'class' : 'hoursnumber1 span3'}}) }}</td>
+			<td>{{ form_widget(form.hourlyrate1, {'attr' : {'class' : 'hourlyrate1 span3'}}) }}</td>
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.daterate'|trans([],'BoAdminBundle')}} 2</th>
+			<th class="sty_label">{{'label.numberhour'|trans([],'BoAdminBundle')}} 2</th>
+			<th class="sty_label">{{'label.hourlyrate'|trans([],'BoAdminBundle')}} 2</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.startrate2) }}</td>
+			<td>{{ form_widget(form.hoursnumber2, {'attr' : {'class' : 'hoursnumber2 span3'}}) }}</td>
+			<td>{{ form_widget(form.hourlyrate2, {'attr' : {'class' : 'hourlyrate2 span3'}}) }}</td>
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.estimatedcost'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.estimatedcost'|trans([],'BoAdminBundle')}} 1</th>
+			<th class="sty_label">{{'label.estimatedcost'|trans([],'BoAdminBundle')}} 2</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.estimatedcost, {'attr' : {'class' : 'estimatedcost span3'}}) }}</td>
+			<td>{{ form_widget(form.estimatedcost1, {'attr' : {'class' : 'estimatedcost1 span3'}}) }}</td>
+			<td>{{ form_widget(form.estimatedcost2, {'attr' : {'class' : 'estimatedcost2 span3'}}) }}</td>
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.totalhours'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.totalcost'|trans([],'BoAdminBundle')}}</th>
+			{%if employee.profil and employee.profil.name=="Superadmin"%}
+			<th class="sty_label">{{'label.status'|trans([],'BoAdminBundle')}}</th>
+			{%endif%}
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.totalhours, {'attr' : {'class' : 'totalhours span3'}}) }}</td>
+			<td>{{ form_widget(form.totalcost, {'attr' : {'class' : 'totalcost span3'}}) }}</td>
+			{%if employee.profil and employee.profil.name=="Superadmin"%}
+			<td>{{ form_widget(form.status) }}</td>
+			{%endif%}
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.initlanguage'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.weeklanguage'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.didmat'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>		
+			<td>{{ form_widget(form.initlanguage) }}</td>	
+			<td>{{ form_widget(form.weeklanguage) }}</td>	
+			<td>{{ form_widget(form.didmat) }}</td>					
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.classvisit'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.progressreport'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>	
+			<td>{{ form_widget(form.classvisit) }}</td>	
+			<td>{{ form_widget(form.progressreport) }}</td>					
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label" colspan="2">{{'label.typeofcourse'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.approvedby'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td colspan="2">{{ form_widget(form.typeofcourse, {'attr' : {'class' : 'location span3'}}) }}</td>
+			<td>{{ form_widget(form.approvedby, {'attr' : {'class' : 'approvedby span3'}}) }}</td>
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.location'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.campus'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.preparedby'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.location, {'attr' : {'class' : 'location span3'}}) }}</td>
+			<td>{{ form_widget(form.campus, {'attr' : {'class' : 'campus span3'}}) }}</td>
+			<td>{{ form_widget(form.preparedby, {'attr' : {'class' : 'preparedby span3'}}) }}</td>
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th colspan="3" class="sty_label">{{'label.placeoftraining'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td colspan="3">{{ form_widget(form.placeoftraining, {'attr' : {'class' : 'placeoftraining span3'}}) }}</td>		
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label" colspan="3">{{'label.comment'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td colspan="3">{{ form_widget(form.comment) }}</td>		
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+
+	</table>
+	{%for campus in campuss%}
+		<input type="hidden" id="{{campus.reference}}" name="{{campus.reference}}" value="{{campus.address}}"/>
+	{%endfor%}

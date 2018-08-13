@@ -1,0 +1,24 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['CONTRACTS']['Groups'] is defined and app.session.get('rights')['CONTRACTS']['Groups'].search==1%}
+					<td class="form-group">
+						<input type="text" class="form-control" id="inp-search" {%if description is defined and description is not null%} value="{{description}}"{%endif%}>
+					</td>
+					<td><button type="submit" id="btn-search">{{'action.search'|trans([],'BoAdminBundle')}}</button></td>
+				{%endif%}
+				{%if app.session.get('rights')['CONTRACTS']['Groups'] is defined and app.session.get('rights')['CONTRACTS']['Groups'].creation==1%}
+					<td>
+						<a href="{{ path('group_new') }}">{{'action.add'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				{%endif%}
+				{%if app.session.get('rights')['CONTRACTS']['Groups'] is defined and app.session.get('rights')['CONTRACTS']['Groups'].liste==1%}
+					<td>
+						<a href="{{ path('group_index') }}">Group list</a>
+					</td>
+				{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

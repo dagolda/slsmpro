@@ -1,0 +1,7 @@
+				<select name='idtype' id='idtype'>
+					<option value="1" {%if idtype is defined and type.id ==1%}selected='selected'{%endif%}>{{'label.teaching'|trans([],'BoAdminBundle')}}</option>
+					<option value="2" {%if idtype is defined and type.id ==1%}selected='selected'{%endif%}>{{'label.admin'|trans([],'BoAdminBundle')}}</option>
+					<option value="3" {%if idtype is defined and type.id ==0%}selected='selected'{%endif%}>{{'label.holiday'|trans([],'BoAdminBundle')}}</option>
+					<option value="4" {%if idtype is defined and type.id ==0%}selected='selected'{%endif%}>{{'label.other'|trans([],'BoAdminBundle')}}</option>
+					<option value="5" {%if idtype is defined and type.id ==0%}selected='selected'{%endif%}>{{'label.statutory'|trans([],'BoAdminBundle')}}</option>
+				</select>	

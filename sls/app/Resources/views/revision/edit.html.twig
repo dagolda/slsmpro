@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block nav %}{% endblock %}
+{% block label %}<h1>Contract Revision edit</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('revision_edit',{'id':revision.id}) }}" method="post" class="style">
+			{{ form_errors(edit_form) }}
+			{%include "BoAdminBundle:Revision:editactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Revision:editform.html.twig"%}
+			</div>
+			{{ form_rest(edit_form) }}
+		</form>	
+	</div>
+{% endblock %}

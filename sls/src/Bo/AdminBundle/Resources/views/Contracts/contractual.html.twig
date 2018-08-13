@@ -1,0 +1,44 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.phone'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.createdby'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {%if contract.contractual %}
+		{%set contractual=contract.contractual%}
+            <tr>
+                <td>{{ contractual.name }}</td>
+                <td>{{ contractual.email }}</td>
+                <td>{{ contractual.phone }}</td>
+                <td>{{ contractual.createby }}</td>
+                <td>{% if contractual.creationdate %}{{ contractual.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+					{%if app.session.get('rights')['CONTRACTS']['Contractual'] is defined and app.session.get('rights')['CONTRACTS']['Contractual'].edit==1%}
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#edit_contractual">{{'action.edit'|trans([],'BoAdminBundle')}}</button>	
+						<a href="{{ path('contracts_contractual_remove',{'idcontractual':contractual.id,'idcontract':contract.id}) }}">{{'action.remove'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+	{%elseif contract.status==1 or contract.status==2%}
+			<tr>
+				<td colspan="6" class="list-action">
+					{%if app.session.get('rights')['CONTRACTS']['Contractual'] is defined and app.session.get('rights')['CONTRACTS']['Contractual'].creation==1%}
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_contractual">{{'action.add'|trans([],'BoAdminBundle')}}</button>					
+					{%endif%}
+				</td>				
+			</tr>
+	{%else%}
+			<tr>
+				<td colspan="6">
+					{{'No data found'|trans([],'BoAdminBundle')}}
+				</td>				
+			</tr>
+        {% endif %}
+        </tbody>
+    </table>

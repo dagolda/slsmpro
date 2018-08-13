@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>SubRubric list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Namefr</th>
+                <th>Nameen</th>
+                <th>Idrubric</th>
+                <th>Ordre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for subRubric in subRubrics %}
+            <tr>
+                <td><a href="{{ path('subrubric_show', { 'id': subRubric.id }) }}">{{ subRubric.id }}</a></td>
+                <td>{{ subRubric.namefr }}</td>
+                <td>{{ subRubric.nameen }}</td>
+                <td>{{ subRubric.idrubric }}</td>
+                <td>{{ subRubric.ordre }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('subrubric_show', { 'id': subRubric.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('subrubric_edit', { 'id': subRubric.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('subrubric_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

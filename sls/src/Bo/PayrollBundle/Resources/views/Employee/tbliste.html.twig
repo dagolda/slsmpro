@@ -1,0 +1,56 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="4%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="11%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th width="11%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.contract'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.student'|trans([],'BoAdminBundle')}}</th>
+                <th width="126px">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td><a>{{ employee.id }}</a></td>
+                <td>{{ employee.firstname }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.email }}</td>
+                <td>
+					{%set i=1%}
+					{%if employee.contracts|length>0%}
+						{%for c in employee.contracts %}
+							{%if c.status==1 and c.group and c.group!=null%}
+								{{c.group.name}}
+							{%endif%}
+							{%if employee.contracts|length>i%}<br>{%else%}{%set i=i+1%}{%endif%}
+						{%endfor%}
+					{%else%}
+						---
+					{%endif%}
+				</td>				
+                <td>
+					{%set i=1%}
+					{% for ec in employee.contracts %}
+						{%if ec.status==1 and ec.students is defined and ec.students|length==1%}
+							{%for student in ec.students %}
+								{{ student.firstname }} {{ student.name }}
+							{%else%}
+								---
+							{%endfor%}				
+						{%endif%}
+						{%if employee.contracts|length>i%}<br>{%else%}{%set i=i+1%}{%endif%}
+					{%endfor%}
+				</td>								
+                <td class="list-action"  width="126px">
+                    <a href="{{ path('payroll_employee_show', { 'id': employee.id }) }}">
+						{{'action.show'|trans([],'BoAdminBundle')}}
+					</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="8">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

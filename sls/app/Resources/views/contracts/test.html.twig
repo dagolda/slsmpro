@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>Contracts list</h1>{% endblock %}	
+{% block body %}
+		{%include "BoAdminBundle:Contracts:test.html.twig"%}
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

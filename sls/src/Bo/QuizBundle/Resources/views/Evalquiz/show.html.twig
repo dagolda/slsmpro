@@ -1,0 +1,65 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.situation'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{%if user.situation %}{{ user.situation }}{%else%}---{%endif%}</td>   
+                <td>{{ user.name }}</td>
+                <td>{{ user.firstname }}</td>
+            </tr>
+	    <tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.phone'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.department'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.result'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>                
+		<td>{%if user.phone%}{{ user.phone }}{%else%}---{%endif%}</td>
+                <td>{%if user.department%}{{ user.department }}{%else%}---{%endif%}</td>   
+                <td>{%if user.email%}{{ user.email }}{%else%}---{%endif%}</td> 
+                <td>{%if evalquiz is defined and evalquiz.result%}{{ evalquiz.result }}{%else%}---{%endif%}</td> 
+            </tr>
+	    <tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+		<th>{{'label.notification'|trans([],'BoAdminBundle')}}</th>  
+		<th>{{'label.category'|trans([],'BoAdminBundle')}}</th>              
+		<th>{{'label.createdby'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+		<td>{%if evalquiz is defined and evalquiz.notification%}{{ evalquiz.notification }}{%else%}---{%endif%}</td>
+		<td>{%if evalquiz is defined and evalquiz.category and evalquiz.category.name%}{{ evalquiz.category.name }}{%else%}---{%endif%}</td>
+		<td>{%if user.createby and user.createby%}{{ user.createby }}{%else%}---{%endif%}</td>
+                <td>{% if user.creationdate %}{{ user.creationdate|date('Y-m-d H:i:s') }}{%else%}---{%endif%}</td>
+            </tr>
+	    <tr><td colspan="4">&nbsp;</td></tr>
+		{% if app.session.get('profile') is defined and app.session.get('profile')=="Superadmin"%}	    
+            <tr>
+		<th>{{'label.password'|trans([],'BoAdminBundle')}}</th> 
+		<th>{{'label.dispresult'|trans([],'BoAdminBundle')}}</th> 
+		<th colspan='2'>{{'label.link'|trans([],'BoAdminBundle')}}</th>  
+            </tr>
+            <tr>
+		<td>{{user.password}}</td>
+		<td>{%if evalquiz.dispresult==1%}Yes{%else%}No{%endif%}</td>
+		<td colspan='2'>{{link}}</td>
+            </tr>
+	    <tr><td colspan="4">&nbsp;</td></tr>
+		{%endif%}
+		{%if evalquiz is defined and evalquiz.confirmation!=null%}	    
+            <tr>
+		<th colspan='4'>{{'label.confirmation'|trans([],'BoAdminBundle')}}</th>  
+            </tr>
+            <tr>
+		<td colspan='4'>{{evalquiz.confirmation|raw}}</td>
+            </tr>
+	    <tr><td colspan="4">&nbsp;</td></tr>
+		{%endif%}
+        </tbody>
+    </table>

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- Payroll creation{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>Payroll creation</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('payroll_new') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Payroll:newactions.html.twig"%}
+			<div class="new_content">
+				{%include "BoAdminBundle:Payroll:newform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#btn-create").click(function(){
+				year = $(".yearclass").val();
+				month = $(".monthclass").val();
+				sdate = $(".sdateclass").val();
+				edate = $(".edateclass").val();
+				sd = sdate.split('-');
+				ed = edate.split('-');
+				var d1 = new Date(sd[0], sd[1], sd[2]);
+				var d2 = new Date(ed[0], ed[1], ed[2]);
+				if(d2<d1){
+					alert("The end date period must be greater than the start date");
+					return false;
+				}
+				return true;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

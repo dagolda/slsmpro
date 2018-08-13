@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- Robot >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tools.html.twig"%}{% endblock %}	
+{% block nav %}{%include "BoAdminBundle:Robot:rightshow.html.twig"%}{% endblock %}
+{% block label %}<h1>Robot >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Robot:showactions.html.twig"%}
+		<div class="display_content">
+			<legend>{{'label.contracts'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Usedhour:tbliste.html.twig"%}
+		</div>	
+	</div>
+{% endblock %}

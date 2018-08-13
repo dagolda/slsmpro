@@ -1,0 +1,6 @@
+test_index:
+    path:     /
+    defaults: { _controller: BoAdminBundle:Test:index }
+test_tsgenerator:
+    path:     /generate/ts
+    defaults: { _controller: BoAdminBundle:Test:generatets }

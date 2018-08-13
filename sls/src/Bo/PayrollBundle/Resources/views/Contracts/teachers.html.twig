@@ -1,0 +1,34 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="10%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th width="11%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th width="18%">{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th width="18%">{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.hour'|trans([],'BoAdminBundle')}}</th>
+				<th width="120px">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+		{% set i=0 %}
+        {% for e in teachers %}
+			{% set i=i+1 %}
+            <tr>
+                <td>{{ e.firstname }}</td>
+                <td>{{ e.name }}</td>
+                <td>{%if tsc[e.id] is defined and tsc[e.id].startam!=null %}{{ tsc[e.id].startam|date("H:i")}}{%else%}00:00{%endif%}</td>
+                <td>{%if tsc[e.id] is defined and tsc[e.id].endam!=null %}{{ tsc[e.id].endam|date("H:i")}}{%else%}00:00{%endif%}</td>
+                <td>{%if tsc[e.id] is defined and tsc[e.id].startpm!=null %}{{ tsc[e.id].startpm|date("H:i")}}{%else%}00:00{%endif%}</td>
+                <td>{%if tsc[e.id] is defined and tsc[e.id].endpm!=null %}{{ tsc[e.id].endpm|date("H:i")}}{%else%}00:00{%endif%}</td>
+                <td>{%if tsc[e.id] is defined and tsc[e.id]!=null %}{{ tsc[e.id].hourperday}}{%else%}---{%endif%}</td>
+				<td class="list-action" nowrap>	
+					{%if ebit[e.id]==0 and today|date('D')!="Sat" and today|date('D')!="Sun"%}
+						<button type="submit" name="employee{{e.id}}" value="{{e.id}}">{{'action.generate'|trans([],'BoAdminBundle')}} TS</button>
+					{%endif%}
+				</td>
+            </tr>				
+        {% endfor %}
+        </tbody>
+    </table>

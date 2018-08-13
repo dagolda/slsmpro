@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.employee'|trans([],'BoAdminBundle')}} >> {{'entity.absence'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}
+{% block nav %}	{%include "BoAdminBundle:Employee:rightshow.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.employee'|trans([],'BoAdminBundle')}} >> {{'entity.absence'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Employee:absenceshowactions.html.twig"%}
+		<div class="show_content">
+			{%include "BoAdminBundle:Absences:show.html.twig"%}
+		</div>	
+		{%if absence.contracts|length>0%}
+			<div class="display_content">
+				<legend>{{'label.contracts'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Absences:contract.html.twig"%}
+			</div>	
+		{%endif%}
+		{%if absence.group|length>0%}
+			<div class="display_content">
+				<legend>{{'label.group'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Absences:group.html.twig"%}
+			</div>	
+		{%endif%}
+		{%if substitutions|length>0%}
+			<div class="display_content">
+				<legend>{{'entity.substitution'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Absences:substitution.html.twig"%}
+			</div>	
+		{%endif%}
+	</div>
+	<!-- begin substitution creation form by modal dialog for contract-->
+	{%for contract in absence.contracts%}
+		{%set substitution_form=subcontform[contract.id]%}
+		<div class="container">
+			<!-- Modal -->
+			<div class="modal fade" id="add_subscont{{contract.id}}" role="dialog">
+				<div class="modal-dialog">
+				
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">{{'label.addschedule'|trans([],'BoAdminBundle')}} {{'label.forcontract'|trans([],'BoAdminBundle')}}</h4>
+						</div>
+						<form action="{{ path('employee_substitution_contract',{'idcontract':contract.id}) }}" method="post" class="style">
+							<div class="modal-body">
+								{{ form_errors(substitution_form) }}
+									{%include "BoAdminBundle:Employee:subscontform.html.twig"%}
+								{{ form_rest(substitution_form) }}
+							</div>
+							<div class="modal-footer">
+								<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+							</div>
+						</form>	
+					</div>
+				  
+				</div>
+			</div>
+		</div>
+	{%endfor%}
+	<!-- end substitution creation form by modal dialog for contract-->
+	
+	<!-- begin substitution creation form by modal dialog for group-->
+	{%for group in absence.group%}
+		{%set substitution_form=subgroupform[group.id]%}
+		<div class="container">
+			<!-- Modal -->
+			<div class="modal fade" id="add_subsgroup{{group.id}}" role="dialog">
+				<div class="modal-dialog">
+				
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">{{'label.addschedule'|trans([],'BoAdminBundle')}} {{'label.forgroup'|trans([],'BoAdminBundle')}}</h4>
+						</div>
+						<form action="{{ path('employee_substitution_group',{'idgroup':group.id}) }}" method="post" class="style">
+							<div class="modal-body">
+								{{ form_errors(substitution_form) }}
+									{%include "BoAdminBundle:Employee:subsgroupform.html.twig"%}
+								{{ form_rest(substitution_form) }}
+							</div>
+							<div class="modal-footer">
+								<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+							</div>
+						</form>	
+					</div>
+				  
+				</div>
+			</div>
+		</div>
+	{%endfor%}
+	<!-- end substitution creation form by modal dialog for group-->
+
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(delete_form) }}
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(delete_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+
+	{% block javascripts %}
+		<script>
+			$("#btn-create").click(function(){
+				var str=$("#teachers option:selected");
+				teachers=str.val();
+				if(teachers==0){
+					alert("You have to select a substitute!");
+					return false;
+				}
+				return true;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

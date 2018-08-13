@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'entity.absence'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}	
+	{%if employee!=null%}{%include "BoAdminBundle:Employee:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block label %}<h1>{{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'entity.absence'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdvisorsBundle:Absences:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div id="content-liste">
+		{%include "BoAdvisorsBundle:Absences:tbliste.html.twig"%}
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_absence" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.addabsence'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('dash_absences_new') }}" method="post" class="style">
+				<div class="modal-body">
+					{{ form_errors(absence_form) }}
+						{%include "BoAdminBundle:Employee:absenceform.html.twig"%}
+					{{ form_rest(absence_form) }}
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

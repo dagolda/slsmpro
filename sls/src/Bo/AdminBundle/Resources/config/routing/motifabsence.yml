@@ -1,0 +1,35 @@
+motifabsence_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:MotifAbsence:index" }
+    methods:  GET
+motifabsence_list:
+    path:     /list/
+    defaults: { _controller: "BoAdminBundle:MotifAbsence:list" }
+    methods:  GET
+motifabsence_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdminBundle:MotifAbsence:page" }
+motifabsence_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:MotifAbsence:show" }
+    methods:  GET
+motifabsence_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:MotifAbsence:new" }
+    methods:  [GET, POST]
+motifabsence_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:MotifAbsence:edit" }
+    methods:  [GET, POST]
+motifabsence_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:MotifAbsence:delete" }
+    methods:  DELETE
+motifabsence_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:MotifAbsence:search" }
+    methods:  [GET, POST]
+motifabsence_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:MotifAbsence:pagesearch" }
+    methods:  [GET, POST]

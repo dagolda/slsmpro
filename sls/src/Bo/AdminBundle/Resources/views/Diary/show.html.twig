@@ -1,0 +1,40 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th width="30%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="30%">{{'label.date'|trans([],'BoAdminBundle')}}</th>
+                <th width="30%">{{'label.student'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ diary.id }}</td>
+                <td>{{ diary.ddate|date("d-m-Y") }}</td>
+                <td>{%if diary.students %}{{ diary.students }}{%else%}---{%endif%}</td>
+            </tr>
+	    <tr><td colspan="3">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.employee'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.contract'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.group'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{%if diary.employee %}{{ diary.employee }}{%else%}---{%endif%}</td>
+                <td>{%if diary.contracts %}{{ diary.contracts }}{%else%}---{%endif%}</td>
+                <td>{%if diary.group %}{{ diary.group }}{%else%}---{%endif%}</td>
+            </tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+            <tr>
+                <th colspan="3">{{'label.note'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td colspan="3">{{ diary.note }}</td>
+            </tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+            <tr>
+                <th colspan="3">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td colspan="3">{{ diary.datecreation|date("d-m-Y") }}</td>
+            </tr>
+	    <tr><td colspan="3">&nbsp;</td></tr>
+        </tbody>
+    </table>

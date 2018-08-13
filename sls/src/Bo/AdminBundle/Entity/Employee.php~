@@ -1,0 +1,1093 @@
+<?php
+/*
+* Date Création: 20/02/2016
+* Auteur: N'VEKOUNOU Moise José
+* Nom fichier : Employee.php
+* Description: Entité des employés
+*/
+namespace Bo\AdminBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+/**
+* @ORM\Entity
+* @ORM\Table(name="adm_employee")
+* @ORM\HasLifecycleCallbacks
+* @ORM\Entity(repositoryClass="Bo\AdminBundle\Repository\EmployeeRepository")
+*/
+
+class Employee
+{
+    /**
+    * @ORM\GeneratedValue
+    * @ORM\Id
+    * @ORM\Column(type="integer")
+    */
+    private $id;
+	
+    /**
+    * @ORM\Column(type="string",length=20, nullable=true)
+    */    
+    private $sexe;
+	
+    /**
+    * @ORM\Column(type="string",length=255)
+    */    
+    private $name;
+	
+    /**
+    * @ORM\Column(type="string",length=255)
+    */    
+    private $firstname;
+	
+    /**
+    * @ORM\Column(type="string",length=255)
+    */    
+    private $email;
+	
+    /**
+    * @ORM\Column(type="string",length=255, nullable=true)
+    */    
+    private $email1;	
+	
+    /**
+    * @ORM\Column(type="string",length=255, nullable=true)
+    */    
+    private $homenumber;
+		
+    /**
+    * @ORM\Column(type="string",length=255, nullable=true)
+    */    
+    private $cellnumber;
+			
+    /**
+    * @ORM\Column(type="string",length=255, nullable=true)
+    */    
+    private $address1;
+	
+    /**
+    * @ORM\Column(type="string",length=255, nullable=true)
+    */    
+    private $address2;
+		
+    /**
+    * @ORM\Column(type="date", nullable=true)
+    */    
+   private $birthdate;
+   
+    /**
+    * @ORM\ManyToOne(targetEntity="Profil")
+	* @ORM\JoinColumn(name="idprofil",referencedColumnName="id", nullable=true)
+    */      
+    private $profil;	
+	
+    /**
+    * @ORM\ManyToOne(targetEntity="Status")
+	* @ORM\JoinColumn(name="idstatus",referencedColumnName="id", nullable=true)
+    */      
+	private $status;
+	
+    /**
+    * @ORM\ManyToMany(targetEntity="Contracts", mappedBy="employee")
+    */
+    private $contracts;
+		
+    /**
+    * @ORM\ManyToMany(targetEntity="Group", mappedBy="employee")
+    */
+    private $group;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Agenda", mappedBy="employee")
+     */
+    protected $agenda;
+	
+    /**
+    * @ORM\Column(type="date", nullable=true)
+    */    
+	private $hiringdate;
+	
+    /**
+    * @ORM\Column(type="boolean")
+    */      
+    private $active;	
+		
+    /**
+    * @ORM\Column(type="boolean")
+    */      
+    private $remove;	
+		
+    /**
+    * @ORM\Column(type="boolean")
+    */      
+    private $available;	
+
+    /**
+    * @ORM\Column(type="string",length=84000, nullable=true)
+    */    
+    private $note;
+	
+    /**
+     * @ORM\ManyToOne(targetEntity="Language")
+	 * @ORM\JoinColumn(name="idlanguage",referencedColumnName="id", nullable=true)
+     */      
+	private $langage;
+	
+    /**
+    * @ORM\Column(type="string",length=255, nullable=true)
+    */    
+	private $englishlevel;
+	
+    /**
+    * @ORM\Column(type="string",length=255, nullable=true)
+    */    
+	private $frenchlevel;
+	
+    /**
+     * @ORM\ManyToMany(targetEntity="Typecontract")
+	 * @ORM\JoinColumn(name="idtypecontract",referencedColumnName="id", nullable=true)
+     */      
+	private $typecontract;
+	
+    /**
+    * @ORM\ManyToOne(targetEntity="Categoryteacher")
+	* @ORM\JoinColumn(name="idcategoryteacher",referencedColumnName="id", nullable=true)
+    */      
+    private $categoryteacher;		
+	
+	/**
+	* @ORM\Column(type="string", length=255, nullable=true)
+	*/
+	public $path;
+	
+	/**
+	* @Assert\File(maxSize="10000000")
+	*/
+	public $file;
+		
+    /**
+    * @ORM\Column(type="datetime")
+    */    
+	private $creationdate;
+	
+    /**
+    * @ORM\Column(type="decimal", scale=2, nullable=true)
+    */
+    private $hourrate;   
+				
+    /**
+    * @ORM\Column(type="string",length=255, nullable=true)
+    */
+    private $createby;
+	
+	/**
+    * @ORM\Column(type="string",length=255, nullable=true)
+	*/
+	protected $pwd;
+	
+    /**
+    * @ORM\Column(type="integer")
+    */
+    //Timesheet authorirization date
+    private $tsdate;
+	
+    /**
+    * Constructor
+    */
+    public function __construct()
+    {
+		$this->creationdate=new \DateTime();
+		$this->active=$this->available=true;
+		$this->remove=$this->tsdate=0;
+    }
+    
+	public function __toString(){
+		return $this->firstname." ".$this->name;
+	}	
+	
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Employee
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set firstname
+     *
+     * @param string $firstname
+     *
+     * @return Employee
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    /**
+     * Get firstname
+     *
+     * @return string
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * Get firstname
+     *
+     * @return string
+     */
+    public function getFullname()
+    {
+        return $this->firstname." ".$this->name;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return Employee
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+	
+    /**
+     * Set email1
+     *
+     * @param string $email1
+     *
+     * @return Employee
+     */
+    public function setEmail1($email1)
+    {
+        $this->email1 = $email1;
+
+        return $this;
+    }
+
+    /**
+     * Get email1
+     *
+     * @return string
+     */
+    public function getEmail1()
+    {
+        return $this->email1;
+    }
+
+    /**
+     * Set homenumber
+     *
+     * @param string $homenumber
+     *
+     * @return Employee
+     */
+    public function setHomenumber($homenumber)
+    {
+        $this->homenumber = $homenumber;
+
+        return $this;
+    }
+
+    /**
+     * Get homenumber
+     *
+     * @return string
+     */
+    public function getHomenumber()
+    {
+        return $this->homenumber;
+    }
+
+    /**
+     * Set cellnumber
+     *
+     * @param string $cellnumber
+     *
+     * @return Employee
+     */
+    public function setCellnumber($cellnumber)
+    {
+        $this->cellnumber = $cellnumber;
+
+        return $this;
+    }
+
+    /**
+     * Get cellnumber
+     *
+     * @return string
+     */
+    public function getCellnumber()
+    {
+        return $this->cellnumber;
+    }
+
+    /**
+     * Set address1
+     *
+     * @param string $address1
+     *
+     * @return Employee
+     */
+    public function setAddress1($address1)
+    {
+        $this->address1 = $address1;
+
+        return $this;
+    }
+
+    /**
+     * Get address1
+     *
+     * @return string
+     */
+    public function getAddress1()
+    {
+        return $this->address1;
+    }
+
+    /**
+     * Set address2
+     *
+     * @param string $address2
+     *
+     * @return Employee
+     */
+    public function setAddress2($address2)
+    {
+        $this->address2 = $address2;
+
+        return $this;
+    }
+
+    /**
+     * Get address2
+     *
+     * @return string
+     */
+    public function getAddress2()
+    {
+        return $this->address2;
+    }
+
+    /**
+     * Set birthdate
+     *
+     * @param \DateTime $birthdate
+     *
+     * @return Employee
+     */
+    public function setBirthdate($birthdate)
+    {
+        $this->birthdate = $birthdate;
+
+        return $this;
+    }
+
+    /**
+     * Get birthdate
+     *
+     * @return \DateTime
+     */
+    public function getBirthdate()
+    {
+        return $this->birthdate;
+    }
+
+    /**
+     * Set hiringdate
+     *
+     * @param \DateTime $hiringdate
+     *
+     * @return Employee
+     */
+    public function setHiringdate($hiringdate)
+    {
+        $this->hiringdate = $hiringdate;
+
+        return $this;
+    }
+
+    /**
+     * Get hiringdate
+     *
+     * @return \DateTime
+     */
+    public function getHiringdate()
+    {
+        return $this->hiringdate;
+    }
+
+    /**
+     * Set creationdate
+     *
+     * @param \DateTime $creationdate
+     *
+     * @return Employee
+     */
+    public function setCreationdate($creationdate)
+    {
+        $this->creationdate = $creationdate;
+
+        return $this;
+    }
+
+    /**
+     * Get creationdate
+     *
+     * @return \DateTime
+     */
+    public function getCreationdate()
+    {
+        return $this->creationdate;
+    }
+
+    /**
+     * Set profil
+     *
+     * @param \Bo\AdminBundle\Entity\Profil $profil
+     *
+     * @return Employee
+     */
+    public function setProfil(\Bo\AdminBundle\Entity\Profil $profil = null)
+    {
+        $this->profil = $profil;
+
+        return $this;
+    }
+
+    /**
+     * Get profil
+     *
+     * @return \Bo\AdminBundle\Entity\Profil
+     */
+    public function getProfil()
+    {
+        return $this->profil;
+    }
+	
+	public function getAbsolutePath()
+	{
+		return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+	}
+	
+	public function getWebPath()
+	{
+		return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+	}
+	
+	private function getUploadRootDir()
+	{
+		// le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+		return __DIR__.'/../../../../root/'.$this->getUploadDir();
+	}
+	private function getUploadDir()
+	{
+		// on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+		// le document/image dans la vue.
+		return 'uploads/employee/photos/';
+	}
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Document
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;    
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+	
+	public function upload()
+	{
+		// la propriété « file » peut être vide si le champ n'est pas requis
+		if (null === $this->file) {
+			return;
+		}
+		// utilisez le nom de fichier original ici mais
+		// vous devriez « l'assainir » pour au moins éviter
+		// quelconques problèmes de sécurité
+		// la méthode « move » prend comme arguments le répertoire cible et
+		// le nom de fichier cible où le fichier doit être déplacé
+		$this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
+		// définit la propriété « path » comme étant le nom de fichier où vous
+		// avez stocké le fichier
+		$this->path = $this->file->getClientOriginalName();
+		// « nettoie » la propriété « file » comme vous n'en aurez plus besoin
+		$this->file = null;
+	}
+	/**
+	* @ORM\PrePersist()
+	* @ORM\PreUpdate()
+	*/
+	public function preUpload()
+	{
+		if (null !== $this->file) {
+			// faites ce que vous voulez pour générer un nom unique
+			$this->path = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+		}
+	}
+	/**
+	* @ORM\PostRemove()
+	*/
+	public function removeUpload()
+	{
+		if ($file = $this->getAbsolutePath()) {
+			unlink($file);
+		}
+	}
+
+    /**
+     * Set status
+     *
+     * @param \Bo\AdminBundle\Entity\Status $status
+     *
+     * @return Employee
+     */
+    public function setStatus(\Bo\AdminBundle\Entity\Status $status = null)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return \Bo\AdminBundle\Entity\Status
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     *
+     * @return Employee
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set note
+     *
+     * @param string $note
+     *
+     * @return Employee
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * Get note
+     *
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Set sexe
+     *
+     * @param string $sexe
+     *
+     * @return Employee
+    */
+    public function setSexe($sexe)
+    {
+        $this->sexe = $sexe;
+
+        return $this;
+    }
+
+    /**
+     * Get sexe
+     *
+     * @return string
+     */
+    public function getSexe()
+    {
+        return $this->sexe;
+    }
+
+
+    /**
+     * Set hourrate
+     *
+     * @param string $hourrate
+     *
+     * @return Employee
+     */
+    public function setHourrate($hourrate)
+    {
+        $this->hourrate = $hourrate;
+
+        return $this;
+    }
+
+    /**
+     * Get hourrate
+     *
+     * @return string
+     */
+    public function getHourrate()
+    {
+        return $this->hourrate;
+    }
+
+    /**
+     * Set language
+     *
+     * @param string $language
+     *
+     * @return Employee
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return string
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * Add typecontract
+     *
+     * @param \Bo\AdminBundle\Entity\Typecontract $typecontract
+     *
+     * @return Employee
+     */
+    public function addTypecontract(\Bo\AdminBundle\Entity\Typecontract $typecontract)
+    {
+        $this->typecontract[] = $typecontract;
+
+        return $this;
+    }
+
+    /**
+     * Remove typecontract
+     *
+     * @param \Bo\AdminBundle\Entity\Typecontract $typecontract
+     */
+    public function removeTypecontract(\Bo\AdminBundle\Entity\Typecontract $typecontract)
+    {
+        $this->typecontract->removeElement($typecontract);
+    }
+
+    /**
+     * Get typecontract
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTypecontract()
+    {
+        return $this->typecontract;
+    }
+
+    /**
+     * Set categoryteacher
+     *
+     * @param \Bo\AdminBundle\Entity\Categoryteacher $categoryteacher
+     *
+     * @return Employee
+     */
+    public function setCategoryteacher(\Bo\AdminBundle\Entity\Categoryteacher $categoryteacher = null)
+    {
+        $this->categoryteacher = $categoryteacher;
+
+        return $this;
+    }
+
+    /**
+     * Get categoryteacher
+     *
+     * @return \Bo\AdminBundle\Entity\Categoryteacher
+     */
+    public function getCategoryteacher()
+    {
+        return $this->categoryteacher;
+    }
+
+    /**
+     * Set pwd
+     *
+     * @param string $pwd
+     *
+     * @return Employee
+     */
+    public function setPwd($pwd)
+    {
+        $this->pwd = $pwd;
+
+        return $this;
+    }
+
+    /**
+     * Get pwd
+     *
+     * @return string
+     */
+    public function getPwd()
+    {
+        return $this->pwd;
+    }
+
+    /**
+     * Set englishlevel
+     *
+     * @param string $englishlevel
+     *
+     * @return Employee
+     */
+    public function setEnglishlevel($englishlevel)
+    {
+        $this->englishlevel = $englishlevel;
+
+        return $this;
+    }
+
+    /**
+     * Get englishlevel
+     *
+     * @return string
+     */
+    public function getEnglishlevel()
+    {
+        return $this->englishlevel;
+    }
+
+    /**
+     * Set frenchlevel
+     *
+     * @param string $frenchlevel
+     *
+     * @return Employee
+     */
+    public function setFrenchlevel($frenchlevel)
+    {
+        $this->frenchlevel = $frenchlevel;
+
+        return $this;
+    }
+
+    /**
+     * Get frenchlevel
+     *
+     * @return string
+     */
+    public function getFrenchlevel()
+    {
+        return $this->frenchlevel;
+    }
+
+    /**
+     * Set createby
+     *
+     * @param string $createby
+     *
+     * @return Employee
+     */
+    public function setCreateby($createby)
+    {
+        $this->createby = $createby;
+
+        return $this;
+    }
+
+    /**
+     * Get createby
+     *
+     * @return string
+     */
+    public function getCreateby()
+    {
+        return $this->createby;
+    }
+
+    /**
+     * Set langage
+     *
+     * @param \Bo\AdminBundle\Entity\Language $langage
+     *
+     * @return Employee
+     */
+    public function setLangage(\Bo\AdminBundle\Entity\Language $langage = null)
+    {
+        $this->langage = $langage;
+
+        return $this;
+    }
+
+    /**
+     * Get langage
+     *
+     * @return \Bo\AdminBundle\Entity\Language
+     */
+    public function getLangage()
+    {
+        return $this->langage;
+    }
+
+    /**
+     * Set available
+     *
+     * @param boolean $available
+     *
+     * @return Employee
+     */
+    public function setAvailable($available)
+    {
+        $this->available = $available;
+
+        return $this;
+    }
+
+    /**
+     * Get available
+     *
+     * @return boolean
+     */
+    public function getAvailable()
+    {
+        return $this->available;
+    }
+
+    /**
+     * Add contract
+     *
+     * @param \Bo\AdminBundle\Entity\Contracts $contract
+     *
+     * @return Employee
+     */
+    public function addContract(\Bo\AdminBundle\Entity\Contracts $contract)
+    {
+        $this->contracts[] = $contract;
+
+        return $this;
+    }
+
+    /**
+     * Remove contract
+     *
+     * @param \Bo\AdminBundle\Entity\Contracts $contract
+     */
+    public function removeContract(\Bo\AdminBundle\Entity\Contracts $contract)
+    {
+        $this->contracts->removeElement($contract);
+    }
+
+    /**
+     * Get contracts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContracts()
+    {
+        return $this->contracts;
+    }
+
+    /**
+     * Add group
+     *
+     * @param \Bo\AdminBundle\Entity\group $group
+     *
+     * @return Employee
+     */
+    public function addGroup(\Bo\AdminBundle\Entity\group $group)
+    {
+        $this->group[] = $group;
+
+        return $this;
+    }
+
+    /**
+     * Remove group
+     *
+     * @param \Bo\AdminBundle\Entity\group $group
+     */
+    public function removeGroup(\Bo\AdminBundle\Entity\group $group)
+    {
+        $this->group->removeElement($group);
+    }
+
+    /**
+     * Get group
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    /**
+     * Set remove
+     *
+     * @param boolean $remove
+     *
+     * @return Employee
+     */
+    public function setRemove($remove)
+    {
+        $this->remove = $remove;
+
+        return $this;
+    }
+
+    /**
+     * Get remove
+     *
+     * @return boolean
+     */
+    public function getRemove()
+    {
+        return $this->remove;
+    }
+
+    /**
+     * Set tsdate
+     *
+     * @param integer $tsdate
+     *
+     * @return Employee
+     */
+    public function setTsdate($tsdate)
+    {
+        $this->tsdate = $tsdate;
+
+        return $this;
+    }
+
+    /**
+     * Get tsdate
+     *
+     * @return integer
+     */
+    public function getTsdate()
+    {
+        return $this->tsdate;
+    }
+
+    /**
+     * Add agenda
+     * @param \Bo\AdminBundle\Entity\Agenda $agenda
+     * @return Employee
+     */
+    public function addAgenda(\Bo\AdminBundle\Entity\Agenda $agenda)
+    {
+        $this->agenda[] = $agenda;
+
+        return $this;
+    }
+
+    /**
+     * Remove agenda
+     * @param \Bo\AdminBundle\Entity\Agenda $agenda
+     */
+    public function removeAgenda(\Bo\AdminBundle\Entity\Agenda $agenda)
+    {
+        $this->agenda->removeElement($agenda);
+    }
+
+    /**
+     * Get agenda
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAgenda()
+    {
+        return $this->agenda;
+    }
+}

@@ -1,0 +1,25 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for level in levels %}
+            <tr>
+                <td><a href="{{ path('level_show', { 'id': level.id }) }}">{{ level.id }}</a></td>
+                <td>{{ level.levelname }}</td>
+                <td>{% if level.creationdate %}{{ level.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-actions">
+                    <a href="{{ path('level_show', { 'id': level.id }) }}">show</a>
+                    <a href="{{ path('level_edit', { 'id': level.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="4">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

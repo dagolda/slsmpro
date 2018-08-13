@@ -1,0 +1,32 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.targetlevel'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+				<th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for group in groups %}
+            <tr>
+                <td {%if group.status==0%} class="completed_contracts"{%endif%}><a>{{ group.id }}</a></td>
+                <td {%if group.status==0%} class="completed_contracts"{%endif%}>{%if contracts[0] is defined and contracts[0].typecontract %}{{ contracts[0].typecontract.reference }}{%else%}---{%endif%}</td>
+                <td {%if group.status==0%} class="completed_contracts"{%endif%}>{{ group.name }}</td>
+                <td {%if group.status==0%} class="completed_contracts"{%endif%}>{{ group.targetlevel }}</td>
+                <td {%if group.status==0%} class="completed_contracts"{%endif%}>{% if group.startdate %}{{ group.startdate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+                <td {%if group.status==0%} class="completed_contracts"{%endif%}>{% if group.enddate %}{{ group.enddate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+                <td class="list-action"  width="126px">
+					{%if group.status==1%}
+						<a href="{{ path('home_timesheet_group', { 'idgroup': group.id }) }}">{{'action.addts'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="8">{{'message.no.found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

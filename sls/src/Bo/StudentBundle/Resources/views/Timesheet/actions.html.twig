@@ -1,0 +1,17 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td class="form-group">
+						<input type="text" class="form-control" id="inp-search">
+					</td>
+					<td><button type="submit" id="btn-search">{{'action.search'|trans([],'BoAdminBundle')}}</button></td>
+					{%if timesheets|length>1%}
+					<td>
+						<a href="{{ path('student_timesheet_allvalidate') }}">{{'action.validateall'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

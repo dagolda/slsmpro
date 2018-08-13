@@ -1,0 +1,144 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ orderform.id }}</td>
+            </tr>
+            <tr>
+                <th>Ordernumber</th>
+                <td>{{ orderform.ordernumber }}</td>
+            </tr>
+            <tr>
+                <th>Nbstudent</th>
+                <td>{{ orderform.nbstudent }}</td>
+            </tr>
+            <tr>
+                <th>Program</th>
+                <td>{{ orderform.program }}</td>
+            </tr>
+            <tr>
+                <th>Orderformnumber</th>
+                <td>{{ orderform.orderformnumber }}</td>
+            </tr>
+            <tr>
+                <th>Startrate</th>
+                <td>{% if orderform.startrate %}{{ orderform.startrate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Hourlyrate</th>
+                <td>{{ orderform.hourlyrate }}</td>
+            </tr>
+            <tr>
+                <th>Hoursnumber</th>
+                <td>{{ orderform.hoursnumber }}</td>
+            </tr>
+            <tr>
+                <th>Estimatedcost</th>
+                <td>{{ orderform.estimatedcost }}</td>
+            </tr>
+            <tr>
+                <th>Startrate1</th>
+                <td>{% if orderform.startrate1 %}{{ orderform.startrate1|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Hourlyrate1</th>
+                <td>{{ orderform.hourlyrate1 }}</td>
+            </tr>
+            <tr>
+                <th>Hoursnumber1</th>
+                <td>{{ orderform.hoursnumber1 }}</td>
+            </tr>
+            <tr>
+                <th>Estimatedcost1</th>
+                <td>{{ orderform.estimatedcost1 }}</td>
+            </tr>
+            <tr>
+                <th>Startrate2</th>
+                <td>{% if orderform.startrate2 %}{{ orderform.startrate2|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Hourlyrate2</th>
+                <td>{{ orderform.hourlyrate2 }}</td>
+            </tr>
+            <tr>
+                <th>Hoursnumber2</th>
+                <td>{{ orderform.hoursnumber2 }}</td>
+            </tr>
+            <tr>
+                <th>Estimatedcost2</th>
+                <td>{{ orderform.estimatedcost2 }}</td>
+            </tr>
+            <tr>
+                <th>Typeofcourse</th>
+                <td>{{ orderform.typeofcourse }}</td>
+            </tr>
+            <tr>
+                <th>Totalhours</th>
+                <td>{{ orderform.totalhours }}</td>
+            </tr>
+            <tr>
+                <th>Totalcost</th>
+                <td>{{ orderform.totalcost }}</td>
+            </tr>
+            <tr>
+                <th>Preparedby</th>
+                <td>{{ orderform.preparedby }}</td>
+            </tr>
+            <tr>
+                <th>Approvedby</th>
+                <td>{{ orderform.approvedby }}</td>
+            </tr>
+            <tr>
+                <th>Totalprice</th>
+                <td>{{ orderform.totalprice }}</td>
+            </tr>
+            <tr>
+                <th>Placeoftraining</th>
+                <td>{{ orderform.placeoftraining }}</td>
+            </tr>
+            <tr>
+                <th>Initlanguage</th>
+                <td>{% if orderform.initlanguage %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Weeklanguage</th>
+                <td>{% if orderform.weeklanguage %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Didmat</th>
+                <td>{% if orderform.didmat %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Classvisit</th>
+                <td>{% if orderform.classvisit %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Progressreport</th>
+                <td>{% if orderform.progressreport %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ orderform.location }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ orderform.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Schedule</th>
+                <td>{{ orderform.schedule }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ orderform.comment }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ orderform.status }}</td>
+            </tr>
+            <tr>
+                <th>Creationdate</th>
+                <td>{% if orderform.creationdate %}{{ orderform.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>

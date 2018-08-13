@@ -1,0 +1,43 @@
+    <div class="elapsed_message">
+		{% if count>0%} <b>{{count}}</b> {{'message.elapsed'|trans([],'BoAdminBundle')}}{% endif %}
+	</div>
+	<table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.group'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.contractnumber'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.receptiondate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.ftorpt'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.teachers'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.totalhour'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contract in contracts %}
+            <tr>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>
+				{%if contract.typeoftraining=="GR" and contract.group%}{{ contract.group.name }}{%elseif students[contract.id] is defined%}{{students[contract.id].firstname}} {{students[contract.id].name}}{%endif%}</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{{ contract.contractnumber }}</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{{ contract.receivedate|date('Y-m-d') }}</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{{ contract.typecontract }}</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{%if contract.typetime%}{{ contract.typetime }}{%else%}---{%endif%}</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>
+					{%set i=1%}
+					{%for teacher in contract.employee %}
+						{{ teacher.firstname }} {{ teacher.name }}{%if contract.employee|length>i%}<br>{%else%}{%set i=i+1%}{%endif%}
+					{%else%}
+						---
+					{%endfor%}
+				</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{{ contract.hoursnumber }}</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{% if contract.startdate %}{{ contract.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{% if contract.enddate %}{{ contract.enddate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+		{%else%}
+			<tr><td colspan="9">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

@@ -1,0 +1,24 @@
+usermessage_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:UserMessage:index" }
+    methods:  GET
+
+usermessage_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:UserMessage:show" }
+    methods:  GET
+
+usermessage_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:UserMessage:new" }
+    methods:  [GET, POST]
+
+usermessage_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:UserMessage:edit" }
+    methods:  [GET, POST]
+
+usermessage_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:UserMessage:delete" }
+    methods:  DELETE

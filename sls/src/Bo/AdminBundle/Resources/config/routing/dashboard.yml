@@ -1,0 +1,30 @@
+dashboard_timesheet:
+    path:     /timesheet/
+    defaults: { _controller: "BoAdminBundle:Dashboad:timesheet" }
+    methods:  GET
+dashboard_contracts:
+    path:     /contract/
+    defaults: { _controller: BodashboardBundle:Dashboad:contract }
+dashboard_validation:
+    path:     /validation/
+    defaults: { _controller: BodashboardBundle:Dashboad:validation }
+dashboard_Dashboard_index:
+    path:     /
+    defaults: { _controller: "BodashboardBundle:Dashboard:index" }
+    methods:  GET
+dashboard_Dashboard_show:
+    path:     /{id}/show
+    defaults: { _controller: "BodashboardBundle:Dashboard:show" }
+    methods:  GET
+dashboard_Dashboard_new:
+    path:     /new
+    defaults: { _controller: "BodashboardBundle:Dashboard:new" }
+    methods:  [GET, POST]
+dashboard_Dashboard_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BodashboardBundle:Dashboard:edit" }
+    methods:  [GET, POST]
+dashboard_Dashboard_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BodashboardBundle:Dashboard:delete" }
+    methods:  DELETE

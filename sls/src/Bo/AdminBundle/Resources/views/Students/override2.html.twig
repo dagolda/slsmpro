@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}} - {{'title.coursesgiven'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}
+{% block nav %}	
+	{%if user.students is defined and user.students!=null%}{%include "BoAdminBundle:Students:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block label %}<h1>{{'title.coursesgiven'|trans([],'BoAdminBundle')}} {{'label.id'|trans([],'BoAdminBundle')}}{{ tsstudent.timesheet.id }}</h1>{% endblock %}
+{% block body %}
+	<form action="{{ path('students_override_2',{'id':tsstudent.id}) }}" method="post" class="style">
+		<div id="body-content">
+			{%include "BoAdminBundle:Students:override2actions.html.twig"%}
+			<div class="show_content">
+				{%include "BoStudentBundle:TsStudent:tbshow.html.twig"%}
+			</div>
+			<br/>
+			<div class="container">
+				{%include "BoAdminBundle:TsValidation:newform.html.twig"%}
+			</div>		
+		</div>
+	</form>	
+{% endblock %}

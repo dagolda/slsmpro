@@ -1,0 +1,6 @@
+				<select name='holders' id='holders' required="true">
+					<option value="0" selected="delected">Select holder</option>
+					{%for holder in holders%}
+						<option value="{{holder[0]}}" {%if idholder is defined and holder[0] ==idholder%}selected='selected'{%endif%}>{{holder[1]}}</option>
+					{%endfor%}
+				</select>	

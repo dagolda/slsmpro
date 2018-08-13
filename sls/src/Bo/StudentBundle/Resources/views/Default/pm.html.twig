@@ -1,0 +1,19 @@
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li {%if pm=="tabeau-bord"%}class="active"{%endif%}>
+							<a href="{{ path('bo_student_homepage') }}">
+								{{'layout.menu.dashboard'|trans([],'BoAdminBundle')|upper}}
+							</a>
+						</li>
+						<li {%if pm=="request"%}class="active"{%endif%}>
+							<a href="{{ path('student_absences_index') }}">
+								{{'layout.menu.request'|trans([],'BoAdminBundle')|upper}}
+							</a>
+						</li>
+						<li>
+							<a href="http://slsmpro.com/wpslsm/" target="_blank">
+								{{'layout.menu.documents'|trans([],'BoAdminBundle')|upper}}
+							</a>
+						</li>
+					</ul>
+				</div>

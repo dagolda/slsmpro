@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block nav %}{% endblock %}
+{% block label %}<h1>Events edit</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('events_edit',{'id':events.id}) }}" method="post" class="style">
+			{{ form_errors(edit_form) }}
+			{%include "BoAdminBundle:Events:editactions.html.twig"%}
+			{%include "BoAdminBundle:Events:editform.html.twig"%}
+			{{ form_rest(edit_form) }}
+		</form>	
+	</div>
+{% endblock %}

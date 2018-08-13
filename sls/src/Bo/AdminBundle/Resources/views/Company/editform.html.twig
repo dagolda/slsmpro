@@ -1,0 +1,35 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="80%" class="sty_label">{{'label.denomination'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.nname) }}</td>	
+		</tr> 
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+            <th width="80%" class="sty_label">{{'label.account'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.compte, {'attr' : {'class' : 'account span3'}}) }}</td>	
+		</tr> 
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">{{'label.messageen'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>
+				{{ tinymce_init() }}
+				{{ form_widget(form.messageen) }}
+			</td>		
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">{{'label.messagefr'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>
+				{{ form_widget(form.messagefr) }}
+			</td>		
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+	</table>

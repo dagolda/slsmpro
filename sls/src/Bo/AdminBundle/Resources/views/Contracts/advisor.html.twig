@@ -1,0 +1,50 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="12%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.phonenumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.cellnumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="15%">{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+				<th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+		{%if contract.advisor or (contract.group and contract.group.advisor)%}
+			{%if contract.advisor%}{% set advisor=contract.advisor %}{%elseif contract.group and contract.group.advisor%}{% set advisor=contract.group.advisor %}{%endif%}
+            <tr>
+                <td>{{ advisor.firstname }}</td>
+                <td>{{ advisor.name }}</td>
+                <td>{{ advisor.email }}</td>
+                <td>{{ advisor.homenumber }}</td>
+                <td>{{ advisor.cellnumber }}</td>
+                <td>
+					{%set i=0 %}
+					{%for tc in advisor.typecontract %}
+						{%set i=i+1 %}
+						{{ tc }}
+						{%if i<advisor.typecontract|length%},{%endif%}
+					{%else%}
+						<center>---</center>
+					{%endfor%}				
+				</td>
+				<td class="list-action">
+				{%if contract.status==1 or contract.status==2%}	
+					{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].creation==1%}
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#delete_advisor">{{'action.delete'|trans([],'BoAdminBundle')}}</button>
+					{%endif%}
+				{%endif%}
+				</td>
+            </tr>
+		{%elseif contract.status==1 or contract.status==2%}
+			<tr>
+				<td colspan="7" class="list-action">
+					{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].creation==1%}
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_advisor">{{'label.addadvisor'|trans([],'BoAdminBundle')}}</button>				
+					{%endif%}
+				</td>						
+			</tr>
+        {% endif %}
+        </tbody>
+    </table>

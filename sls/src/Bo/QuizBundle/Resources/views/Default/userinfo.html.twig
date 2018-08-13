@@ -1,0 +1,9 @@
+
+						{% if app.user is defined and app.user is not null %}
+								<img src="{{ asset('images/login/man.jpg') }}" width="20px" border="0"/>
+								{{app.session.get('user').firstname}} {{app.session.get('user').name}}
+								|
+								<a href="{{ path('bo_quiz_logout') }}">
+								{{ 'layout.logout'|trans([], 'FOSUserBundle') }}
+								</a>
+						{% endif %}

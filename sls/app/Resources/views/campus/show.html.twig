@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.campus'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:local.html.twig"%}{% endblock %}
+{% block nav %}{%include "BoAdminBundle:Campus:show.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.campus'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Campus:showactions.html.twig"%}
+		<div class="display_content">
+			<legend>{{campus.reference}} {{'title.listofroom'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Campus:local.html.twig"%}
+		</div>			
+	</div>
+{% endblock %}

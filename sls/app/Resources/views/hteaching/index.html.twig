@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Hteaching list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idperiodpay</th>
+                <th>Hw0</th>
+                <th>Hw1</th>
+                <th>Hw2</th>
+                <th>Hw3</th>
+                <th>Hw4</th>
+                <th>Hw5</th>
+                <th>Extra</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hteaching in hteachings %}
+            <tr>
+                <td><a href="{{ path('hteaching_show', { 'id': hteaching.id }) }}">{{ hteaching.id }}</a></td>
+                <td>{{ hteaching.idperiodpay }}</td>
+                <td>{{ hteaching.hw0 }}</td>
+                <td>{{ hteaching.hw1 }}</td>
+                <td>{{ hteaching.hw2 }}</td>
+                <td>{{ hteaching.hw3 }}</td>
+                <td>{{ hteaching.hw4 }}</td>
+                <td>{{ hteaching.hw5 }}</td>
+                <td>{{ hteaching.extra }}</td>
+                <td>{{ hteaching.total }}</td>
+                <td>{{ hteaching.status }}</td>
+                <td>{% if hteaching.creationdate %}{{ hteaching.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('hteaching_show', { 'id': hteaching.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('hteaching_edit', { 'id': hteaching.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('hteaching_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

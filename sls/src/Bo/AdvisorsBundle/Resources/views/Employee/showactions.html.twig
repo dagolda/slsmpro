@@ -1,0 +1,16 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td>
+						<a href="{{ path('dash_validation_index') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					{%if timesheets|length>1%}
+						<td id="td_validate">
+							<button type="submit" id="btn-validate" value="{{teacher.id}}">{{'action.validateall'|trans([],'BoAdminBundle')}}</button>
+						</td>
+					{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

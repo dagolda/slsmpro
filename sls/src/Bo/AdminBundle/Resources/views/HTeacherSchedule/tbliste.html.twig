@@ -1,0 +1,22 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="11%">{{'label.teacher'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th width="24%">{{'label.schedule'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hts0 in htss0 %}
+			{%if listteacher[hts0.idemployee] is defined%}
+				<tr>
+					<td>{{ listteacher[hts0.idemployee].firstname }} {{ listteacher[hts0.idemployee].name }}</td>
+					<td>{% if hts0.startdate %}{{ hts0.startdate|date('Y-m-d') }}{% endif %}</td>
+					<td>{% if hts0.enddate %}{{ hts0.enddate|date('Y-m-d') }}{% endif %}</td>
+					<td>{% if hts is defined and hts[hts0.id] is defined %}{{  hts[hts0.id] }}{% endif %}</td>
+				</tr>
+			{%endif%}
+        {% endfor %}
+        </tbody>
+    </table>

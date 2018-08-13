@@ -1,0 +1,25 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etatmobilier in etatmobiliers %}
+            <tr>
+                <td><a href="{{ path('etatmobiliers_show', { 'id': etatmobilier.id }) }}">{{ etatmobilier.id }}</a></td>
+                <td>{{ etatmobilier.name }}</td>
+				<td>{% if etatmobilier.creationdate %}{{ etatmobilier.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('etatmobiliers_show', { 'id': etatmobilier.id }) }}">show</a>
+                    <a href="{{ path('etatmobiliers_edit', { 'id': etatmobilier.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="4">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

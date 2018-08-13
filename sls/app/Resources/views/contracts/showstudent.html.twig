@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.student'|trans([],'BoAdminBundle')}} >> {{'title.removeofcontract'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block stylesheets %}
+	{{parent()}}
+	<style>
+		.row.content {min-height: 660px}
+	</style>
+{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}
+{% block nav %}	{%include "BoAdminBundle:Students:rightshow.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.student'|trans([],'BoAdminBundle')}} >> {{'title.removeofcontract'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<table>
+					<tr>
+						{%if app.session.get('rights')['CONTRACTS']['Students'] is defined and app.session.get('rights')['CONTRACTS']['Students'].ddelete==1%}
+							<td class="delete-action">
+								{{ form_start(delete_form) }}
+									<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+								{{ form_end(delete_form) }}
+							</td>
+						{%endif%}
+						<td>
+							<a href="{{ path('contracts_show',{'id':contract.id}) }}">{{'action.cancel'|trans([],'BoAdminBundle')}}</a>
+						</td>
+					</tr>
+				</table>		
+			</div>
+		</div>	
+
+		<div class="display_content">
+			<legend>{{'entity.contract'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Students:showcontract.html.twig"%}
+		</div>
+
+		<div class="show_content">
+			{%include "BoAdminBundle:Students:show.html.twig"%}
+		</div>	
+	</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+				<div class="collapse navbar-collapse" id="myNavbar">
+					  <ul class="nav navbar-nav">
+						<li {%if pm=="evaluation"%}class="active"{%endif%}>
+							<a href="#">
+								{{'layout.menu.evaluation'|trans([],'BoAdminBundle')|upper}}
+							</a>
+						</li>
+						{%if dispresult is defined and dispresult==1%}
+							<li {%if pm=="evalquiz"%}class="active"{%endif%}>
+								<a href="{{ path('bo_quiz_evalquiz',{'id':evalquiz.id}) }}">
+									{{'label.result'|trans([],'BoAdminBundle')|upper}}
+								</a>
+							</li>
+						{%endif%}
+					  </ul>
+				</div>
+

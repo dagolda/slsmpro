@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- Timesheet creation{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}	{%if employee!=null%}{%include "BoAdminBundle:User:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>Timesheet creation</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('timesheet_addmany') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Timesheet:addmanyactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Timesheet:addmanyform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#btn-create").click(function(){
+				startam=$(".startamclass").val();
+				endam=$(".endamclass").val();
+				startpm=$(".startpmclass").val();
+				endpm=$(".endpmclass").val();
+				if(startam=="00:00" && endam=="00:00" && startpm=="00:00" && endpm=="00:00"){
+					alert("All time fields must not be empty!");
+					return false;
+				}	
+				if((startam!="00:00" && endam=="00:00") || (startam=="00:00" && endam!="00:00")){
+					alert("Both Start Am and End Am fields must be filled!");
+					return false;
+				}	
+				if((startpm!="00:00" && endpm=="00:00") || (startpm=="00:00" && endpm!="00:00")){
+					alert("Both Start Pm and End Pm fields must be filled!");
+					return false;
+				}	
+				return true;
+			});		
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

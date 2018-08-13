@@ -1,0 +1,203 @@
+<?php
+/*
+* Date Création: 20/02/2016
+* Auteur: N'VEKOUNOU Moise José
+* Nom fichier : TicketContacts.php
+* Description: Entité des contacts de l'équipe administrative
+*/
+namespace Bo\AdminBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="adm_ticketcontacts")
+ * @ORM\Entity(repositoryClass="Bo\AdminBundle\Repository\TicketContactsRepository")
+ */
+class TicketContacts
+{
+    /**
+    * @ORM\GeneratedValue
+    * @ORM\Id
+    * @ORM\Column(type="integer")
+    */
+    private $id;
+	
+	/**
+	* @ORM\Column(type="string", length=255, nullable=true)
+	*/
+	public $name;
+	
+    /**
+    * @ORM\ManyToMany(targetEntity="Employee")
+	* @ORM\JoinColumn(name="idemployee",referencedColumnName="id", nullable=true)
+    */      
+    private $employee;		
+	
+	/**
+	* @ORM\Column(type="string", length=255, nullable=true)
+	*/
+	public $cc;
+		
+    /**
+    * @ORM\Column(type="datetime")
+    */    
+	private $creationdate;
+	
+    /**
+    * @ORM\Column(type="string",length=255, nullable=true)
+    */
+    private $createby;
+	
+    /**
+    * Constructor
+    */
+    public function __construct()
+    {
+		$this->creationdate=new \DateTime();
+    }
+
+	public function __toString(){
+		return $this->name;
+	}
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return TicketContacts
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set creationdate
+     *
+     * @param \DateTime $creationdate
+     *
+     * @return TicketContacts
+     */
+    public function setCreationdate($creationdate)
+    {
+        $this->creationdate = $creationdate;
+
+        return $this;
+    }
+
+    /**
+     * Get creationdate
+     *
+     * @return \DateTime
+     */
+    public function getCreationdate()
+    {
+        return $this->creationdate;
+    }
+
+    /**
+     * Set createby
+     *
+     * @param string $createby
+     *
+     * @return TicketContacts
+     */
+    public function setCreateby($createby)
+    {
+        $this->createby = $createby;
+
+        return $this;
+    }
+
+    /**
+     * Get createby
+     *
+     * @return string
+     */
+    public function getCreateby()
+    {
+        return $this->createby;
+    }
+
+    /**
+     * Add employee
+     *
+     * @param \Bo\AdminBundle\Entity\Employee $employee
+     *
+     * @return TicketContacts
+     */
+    public function addEmployee(\Bo\AdminBundle\Entity\Employee $employee)
+    {
+        $this->employee[] = $employee;
+
+        return $this;
+    }
+
+    /**
+    * Remove employee
+    *
+    * @param \Bo\AdminBundle\Entity\Employee $employee
+    */
+    public function removeEmployee(\Bo\AdminBundle\Entity\Employee $employee)
+    {
+        $this->employee->removeElement($employee);
+    }
+
+    /**
+    * Get employee
+    *
+    * @return \Doctrine\Common\Collections\Collection
+    */
+    public function getEmployee()
+    {
+        return $this->employee;
+    }
+
+    /**
+     * Set cc
+     *
+     * @param string $cc
+     *
+     * @return TicketContacts
+     */
+    public function setCc($cc)
+    {
+        $this->cc = $cc;
+
+        return $this;
+    }
+
+    /**
+     * Get cc
+     *
+     * @return string
+     */
+    public function getCc()
+    {
+        return $this->cc;
+    }
+}

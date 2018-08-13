@@ -1,0 +1,12 @@
+{% extends 'home2.html.twig' %}
+{% block title %}{{parent()}}-{{'layout.menu.contracts'|trans([],'BoAdminBundle')}} >> {{'label.invitation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoHomeBundle:Default:contract.html.twig"%}{% endblock %}	
+{% block label %}<h1>{{'layout.menu.contracts'|trans([],'BoAdminBundle')}} >> {{'label.invitation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoHomeBundle:Invitation:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div id="content-liste">
+		{%include "BoHomeBundle:Invitation:tbliste.html.twig"%}
+	</div>
+{% endblock %}

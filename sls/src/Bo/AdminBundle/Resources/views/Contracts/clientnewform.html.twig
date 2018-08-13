@@ -1,0 +1,34 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="30%" class="sty_label">{{'label.reference'|trans([],'BoAdminBundle')}}</th>
+			<th width="30%" class="sty_label">{{'label.designation'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(client_form.reference) }}</td>
+			<td>{{ form_widget(client_form.designation) }}</td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">{{'label.phonenumber'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.email'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(client_form.phonenumber) }}</td>
+			<td>{{ form_widget(client_form.email) }}</td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th colspan="2" class="sty_label">address</th>
+		</tr>
+		<tr>
+			<td colspan="2">{{ form_widget(client_form.address) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th colspan="2" class="sty_label">Details</th>
+		</tr>
+		<tr>
+			<td colspan="2">{{ form_widget(client_form.details) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+	</table>

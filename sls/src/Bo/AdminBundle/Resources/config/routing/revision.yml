@@ -1,0 +1,12 @@
+revision_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Revision:edit" }
+    methods:  [GET, POST]
+revision_remove:
+    path:     /{id}/remove
+    defaults: { _controller: "BoAdminBundle:Revision:remove" }
+    methods:  [GET, POST]
+revision_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Revision:delete" }
+    methods:  DELETE

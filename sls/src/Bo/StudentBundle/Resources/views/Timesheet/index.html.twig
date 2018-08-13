@@ -1,0 +1,31 @@
+{% extends 'student.html.twig' %}
+{% block title %}{{parent()}} - {{'title.coursesgiven'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoStudentBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}	
+	{%if user.students is defined and user.students!=null%}{%include "BoStudentBundle:Default:rightshow.html.twig"%}{%endif%}
+{% endblock %}
+{% block label %}<h1>{{'title.coursesgiven'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+	<div id="content-liste">
+		{%include "BoStudentBundle:Timesheet:tbliste.html.twig"%}
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#btn-validated").click(function(){		
+				$('#content-liste').html("<center>Recherche en cours >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var DATA = 'description=1';
+				$.ajax({
+					type: "POST",
+					url: "{{ path('employee_search')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

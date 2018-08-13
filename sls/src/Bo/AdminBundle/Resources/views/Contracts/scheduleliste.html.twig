@@ -1,0 +1,12 @@
+            <tr>
+                <td>{{ schedule.dayfrom }}</td>
+                <td>{{ schedule.dayto }}</td>
+                <td>{{ schedule.startam|date('H:i') }}</td>
+                <td>{{ schedule.endam|date('H:i') }}</td>
+                <td>{{ schedule.startpm|date('H:i') }}</td>
+                <td>{{ schedule.endpm|date('H:i') }}</td>
+                <td>{{ schedule.hourperday }}</td>
+                <td class="list-action">
+                    <a href="{{ path('contractschedule_edit', { 'id': schedule.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>

@@ -1,0 +1,11 @@
+			{% if schedule.group==null and contract is defined%}
+				{%set students = contract.students%}
+					{%if students|length==1%}
+						{%set student=students[0]%}
+						{{student.firstname}} {{student.name}}
+					{%elseif contract.group%}
+						{{contract.group.name}} 
+					{%endif%}					
+			{%elseif schedule.group!=null and groups[schedule.idgroup] is defined%}
+				{{ groups[schedule.idgroup].name }}
+			{%else%}---{%endif%}</td>

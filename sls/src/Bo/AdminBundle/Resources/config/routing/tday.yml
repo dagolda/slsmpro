@@ -1,0 +1,24 @@
+tday_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Tday:index" }
+    methods:  GET
+
+tday_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Tday:show" }
+    methods:  GET
+
+tday_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Tday:new" }
+    methods:  [GET, POST]
+
+tday_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Tday:edit" }
+    methods:  [GET, POST]
+
+tday_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Tday:delete" }
+    methods:  DELETE

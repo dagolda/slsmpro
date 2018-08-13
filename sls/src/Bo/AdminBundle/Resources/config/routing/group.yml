@@ -1,0 +1,75 @@
+group_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Group:index" }
+    methods:  GET
+group_nmso:
+    path:     /nmso/
+    defaults: { _controller: "BoAdminBundle:Group:nmso" }
+    methods:  GET
+group_list:
+    path:     /list/
+    defaults: { _controller: "BoAdminBundle:Group:list" }
+    methods:  GET
+group_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdminBundle:Group:page" }
+group_back:
+    path:     /back/
+    defaults: { _controller: "BoAdminBundle:Group:back" }
+    methods:  GET
+group_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Group:show" }
+    methods:  GET
+group_actualize:
+    path:     /{id}/actualize
+    defaults: { _controller: "BoAdminBundle:Group:actualize" }
+    methods:  GET
+group_close:
+    path:     /{id}/close
+    defaults: { _controller: "BoAdminBundle:Group:close" }
+    methods:  [GET, POST]
+group_reopen:
+    path:     /{id}/reopen
+    defaults: { _controller: "BoAdminBundle:Group:reopen" }
+    methods:  [GET, POST]
+group_historic:
+    path:     /{id}/historic
+    defaults: { _controller: "BoAdminBundle:Group:historic" }
+    methods:  GET
+group_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Group:new" }
+    methods:  [GET, POST]
+group_duplicate:
+    path:     /{id}/duplicate
+    defaults: { _controller: "BoAdminBundle:Group:duplicate" }
+    methods:  [GET, POST]
+group_newbatch:
+    path:     /newbatch
+    defaults: { _controller: "BoAdminBundle:Group:newbatch" }
+    methods:  [GET, POST]
+group_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Group:edit" }
+    methods:  [GET, POST]
+group_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Group:search" }
+    methods:  [GET, POST]
+group_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Group:pagesearch" }
+    methods:  [GET, POST]
+group_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Group:delete" }
+    methods:  DELETE
+group_update:
+    path:  /update/
+    defaults: { _controller: "BoAdminBundle:Group:update" }
+    methods:  [GET, POST]
+group_updategroup:
+    path:  /updategroup/
+    defaults: { _controller: "BoAdminBundle:Group:updategroup" }
+    methods:  [GET, POST]

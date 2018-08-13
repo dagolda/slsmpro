@@ -1,0 +1,18 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td><button type="submit" id="btn-create">{{'action.update'|trans([],'BoAdminBundle')}}</button></td>
+					{%if (app.session.get('search') is defined and app.session.get('search') is not null) or (app.session.get('data') is defined and app.session.get('data') is not null)%}	
+						<td>
+							<a href="{{ path('contracts_back') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+						</td>
+					{%else%}
+						<td>
+							<a href="{{ path('contracts_index') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+						</td>
+					{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

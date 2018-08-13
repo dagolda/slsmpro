@@ -1,0 +1,26 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="4%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="15%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th width="15%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="15%">{{'label.phonenumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="15%">{{'label.cellnumber'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td {%if employee.active==false%} class="ping-color"{%elseif employee.available==false%} class="enquiry_processed"{%endif%}><a href="{{ path('employee_show', { 'id': employee.id }) }}">{{ employee.id }}</a></td>
+                <td {%if employee.active==false%} class="ping-color"{%elseif employee.available==false%} class="enquiry_processed"{%endif%}>{{ employee.firstname }}</td>
+                <td {%if employee.active==false%} class="ping-color"{%elseif employee.available==false%} class="enquiry_processed"{%endif%}>{{ employee.name }}</td>
+                <td {%if employee.active==false%} class="ping-color"{%elseif employee.available==false%} class="enquiry_processed"{%endif%}>{{ employee.email }}</td>
+                <td {%if employee.active==false%} class="ping-color"{%elseif employee.available==false%} class="enquiry_processed"{%endif%}>{{ employee.homenumber }}</td>
+                <td {%if employee.active==false%} class="ping-color"{%elseif employee.available==false%} class="enquiry_processed"{%endif%}>{{ employee.cellnumber }}</td>
+            </tr>
+		{%else%}
+			<tr><td colspan="6">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

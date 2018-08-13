@@ -1,0 +1,44 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="4%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.fullname'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.days'|trans([],'BoAdminBundle')}}</th>
+                <th width="8%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="8%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th width="7%">{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th width="6%">{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th width="7%">{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th width="6%">{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th width="6%">{{'label.hourperday'|trans([],'BoAdminBundle')}}</th>
+				<th width="120px">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+	{%if agendas|length>0%}
+		{%include "BoAdminBundle:Contracts:activeagenda.html.twig"%}
+	{%else%}
+		{%include "BoAdminBundle:Contracts:closedagenda.html.twig"%}
+	{%endif%}
+	{%if contract.status==1 or contract.status==2%}
+		<tr>
+			<td colspan="11" class="list-action">
+				{%if app.session.get('rights')['CONTRACTS']['Teacher Schedule'] is defined and app.session.get('rights')['CONTRACTS']['Teacher Schedule'].creation==1 and tsc_form!=null and trainings|length>0 and contract.students|length>0%}
+					<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_tsc">{{'action.add'|trans([],'BoAdminBundle')}}</button>
+				{%elseif trainings|length==0%}
+					<span>{{'message.error.addteacher'|trans([],'BoAdminBundle')}}</span>
+				{%elseif contract.students|length==0%}
+					<span>{{'message.error.addteacher2'|trans([],'BoAdminBundle')}}<span>
+				{%endif%}
+				{%if app.session.get('rights')['CONTRACTS']['Teacher Schedule'] is defined and app.session.get('rights')['CONTRACTS']['Teacher Schedule'].creation==1 and htss0[0] is defined%}
+					<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#historic_schedule">{{'action.seehistoric'|trans([],'BoAdminBundle')}}</button>
+				{% endif %}
+				{%if closed_agenda|length>0%}
+					<button type="button" class="show_close">{{'action.show'|trans([],'BoAdminBundle')}} {{'label.archived'|trans([],'BoAdminBundle')}}</button>	
+					<button type="button" class="hide_close">{{'action.hide'|trans([],'BoAdminBundle')}} {{'label.archived'|trans([],'BoAdminBundle')}}</button>
+				{% endif %}
+			</td>			
+		</tr>
+	{% endif %}
+        </tbody>
+    </table>

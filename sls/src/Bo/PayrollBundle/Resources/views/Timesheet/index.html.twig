@@ -1,0 +1,301 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.timesheet'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}
+{% block nav %}	
+	{%if employee!=null%}{%include "BoAdminBundle:Employee:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block label %}<h1>{{'entity.timesheet'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoPayrollBundle:Timesheet:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div class="pagination_content">
+		{% include 'BoPayrollBundle:Timesheet:criteria.html.twig' %}
+	</div>
+	<div id="content-liste">
+		{%include "BoPayrollBundle:Timesheet:tbliste.html.twig"%}
+	</div>
+	{% block javascripts %}
+		<script>		
+			$("#idpage").change(function(){
+				var str=$("#idpage option:selected");
+				page=str.text();
+				var DATA = 'motcle=' + page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('payroll_timesheet_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});	
+			$("#btn-search").click(function(){
+				$('#content-liste').html("<center>Recherche en cours >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				if($("#inp-search").val()==""){
+					alert("Search fields is empty!");
+					return false;
+				}
+				var criteria = $("#inp-search").val();	
+				var str=$(".month option:selected");
+				month=str.text();
+				var str=$(".year option:selected");
+				year=str.text();
+				var str=$("#idstatus option:selected");
+				status=str.val();	
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();				
+				var DATA = 'data=' + criteria+"#"+month+"#"+year+"#"+status+"#"+start+"#"+end;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('payroll_timesheet_search')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#btn_archived").click(function(){
+				var criteria = $("#inp-search").val();				
+				$('#content-liste').html("<center>Recherche en cours >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				$(".pagination_content").hide();
+				$(".total_number").hide();
+				$(".btn_archived").hide();
+				$(".list_link").show();
+				var DATA = "description=fini";
+				$.ajax({
+					type: "POST",
+					url: "{{ path('contracts_search')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+
+			});
+			$(".month").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idemployee option:selected");
+				employee=str.val();
+				var str=$(".month option:selected");
+				month=str.text();
+				var str=$(".year option:selected");
+				year=str.text();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var DATA = 'data='+month+':'+year+":"+start+":"+end+":"+status+":"+employee+":"+type;	
+				$.ajax({
+					type: "POST",
+					url: "{{ path('payroll_timesheet_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#idstatus").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idemployee option:selected");
+				employee=str.val();
+				var str=$(".month option:selected");
+				month=str.text();
+				var str=$(".year option:selected");
+				year=str.text();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var DATA = 'data='+month+':'+year+":"+start+":"+end+":"+status+":"+employee+":"+type;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('payroll_timesheet_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$(".year").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idemployee option:selected");
+				employee=str.val();
+				var str=$(".month option:selected");
+				month=str.text();
+				var str=$(".year option:selected");
+				year=str.text();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var DATA = 'data='+month+':'+year+":"+start+":"+end+":"+status+":"+employee+":"+type;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('payroll_timesheet_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#idemployee").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idemployee option:selected");
+				employee=str.val();
+				var str=$(".month option:selected");
+				month=str.text();
+				var str=$(".year option:selected");
+				year=str.text();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var DATA = 'data='+month+':'+year+":"+start+":"+end+":"+status+":"+employee+":"+type;				
+				$.ajax({
+					type: "POST",
+					url: "{{ path('payroll_timesheet_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#idtype").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idemployee option:selected");
+				employee=str.val();
+				var str=$(".month option:selected");
+				month=str.text();
+				var str=$(".year option:selected");
+				year=str.text();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var DATA = 'data='+month+':'+year+":"+start+":"+end+":"+status+":"+employee+":"+type;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('payroll_timesheet_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$(".startdate").change(function(){
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();
+				if(start>end){
+					alert("The end date can not be less than the start date");
+					return false;
+				}
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idemployee option:selected");
+				employee=str.val();
+				var str=$(".month option:selected");
+				month=str.text();
+				var str=$(".year option:selected");
+				year=str.text();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var DATA = 'data='+month+':'+year+":"+start+":"+end+":"+status+":"+employee+":"+type;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('payroll_timesheet_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$(".enddate").change(function(){
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();
+				if(start>end){
+					alert("The end date can not be less than the start date");
+					return false;
+				}
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idemployee option:selected");
+				employee=str.val();
+				var str=$(".month option:selected");
+				month=str.text();
+				var str=$(".year option:selected");
+				year=str.text();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var DATA = 'data='+month+':'+year+":"+start+":"+end+":"+status+":"+employee+":"+type;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('payroll_timesheet_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#btn_today").click(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var today = $("#today_date").val();
+				var option = 0;
+				var str=$("#idemployee option:selected");
+				employee=str.val();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var DATA = 'data='+today+":"+status+":"+employee+":"+type+':'+option;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('payroll_timesheet_navdate')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

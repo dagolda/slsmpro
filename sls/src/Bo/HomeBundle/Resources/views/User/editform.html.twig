@@ -1,0 +1,49 @@
+<form action="{{ path('bo_home_user_update',{'idemployee':employee.id}) }}" method="post" class="style">
+	{{ form_errors(edit_form) }}
+		<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+			<tr>
+				<th width="25%" class="sty_label">Name</th>
+				<th width="25%" class="sty_label">Firstname</th>
+				<th width="25%" class="sty_label">Sex</th>
+			</tr>
+			<tr>
+				<td>{{ form_widget(edit_form.name) }}</td>
+				<td>{{ form_widget(edit_form.firstname) }}</td>
+				<td>{{ form_widget(edit_form.sexe) }}</td>			
+			</tr>
+			<tr><td colspan="3">&nbsp;</td></tr>
+			<tr>
+				<th class="sty_label">Email</th>
+				<th class="sty_label">Hiring date</th>
+				<th class="sty_label">Birth date</th>
+			</tr>
+			<tr>
+				<td>{{ form_widget(edit_form.email) }}</td>			
+				<td>{{ form_widget(edit_form.hiringdate) }}</td>
+				<td>{{ form_widget(edit_form.birthdate) }}</td>			
+			</tr>
+			<tr><td colspan="3">&nbsp;</td></tr>
+		</table>
+		<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+			<tr>
+				<th width="40%" class="sty_label">Address 1</th>
+				<th width="40%" class="sty_label">Address 2</th>
+			</tr>
+			<tr>
+				<td>{{ form_widget(edit_form.address1) }}</td>
+				<td>{{ form_widget(edit_form.address2) }}</td>	
+			</tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+			<tr>
+				<th class="sty_label">Home phone</th>
+				<th class="sty_label">Cell phone</th>
+			</tr>
+			<tr>
+				<td>{{ form_widget(edit_form.homenumber) }}</td>
+				<td>{{ form_widget(edit_form.cellnumber) }}</td>	
+			</tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+		</table>
+	{{ form_rest(edit_form) }}
+	<div><button type="submit" id="btn-create">{{'action.update'|trans([],'BoAdminBundle')}}</button><button type="submit" id="btn_cancel">Cancel</button></div>
+</form>		

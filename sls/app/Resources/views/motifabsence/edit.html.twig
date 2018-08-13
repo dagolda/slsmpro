@@ -1,0 +1,18 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.absencemotif'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:setting.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.absencemotif'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('motifabsence_edit',{'id':motifabsence.id}) }}" method="post" class="style">
+			{{ form_errors(edit_form) }}
+			{%include "BoAdminBundle:MotifAbsence:editactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:MotifAbsence:editform.html.twig"%}
+				<br/>
+			</div>
+			{{ form_rest(edit_form) }}
+		</form>	
+	</div>
+{% endblock %}

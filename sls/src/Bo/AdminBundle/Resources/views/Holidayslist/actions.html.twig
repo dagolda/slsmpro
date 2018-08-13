@@ -1,0 +1,17 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td class="form-group">
+						<input type="text" class="form-control" id="inp-search">
+					</td>
+					<td><button type="submit" id="btn-search">{{'action.search'|trans([],'BoAdminBundle')}}</button></td>
+					{%if app.session.get('rights')['STAFF']['Employees'] is defined and app.session.get('rights')['STAFF']['Employees'].creation==1%}
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_holiday">{{'action.add'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

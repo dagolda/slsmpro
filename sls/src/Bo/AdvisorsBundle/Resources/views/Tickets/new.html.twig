@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.tickets'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'entity.tickets'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('dash_tickets_new') }}" enctype="multipart/form-data" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdvisorsBundle:Tickets:newactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdvisorsBundle:Tickets:newform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

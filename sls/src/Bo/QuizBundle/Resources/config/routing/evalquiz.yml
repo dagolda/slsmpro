@@ -1,0 +1,24 @@
+evalquiz_index:
+    path:     /
+    defaults: { _controller: "BoQuizBundle:Evalquiz:index" }
+    methods:  GET
+evalquiz_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoQuizBundle:Evalquiz:show" }
+    methods:  GET
+evalquiz_confirmation:
+    path:     /{id}/confirmation
+    defaults: { _controller: "BoQuizBundle:Evalquiz:confirmation" }
+    methods:  [GET, POST]
+evalquiz_new:
+    path:     /new
+    defaults: { _controller: "BoQuizBundle:Evalquiz:new" }
+    methods:  [GET, POST]
+evalquiz_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoQuizBundle:Evalquiz:edit" }
+    methods:  [GET, POST]
+evalquiz_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoQuizBundle:Evalquiz:delete" }
+    methods:  DELETE

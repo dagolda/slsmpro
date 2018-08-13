@@ -1,0 +1,52 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.employee'|trans([],'BoAdminBundle')}}</th>
+                <th>Contract Id</th>
+                <th>Group Id</th>
+                <th>{{'label.daysofschedule'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hour'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for schedule in schedules %}
+            <tr>
+                <td>{{ employee.firstname }} {{ employee.name }}</td>
+                <td>{%if schedule.contracts %}{{ schedule.contracts.id }}{%else%}---{%endif%}</td>
+                <td>{%if schedule.group %}{{ schedule.group.name }}{%else%}---{%endif%}</td>
+                <td>
+					{%if schedule.monday==true and schedule.tuesday==true and schedule.wednesday==true and schedule.thursday==true and schedule.friday==true%}
+						{{'label.frommonday.tofriday'|trans([],'BoAdminBundle')}}
+					{%else%}
+						{%if schedule.monday==true%}{{'label.monday'|trans([],'BoAdminBundle')}}, {%endif%}
+						{%if schedule.tuesday==true%}{{'label.tuesday'|trans([],'BoAdminBundle')}}, {%endif%}
+						{%if schedule.wednesday==true%}{{'label.wednesday'|trans([],'BoAdminBundle')}}, {%endif%}
+						{%if schedule.thursday==true%}{{'label.thursday'|trans([],'BoAdminBundle')}}, {%endif%}
+						{%if schedule.friday==true%}{{'label.friday'|trans([],'BoAdminBundle')}} {%endif%}
+					{%endif%}				
+				</td>
+                <td>{% if schedule.startdate %}{{ schedule.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if schedule.enddate %}{{ schedule.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if schedule.startam %}{{ schedule.startam|date('H:i') }}{% endif %}</td>
+                <td>{% if schedule.endam %}{{ schedule.endam|date('H:i') }}{% endif %}</td>
+                <td>{% if schedule.startpm %}{{ schedule.startpm|date('H:i') }}{% endif %}</td>
+                <td>{% if schedule.endpm %}{{ schedule.endpm|date('H:i') }}{% endif %}</td>
+                <td>{{ schedule.hourperday }}</td>
+                <td>{% if schedule.creationdate %}{{ schedule.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td nowrap>
+					<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#myModal{{schedule.id}}">{{'action.delete'|trans([],'BoAdminBundle')}}</button>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="13">{{'message.no.found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

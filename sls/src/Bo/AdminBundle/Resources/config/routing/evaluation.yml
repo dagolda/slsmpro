@@ -1,0 +1,63 @@
+evaluation_index:
+    path:     /index/
+    defaults: { _controller: "BoAdminBundle:Evaluation:index" }
+    methods:  GET
+evaluation_back:
+    path:     /{page}/back/
+    defaults: { _controller: "BoAdminBundle:Evaluation:back" }
+    methods:  GET
+evaluation_show:
+    path:     /{id}/{page}/show
+    defaults: { _controller: "BoAdminBundle:Evaluation:show" }
+    methods:  GET
+evaluation_evalquiz:
+    path:     /{id}/evalquiz
+    defaults: { _controller: "BoAdminBundle:Evaluation:evalquiz" }
+    methods:  GET
+evaluation_resultsquiz:
+    path:     /{id}/resultsquiz
+    defaults: { _controller: "BoAdminBundle:Evaluation:resultsquiz" }
+    methods:  GET
+evaluation_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Evaluation:new" }
+    methods:  [GET, POST]
+evaluation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Evaluation:edit" }
+    methods:  [GET, POST]
+evaluation_evaluate:
+    path:     /{id}/evaluate/
+    defaults: { _controller: "BoAdminBundle:Evaluation:evaluate" }
+    methods:  [GET, POST]
+evaluation_pdf:
+    path:     /{id}/pdf/
+    defaults: { _controller: "BoAdminBundle:Evaluation:pdf" }
+    methods:  [GET, POST]
+evaluation_sendresult:
+    path:     /{id}/send/result/
+    defaults: { _controller: "BoAdminBundle:Evaluation:sendresult" }
+    methods:  [GET, POST]
+evaluation_editfirst:
+    path:     /{id}/edit/first/
+    defaults: { _controller: "BoAdminBundle:Evaluation:editfirst" }
+    methods:  [GET, POST]
+evaluation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Evaluation:delete" }
+    methods:  DELETE
+evaluation_remove:
+    path:     /{id}/remove
+    defaults: { _controller: "BoAdminBundle:Evaluation:remove" }
+evaluation_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Evaluation:pagesearch" }
+    methods:  [GET, POST]
+evaluation_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Evaluation:search" }
+    methods:  [GET, POST]
+evaluation_confirmation:
+    path:  /{id}/confirmation/
+    defaults: { _controller: "BoAdminBundle:Evaluation:confirmation" }
+    methods:  [GET, POST]

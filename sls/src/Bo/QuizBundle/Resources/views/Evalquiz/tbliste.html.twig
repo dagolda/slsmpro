@@ -1,0 +1,37 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>Situation</th>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.phone'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.department'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.category'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evalquiz in evalquizzes %}
+            <tr>
+                <td {%if evalquiz.done==1%}class="wax_flat_1"{%endif%}><a href="{{ path('evalquiz_show', { 'id': evalquiz.id }) }}">{{ evalquiz.id }}</a></td>
+                <td {%if evalquiz.done==1%}class="wax_flat_1"{%endif%}>{{ evalquiz.user.situation }}</td>
+                <td {%if evalquiz.done==1%}class="wax_flat_1"{%endif%}>{{ evalquiz.user.name }}</td>
+                <td {%if evalquiz.done==1%}class="wax_flat_1"{%endif%}>{{ evalquiz.user.firstname }}</td>
+                <td {%if evalquiz.done==1%}class="wax_flat_1"{%endif%}>{{ evalquiz.user.phone }}</td>
+                <td {%if evalquiz.done==1%}class="wax_flat_1"{%endif%}>{{ evalquiz.user.department }}</td>
+                <td {%if evalquiz.done==1%}class="wax_flat_1"{%endif%}>{{ evalquiz.user.email }}</td>
+                <td {%if evalquiz.done==1%}class="wax_flat_1"{%endif%}>{{ evalquiz.category }}</td>
+                <td {%if evalquiz.done==1%}class="wax_flat_1"{%endif%}>{% if evalquiz.creationdate %}{{ evalquiz.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action  {%if evalquiz.done==1%}wax_flat_1{%endif%}">
+                    	<a href="{{ path('evalquiz_show', { 'id': evalquiz.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+			<a href="{{ path('evalquiz_edit', { 'id': evalquiz.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+	{%else%}
+			<tr><td colspan="10">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

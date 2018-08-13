@@ -1,0 +1,55 @@
+dash_enquiry_index:
+    path:     /
+    defaults: { _controller: "BoAdvisorsBundle:Enquiry:index" }
+    methods:  GET
+dash_enquiry_list:
+    path:     /list
+    defaults: { _controller: "BoAdvisorsBundle:Enquiry:list" }
+    methods:  GET
+dash_enquiry_back:
+    path:     /back/
+    defaults: { _controller: "BoAdvisorsBundle:Enquiry:back" }
+    methods:  GET
+dash_enquiry_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdvisorsBundle:Enquiry:page" }
+dash_enquiry_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdvisorsBundle:Enquiry:show" }
+    methods:  GET
+dash_enquiry_order:
+    path:     /{id}/order
+    defaults: { _controller: "BoAdvisorsBundle:Enquiry:order" }
+    methods:  GET
+dash_enquiry_new:
+    path:     /new
+    defaults: { _controller: "BoAdvisorsBundle:Enquiry:new" }
+    methods:  [GET, POST]
+dash_enquiry_resolved:
+    path:     /resolved/
+    defaults: { _controller: "BoAdvisorsBundle:Enquiry:resolved" }
+    methods:  [GET, POST]
+dash_enquiry_notresolved:
+    path:     /notresolved/
+    defaults: { _controller: "BoAdvisorsBundle:Enquiry:notresolved" }
+    methods:  [GET, POST]
+dash_enquiry_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdvisorsBundle:Enquiry:edit" }
+    methods:  [GET, POST]
+dash_enquiry_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdvisorsBundle:Enquiry:delete" }
+    methods:  DELETE
+dash_enquiry_search:
+    path:  /search/
+    defaults: { _controller: "BoAdvisorsBundle:Enquiry:search" }
+    methods:  [GET, POST]
+dash_enquiry_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdvisorsBundle:Enquiry:pagesearch" }
+    methods:  [GET, POST]
+dash_enquiry_extrasearch:
+    path:  /extrasearch/
+    defaults: { _controller: "BoAdvisorsBundle:Enquiry:extrasearch" }
+    methods:  [GET, POST]

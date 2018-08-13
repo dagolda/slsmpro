@@ -1,0 +1,24 @@
+			<div id="load_data">
+
+			    	<table class="events_tableau">
+					<thead>
+						    <tr>
+								<td class="without_btl">&nbsp;</td>
+								{% for i in range(0,4) %}
+									<th>{{dates[i]|date("l")|trans([],'BoAdminBundle')}}<br>{{dates[i]|date("d-m-Y")}}</th>
+								{%endfor%}
+						    </tr>
+					</thead>
+					<tbody>						
+						{%include "BoAdminBundle:Students:scheduleam.html.twig"%}
+						{%include "BoAdminBundle:Students:schedulepm.html.twig"%}
+					</tbody>
+				</table>
+				<input id="idstudent" type="hidden" value="{{student.id}}" />
+				<input id="startdate" type="hidden" value="{{dates[0]|date("d-m-Y")}}" />
+				<input id="enddate" type="hidden" value="{{dates[6]|date("d-m-Y")}}" />
+				<input id="pstartdate" type="hidden" value="{{pdates[0]|date("d-m-Y")}}" />
+				<input id="penddate" type="hidden" value="{{pdates[6]|date("d-m-Y")}}" />
+				<input id="nstartdate" type="hidden" value="{{ndates[0]|date("d-m-Y")}}" />
+				<input id="nenddate" type="hidden" value="{{ndates[6]|date("d-m-Y")}}" />
+			</div>

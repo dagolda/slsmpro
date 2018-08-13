@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Usedhours list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Ddate</th>
+                <th>Hour</th>
+                <th>Notif</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for usedhour in usedhours %}
+            <tr>
+                <td><a href="{{ path('usedhour_show', { 'id': usedhour.id }) }}">{{ usedhour.id }}</a></td>
+                <td>{% if usedhour.ddate %}{{ usedhour.ddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ usedhour.hour }}</td>
+                <td>{% if usedhour.notif %}Yes{% else %}No{% endif %}</td>
+                <td>{% if usedhour.creationdate %}{{ usedhour.creationdate|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('usedhour_show', { 'id': usedhour.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('usedhour_edit', { 'id': usedhour.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('usedhour_new') }}">Create a new usedhour</a>
+        </li>
+    </ul>
+{% endblock %}

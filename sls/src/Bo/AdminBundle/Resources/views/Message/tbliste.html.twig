@@ -1,0 +1,27 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.designation'|trans([],'BoAdminBundle')}}</th>
+                <th>French</th>
+                <th>English</th>
+                <th width='110px'>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for message in errormessages %}
+            <tr>
+                <td><a href="{{ path('message_show', { 'id': message.id }) }}">{{ message.id }}</a></td>
+                <td>{{ message.designation }}</td>
+                <td>{{ message.descfr }}</td>
+                <td>{{ message.descen }}</td>
+                <td class="list-action">
+                    <a href="{{ path('message_show', { 'id': message.id }) }}">show</a>
+                    <a href="{{ path('message_edit', { 'id': message.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="9">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

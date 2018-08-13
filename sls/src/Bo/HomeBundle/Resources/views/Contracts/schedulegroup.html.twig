@@ -1,0 +1,45 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+				<th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.days'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hourperday'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.hourperweek'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for group in groups %}
+			{%if group.startdate<=now and now<=group.enddate and tsg[group.id] is defined%}
+				{%set schedule=tsg[group.id]%}
+				{%set nbd=0%}
+				<tr>
+					<td>{{ group.name }}</td>
+					<td class="sty_label">
+						{%if schedule.monday==true and schedule.tuesday==true and schedule.wednesday==true and schedule.thursday==true and schedule.friday==true%}
+							{{'label.frommonday.tofriday'|trans([],'BoAdminBundle')}}
+							{%set nbd=5%}
+						{%else%}
+							{%if schedule.monday==true%}{%set nbd=nbd+1%}{{'label.monday'|trans([],'BoAdminBundle')}}, {%endif%}
+							{%if schedule.tuesday==true%}{%set nbd=nbd+1%}{{'label.tuesday'|trans([],'BoAdminBundle')}}, {%endif%}
+							{%if schedule.wednesday==true%}{%set nbd=nbd+1%}{{'label.wednesday'|trans([],'BoAdminBundle')}}, {%endif%}
+							{%if schedule.thursday==true%}{%set nbd=nbd+1%}{{'label.thursday'|trans([],'BoAdminBundle')}}, {%endif%}
+							{%if schedule.friday==true%}{%set nbd=nbd+1%}{{'label.friday'|trans([],'BoAdminBundle')}} {%endif%}
+						{%endif%}
+					</td>
+					<td align="center">{{ schedule.startam|date('H:i') }}</td>
+					<td align="center">{{ schedule.endam|date('H:i') }}</td>	
+					<td align="center">{{ schedule.startpm|date('H:i') }}</td>
+					<td align="center">{{ schedule.endpm|date('H:i') }}</td>	
+					<td align="center">{%if schedule.hourperday%}{{ schedule.hourperday }}{%else%}---{%endif%}</td>				
+					<td align="center">{%if schedule.hourperweek%}{{ schedule.hourperweek }}{%elseif schedule.hourperday%}{%set hourperday=schedule.hourperday*nbd%}{{ hourperday }}{%else%}---{%endif%}</td>
+				</tr>
+			{%endif%}
+		{%else%}
+			<tr><td colspan="8">No contract found</td></tr>
+		{%endfor%}			
+        </tbody>
+    </table>

@@ -1,0 +1,29 @@
+<p>Bonjour / Hello,</p>
+<p>
+	SLS Manager vient de recevoir une demande d'aide qui vous a été affectée. 
+</p>
+<p>
+	{%if ticket.subject %}
+		<div><b>Objet / Subject </b>: {{ticket.subject}}</div>
+	{%endif%}
+	<div><b>Applicant / Demandeur </b>: 
+		{%if ticket.employee %}
+			{{ ticket.employee.firstname }} {{ ticket.employee.name }}
+		{%elseif ticket.students %}
+			{{ ticket.students.firstname }} {{ ticket.students.name }}
+		{%endif%}
+	</div>
+	{%if ticket.openeddate%}
+		<div><b>Date de la demande / Request Date</b>: {{ticket.openeddate|date("d-m-Y")}}</div>
+	{%endif%}
+	{%if ticket.openeddate%}
+		<div>
+			<b>Message</b>:
+			<hr/>
+		</div>
+		<div>{{ticket.comments}}</div>
+	{%endif%}
+</p>
+<p>
+	SLS MANAGER for CLIC
+</p>

@@ -1,0 +1,31 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.language'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.noq'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.from'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.to'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.letter'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for scoring in scorings %}
+            <tr>
+                <td>{{ scoring.id }}</td>
+                <td>{{ scoring.language }}</td>
+                <td>{%if scoring.noq %}{{ scoring.noq }}{%else%}---{%endif%}</td>
+                <td>{{ scoring.binf }}</td>
+                <td>{{ scoring.bsup }}</td>
+                <td>{{ scoring.letter }}</td>
+                <td class="list-action">
+                    	<a href="{{ path('scoring_show', { 'id': scoring.id }) }}">show</a>
+			<a href="{{ path('scoring_edit', { 'id': scoring.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="6">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

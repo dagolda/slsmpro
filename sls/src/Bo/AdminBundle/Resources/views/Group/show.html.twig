@@ -1,0 +1,18 @@
+    <table>
+        <tbody>
+            <tr>
+				<th width="20%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th width="20%">{{'label.targetlevel'|trans([],'BoAdminBundle')}}</th>
+				<th width="20%">{{'label.teacher'|trans([],'BoAdminBundle')}}</th>
+				<th width="20%">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <td>{% if group.name %}{{ group.name }}{%else%}---{%endif%}</td>
+				<td>{% if group.targetlevel %}{{ group.targetlevel }}{%else%}---{%endif%}</td>
+				<td>{%if group.employee %}{%for teacher in group.employee %}{{ teacher.firstname }} {{ teacher.name }}{%endfor%}{%else%}---{%endif%}</td>
+				<td>{% if group.creationdate %}{{ group.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+        </tbody>
+    </table>

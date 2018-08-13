@@ -1,0 +1,28 @@
+dash_substitution_index:
+    path:     /index/
+    defaults: { _controller: "BoAdvisorsBundle:Substitution:index" }
+    methods:  GET
+dash_substitution_list:
+    path:     /liste/
+    defaults: { _controller: "BoAdvisorsBundle:Substitution:list" }
+    methods:  GET
+dash_substitution_page:
+    path:     /{option}/page
+    defaults: { _controller: "BoAdvisorsBundle:Substitution:page" }
+    methods:  GET
+dash_substitution_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdvisorsBundle:Substitution:show" }
+    methods:  GET
+dash_substitution_search:
+    path:  /search/
+    defaults: { _controller: "BoAdvisorsBundle:Substitution:search" }
+    methods:  [GET, POST]
+dash_substitution_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdvisorsBundle:Substitution:pagesearch" }
+    methods:  [GET, POST]
+dash_substitution_newts:
+    path:     /{id}/newts/
+    defaults: { _controller: "BoAdvisorsBundle:Substitution:newts" }
+    methods:  [GET, POST]

@@ -1,0 +1,48 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="30%" class="sty_label">{{'label.year'|trans([],'BoAdminBundle')}}-{{'label.month'|trans([],'BoAdminBundle')}}</th>
+			<th width="30%" class="sty_label">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+			<th width="30%" class="sty_label">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{%if periodPay.year and periodPay.month%}{{periodPay.year}}-{{periodPay.month}}{%endif%}</td>
+			<td>{%if hteaching.employee%}{{hteaching.employee.firstname}}{%endif%}</td>
+			<td>{%if hteaching.employee%}{{hteaching.employee.name}}{%endif%}</td>		
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">{{'label.week'|trans([],'BoAdminBundle')}} {{weeks[0]}}</th>
+			<th class="sty_label">{{'label.week'|trans([],'BoAdminBundle')}} {{weeks[1]}}</th>
+			<th class="sty_label">{{'label.week'|trans([],'BoAdminBundle')}} {{weeks[2]}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.hw0) }}</td>
+			<td>{{ form_widget(form.hw1) }}</td>	
+			<td>{{ form_widget(form.hw2) }}</td>				
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">{{'label.week'|trans([],'BoAdminBundle')}} {{weeks[3]}}</th>
+			<th class="sty_label">{{'label.week'|trans([],'BoAdminBundle')}} {%if weeks[4] is defined%}{{weeks[4]}}{%else%}(N/A){%endif%}</th>
+			<th class="sty_label">{{'label.week'|trans([],'BoAdminBundle')}} {%if weeks[5] is defined%}{{weeks[5]}}{%else%}(N/A){%endif%}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.hw3) }}</td>
+			<td>{%if weeks[4] is defined%}{{ form_widget(form.hw4) }}{%else%}{{ form_widget(form.hw4,{'display': 'hidden'}) }}{%endif%}</td>
+			<td>{%if weeks[5] is defined%}{{ form_widget(form.hw5) }}{%else%}{{ form_widget(form.hw5,{'display': 'hidden'}) }}{%endif%}</td>				
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">Extra</th>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.extra) }}</td>
+			<td></td>
+			<td></td>				
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+	</table>
+	<input type="hidden" name="idemployee" value="{{employee.id}}"/>
+	<input type="hidden" name="idperiodpay" value="{{periodPay.id}}"/>

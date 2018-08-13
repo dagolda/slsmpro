@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.documents'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tools.html.twig"%}{% endblock %}
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'entity.documents'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('documents_new') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Documents:newactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Documents:newform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

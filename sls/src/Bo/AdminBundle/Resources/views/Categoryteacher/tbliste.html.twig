@@ -1,0 +1,25 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>Catname</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categoryteacher in categoryteachers %}
+            <tr>
+                <td><a href="{{ path('categoryteacher_show', { 'id': categoryteacher.id }) }}">{{ categoryteacher.id }}</a></td>
+                <td>{{ categoryteacher.catname }}</td>
+                <td>{% if categoryteacher.creationdate %}{{ categoryteacher.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('categoryteacher_show', { 'id': categoryteacher.id }) }}">show</a>
+                    <a href="{{ path('categoryteacher_edit', { 'id': categoryteacher.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="4">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

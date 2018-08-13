@@ -1,0 +1,94 @@
+<?php
+/*
+* Date Création: 20/02/2016
+* Auteur: N'VEKOUNOU Moise José
+* Nom fichier : Tadmin.php
+* Description: Entité des heures d'aministration allouées aux professeurs
+*/
+namespace Bo\AdminBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+* @ORM\Entity
+* @ORM\Table(name="adm_tadmin")
+* @ORM\Entity(repositoryClass="Bo\AdminBundle\Repository\TadminRepository")
+*/
+class Tadmin 
+{
+    /**
+    * @ORM\GeneratedValue
+    * @ORM\Id
+    * @ORM\Column(type="integer")
+    */
+    private $id;
+		
+    /**
+    * @ORM\ManyToOne(targetEntity="Employee")
+	* @ORM\JoinColumn(name="idemployee",referencedColumnName="id")
+    */      
+    private $employee;
+		
+    /**
+    * @ORM\Column(type="date")
+    */    
+	private $startdate;	
+		
+    /**
+    * @ORM\Column(type="date")
+    */    
+	private $enddate;	
+	
+    /**
+    * @ORM\Column(type="time",nullable=true)
+    */    
+    private $startam;
+	
+    /**
+    * @ORM\Column(type="time",nullable=true)
+    */    
+    private $endam;
+
+    /**
+    * @ORM\Column(type="time",nullable=true)
+    */    
+    private $startpm;
+	
+    /**
+    * @ORM\Column(type="time",nullable=true)
+    */    
+    private $endpm;
+	
+    /**
+    * @ORM\Column(type="string",length=7)
+    */    
+    private $hour;
+	
+    /**
+    * @ORM\Column(type="string",length=2)
+    */    
+    private $month;
+	
+    /**
+    * @ORM\Column(type="string",length=4)
+    */    
+    private $year;
+			
+    /**
+    * @ORM\Column(type="string",length=2000, nullable=true)
+    */    
+    private $note;
+	
+    /**
+    * @ORM\Column(type="datetime")
+    */    
+	private $creationdate;	
+	
+    /**
+    * Constructor
+    */
+    public function __construct()
+    {
+		$this->creationdate=$this->startdate=$this->enddate=new \DateTime();
+    }
+}

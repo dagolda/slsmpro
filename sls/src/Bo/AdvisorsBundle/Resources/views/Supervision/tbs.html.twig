@@ -1,0 +1,37 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+				<th width="13%">{{'label.studentorgroup'|trans([],'BoAdminBundle')}}</th>
+                <th width="13%">{{'label.contractnumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="13%">{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+                <th width="20%">{{'label.pa'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.numberofhour'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contract in contracts %}
+            <tr>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>
+					{%if contract.group %}
+						{{ contract.group.name }}
+					{%elseif contract.students %}
+						{%set i=0%}
+						{%for student in contract.students %}
+							{{ student.firstname }} {{ student.name }}
+							{%if i<contract.students|length%}, {%endif%}
+						{%endfor%}
+					{%endif%}
+				</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{{ contract.typecontract }}</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{{ contract.advisor }}</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{{ contract.hoursnumber }}</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{% if contract.startdate %}{{ contract.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{% if contract.enddate %}{{ contract.enddate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+		{%else%}
+			<tr><td colspan="8">No contract found</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

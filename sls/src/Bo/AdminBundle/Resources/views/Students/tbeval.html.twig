@@ -1,0 +1,36 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>{{'label.title'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.phone'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.address'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.currentprofile'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.customer'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.contact'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.contactphone'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.evaldate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evaluation in evaluations %}
+            <tr>
+                <td>{{ evaluation.id }}</td>
+                <td>{{ evaluation.title }}</td>
+                <td>{{ evaluation.phone }}</td>
+                <td>{{ evaluation.addresse }}</td>
+                <td>{{ evaluation.currentprofile }}</td>
+                <td>{{ evaluation.customer }}</td>
+                <td>{{ evaluation.contact }}</td>
+                <td>{{ evaluation.phonecontact }}</td>
+                <td>{% if evaluation.evaldate %}{{ evaluation.evaldate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action" nowrap>
+                    <a href="{{ path('students_evaluation', { 'id': evaluation.id, 'idstudent': student.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="12">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

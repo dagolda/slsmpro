@@ -1,0 +1,19 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td>
+						<a href="{{ path('dash_orderform_headsup') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td>
+						<a href="{{ path('dash_orderform_contract',{'id':orderform.id}) }}">{{'action.generate'|trans([],'BoAdminBundle')}} {{'label.contract'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					{%if orderform.bordereau%}
+						<td>
+							<a class="btn btn-info btn-lg modal-delete" href="{{ asset('pdf/' ~ orderform.bordereau) }}" target="_blank">Download</a>
+						</td>
+					{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

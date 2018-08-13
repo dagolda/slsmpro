@@ -1,0 +1,5 @@
+				<select name='pm{{student.id}}' id='pm' {%if tst[student.id] is defined%}disabled{%endif%}>
+					<option value="P" {%if (pm is defined and pm =="P") or (tst[student.id] is defined and tst[student.id].legende=="P")%}selected='selected'{%endif%}>P</option>
+					<option value="N-S" {%if (pm is defined and pm =="N-S") or (tst[student.id] is defined and tst[student.id].legende=="N-S")%}selected='selected'{%endif%}>N-S</option>
+					<option value="ABS" {%if (pm is defined and pm =="ABS") or (tst[student.id] is defined and tst[student.id].legende=="ABS")%}selected='selected'{%endif%}>ABS</option>
+				</select>	

@@ -1,0 +1,15 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.diary'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.diary'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('diary_new') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Diary:newactions.html.twig"%}
+			{%include "BoAdminBundle:Diary:newform.html.twig"%}
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+tsdoc_index:
+    path:     /{idemployee}/index/
+    defaults: { _controller: "BoAdminBundle:Tsdoc:index" }
+    methods:  GET
+tsdoc_page:
+    path:     /{option}/{idemployee}/page/
+    defaults: { _controller: "BoAdminBundle:Tsdoc:page" }
+tsdoc_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Tsdoc:show" }
+    methods:  GET
+tsdoc_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Tsdoc:new" }
+    methods:  [GET, POST]
+tsdoc_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Tsdoc:edit" }
+    methods:  [GET, POST]
+tsdoc_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Tsdoc:search" }
+    methods:  [GET, POST]
+tsdoc_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Tsdoc:pagesearch" }
+    methods:  [GET, POST]
+tsdoc_delete:
+    path:     /{id}/{idemployee}/delete
+    defaults: { _controller: "BoAdminBundle:Tsdoc:delete" }
+    methods:  DELETE

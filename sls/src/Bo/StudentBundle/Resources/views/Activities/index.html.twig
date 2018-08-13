@@ -1,0 +1,19 @@
+{% extends 'student.html.twig' %}
+{% block title %}{{parent()}}- Activities{% endblock %}
+{% block smenu %}{%include "BoStudentBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>Activities list</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoStudentBundle:Activities:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	{%if total is defined and total>nb_cpp%}
+	<div class="pagination_content">
+		{% include 'BoStudentBundle:Activities:pagination.html.twig' %}
+	</div>
+	{%endif%}
+	<div id="content-liste">
+		{%include "BoStudentBundle:Activities:tbliste.html.twig"%}
+	</div>
+{% endblock %}

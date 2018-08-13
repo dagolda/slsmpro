@@ -1,0 +1,192 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.contracts'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.contracts'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('contracts_edit',{'id':contract.id}) }}" method="post" class="style">
+			{{ form_errors(edit_form) }}
+			{%include "BoAdminBundle:Contracts:editactions.html.twig"%}
+			<div class="display_content">
+				{%if contract.group%}
+					<legend>{{'label.group'|trans([],'BoAdminBundle')}}</legend>
+					{%include "BoAdminBundle:Contracts:group.html.twig"%}
+				{%elseif contract.students and contract.students|length>0%}
+					<legend>{{'label.student'|trans([],'BoAdminBundle')}}</legend>
+					{%include "BoAdminBundle:Contracts:student.html.twig"%}
+				{%endif%}			
+			</div>
+			<div class="show_content">
+				{%include "BoAdminBundle:Contracts:editform.html.twig"%}
+			</div>
+			{{ form_rest(edit_form) }}
+		</form>	
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_client" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.addclient'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('contracts_create_client') }}" method="post" class="style">
+			<div class="modal-body">
+				{{ form_errors(client_form) }}
+					{%include "BoAdminBundle:Contracts:clientnewform.html.twig"%}
+				{{ form_rest(client_form) }}
+			</div>
+			<div class="modal-footer">
+				<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+			</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_group" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.addgroup'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('contracts_create_group') }}" method="post" class="style">
+				<div class="modal-body">
+					{{ form_errors(group_form) }}
+						{%include "BoAdminBundle:Contracts:groupnewform.html.twig"%}
+					{{ form_rest(group_form) }}
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+
+	{% block javascripts %}
+		<script>
+			$("#btn-create").click(function(){
+				if($(".contractnumber").val()==""){
+					alert("Contract number field is empty!");
+					return false;
+				}
+				var str=$(".typecontract option:selected");
+				type=str.text();
+				if(type==""){
+					alert("Contract type field is empty!");
+					return false;
+				}
+				var str=$(".language option:selected");
+				language=str.text();
+				if(language==""){
+					alert("Language field is empty!");
+					return false;
+				}
+				var str=$(".group option:selected");
+				group=str.text();	
+				if(group==null || group==""){
+					if($(".gro_start").val()>$(".gro_end").val()){
+						alert("Group startdate can not be equal to or greater than the end date!");
+						return false;
+					}
+				}
+				if($(".startdate").val()>=$(".enddate").val()){
+					alert("Contract startdate can not be equal to or greater than the end date!");
+					return false;
+				}
+				return true;
+			});
+			$(".status").change(function(){
+				var str=$(".status option:selected");
+				status=str.val();
+				notes = $(".notes").text();				
+				if((status==3 || status==5) && notes==null){
+					alert("You have to enter a note for this status. Thank you to do it.");
+					return false;
+				}			
+				return true;
+			});
+			$(".campusclass").change(function(){
+				var str=$(".campusclass option:selected");
+				campus=str.text();
+				var address = $("#"+campus).val();
+				$(".addressclass").val(address);				
+				return false;
+			});
+			$(".field").change(function(){
+				var str=$(".field option:selected");
+				field=str.val();
+				if(field==1){
+					$(".group_pane").show();
+					$(".typetraining").val("GR");
+					$(".language").val("1");
+					$(".typecontract").val("1");
+					$(".tipetime").val("Full Time");
+					$(".schedule").val("From Monday to Friday, 8h00-12h00 & 13h00-16h30 (7 hours per day) 1 hour for lunch time & 15 minutes for break time in the morning & afternoon");
+					return false;
+				}
+				if(field==2){
+					$(".group_pane").show();
+					$(".typetraining").val("GR");
+					$(".typecontract").val("1");
+					$(".language").val("2");
+					$(".tipetime").val("Full Time");
+					return false;
+				}
+				if(field==3){
+					$(".group_pane").hide();
+					$(".typetraining").val("");
+					$(".language").val("1");
+					$(".typecontract").val("1");
+					$(".tipetime").val("Full Time");
+					$(".schedule").val("From Monday to Friday, 8h00-12h00 & 13h00-16h30 (7 hours per day) 1 hour for lunch time & 15 minutes for break time in the morning & afternoon");
+					return false;
+				}
+				if(field==4){
+					$(".group_pane").hide();
+					$(".typetraining").val("");
+					$(".language").val("2");
+					$(".typecontract").val("1");
+					$(".tipetime").val("Full Time");
+					$(".schedule").val("");
+					return false;
+				}	
+				if(field==6){
+					$(".group_pane").hide();
+					$(".typetraining").val("PR");
+					$(".language").val("French");
+					$(".typecontract").val("1");
+					$(".tipetime").val("Part Time");
+					$(".schedule").val("");
+					return false;
+				}
+				if(field==""){
+					$(".group_pane").hide();
+					$(".typetraining").val("");
+					$(".language").val("");
+					$(".typecontract").val("");
+					$(".tipetime").val("");
+					$(".schedule").val("");
+					return false;
+				}					
+				return false;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

@@ -1,0 +1,9 @@
+		{%if schedule.monday==true and schedule.tuesday==true and schedule.wednesday==true and schedule.thursday==true and schedule.friday==true%}
+			{{'label.frommonday.tofriday'|trans([],'BoAdminBundle')}}
+		{%else%}
+			{%if schedule.monday==true%}{{'label.monday'|trans([],'BoAdminBundle')}}, {%endif%}
+			{%if schedule.tuesday==true%}{{'label.tuesday'|trans([],'BoAdminBundle')}}, {%endif%}
+			{%if schedule.wednesday==true%}{{'label.wednesday'|trans([],'BoAdminBundle')}}, {%endif%}
+			{%if schedule.thursday==true%}{{'label.thursday'|trans([],'BoAdminBundle')}}, {%endif%}
+			{%if schedule.friday==true%}{{'label.friday'|trans([],'BoAdminBundle')}} {%endif%}
+		{%endif%}

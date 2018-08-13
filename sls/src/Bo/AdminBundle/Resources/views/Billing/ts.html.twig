@@ -1,0 +1,41 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.group'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.contractnumber'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.student'|trans([],'BoAdminBundle')}}</th>
+                <th>Date</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hour'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.legende'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ts in timesheets %}
+            <tr>
+                <td>{%if ts.group%}{{ ts.group.name }}{%else%}---{%endif%}</td>
+                <td>{%if billing.contract%}{{ billing.contract.contractnumber }}{%else%}---{%endif%}</td>
+                <td>{%if billing.contract.students and billing.contract.students|length==1%}
+					{%set student=billing.contract.students%}
+					{{ student[0].firstname }} {{ student[0].name }}
+					{%else%}---{%endif%}</td>
+                <td>{% if ts.ddate %}{{ ts.ddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if ts.startam %}{{ ts.startam|date('H:i') }}{% endif %}</td>
+                <td>{% if ts.endam %}{{ ts.endam|date('H:i') }}{% endif %}</td>
+                <td>{% if ts.startpm %}{{ ts.startpm|date('H:i') }}{% endif %}</td>
+                <td>{% if ts.endpm %}{{ ts.endpm|date('H:i') }}{% endif %}</td>
+                <td>{{ ts.hour }}</td>
+                <td>{{ ts.legende }}</td>
+                <td>{% if ts.creationdate %}{{ ts.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('billing_showts', { 'id': ts.id, 'idbilling':billing.id}) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

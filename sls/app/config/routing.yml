@@ -1,0 +1,39 @@
+bo_quiz:
+    resource: "@BoQuizBundle/Resources/config/routing.yml"
+    prefix:   /quiz/
+
+bo_coordinator:
+    resource: "@BoCoordinatorBundle/Resources/config/routing.yml"
+    prefix:   /coordinator/
+
+bo_advisors:
+    resource: "@BoAdvisorsBundle/Resources/config/routing.yml"
+    prefix:   /advisor/
+
+bo_payroll:
+    resource: "@BoPayrollBundle/Resources/config/routing.yml"
+    prefix:   /payroll/
+
+bo_student:
+    resource: "@BoStudentBundle/Resources/config/routing.yml"
+    prefix:   /student/
+
+bo_home:
+    resource: "@BoHomeBundle/Resources/config/routing.yml"
+    prefix:   /teacher/
+
+bo_user:
+    resource: "@BoUserBundle/Resources/config/routing.yml"
+    prefix:   /user/
+    
+bo_calendar:
+    resource: "@BoCalendarBundle/Resources/config/routing.yml"
+    prefix:   /calendar/
+
+bo_admin:
+    resource: "@BoAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin/
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

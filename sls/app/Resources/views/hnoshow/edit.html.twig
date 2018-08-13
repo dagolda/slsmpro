@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.payroll'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}} >> {{'label.noshow'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}
+{% block nav %}
+	{%include "BoAdminBundle:Payroll:rightshow.html.twig"%}
+{% endblock %}
+{% block label %}<h1>{{'entity.payroll'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}} >> {{'label.noshow'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('hnoshow_edit',{'id':hnoshow.id}) }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Hnoshow:editactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Hnoshow:editform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

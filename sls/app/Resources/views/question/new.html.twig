@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.quiz'|trans([],'BoAdminBundle')}} >> {{'label.question'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'entity.quiz'|trans([],'BoAdminBundle')}} >> {{'label.question'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('question_new',{'idquiz':idquiz}) }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoQuizBundle:Question:newactions.html.twig"%}
+			{%include "BoQuizBundle:Question:newform.html.twig"%}
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

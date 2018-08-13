@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}
+{% block nav %}
+	{%include "BoAdminBundle:Employee:rightshow.html.twig"%}
+{% endblock %}
+{% block label %}<h1>Timesheet Employee</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoPayrollBundle:Employee:showactions.html.twig"%}
+		<div id="disp-content">
+			{%include "BoPayrollBundle:Employee:timesheet.html.twig"%}	
+		</div>
+	</div>
+{% endblock %}

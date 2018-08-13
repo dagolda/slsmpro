@@ -1,0 +1,18 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['CONTRACTS']['Billing Contact'] is defined and app.session.get('rights')['CONTRACTS']['Billing Contact'].ddelete==1%}
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#myModal">
+							{{'action.delete'|trans([],'BoAdminBundle')}}
+						</button>
+					</td>
+				{%endif%}
+					<td>
+						<a href="{{ path('billingcontact_index') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

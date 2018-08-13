@@ -1,0 +1,24 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+		<th>{{'label.category'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.createdby'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>              
+                <td>{%if invitation.category==1 %}{{'label.contract'|trans([],'BoAdminBundle')}}{%elseif invitation.category==2 %}{{'label.substitution'|trans([],'BoAdminBundle')}}{%endif%}</td>
+                <td>{% if schedule.status==1 %}{{'status.accepted'|trans([],'BoAdminBundle')}}{%elseif schedule.status==2 %}{{'status.rejected'|trans([],'BoAdminBundle')}}{% else %}{{'status.sent'|trans([],'BoAdminBundle')}}{% endif %}</td>
+                <td>{{ invitation.createdby }}</td>
+                <td>{% if invitation.creationdate %}{{ invitation.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr colspan="4"><td>&nbsp;</td></tr>
+            <tr>
+                <th colspan="4">{{'label.content'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td colspan="4">{{ invitation.content|raw }}</td>                
+            </tr>
+            <tr colspan="4"><td>&nbsp;</td></tr>
+        </tbody>
+    </table>

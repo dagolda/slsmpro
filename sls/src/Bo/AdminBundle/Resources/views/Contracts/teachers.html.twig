@@ -1,0 +1,48 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="14%">{{'label.fullname'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.days'|trans([],'BoAdminBundle')}}</th>
+                <th width="8%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="8%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th width="6%">{{'label.amorpm'|trans([],'BoAdminBundle')}}</th>
+                <th width="7%">{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th width="6%">{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th width="7%">{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th width="6%">{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th width="6%">{{'label.hourperday'|trans([],'BoAdminBundle')}}</th>
+				<th width="120px">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+		{% set i=0 %}
+        {% for employee in teachers %}
+					{%if schedules[employee.id] is defined%}
+						{%if isgroup==1%}
+							{%set schedule=schedules[employee.id]%}
+							{%include "BoAdminBundle:Contracts:tbteacherliste.html.twig"%}
+						{%else%}
+							{%set allschedule=schedules[employee.id]%}
+							{%set nbd=0%}
+							{% set i=i+1 %}
+								{%for schedule in allschedule%}
+										{%include "BoAdminBundle:Contracts:tbteacherliste.html.twig"%}							
+								{%endfor%}
+						{%endif%}
+					{%endif%}
+        {% endfor %}
+				<tr>
+					<td colspan="11" class="list-action">
+						{%if app.session.get('rights')['CONTRACTS']['Teacher Schedule'] is defined and app.session.get('rights')['CONTRACTS']['Teacher Schedule'].creation==1 and tsc_form!=null%}
+							<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_tsc">{{'action.add'|trans([],'BoAdminBundle')}}</button>
+						{%elseif trainings|length==0%}
+							{{'message.error.addteacher'|trans([],'BoAdminBundle')}}
+						{%endif%}
+						{%if app.session.get('rights')['CONTRACTS']['Teacher Schedule'] is defined and app.session.get('rights')['CONTRACTS']['Teacher Schedule'].creation==1 and htss0[0] is defined%}
+							<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#historic_schedule">{{'action.seehistoric'|trans([],'BoAdminBundle')}}</button>
+						{% endif %}
+						{%if app.session.get('rights')['CONTRACTS']['Teacher Schedule'] is defined and app.session.get('rights')['CONTRACTS']['Teacher Schedule'].creation==1 and (contract.status==1 or schedule.status==0) %}
+					</td>				
+				</tr>
+        </tbody>
+    </table>

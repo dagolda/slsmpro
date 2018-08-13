@@ -1,0 +1,32 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="7%">{{'label.wcomprehension'|trans([],'BoAdminBundle')}}</th>
+		<th width="7%">{{'label.wexpression'|trans([],'BoAdminBundle')}}</th>
+                <th width="7%">{{'label.rcrt'|trans([],'BoAdminBundle')}}</th>
+                <th width="7%">{{'label.eert'|trans([],'BoAdminBundle')}}</th>
+                <th width="7%">{{'label.orc'|trans([],'BoAdminBundle')}}</th>
+                <th width="7%">{{'label.qsp'|trans([],'BoAdminBundle')}}</th>				
+                <th width="7%">{{'label.pr'|trans([],'BoAdminBundle')}}</th>
+                <th width="7%">{{'label.gr'|trans([],'BoAdminBundle')}}</th>
+                <th width="7%">{{'label.vb'|trans([],'BoAdminBundle')}}</th>
+                <th width="7%">{{'label.voc'|trans([],'BoAdminBundle')}}</th>
+                <th width="7%">{{'label.s'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+	   <tr>
+                <td>{{ evaluation.writencomprehension }}</td>
+                <td>{{ evaluation.writenexpression }}</td>
+                <td>{{ evaluation.rcresult }}</td>
+                <td>{{ evaluation.eeresult }}</td>
+                <td>{{ evaluation.oralunderstanding }}</td>
+                <td>{{ evaluation.qualityofdiscourse }}</td>			
+                <td>{{ evaluation.prononciation }}</td>
+                <td>{{ evaluation.grammar }}</td>
+                <td>{{ evaluation.verbs }}</td>
+                <td>{{ evaluation.vocabulary }}</td>
+                <td>{{ evaluation.syntaxe }}</td>
+            </tr>
+        </tbody>
+    </table>

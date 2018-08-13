@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Enquiry</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ enquiry.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ enquiry.name }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ enquiry.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Targetlevel</th>
+                <td>{{ enquiry.targetlevel }}</td>
+            </tr>
+            <tr>
+                <th>Ftorpt</th>
+                <td>{{ enquiry.ftorpt }}</td>
+            </tr>
+            <tr>
+                <th>Privateorgroup</th>
+                <td>{{ enquiry.privateorgroup }}</td>
+            </tr>
+            <tr>
+                <th>Gouvemp</th>
+                <td>{{ enquiry.gouvemp }}</td>
+            </tr>
+            <tr>
+                <th>Gtso</th>
+                <td>{{ enquiry.gtso }}</td>
+            </tr>
+            <tr>
+                <th>Language</th>
+                <td>{{ enquiry.language }}</td>
+            </tr>
+            <tr>
+                <th>Schedule</th>
+                <td>{{ enquiry.schedule }}</td>
+            </tr>
+            <tr>
+                <th>Hours</th>
+                <td>{{ enquiry.hours }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ enquiry.location }}</td>
+            </tr>
+            <tr>
+                <th>Workon</th>
+                <td>{{ enquiry.workon }}</td>
+            </tr>
+            <tr>
+                <th>Startdate</th>
+                <td>{% if enquiry.startdate %}{{ enquiry.startdate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Enddate</th>
+                <td>{% if enquiry.enddate %}{{ enquiry.enddate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Starttime</th>
+                <td>{% if enquiry.starttime %}{{ enquiry.starttime|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Endtime</th>
+                <td>{% if enquiry.endtime %}{{ enquiry.endtime|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ enquiry.comment }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ enquiry.status }}</td>
+            </tr>
+            <tr>
+                <th>Creationdate</th>
+                <td>{% if enquiry.creationdate %}{{ enquiry.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('enquiry_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('enquiry_edit', { 'id': enquiry.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:local.html.twig"%}{% endblock %}
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>Room Category creation</h1>{% endblock %}	
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('categoryroom_new') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Categoryroom:newactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Categoryroom:newform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

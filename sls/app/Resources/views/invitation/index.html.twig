@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Invitations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Categorie</th>
+                <th>Studentname</th>
+                <th>Status</th>
+                <th>Createdby</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for invitation in invitations %}
+            <tr>
+                <td><a href="{{ path('invitation_show', { 'id': invitation.id }) }}">{{ invitation.id }}</a></td>
+                <td>{{ invitation.categorie }}</td>
+                <td>{{ invitation.studentname }}</td>
+                <td>{{ invitation.status }}</td>
+                <td>{{ invitation.createdby }}</td>
+                <td>{% if invitation.creationdate %}{{ invitation.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('invitation_show', { 'id': invitation.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('invitation_edit', { 'id': invitation.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('invitation_new') }}">Create a new invitation</a>
+        </li>
+    </ul>
+{% endblock %}

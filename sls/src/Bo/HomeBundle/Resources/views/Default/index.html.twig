@@ -1,0 +1,293 @@
+{% extends 'home.html.twig' %}
+{% block title %}{{parent()}}- {{'admin.default.home'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}
+	{%include "BoHomeBundle:Default:tdb.html.twig"%}
+{% endblock %}
+{% block nav %}	
+	{%if employee!=null%}{%include "BoHomeBundle:Default:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block navbis %}
+	{%include "BoHomeBundle:Default:actions.html.twig"%}	
+{% endblock %}
+{% block label %}<h1>{{'admin.default.home'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+	<div class="panel-group">
+		{%include "BoHomeBundle:Default:schedules.html.twig"%}
+		{%if invitations|length>0 and b_invite==true%}
+			{%include "BoHomeBundle:Default:invitation.html.twig"%}
+		{%elseif dwelcome==1%}
+			{%include "BoHomeBundle:Default:homemessage.html.twig"%}
+		{%endif%}
+		{%include "BoHomeBundle:Default:clearance.html.twig"%}	
+		{%if tickets %}
+			{%include "BoHomeBundle:Default:helps.html.twig"%}
+		{%endif%}
+		{%if absences %}
+			{%include "BoHomeBundle:Default:absences.html.twig"%}
+		{%endif%}
+	</div>
+	<div class="container ggl_map">
+	  <!-- Modal -->
+	  <div class="modal fade" id="ottawa_map" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.googlemap'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+				{%include "BoStudentBundle:Default:ottawamap.html.twig"%}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="hull_map" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.googlemap'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+				{%include "BoStudentBundle:Default:hullmap.html.twig"%}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	
+	<!-- Begin employee document deleting -->
+	{%for epj in epjs%}
+		<div class="container">
+		  <!-- Modal -->
+		  <div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+			
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+				</div>
+				<div class="modal-body">
+				  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+				</div>
+				<div class="modal-footer">
+					{{ form_start(epjs_delete_form[epj.id]) }}
+						<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+					{{ form_end(epjs_delete_form[epj.id]) }}
+				</div>
+			  </div>
+			  
+			</div>
+		  </div>
+		</div>
+	{%endfor%}
+	<!-- End employee document deleting -->	
+	<div class="container">
+		<!-- Modal -->
+		<div class="modal fade" id="add_epj" role="dialog">
+			<div class="modal-dialog">
+			
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				  <h4 class="modal-title">{{'label.addmessage'|trans([],'BoAdminBundle')}}</h4>
+				</div>
+				<form action="{{ path('home_emppj_new') }}" enctype="multipart/form-data" method="post" class="style">
+					<div class="modal-body">
+						<div id=records_entity>
+							{{ form_errors(form) }}
+								{%include "BoHomeBundle:Emppj:newform.html.twig"%}
+							{{ form_rest(form) }}
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+					</div>
+				</form>	
+			  </div>
+			  
+			</div>
+		</div>
+	</div>
+		<div class="container">
+		  <!-- Modal -->
+		  <div class="modal fade" id="add_ticket" role="dialog">
+			<div class="modal-dialog">
+			
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				  <h4 class="modal-title">{{'label.addticket'|trans([],'BoAdminBundle')}}</h4>
+				</div>
+				<form action="{{ path('bo_home_newticket') }}" enctype="multipart/form-data" method="post" class="style" >
+					<div class="modal-body">
+						{{ form_errors(ticketform) }}
+						{%include "BoHomeBundle:Default:ticketform.html.twig"%}
+						{{ form_rest(ticketform) }}
+					</div>
+					<div class="modal-footer">
+						<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+						<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+					</div>
+				</form>	
+			  </div>
+			  
+			</div>
+		  </div>
+		</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_absence" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.addabsence'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('bo_home_newabsence') }}" method="post" class="modal-form">
+				<div class="modal-body">
+					{{ form_errors(absform) }}
+						{%include "BoHomeBundle:Default:absenceform.html.twig"%}
+					{{ form_rest(absform) }}
+				</div>
+				<div class="modal-footer">
+					<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+					<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}" id="btn-create">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	{% block javascripts %}
+		<script>	
+			$(".event_next_week").click(function(){
+				$(".current-event").hide();
+				$(".next-event").show();
+				var idemployee=$("#idemployee").val();
+				var startdate=$("#nstartdate").val();
+				var enddate=$("#nenddate").val();
+				$('.load_data').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var DATA = 'data='+idemployee+"#"+startdate+"#"+enddate;
+				loaddata(DATA);
+				return false;
+			});
+			$(".event_current_week").click(function(){
+				$(".next-event").hide();
+				$(".current-event").show();
+				var idemployee=$("#idemployee").val();
+				var startdate=$("#pstartdate").val();
+				var enddate=$("#penddate").val();
+				$('.load_data').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var DATA = 'data='+idemployee+"#"+startdate+"#"+enddate;
+				loaddata(DATA);
+				return false;
+			});	
+			function loaddata(DATA){
+				$.ajax({
+					type: "POST",
+					url: "{{ path('home_schedule_load')}}",
+					data: DATA,
+					cache: true,
+					success: function(data){
+						$('#load_data').html(data);
+					},
+					error: function(data,status,error){
+						$('#data_error').html(error);
+					}
+				});
+				return false;
+			}
+			$("#btn-create").click(function(){
+				startdate = new Date($(".abstart").val());
+				if( isNaN(startdate.getTime()) ){
+					alert("Invalid start date!");
+					return false;
+				}
+				enddate = new Date($(".abend").val());
+				if( isNaN(enddate.getTime()) ){
+					alert("Invalid end date!");
+					return false;
+				}
+				diff = enddate - startdate;
+				numerday = diff/(24*60*60*1000); 
+				if(numerday<0){
+					alert("Absence start date can not be greater than the end date!");
+					return false;
+				}else if(startdate>enddate){
+					alert("Absence start date can not be greater than the end date!");
+					return false;
+				}
+				return true;
+			});
+			$(".abstart").change(function(){
+				startdate = new Date($(".abstart").val());
+				if( isNaN(startdate.getTime()) ){
+					alert("Invalid start date!");
+					return false;
+				}
+				enddate = new Date($(".abend").val());
+				if( isNaN(enddate.getTime()) ){
+					alert("Invalid end date!");
+					return false;
+				}
+				diff = enddate - startdate;
+				numerday = diff/(24*60*60*1000); 
+				if(numerday<0){
+					alert("Absence start date can not be greater than the end date!");
+					return false;
+				}else if(startdate>enddate){
+					alert("Absence start date can not be greater than the end date!");
+					return false;
+				}else{
+					numerday++;
+					$(".numberday").val(numerday)
+				}
+				return true;
+			});	
+			$(".abend").change(function(){
+				startdate = new Date($(".abstart").val());
+				if( isNaN(startdate.getTime()) ){
+					alert("Invalid start date!");
+					return false;
+				}
+				enddate = new Date($(".abend").val());
+				if( isNaN(enddate.getTime()) ){
+					alert("Invalid end date!");
+					return false;
+				}
+				diff = enddate - startdate;
+				numerday = diff/(24*60*60*1000); 
+				if(numerday<0){
+					alert("Absence start date can not be greater than the end date!");
+					return false;
+				}else if(startdate>enddate){
+					alert("Absence start date can not be greater than the end date!");
+					return false;
+				}else{
+					numerday++;
+					$(".numberday").val(numerday)
+				}
+				return true;
+			});
+		</script>		
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

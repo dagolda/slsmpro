@@ -1,0 +1,20 @@
+coordinator_message_index:
+    path:     /
+    defaults: { _controller: "BoCoordinatorBundle:Message:index" }
+    methods:  GET
+coordinator_message_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoCoordinatorBundle:Message:show" }
+    methods:  GET
+coordinator_message_new:
+    path:     /new
+    defaults: { _controller: "BoCoordinatorBundle:Message:new" }
+    methods:  [GET, POST]
+coordinator_message_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoCoordinatorBundle:Message:edit" }
+    methods:  [GET, POST]
+coordinator_message_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoCoordinatorBundle:Message:delete" }
+    methods:  DELETE

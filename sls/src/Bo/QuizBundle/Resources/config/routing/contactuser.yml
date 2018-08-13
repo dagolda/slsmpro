@@ -1,0 +1,24 @@
+contactuser_index:
+    path:     /
+    defaults: { _controller: "BoQuizBundle:ContactUser:index" }
+    methods:  GET
+
+contactuser_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoQuizBundle:ContactUser:show" }
+    methods:  GET
+
+contactuser_new:
+    path:     /new
+    defaults: { _controller: "BoQuizBundle:ContactUser:new" }
+    methods:  [GET, POST]
+
+contactuser_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoQuizBundle:ContactUser:edit" }
+    methods:  [GET, POST]
+
+contactuser_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoQuizBundle:ContactUser:delete" }
+    methods:  DELETE

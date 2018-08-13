@@ -1,0 +1,24 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+			<th width="80%" class="sty_label">{{'label.subject'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.contacts, {'attr' : {'class' : 'contacts span3'}}) }}</td>		
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.filename'|trans([],'BoAdminBundle')}}</th>
+		</tr> 
+		<tr>
+			<td>{{ form_widget(form.filename) }}</td>	
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.message'|trans([],'BoAdminBundle')}}</th>
+		</tr> 
+		<tr>
+			<td>{{ form_widget(form.comments) }}</td>	
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+	</table>
+	{{ form_widget(form.subject, {'attr' : {'class' : 'subject span3'}}) }}

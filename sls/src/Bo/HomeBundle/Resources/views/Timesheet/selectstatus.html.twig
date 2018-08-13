@@ -1,0 +1,6 @@
+				<select name='idstatus' id='idstatus'>
+					<option value="1" {%if idstatus is defined and idstatus ==1%}selected='selected'{%endif%}>{{'status.submitted'|trans([],'BoAdminBundle')}}</option>
+					<option value="2" {%if idstatus is defined and idstatus ==2%}selected='selected'{%endif%}>{{'label.inprogress'|trans([],'BoAdminBundle')}}</option>
+					<option value="3" {%if idstatus is defined and idstatus ==3%}selected='selected'{%endif%}>{{'label.validated'|trans([],'BoAdminBundle')}}</option>
+					<option value="4" {%if idstatus is defined and idstatus ==4%}selected='selected'{%endif%}>{{'label.rejected'|trans([],'BoAdminBundle')}}</option>
+				</select>	

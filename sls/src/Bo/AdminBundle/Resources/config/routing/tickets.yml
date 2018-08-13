@@ -1,0 +1,39 @@
+tickets_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Tickets:index" }
+    methods:  GET
+tickets_list:
+    path:     /list/
+    defaults: { _controller: "BoAdminBundle:Tickets:list" }
+    methods:  GET
+tickets_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdminBundle:Tickets:page" }
+tickets_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Tickets:show" }
+    methods:  GET
+tickets_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Tickets:new" }
+    methods:  [GET, POST]
+tickets_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Tickets:edit" }
+    methods:  [GET, POST]
+tickets_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Tickets:delete" }
+    methods:  DELETE
+tickets_back:
+    path:     /back/
+    defaults: { _controller: "BoAdminBundle:Tickets:back" }
+    methods:  GET
+tickets_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Tickets:search" }
+    methods:  [GET, POST]
+tickets_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Tickets:pagesearch" }
+    methods:  [GET, POST]

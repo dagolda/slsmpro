@@ -1,0 +1,16 @@
+<div class="quiz_head">
+	<div>
+	{%if quiz.language%}
+		<b>{{'label.language'|trans([],'BoAdminBundle')}}</b>: {{quiz.language}}&nbsp;&nbsp;&nbsp;
+	{%endif%}
+	{%if quiz.category and quiz.category|length>0%}
+		<b>{{'label.category'|trans([],'BoAdminBundle')}}</b>: {%for category in quiz.category%}{{category.name}},{%endfor%}&nbsp;&nbsp;&nbsp;
+	{%endif%}
+	{%if quiz.type%}
+		<b>{{'label.type'|trans([],'BoAdminBundle')}}</b>: {{quiz.type.name}}&nbsp;&nbsp;&nbsp;
+	{%endif%}
+	{%if quiz.noq%}
+		<b>{{'label.noq'|trans([],'BoAdminBundle')}}</b>: {{quiz.noq}}&nbsp;&nbsp;&nbsp;
+	{%endif%}
+	</div>
+</div>

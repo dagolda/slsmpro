@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:setting.html.twig"%}{% endblock %}
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>Message list</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdminBundle:Message:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	{%if total is defined and total>nb_cpp%}
+	<div class="pagination_content">
+		{% include 'BoAdminBundle:Message:pagination.html.twig' %}
+	</div>
+	{%endif%}
+	<div id="content-liste">
+		{%include "BoAdminBundle:Message:tbliste.html.twig"%}
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#idpage").change(function(){
+				var str=$("#idpage option:selected");
+				page=str.text();
+				var DATA = 'motcle=' + page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('message_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});	
+			$("#btn-search").click(function(){
+				if($("#inp-search").val()==""){
+					alert("Search fields is empty!");
+					return false;
+				}
+				var criteria = $("#inp-search").val();				
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				$(".pagination_content").hide();
+				$(".total_number").hide();
+				$(".list_link").show();
+				var DATA = 'description=' + criteria;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('message_search')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

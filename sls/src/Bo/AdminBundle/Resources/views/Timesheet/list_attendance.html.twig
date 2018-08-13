@@ -1,0 +1,28 @@
+	{%if tsstudents!=null%}
+	<div>
+		<legend>Attendance of learners</legend>
+		<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+			<tr>
+				<th width="12%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+				<th width="12%">{{'label.name'|trans([],'BoAdminBundle')}}</th-->
+				<th width="10%">{{'label.am'|trans([],'BoAdminBundle')}}</th>
+				<th width="10%">{{'label.pm'|trans([],'BoAdminBundle')}}</th>
+				<th width="10%">{{'label.delay'|trans([],'BoAdminBundle')}}</th>
+				<th width="10%">{{'label.le'|trans([],'BoAdminBundle')}}</th>
+				<td width="24%">&nbsp;</td>
+			</tr>
+			{%for tsstudent in tsstudents%}
+				<tr>
+					<td class='ts_presence_value'>{{tsstudent.students.firstname}}</td>
+					<td class='ts_presence_value'>{{tsstudent.students.name}}</td>
+					<td class='ts_presence_value'>{%if tsstudent.am%}{{tsstudent.am}}{%else%}---{%endif%}</td>
+					<td class='ts_presence_value'>{%if tsstudent.pm%}{{tsstudent.pm}}{%else%}---{%endif%}</td>
+					<td>{%if tsstudent.delay%}{{tsstudent.delay}} {{'label.inminutes'|trans([],'BoAdminBundle')}}{%else%}---{%endif%}</td>
+					<td>{%if tsstudent.dh%}{{tsstudent.dh}} {{'label.inminutes'|trans([],'BoAdminBundle')}}{%else%}---{%endif%}</td>
+					<td>&nbsp;</td>
+				</tr>
+			{%endfor%}
+			<tr><td colspan="7">&nbsp;</td></tr>		
+		</table>		
+	</div>
+	{%endif%}	

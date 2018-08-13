@@ -1,0 +1,104 @@
+    <div class="agenda_title">
+		<center>
+			<span>{{'label.week'|trans([],'BoAdminBundle')}} {{dates[0]|date("W")}}</span>  >>  
+			<span>{{'label.from'|trans([],'BoAdminBundle')}} <span>{{dates[0]|date("d")}} {{dates[0]|date("F")|trans([],'BoAdminBundle')}} {{dates[0]|date("Y")}} {{'label.to'|trans([],'BoAdminBundle')}} {{dates[5]|date("d")}} {{dates[5]|date("F")|trans([],'BoAdminBundle')}} {{dates[5]|date("Y")}}</span></span>		
+		</center>		
+    </div>	
+    <table class="agenda_tableau">
+        <thead>
+            <tr>
+				<td class="without_btl">&nbsp;</td>
+				{% for i in datekeys %}
+					{%if i<5%}
+						<th>{{formatdates[i]}}</th>
+					{%else%}
+						<td width="1%">&nbsp;</td>
+					{%endif%}
+				{%endfor%}
+            </tr>
+        </thead>
+        <tbody>
+	{%set startam=null%}
+	{%set startpm=null%}
+	{%set endam=null%}
+	{%set endpm=null%}
+        {% for tt in ttkeys %}
+			{%set att = tt|split(":")%}
+            <tr>
+				{%if att[1]=="00" or att[1]=="30"%}
+					<td rowspan="2" class="agenda-tt" width="4%">{{tt}}</td>
+				{%endif%}
+				{% for i in datekeys %}
+					{%if agenda[i] is defined%}
+						{%if times[tt]<=higham%}
+							{%if agenda[i][tt] is defined%}
+								{%if agenda[i][tt]['startam'] is defined%}
+									{%set startam = agenda[i][tt]['startam']%}
+								{%endif%}
+								{%if agenda[i][tt]['endam'] is defined%}
+									{%set endam = agenda[i][tt]['endam']%}
+								{%endif%}
+								<td class="{%if dates[i]<today %}agenda-week-p{%elseif agenda[i][tt]['absence'] is defined and agenda[i][tt]['absence']==1%}agenda-week-a{%elseif agenda[i][tt]['s_absence'] is defined and agenda[i][tt]['s_absence']==1%}agenda-week-as{%elseif agenda[i][tt]['option']==1%}agenda-week{%else%}agenda-week-s{%endif%}" rowspan="{{agenda[i][tt]['hour']}}">
+									
+									<div class="agenda-label">{{agenda[i][tt]['label']|raw}}</div>
+									
+									{%if dates[i]==today and agenda[i][tt]['absence'] is not defined%}
+										<div class='agenda-action'><center>	
+											{%if agenda[i][tt]['idsubs'] is defined and agenda[i][tt]['etsg'] is defined and agenda[i][tt]['etsg']==0 and agenda[i][tt]['etsc'] is defined and agenda[i][tt]['etsc']==0%}
+												<a href="{{ path('home_substitution_newts', { 'id': agenda[i][tt]['idsubs'] }) }}">{{'action.addts'|trans([],'BoAdminBundle')}}</a>
+										
+											{%elseif agenda[i][tt]['idcontract'] is defined and agenda[i][tt]['idcontract']!=null and agenda[i][tt]['etsc'] is defined and agenda[i][tt]['etsc']==0%}
+												<a href="{{ path('home_timesheet_add', { 'idcontract': agenda[i][tt]['idcontract'] }) }}" {%if agenda[i]['endam'] is defined and cth>0 and cth<agenda[i]['endam']%} class="disabled"{%endif%}>{{'action.addts'|trans([],'BoAdminBundle')}}</a>
+											{%elseif agenda[i][tt]['idgroup'] is defined and agenda[i][tt]['idgroup']!=null and agenda[i][tt]['etsg'] is defined and agenda[i][tt]['etsg']==0%}
+												<a href="{{ path('home_timesheet_group', { 'idgroup': agenda[i][tt]['idgroup'] }) }}" {%if agenda[i]['endam'] is defined and cth>0 and cth<agenda[i]['endam']%} class="disabled"{%endif%}>{{'action.addts'|trans([],'BoAdminBundle')}}</a>
+											{%endif%}
+											
+										<center></div>									
+									{%endif%}
+								</td>
+							{%elseif times[tt]<endam and times[tt]>=startam%}
+							{%else%}
+								<td class="agenda-week1">&nbsp;</td>
+							{%endif%}
+						{%else%}
+							{%if agenda[i][tt] is defined%}
+								{%if agenda[i][tt]['startpm'] is defined%}
+									{%set startpm = agenda[i][tt]['startpm']%}
+								{%endif%}
+								{%if agenda[i][tt]['endpm'] is defined%}
+									{%set endpm = agenda[i][tt]['endpm']%}
+								{%endif%}
+								<td class="{%if dates[i]<today %}agenda-week-p{%elseif agenda[i][tt]['absence'] is defined and agenda[i][tt]['absence']==1%}agenda-week-a{%elseif agenda[i][tt]['s_absence'] is defined and agenda[i][tt]['s_absence']==1%}agenda-week-as{%elseif agenda[i][tt]['option']==1%}agenda-week{%else%}agenda-week-s{%endif%}" rowspan="{{agenda[i][tt]['hour']}}">
+								
+									<div class="agenda-label">{{agenda[i][tt]['label']|raw}}</div>
+									
+									{%if dates[i]==today and agenda[i][tt]['absence'] is not defined%}
+										<div class='agenda-action'><center>	
+										
+											{%if agenda[i][tt]['idsubs'] is defined and agenda[i][tt]['etsg'] is defined and agenda[i][tt]['etsg']==0 and agenda[i][tt]['etsc'] is defined and agenda[i][tt]['etsc']==0%}
+												<a href="{{ path('home_substitution_newts', { 'id': agenda[i][tt]['idsubs'] }) }}" >{{'action.addts'|trans([],'BoAdminBundle')}}</a>											{%elseif agenda[i][tt]['idcontract'] is defined and agenda[i][tt]['idcontract']!=null and agenda[i][tt]['etsc'] is defined and agenda[i][tt]['etsc']==0%}
+												<a href="{{ path('home_timesheet_add', { 'idcontract': agenda[i][tt]['idcontract'] }) }}" {%if agenda[i]['endpm'] is defined and cth>0 and cth<agenda[i]['endpm']%} class="disabled"{%endif%}>{{'action.addts'|trans([],'BoAdminBundle')}}</a>
+											{%elseif agenda[i][tt]['idgroup'] is defined and agenda[i][tt]['idgroup']!=null and agenda[i][tt]['etsg'] is defined and agenda[i][tt]['etsg']==0%}
+												<a href="{{ path('home_timesheet_group', { 'idgroup': agenda[i][tt]['idgroup'] }) }}" {%if agenda[i]['endpm'] is defined and cth>0 and cth<agenda[i]['endpm']%} class="disabled"{%endif%}>{{'action.addts'|trans([],'BoAdminBundle')}}</a>
+											{%endif%}
+											
+										<center></div>										
+									{%endif%}
+									
+								</td>
+							{%elseif times[tt]<endpm and times[tt]>=startpm%}
+							{%else%}
+								<td class="agenda-week1">&nbsp;</td>
+							{%endif%}						
+						{%endif%}
+					{%else%}
+						<td class="agenda-week1">&nbsp;</td>
+					{%endif%}
+				{%endfor%}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+	<input id="idemployee" type="hidden" value="{{employee.id}}" />
+	<input id="startdate" type="hidden" value="{{dates[0]|date("d-m-Y")}}" />
+	<input id="enddate" type="hidden" value="{{dates[5]|date("d-m-Y")}}" />

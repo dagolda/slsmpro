@@ -1,0 +1,19 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['ROOMS']['Category Room'] is defined and app.session.get('rights')['ROOMS']['Category Room'].search==1%}
+					<td class="form-group">
+						<input type="text" class="form-control" id="inp-search">
+					</td>
+					<td><button type="submit" id="btn-search">{{'action.search'|trans([],'BoAdminBundle')}}</button></td>
+				{%endif%}
+				{%if app.session.get('rights')['ROOMS']['Category Room'] is defined and app.session.get('rights')['ROOMS']['Category Room'].creation==1%}
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_category">{{'action.add'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

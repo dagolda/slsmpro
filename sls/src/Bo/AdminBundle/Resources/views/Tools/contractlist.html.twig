@@ -1,0 +1,82 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+				<th width="3%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="4%">{{'label.type'|trans([],'BoAdminBundle')}}</th>
+                <th width="7%">{{'label.ftorpt'|trans([],'BoAdminBundle')}}</th>
+                <th width="9%">{{'label.group'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.student'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.number'|trans([],'BoAdminBundle')}}</th>
+                <th width="6%">{{'label.field'|trans([],'BoAdminBundle')}}</th>
+                <th width="6%">{{'label.session'|trans([],'BoAdminBundle')}}</th>
+                <th width="3%">{{'label.step'|trans([],'BoAdminBundle')}}</th>
+                <th width="3%">{{'label.room'|trans([],'BoAdminBundle')}}</th>
+                <th width="13%">{{'label.teacher'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.advisor'|trans([],'BoAdminBundle')}}</th>
+                <th width="7%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="7%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th width="120px">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contract in contracts %}
+            <tr>
+                <td {%if contract.typecontract and (contract.typecontract=="Non-NMSO" or contract.typecontract=="Private") and contract.typetime=="Full Time"%}class="blue_grey_3d"{%elseif contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{{ contract.id }}</td>
+                <td {%if contract.typecontract and (contract.typecontract=="Non-NMSO" or contract.typecontract=="Private") and contract.typetime=="Full Time"%}class="blue_grey_3d"{%elseif contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{{ contract.typecontract }}</td>
+				<td {%if contract.typecontract and (contract.typecontract=="Non-NMSO" or contract.typecontract=="Private") and contract.typetime=="Full Time"%}class="blue_grey_3d"{%elseif contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{{ contract.typetime }}</td>
+                <td {%if contract.typecontract and (contract.typecontract=="Non-NMSO" or contract.typecontract=="Private") and contract.typetime=="Full Time"%}class="blue_grey_3d"{%elseif contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>
+				{%if contract.group%}{{ contract.group.name }}{%else%}N/A{%endif%}</td>
+                <td {%if contract.typecontract and (contract.typecontract=="Non-NMSO" or contract.typecontract=="Private") and contract.typetime=="Full Time"%}class="blue_grey_3d"{%elseif contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>
+					{%if contract.students is defined and contract.students|length==1%}
+						{%for student in contract.students %}
+							{{ student.firstname }} {{ student.name }}
+						{%else%}
+							---
+						{%endfor%}				
+					{%endif%}
+				</td>
+                <td {%if contract.typecontract and (contract.typecontract=="Non-NMSO" or contract.typecontract=="Private") and contract.typetime=="Full Time"%}class="blue_grey_3d"{%elseif contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{{ contract.contractnumber }}</td>
+				<td {%if contract.typecontract and (contract.typecontract=="Non-NMSO" or contract.typecontract=="Private") and contract.typetime=="Full Time"%}class="blue_grey_3d"{%elseif contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{%if contract.workfields%}{{ contract.workfields }}{%else%}N/A{%endif%}</td>
+                <td {%if contract.typecontract and (contract.typecontract=="Non-NMSO" or contract.typecontract=="Private") and contract.typetime=="Full Time"%}class="blue_grey_3d"{%elseif contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{%if contract.session%}{{ contract.session }}{%else%}N/A{%endif%}</td>
+                <td {%if contract.typecontract and (contract.typecontract=="Non-NMSO" or contract.typecontract=="Private") and contract.typetime=="Full Time"%}class="blue_grey_3d"{%elseif contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{%if contract.step%}{{ contract.step }}{%else%}N/A{%endif%}</td>
+                <td {%if contract.typecontract and (contract.typecontract=="Non-NMSO" or contract.typecontract=="Private") and contract.typetime=="Full Time"%}class="blue_grey_3d"{%elseif contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>
+					{%if contract.local is defined and contract.local|length==1%}
+						{%for room in contract.local %}
+							{{ room.reference }}
+						{%endfor%}
+					{%elseif contract.group and contract.group.local is defined and contract.group.local|length==1%}
+						{%for room in contract.group.local %}
+							{{ room.reference }}
+						{%endfor%}
+					{%else%}
+						---				
+					{%endif%}
+				</td>
+                <td {%if contract.typecontract and (contract.typecontract=="Non-NMSO" or contract.typecontract=="Private") and contract.typetime=="Full Time"%}class="blue_grey_3d"{%elseif contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>
+					{%set i=1%}
+					{%if contract.group and contract.group.employee|length>0%}
+						{%for teacher in contract.group.employee %}
+							{{ teacher.firstname }} {{ teacher.name }}{%if contract.group.employee|length>i%}<br>{%else%}{%set i=i+1%}{%endif%}
+						{%endfor%}
+					{%elseif contract.employee|length>0%}
+						{%for teacher in contract.employee %}
+							{{ teacher.firstname }} {{ teacher.name }}{%if contract.employee|length>i%}<br>{%else%}{%set i=i+1%}{%endif%}
+						{%endfor%}
+					{%else%}
+						---
+					{%endif%}
+				</td>
+                <td {%if contract.typecontract and (contract.typecontract=="Non-NMSO" or contract.typecontract=="Private") and contract.typetime=="Full Time"%}class="blue_grey_3d"{%elseif contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{%if contract.advisor%}{{ contract.advisor.firstname }} {{ contract.advisor.name }}{%else%}---{%endif%}</td>
+                <td {%if contract.typecontract and (contract.typecontract=="Non-NMSO" or contract.typecontract=="Private") and contract.typetime=="Full Time"%}class="blue_grey_3d"{%elseif contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{% if contract.startdate %}{{ contract.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td {%if contract.typecontract and (contract.typecontract=="Non-NMSO" or contract.typecontract=="Private") and contract.typetime=="Full Time"%}class="blue_grey_3d"{%elseif contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{% if contract.enddate %}{{ contract.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td class="list-action {%if contract.typecontract and (contract.typecontract=="Non-NMSO" or contract.typecontract=="Private") and contract.typetime=="Full Time"%}blue_grey_3d{%elseif contract.status==0%}completed_contracts{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}wax_3d_1{%endif%}" nowrap>
+                    <a href="{{ path('contracts_show', { 'id': contract.id }) }}">
+						{{'action.show'|trans([],'BoAdminBundle')}}
+					</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="14">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

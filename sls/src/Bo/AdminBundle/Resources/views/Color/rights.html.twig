@@ -1,0 +1,41 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.rubric'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.subrubric'|trans([],'BoAdminBundle')}}</a></th>
+                <th>Active</th>
+                <th>{{'action.list'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'action.add'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'action.edit'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'action.delete'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'action.search'|trans([],'BoAdminBundle')}}</th>
+                <th>Others</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for right in rights %}
+            <tr>
+                <td>{{ right.rubric.nameen }}</td>
+                <td>{{ right.subrubric.nameen }}</td>
+                <td>{{ right.active }}</td>
+                <td>{{ right.liste }}</td>
+                <td>{{ right.creation }}</td>
+                <td>{{ right.edit }}</td>
+                <td>{{ right.ddelete }}</td>
+                <td>{{ right.search }}</td>
+                <td>{{ right.others }}</td>
+                <td class="list-action">
+                    <a href="{{ path('rights_edit', { 'id': right.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%if right.active==1 and right.liste==1 and right.creation==1 and right.edit==1 and right.ddelete==1 and right.search==1 and right.others==1%}
+						<a href="{{ path('rights_disable', { 'id': right.id }) }}">Disable</a>
+					{%else%}
+						<a href="{{ path('rights_enableall', { 'id': right.id }) }}">Enable</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="10">No right found</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

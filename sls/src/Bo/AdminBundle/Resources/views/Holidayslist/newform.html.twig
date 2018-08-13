@@ -1,0 +1,20 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th class="sty_label">Date</th>
+			<th width="40%" class="sty_label">{{'label.designation'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.ddate) }}</td>
+			<td>{{ form_widget(form.designation) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th width="40%" class="sty_label">Country</th>
+			<th class="sty_label">Province</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.country) }}</td>
+			<td>{{ form_widget(form.province) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+	</table>

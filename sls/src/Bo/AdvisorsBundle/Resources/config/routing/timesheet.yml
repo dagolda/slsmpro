@@ -1,0 +1,72 @@
+dash_timesheet_index:
+    path:     /
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:index" }
+    methods:  GET
+dash_timesheet_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:show" }
+    methods:  GET
+dash_timesheet_newbysearch:
+    path:     /{idcontract}/newbysearch
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:newbysearch" }
+    methods:  GET
+dash_timesheet_new:
+    path:     /new
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:new" }
+    methods:  [GET, POST]
+dash_timesheet_other:
+    path:     /other
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:other" }
+    methods:  [GET, POST]
+dash_timesheet_add:
+    path:     /add/{idcontract}/
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:addts" }
+    methods:  [GET, POST]
+dash_timesheet_group:
+    path:     /{idgroup}/group/
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:addtsgroup" }
+    methods:  [GET, POST]
+dash_timesheet_create:
+    path:     /create
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:create" }
+    methods:  [GET, POST]
+dash_timesheet_addmany:
+    path:     /new/many/
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:addmany" }
+    methods:  [GET, POST]
+dash_timesheet_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:edit" }
+    methods:  [GET, POST]
+dash_timesheet_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:delete" }
+    methods:  DELETE
+dash_timesheet_message:
+    path:     /message/
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:message" }
+    methods:  [GET, POST]
+dash_timesheet_contractsearch:
+    path:     /contractsearch/
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:contractsearch" }
+    methods:  POST
+dash_timesheet_search:
+    path:     /search/
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:search" }
+    methods:  POST
+dash_timesheet_checking:
+    path:     /checking/
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:checking" }
+    methods:  [GET, POST]
+dash_timesheet_extrasearch:
+    path:     /extrasearch/
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:extrasearch" }
+    methods:  POST
+dash_timesheet_datesearch:
+    path:     /datesearch/
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:datesearch" }
+    methods:  POST
+dash_timesheet_reloaddata:
+    path:     /reloaddata/
+    defaults: { _controller: "BoAdvisorsBundle:Timesheet:reloaddata" }
+    methods:  [GET, POST]

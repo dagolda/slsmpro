@@ -1,0 +1,41 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+				<th width="4%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.contractnumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.student'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+                <th width="18%">{{'label.pa'|trans([],'BoAdminBundle')}}</th>
+                <th width="8%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="8%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th width="22%">{{'label.schedule'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contract in contracts %}
+			{%if tcsc[contract.id] is defined%}
+				{%set tsc = tcsc[contract.id]%}
+				<tr>
+					<td {%if contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{{ contract.id }}</td>
+					<td {%if contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{{ contract.contractnumber }}</td>
+					<td  {%if contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>
+						{%if contract.students is defined and contract.students|length==1%}
+							{%for student in contract.students %}
+								{{ student.firstname }} {{ student.name }}
+							{%else%}
+								---
+							{%endfor%}				
+						{%endif%}
+					</td>
+					<td {%if contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{{ contract.typecontract }}</td>
+					<td {%if contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{{ contract.advisor }}</td>
+					<td {%if contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{% if contract.startdate %}{{ tsc.startdate|date('Y-m-d') }}{% endif %}</td>
+					<td {%if contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{% if contract.enddate %}{{ tsc.enddate|date('Y-m-d') }}{% endif %}</td>
+					<td {%if contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{%if schedule[contract.id] is defined %}{{schedule[contract.id]}}{%else%}---{%endif%}</td>
+				</tr>
+			{%endif%}
+		{%else%}
+			<tr><td colspan="8">No contract found</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

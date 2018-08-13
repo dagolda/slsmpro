@@ -1,0 +1,42 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="11%">{{'label.contract'|trans([],'BoAdminBundle')}}</th>
+                <th width="11%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th width="18%">{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.homenumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.cellnumber'|trans([],'BoAdminBundle')}}</th>
+				<th width="28%" colspan="2">Schedule</th>
+            </tr>
+        </thead>
+        <tbody>
+		{% set i=0 %}
+        {% for contract in contracts %}
+			{%if ((contract.startdate<=now and now<=contract.enddate and contract.status==1) or contract.startdate>=now) and cteachers[contract.id] is defined%}
+				{%set teachers=cteachers[contract.id]%}
+				{%if cteacherschedule[contract.id] is defined%}{%set schedule=cteacherschedule[contract.id]%}{%endif%}
+				{% for employee in teachers %}
+					{% set i=i+1 %}
+					<tr>
+						<td>
+							{%if contract.group and contract.group.name%}
+								{{ contract.group.name }}
+							{%elseif contract.students and contract.students|length==1%}
+								{% for student in contract.students %}
+									{{student.firstname}} {{student.name}} 
+								{%endfor%}								
+							{%endif%}
+						</td>
+						<td>{{ employee.firstname }}</td>
+						<td>{{ employee.name }}</td>
+						<td>{{ employee.email }}</td>
+						<td>{{ employee.homenumber }}</td>
+						<td>{{ employee.cellnumber }}</td>
+						<td colspan="2"><center>{%if schedule is defined and schedule[employee.id] is defined and schedule[employee.id]!=null %}{{ schedule[employee.id]}}{%else%}---{%endif%}</center></td>
+					</tr>				
+				{% endfor %}
+			{%endif%}
+		{% endfor %}
+        </tbody>
+    </table>

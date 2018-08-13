@@ -1,0 +1,23 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+				<th width="20%">Date</th>
+                <th width="20%">{{'label.designation'|trans([],'BoAdminBundle')}}</th>
+                <th width="20%">Country</th>
+				<th width="20%">Province</th>                
+            </tr>
+            <tr>
+				<td>{% if holidayslist.ddate %}{{ holidayslist.ddate|date('Y-m-d') }}{% endif %}</td>
+				<td>{{ holidayslist.designation }}</td>
+                <td>{{ holidayslist.country }}</td>
+				<td>{{ holidayslist.province }}</td>
+            </tr>
+            <tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <td colspan="2">{% if holidayslist.creationdate %}{{ holidayslist.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+				<td>&nbsp;</td>
+            </tr>
+            <tr><td colspan="4">&nbsp;</td></tr>
+        </tbody>
+    </table>

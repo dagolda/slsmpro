@@ -1,0 +1,60 @@
+{% extends 'home2.html.twig' %}
+{% block title %}{{parent()}}- {{'layout.menu.contracts'|trans([],'BoAdminBundle')}} >> {{'entity.substitution'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoHomeBundle:Default:contract.html.twig"%}{% endblock %}
+{% block nav %}	
+	{%if employee!=null%}{%include "BoHomeBundle:Default:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block label %}<h1>{{'layout.menu.contracts'|trans([],'BoAdminBundle')}} >> {{'entity.substitution'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoHomeBundle:Substitution:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div class="pagination_content">
+		{% include 'BoHomeBundle:Substitution:criteria.html.twig' %}
+	</div>
+	<div id="content-liste">
+		{%include "BoHomeBundle:Substitution:tbliste.html.twig"%}
+	</div>
+	{% block javascripts %}
+		<script>
+			$(".year").change(function(){
+				var str=$(".year option:selected");
+				page=str.text();
+				var DATA = 'motcle=' + page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('substitution_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});	
+			$("#btn-search").click(function(){
+				if($("#inp-search").val()==""){
+					alert("Search fields is empty!");
+					return false;
+				}
+				var criteria = $("#inp-search").val();				
+				$('#content-liste').html("<center>Recherche en cours >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				$(".pagination_content").hide();
+				$(".total_number").hide();
+				$(".list_link").show();
+				var DATA = 'description=' + criteria;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('substitution_search')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

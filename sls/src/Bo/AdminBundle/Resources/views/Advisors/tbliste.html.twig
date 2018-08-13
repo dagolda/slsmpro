@@ -1,0 +1,58 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="9%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th width="9%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.phonenumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.cellnumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="8%">{{'label.hourlycharge'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.workfields'|trans([],'BoAdminBundle')}}</th>
+                <th width="126px" npowrap>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for advisor in advisors %}
+            <tr>
+                <td>{{ advisor.advisor.firstname }}</td>
+                <td>{{ advisor.advisor.name }}</td>
+                <td>{{ advisor.advisor.email }}</td>
+                <td>{{ advisor.advisor.homenumber }}</td>
+                <td>{{ advisor.advisor.cellnumber }}</td>
+                <td>{{ advisor.percentcharge|number_format(2,'.','') }}%</td>
+                <td>
+					{%set i=0 %}
+					{%for tc in advisor.typecontract %}
+						{%set i=i+1 %}
+						{{ tc }}
+						{%if i<advisor.typecontract|length%},{%endif%}
+					{%else%}
+						<center>---</center>
+					{%endfor%}				
+				</td>
+                <td>
+					{%set i=0 %}
+					{%for wkf in advisor.workfields %}
+						{%set i=i+1 %}
+						{{ wkf }}
+						{%if i<advisor.workfields|length%},{%endif%}
+					{%else%}
+						<center>---</center>
+					{%endfor%}</td>
+                <td class="list-action"  width="126px">
+                    <a href="{{ path('advisors_show', { 'id': advisor.id }) }}">
+						{{'action.show'|trans([],'BoAdminBundle')}}
+					</a>
+					{%if app.session.get('rights')['STAFF']['Employees'] is defined and app.session.get('rights')['STAFF']['Employees'].edit==1%}
+						<a href="{{ path('advisors_edit', { 'id': advisor.id }) }}">
+							{{'action.edit'|trans([],'BoAdminBundle')}}
+						</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="8">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

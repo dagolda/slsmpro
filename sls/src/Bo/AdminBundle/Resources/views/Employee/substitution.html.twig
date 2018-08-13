@@ -1,0 +1,32 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="12%">{{'label.student'|trans([],'BoAdminBundle')}}/{{'label.group'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.holder'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.substitute'|trans([],'BoAdminBundle')}}</th>
+                <th width="8%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="8%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th width="6%">{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th width="6%">{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th width="6%">{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th width="6%">{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th width="8%">{{'label.hour'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for substitution in substitutions %}
+            <tr>
+                <td>{%if substitution.student%}{{substitution.student}}{%else%}---{%endif%}</td>
+                <td>{{ teachers[substitution.idholder].firstname }} {{ teachers[substitution.idholder].name }}</td>
+                <td>{{ teachers[substitution.idsubstitute].firstname }} {{ teachers[substitution.idsubstitute].name }}</td>
+                <td>{% if substitution.ddate %}{{ substitution.ddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if substitution.enddate %}{{ substitution.enddate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+                <td align="right">{% if substitution.startam %}{{ substitution.startam|date('H:i:s') }}{% endif %}</td>
+                <td align="right">{% if substitution.endam %}{{ substitution.endam|date('H:i:s') }}{% endif %}</td>
+                <td align="right">{% if substitution.startpm %}{{ substitution.startpm|date('H:i:s') }}{% endif %}</td>
+                <td align="right">{% if substitution.endpm %}{{ substitution.endpm|date('H:i:s') }}{% endif %}</td>
+                <td align="right">{{ substitution.hour }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

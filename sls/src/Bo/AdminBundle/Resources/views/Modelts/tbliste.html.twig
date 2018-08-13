@@ -1,0 +1,41 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="5px">Id</th>
+                <th width="3px">Mon</th>
+                <th width="3px">Tues</th>
+                <th width="3px">Wed</th>
+                <th width="3px">Thur</th>
+                <th width="3px">Fri</th>
+                <th width="3px">Sat</th>
+                <th>Startam</th>
+                <th>Endam</th>
+                <th>Startpm</th>
+                <th>Endpm</th>
+                <th>Hour</th>
+                <th>Creationdate</th>
+                <th nowrap>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for modelT in modelTs %}
+            <tr>
+                <td><a href="{{ path('modelts_show', { 'id': modelT.id }) }}">{{ modelT.id }}</a></td>
+                <td>{% if modelT.monday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if modelT.tuesday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if modelT.wednesday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if modelT.thursday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if modelT.friday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if modelT.saturday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if modelT.startam %}{{ modelT.startam|date('H:i:s') }}{% endif %}</td>
+                <td>{% if modelT.endam %}{{ modelT.endam|date('H:i:s') }}{% endif %}</td>
+                <td>{% if modelT.startpm %}{{ modelT.startpm|date('H:i:s') }}{% endif %}</td>
+                <td>{% if modelT.endpm %}{{ modelT.endpm|date('H:i:s') }}{% endif %}</td>
+                <td>{{ modelT.hour }}</td>
+                <td>{% if modelT.creationdate %}{{ modelT.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+		{%else%}
+			<tr><td colspan="14">{{'message.no.found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

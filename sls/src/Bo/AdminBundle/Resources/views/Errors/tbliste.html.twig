@@ -1,0 +1,26 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Action</th>
+                <th>Comment</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for error in errors %}
+            <tr>
+                <td>{{ error.code }}</td>
+                <td>{{ error.action }}</td>
+                <td>{{ error.comment }}</td>
+                <td>{% if error.creationdate %}{{ error.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('errors_show', { 'id': error.id }) }}">show</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="7">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

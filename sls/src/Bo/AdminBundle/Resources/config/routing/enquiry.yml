@@ -1,0 +1,24 @@
+enquiry_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Enquiry:index" }
+    methods:  GET
+
+enquiry_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Enquiry:show" }
+    methods:  GET
+
+enquiry_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Enquiry:new" }
+    methods:  [GET, POST]
+
+enquiry_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Enquiry:edit" }
+    methods:  [GET, POST]
+
+enquiry_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Enquiry:delete" }
+    methods:  DELETE

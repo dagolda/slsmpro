@@ -1,0 +1,32 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Ip address</th>
+                <th>Sessionid</th>
+                <th>section viewed</th>
+                <th>Detail</th>
+				<th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for activity in activities %}
+            <tr>
+                <td>{{ activity.id }}</td>
+                <td>{% if activity.creationdate %}{{ activity.creationdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if activity.creationdate %}{{ activity.creationdate|date('H:i:s') }}{% endif %}</td>
+                <td>{{ activity.ip }}</td>
+                <td>{{ activity.sessionid }}</td>
+                <td>{{ activity.rubric }}</td>
+                <td>{{ activity.subrubric }}</td>
+                <td class="list-action">
+                    <a href="{{ path('student_activities_show', { 'id': activity.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="7">No activity entry found</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

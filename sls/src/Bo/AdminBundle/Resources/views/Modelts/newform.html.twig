@@ -1,0 +1,41 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+			<th width="15%" class="sty_label">{{'label.monday'|trans([],'BoAdminBundle')}}</th>
+            <th width="15%" class="sty_label">{{'label.tuesday'|trans([],'BoAdminBundle')}}</th>
+			<th width="15%" class="sty_label">{{'label.wednesday'|trans([],'BoAdminBundle')}}</th>
+			<th width="15%" class="sty_label">{{'label.thursday'|trans([],'BoAdminBundle')}}</th>
+            <th width="15%" class="sty_label">{{'label.friday'|trans([],'BoAdminBundle')}}</th>			
+		</tr>
+		<tr>
+			<td class="sty_label">{{ form_widget(form.monday, {'attr' : {'class' : 'cmonday span3'}}) }}</td>
+            <td class="sty_label">{{ form_widget(form.tuesday, {'attr' : {'class' : 'ttuesday span3'}}) }}</td>
+			<td class="sty_label">{{ form_widget(form.wednesday, {'attr' : {'class' : 'cwednesday span3'}}) }}</td>
+			<td class="sty_label">{{ form_widget(form.thursday, {'attr' : {'class' : 'cthursday span3'}}) }}</td>
+            <td class="sty_label">{{ form_widget(form.friday, {'attr' : {'class' : 'cfriday span3'}}) }}</td>				
+		</tr>
+		<tr><td colspan="5">&nbsp;</td></tr>
+	</table>
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">		
+		<tr>
+            <th width="20%" class="sty_label">{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+			<th width="20%" class="sty_label">{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+            <th width="20%" class="sty_label">{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+			<th width="20%" class="sty_label">{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.startam) }}</td>
+			<td>{{ form_widget(form.endam) }}</td>	
+			<td>{{ form_widget(form.startpm) }}</td>
+			<td>{{ form_widget(form.endpm) }}</td>			
+		</tr>	
+		<tr><td colspan="4">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label" colspan="2">{{'label.hourperday'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label" colspan="2">&nbsp;</th>
+		</tr>
+		<tr>	
+			<td colspan="2">{{ form_widget(form.hourperday) }}</td>				
+			<td colspan="2">&nbsp;</td>					
+		</tr>	
+		<tr><td colspan="4">&nbsp;</td></tr>			
+	</table>

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:tools.html.twig"%}{% endblock %}
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>Rights update</h1>{% endblock %}	
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('rights_update') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoUserBundle:Rights:updateactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoUserBundle:Rights:newform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

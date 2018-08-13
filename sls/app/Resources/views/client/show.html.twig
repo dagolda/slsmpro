@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.customer'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block nav %}{%include "BoAdminBundle:Client:show.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.customer'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Client:showactions.html.twig"%}
+
+		<div class="display_content">
+			<legend>Contracts of customer</legend>
+			<input id="contract_number" type="hidden" value="{{contracts|length}}" />
+			{%include "BoAdminBundle:Client:contracts.html.twig"%}
+		</div>
+	</div>
+	<div class="container">
+		<!-- Modal -->
+		<div class="modal fade" id="add_coordinator" role="dialog">
+			<div class="modal-dialog">
+			
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				  <h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'entity.coordinator'|trans([],'BoAdminBundle')}}</h4>
+				</div>
+				<form action="{{ path('client_coordinator_new',{'idclient':client.id}) }}" method="post" class="style">
+					<div class="modal-body">
+						{{ form_errors(form) }}
+						{%include "BoAdminBundle:Coordinator:modalform.html.twig"%}
+						{{ form_rest(form) }}
+					</div>
+					<div class="modal-footer">
+						<input type="submit" id="btn_submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+					</div>
+				</form>	
+			  </div>
+			  
+			</div>
+		</div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(delete_form) }}
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(delete_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#btn_submit").click(function(){
+				var fullname = $(".fullname").val();
+				var array = fullname.split(" ");
+				if(array.length<2){
+					alert("You must to enter a firstname and name separeted by an empty space.");
+					return false;
+				}
+				return true;
+			});
+			$("#btn_delete").click(function(){
+				var nb_contract = $("#contract_number").val();
+				if(nb_contract>0){
+					alert("You can not delete this client because it is attached to a contract.");
+					return false;
+				}
+				return true;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

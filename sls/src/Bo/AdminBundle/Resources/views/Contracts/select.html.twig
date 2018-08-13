@@ -1,0 +1,26 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="15%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+				<th width="15%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th width="13%">{{'label.targetlevel'|trans([],'BoAdminBundle')}}</th>
+                <th width="13%">{{'label.phonenumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="30%">{{'label.email'|trans([],'BoAdminBundle')}}</th>
+				<th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+		{% for student in students %}
+            <tr>
+                <td>{{ student.firstname }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.targetlevel }}</td>
+                <td>{{ student.phonenumber }}</td>
+                <td>{{ student.email }}</td>
+                <td class="list-action">
+                    <a href="{{ path('contracts_students_select', { 'idstudent': student.id,'idcontract': idcontract }) }}">{{'action.select'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{% endfor %}
+        </tbody>
+    </table>

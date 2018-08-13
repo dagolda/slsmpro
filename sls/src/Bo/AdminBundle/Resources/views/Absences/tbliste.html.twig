@@ -1,0 +1,34 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.motif'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.employee'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.amorpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.numberday'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for absence in absences %}
+            <tr>
+		  <td>{{ absence.motif }}</td>
+		  <td>{%if absence.employee %}{{ absence.employee.firstname }} {{ absence.employee.name }}{%else%}---{%endif%}</td>
+		  <td>{% if absence.startdate %}{{ absence.startdate|date('Y-m-d') }}{% endif %}</td>
+		  <td>{% if absence.enddate %}{{ absence.enddate|date('Y-m-d') }}{% endif %}</td>
+		  <td>{{ absence.amorpm }}</td>
+		  <td>{{ absence.numberday }}</td>
+		  <td>{% if absence.creationdate %}{{ absence.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action" nowrap>
+			{%if app.session.get('rights')['CONTRACTS']['Students'] is defined and app.session.get('rights')['CONTRACTS']['Students'].edit==1%}
+				<a href="{{ path('absences_employee_edit', { 'id': absence.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+			{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="9">{{'message.no.found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

@@ -1,0 +1,167 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.enquiry'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block nav %}	
+	{%if employee!=null%}{%include "BoAdminBundle:Employee:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block label %}<h1>{{'entity.enquiry'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdvisorsBundle:Enquiry:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	{%if total is defined and total>nb_cpp%}
+	<div class="pagination_content">
+		{% include 'BoAdvisorsBundle:Enquiry:pagination.html.twig' %}
+	</div>
+	{%endif%}
+	<div id="content-liste">
+		{%include "BoAdvisorsBundle:Enquiry:tbliste.html.twig"%}
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#idpage").change(function(){
+				var str=$("#idpage option:selected");
+				page=str.text();
+				var DATA = 'page=' + page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_enquiry_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});	
+			$("#btn_search").click(function(){
+				if($("#inp-search").val()==""){
+					alert("Search fields is empty!");
+					return false;
+				}
+				var criteria = $("#inp-search").val();			
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				$(".pagination_content").hide();
+				$(".list_link").show();
+				var DATA = 'description=' + criteria;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_enquiry_search')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#idstatus").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var DATA = 'data='+status;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_enquiry_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#btn_first").click(function(){
+				var str=$("#idpage option:selected");
+				page=str.text();
+				if(parseInt(page)==1){
+					return false;
+				}
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var page=1;	
+				var nbpages = $("#nb_pages").val();					
+				str.text(page);		
+				var DATA = 'page='+page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_enquiry_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#btn_previous").click(function(){
+				var str=$("#idpage option:selected");
+				page=str.text();
+				if(parseInt(page)==1){
+					return false;
+				}
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				page=parseInt(page)-1;
+				str.text(page);		
+				var DATA = 'page='+page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_enquiry_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#btn_next").click(function(){
+				var nbpages = $("#nb_pages").val();		
+				var str=$("#idpage option:selected");
+				page=str.text();
+				if(parseInt(page)==parseInt(nbpages)){
+					return false;
+				}
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idpage option:selected");
+				page=str.text();				
+				page=parseInt(page)+1;
+				str.text(page);		
+				var DATA = 'page='+page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_enquiry_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#btn_last").click(function(){
+				var nbpages = $("#nb_pages").val();		
+				var str=$("#idpage option:selected");
+				page=str.text();
+				if(parseInt(page)==parseInt(nbpages)){
+					return false;
+				}
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idpage option:selected");
+				var page=nbpages;				
+				str.text(page);			
+				var DATA = 'page='+page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_enquiry_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});		
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

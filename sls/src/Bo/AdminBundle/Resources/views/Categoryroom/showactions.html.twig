@@ -1,0 +1,18 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['ROOMS']['Category Room'] is defined and app.session.get('rights')['ROOMS']['Category Room'].ddelete==1%}
+					<td class="delete-action">
+						{{ form_start(delete_form) }}
+							<input type="submit" value="Delete">
+						{{ form_end(delete_form) }}
+					</td>
+				{%endif%}
+					<td>
+						<a href="{{ path('categoryroom_index') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

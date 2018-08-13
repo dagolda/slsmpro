@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}
+{% block nav %}	
+	{%if user.students is defined and user.students!=null%}{%include "BoStudentBundle:Default:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block label %}<h1>Timesheet</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoPayrollBundle:Validation:allvalidateactions.html.twig"%}
+		<div class="display_content">
+			{%include "BoPayrollBundle:Validation:avliste.html.twig"%}
+		</div>			
+	</div>
+{% endblock %}

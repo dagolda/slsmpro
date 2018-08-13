@@ -1,0 +1,18 @@
+bo_coordinator_homepage:
+    path:     /
+    defaults: { _controller: BoCoordinatorBundle:Default:index }
+bo_coordinator_teamcontact:
+    path:     /team/admin/
+    defaults: { _controller: BoCoordinatorBundle:Default:teamcontact }
+bo_coordinator_language:
+    path:     /{_locale}/
+    defaults: { _controller: BoCoordinatorBundle:Default:language }
+    methods:  [GET, POST]
+    requirements:
+        _locale: en|fr   
+bo_coordinator_teamcontact:
+    path:     /team/admin/
+    defaults: { _controller: BoCoordinatorBundle:Default:teamcontact }
+bo_coordinator_supervision:
+    resource: "@BoCoordinatorBundle/Resources/config/routing/supervision.yml"
+    prefix:   /supervision/

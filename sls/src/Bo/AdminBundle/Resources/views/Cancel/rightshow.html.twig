@@ -1,0 +1,86 @@
+<div class="employee-identity">{{ advisors.advisor }} </div>
+<div class="employee-status">{% if advisors.advisor.status %}{{ advisors.advisor.status|trans([],'BoAdminBundle') }}{%endif%}</div>
+    <table>
+        <tbody>
+			{% if advisors.typecontract is defined and advisors.typecontract|length>0 %}
+            <tr>
+                <th>{{'label.contracttype'|trans([],'BoAdminBundle')}}:</th>
+                <td>
+					{%set i=0%}
+					{%for tc in advisors.typecontract%}
+						{{ tc.reference }}
+						{%set i=i+1%}
+						{%if i<advisors.typecontract|length%}-{%endif%}
+					{%endfor%}
+				</td>
+            </tr>
+			{%endif%}
+			{% if advisors.workfields is defined and advisors.workfields|length>0 %}
+            <tr>
+                <th>{{'label.workfields'|trans([],'BoAdminBundle')}}:</th>
+                <td>
+					{%set i=0%}
+					{%for tc in advisors.workfields%}
+						{{ tc.wfname }}
+						{%set i=i+1%}
+						{%if i<advisors.workfields|length%}, {%endif%}
+					{%endfor%}
+				</td>
+            </tr>
+			{%endif%}
+			{% if advisors.advisor.profil %}
+            <tr>		
+				<th>{{'label.profile'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ advisors.advisor.profil }}</td>
+            </tr>
+			{%endif%}
+			{% if advisors.advisor.email %}
+            <tr>		
+				<th>{{'label.email'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ advisors.advisor.email }}</td>
+            </tr>
+			{%endif%}
+			{% if advisors.advisor.langage %}
+            <tr>
+				<th>{{'label.language'|trans([],'BoAdminBundle')}}:</th>			
+				<td>{{ advisors.advisor.langage|trans([],'BoAdminBundle') }}</td>
+            </tr>
+			{%endif%}
+			{%if advisors.advisor.homenumber %}
+            <tr>
+                <th>{{'label.homenumber'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ advisors.advisor.homenumber }}</td>
+            </tr>
+			{% endif %}
+			{%if advisors.advisor.cellnumber %}
+			<tr>
+				<th>{{'label.cellnumber'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ advisors.advisor.cellnumber }}</td>
+            </tr>
+			{% endif %}
+			{%if advisors.advisor.address1 %}
+            <tr>
+                <th>{{'label.address'|trans([],'BoAdminBundle')}} 1:</th>
+                <td>{{ advisors.advisor.address1 }}</td>
+            </tr>
+			{% endif %}
+			{%if advisors.advisor.address2 %}
+            <tr>
+				<th>{{'label.address'|trans([],'BoAdminBundle')}} 2:</th>
+                <td>{{ advisors.advisor.address2 }}</td>
+            </tr>
+			{% endif %}
+			{%if teacher[0] is defined and teacher[0].categoryteacher %}
+            <tr>               
+				<th>Category:</th>
+				<td>{{ teacher[0].categoryteacher|trans([],'BoAdminBundle') }}</td>            
+            </tr>
+			{% endif %}
+			{% if advisors.advisor.creationdate %}
+            <tr>
+				<th>{{'label.creationdate'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ advisors.advisor.creationdate|date('Y-m-d H:i:s') }}</td>               
+            </tr>
+			{% endif %}
+        </tbody>
+    </table>

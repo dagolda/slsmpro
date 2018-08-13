@@ -1,0 +1,24 @@
+mobiliers_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Mobiliers:index" }
+    methods:  GET
+
+mobiliers_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Mobiliers:show" }
+    methods:  GET
+
+mobiliers_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Mobiliers:new" }
+    methods:  [GET, POST]
+
+mobiliers_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Mobiliers:edit" }
+    methods:  [GET, POST]
+
+mobiliers_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Mobiliers:delete" }
+    methods:  DELETE

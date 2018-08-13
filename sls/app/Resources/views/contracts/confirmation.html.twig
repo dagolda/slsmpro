@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.contracts'|trans([],'BoAdminBundle')}} >> {{'title.confirmation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block stylesheets %}{{parent()}} <style>.row.content {height: 100%;}</style>{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block nav %}{%include "BoAdminBundle:Contracts:rightshow.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.contracts'|trans([],'BoAdminBundle')}} >> {{'title.confirmation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('contracts_confirmation',{'idcontract':contract.id}) }}" method="post" class="style">	
+			{%include "BoAdminBundle:Contracts:confirmactions.html.twig"%}				
+			<div class="show_content">
+				{{ form_errors(form) }}
+				<div class="title2">{{'message.send.confirmation'|trans([],'BoAdminBundle')}}</div>
+				<div class="aeration"><input type="checkbox" name="student" value="1" checked> {{ emailstudents }}</div>
+				{%if contract.advisor%}
+					<div class="aeration"><input type="checkbox" name="advisor" value="1" checked> {{contract.advisor.email}}</div>
+				{%endif%}
+				<div class="aeration"><input type="checkbox" name="clientservice" value="1" checked> {{clientservice}}</div>
+				{%if contract.coordinator and contract.coordinator!=null and contract.coordinator.email!=null%}
+					<div class="aeration"><input type="checkbox" name="coordinator" value="1" checked> {{contract.coordinator.email}}</div>
+				{%endif%}
+				{%if contract.contractual and contract.contractual!=null and contract.contractual.email!=null%}
+					<div class="aeration"><input type="checkbox" name="contractual" value="1" checked> {{contract.contractual.email}}</div>
+				{%endif%}
+				<div class="aeration">
+					<b>{{'label.other'|trans([],'BoAdminBundle')}}</b>: <input type="text" name="other" size="60" value="" />
+				</div>
+				<br/>
+			</div>
+			{{ form_rest(form) }}
+		</form>
+	</div>
+{% endblock %}

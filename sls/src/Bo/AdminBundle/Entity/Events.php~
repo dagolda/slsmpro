@@ -1,0 +1,503 @@
+<?php
+namespace Bo\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="Bo\AdminBundle\Repository\EventsRepository")
+ * @ORM\Table(name="adm_events")
+ */
+class Events{
+
+    /**
+    * @ORM\Column(name="id", type="integer")
+    * @ORM\Id
+    * @ORM\GeneratedValue(strategy="AUTO")
+    */
+    private $id;
+
+    /**
+    * @ORM\Column(type="string",length=255)
+    */    
+    private $eventtype;
+	
+    /**
+    * @ORM\ManyToOne(targetEntity="Employee")
+	* @ORM\JoinColumn(name="idemployee",referencedColumnName="id")
+    */      
+    private $employee;
+		
+    /**
+    * @ORM\ManyToOne(targetEntity="Group")
+	* @ORM\JoinColumn(name="idgroup",referencedColumnName="id",nullable=true)
+    */      
+    private $group;	
+			
+    /**
+    * @ORM\ManyToOne(targetEntity="Local")
+	* @ORM\JoinColumn(name="idlocal",referencedColumnName="id",nullable=true)
+    */      
+    private $local;	
+		
+    /**
+    * @ORM\ManyToOne(targetEntity="Students")
+	* @ORM\JoinColumn(name="idstudents",referencedColumnName="id",nullable=true)
+    */      
+    private $students;			
+	
+    /**
+    * @ORM\ManyToOne(targetEntity="Contracts")
+	* @ORM\JoinColumn(name="idcontracts",referencedColumnName="id",nullable=true)
+    */      
+    private $contract;
+	
+    /**
+    * @ORM\ManyToOne(targetEntity="Tsweek")
+	* @ORM\JoinColumn(name="idtsweek",referencedColumnName="id")
+    */      
+    private $tsweek;
+		
+    /**
+    * @ORM\Column(type="date")
+    */    
+	private $ddate;	
+	
+    /**
+    * @ORM\Column(type="time",nullable=true)
+    */    
+    private $startam;
+	
+    /**
+    * @ORM\Column(type="time",nullable=true)
+    */    
+    private $endam;
+
+    /**
+    * @ORM\Column(type="time",nullable=true)
+    */    
+    private $startpm;
+	
+    /**
+    * @ORM\Column(type="time",nullable=true)
+    */    
+    private $endpm;
+	
+    /**
+    * @ORM\Column(type="string",length=7)
+    */    
+    private $hour;		
+	
+    /**
+	 * @ORM\Column(type="integer")
+     */ 
+	//1: created; 2=done; 3:canceled; 
+    private $status;		
+	
+    /**
+    * @ORM\Column(type="datetime")
+    */    
+	private $creationdate;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+		$this->creationdate=$this->startdate=$this->enddate=new \DateTime();
+		$this->status=1;
+    }	
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     *
+     * @return Events
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set ddate
+     *
+     * @param \DateTime $ddate
+     *
+     * @return Events
+     */
+    public function setDdate($ddate)
+    {
+        $this->ddate = $ddate;
+
+        return $this;
+    }
+
+    /**
+     * Get ddate
+     *
+     * @return \DateTime
+     */
+    public function getDdate()
+    {
+        return $this->ddate;
+    }
+
+    /**
+     * Set startam
+     *
+     * @param \DateTime $startam
+     *
+     * @return Events
+     */
+    public function setStartam($startam)
+    {
+        $this->startam = $startam;
+
+        return $this;
+    }
+
+    /**
+     * Get startam
+     *
+     * @return \DateTime
+     */
+    public function getStartam()
+    {
+        return $this->startam;
+    }
+
+    /**
+     * Set endam
+     *
+     * @param \DateTime $endam
+     *
+     * @return Events
+     */
+    public function setEndam($endam)
+    {
+        $this->endam = $endam;
+
+        return $this;
+    }
+
+    /**
+     * Get endam
+     *
+     * @return \DateTime
+     */
+    public function getEndam()
+    {
+        return $this->endam;
+    }
+
+    /**
+     * Set startpm
+     *
+     * @param \DateTime $startpm
+     *
+     * @return Events
+     */
+    public function setStartpm($startpm)
+    {
+        $this->startpm = $startpm;
+
+        return $this;
+    }
+
+    /**
+     * Get startpm
+     *
+     * @return \DateTime
+     */
+    public function getStartpm()
+    {
+        return $this->startpm;
+    }
+
+    /**
+     * Set endpm
+     *
+     * @param \DateTime $endpm
+     *
+     * @return Events
+     */
+    public function setEndpm($endpm)
+    {
+        $this->endpm = $endpm;
+
+        return $this;
+    }
+
+    /**
+     * Get endpm
+     *
+     * @return \DateTime
+     */
+    public function getEndpm()
+    {
+        return $this->endpm;
+    }
+
+    /**
+     * Set hour
+     *
+     * @param string $hour
+     *
+     * @return Events
+     */
+    public function setHour($hour)
+    {
+        $this->hour = $hour;
+
+        return $this;
+    }
+
+    /**
+     * Get hour
+     *
+     * @return string
+     */
+    public function getHour()
+    {
+        return $this->hour;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     *
+     * @return Events
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set creationdate
+     *
+     * @param \DateTime $creationdate
+     *
+     * @return Events
+     */
+    public function setCreationdate($creationdate)
+    {
+        $this->creationdate = $creationdate;
+
+        return $this;
+    }
+
+    /**
+     * Get creationdate
+     *
+     * @return \DateTime
+     */
+    public function getCreationdate()
+    {
+        return $this->creationdate;
+    }
+
+    /**
+     * Set employee
+     *
+     * @param \Bo\AdminBundle\Entity\Employee $employee
+     *
+     * @return Events
+     */
+    public function setEmployee(\Bo\AdminBundle\Entity\Employee $employee = null)
+    {
+        $this->employee = $employee;
+
+        return $this;
+    }
+
+    /**
+     * Get employee
+     *
+     * @return \Bo\AdminBundle\Entity\Employee
+     */
+    public function getEmployee()
+    {
+        return $this->employee;
+    }
+
+    /**
+     * Set group
+     *
+     * @param \Bo\AdminBundle\Entity\Group $group
+     *
+     * @return Events
+     */
+    public function setGroup(\Bo\AdminBundle\Entity\Group $group = null)
+    {
+        $this->group = $group;
+
+        return $this;
+    }
+
+    /**
+     * Get group
+     *
+     * @return \Bo\AdminBundle\Entity\Group
+     */
+    public function getGroup()
+    {
+        return $this->group;
+    }
+
+    /**
+     * Set students
+     *
+     * @param \Bo\AdminBundle\Entity\Students $students
+     *
+     * @return Events
+     */
+    public function setStudents(\Bo\AdminBundle\Entity\Students $students = null)
+    {
+        $this->students = $students;
+
+        return $this;
+    }
+
+    /**
+     * Get students
+     *
+     * @return \Bo\AdminBundle\Entity\Students
+     */
+    public function getStudents()
+    {
+        return $this->students;
+    }
+
+    /**
+     * Set contract
+     *
+     * @param \Bo\AdminBundle\Entity\Contracts $contract
+     *
+     * @return Events
+     */
+    public function setContract(\Bo\AdminBundle\Entity\Contracts $contract = null)
+    {
+        $this->contract = $contract;
+
+        return $this;
+    }
+
+    /**
+     * Get contract
+     *
+     * @return \Bo\AdminBundle\Entity\Contracts
+     */
+    public function getContract()
+    {
+        return $this->contract;
+    }
+
+    /**
+     * Set tsweek
+     *
+     * @param \Bo\AdminBundle\Entity\Tsweek $tsweek
+     *
+     * @return Events
+     */
+    public function setTsweek(\Bo\AdminBundle\Entity\Tsweek $tsweek = null)
+    {
+        $this->tsweek = $tsweek;
+
+        return $this;
+    }
+
+    /**
+     * Get tsweek
+     *
+     * @return \Bo\AdminBundle\Entity\Tsweek
+     */
+    public function getTsweek()
+    {
+        return $this->tsweek;
+    }
+
+    /**
+     * Set eventtype
+     *
+     * @param string $eventtype
+     *
+     * @return Events
+     */
+    public function setEventtype($eventtype)
+    {
+        $this->eventtype = $eventtype;
+
+        return $this;
+    }
+
+    /**
+     * Get eventtype
+     *
+     * @return string
+     */
+    public function getEventtype()
+    {
+        return $this->eventtype;
+    }
+
+    /**
+     * Set local
+     *
+     * @param \Bo\AdminBundle\Entity\Local $local
+     *
+     * @return Events
+     */
+    public function setLocal(\Bo\AdminBundle\Entity\Local $local = null)
+    {
+        $this->local = $local;
+
+        return $this;
+    }
+
+    /**
+     * Get local
+     *
+     * @return \Bo\AdminBundle\Entity\Local
+     */
+    public function getLocal()
+    {
+        return $this->local;
+    }
+}

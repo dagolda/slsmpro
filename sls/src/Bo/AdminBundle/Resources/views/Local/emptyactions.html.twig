@@ -1,0 +1,38 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['ROOMS']['Room'] is defined and app.session.get('rights')['ROOMS']['Room'].liste==1%}	
+					<td>
+						<a href="{{ path('local_index') }}">Room list</a>
+					</td>
+					<td>
+						<button type="button" class="btn btn-primary">
+							Total rooms <span class="badge">{{total|number_format(0,""," ")}}</span>
+						</button>
+					</td>
+				{%endif%}
+					<td>
+						<span class="btn brown_3d_11">
+							{{'label.occupied'|trans([],'BoAdminBundle')}}
+						</span>
+					</td>
+					<td>
+						<span class="btn wax_3d_3">
+							{{'label.reserved'|trans([],'BoAdminBundle')}}
+						</span>
+					</td>
+					<td>
+						<span class="btn ping-color">
+							{{'label.unavailable'|trans([],'BoAdminBundle')}}
+						</span>
+					</td>
+					<!--td>
+						<span class="btn status_free">
+							{{'label.free'|trans([],'BoAdminBundle')}}
+						</span>
+					</td-->
+				</tr>
+			</table>		
+		</div>
+	</div>	

@@ -1,0 +1,77 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.absencemotif'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:setting.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.absencemotif'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:MotifAbsence:showactions.html.twig"%}
+		<div class="show_content">
+			{%include "BoAdminBundle:MotifAbsence:show.html.twig"%}
+		</div>
+	</div>
+	<!--Begin duplicate modal form -->
+	<div class="container">
+		<!-- Modal -->
+		<div class="modal fade" id="add_motifabsence" role="dialog">
+			<div class="modal-dialog">
+			
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				  <h4 class="modal-title">{{'action.duplicate'|trans([],'BoAdminBundle')}} {{'entity.setting'|trans([],'BoAdminBundle')}}</h4>
+				</div>
+				<form action="{{ path('motifabsence_new') }}" method="post" class="style">
+					<div class="modal-body">
+						{{ form_errors(form) }}
+						{%include "BoAdminBundle:MotifAbsence:newform.html.twig"%}
+						{{ form_rest(form) }}
+					</div>
+					<div class="modal-footer">
+						<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+						<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+					</div>
+				</form>	
+			  </div>
+			  
+			</div>
+		</div>
+	</div>
+	<!--End duplicate modal form -->
+
+	<!--Begin edit modal form -->	
+	<div class="container">
+		<!-- Modal -->
+		<div class="modal fade" id="edit_motifabsence" role="dialog">
+			<div class="modal-dialog">
+			
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				  <h4 class="modal-title">{{'action.edit'|trans([],'BoAdminBundle')}} {{'entity.setting'|trans([],'BoAdminBundle')}}</h4>
+				</div>
+				<form action="{{ path('motifabsence_edit',{'id':motifabsence.id}) }}" method="post" class="style">
+					<div class="modal-body">
+						{{ form_errors(edit_form) }}
+						{%include "BoAdminBundle:MotifAbsence:editform.html.twig"%}
+						{{ form_rest(edit_form) }}
+					</div>
+					<div class="modal-footer">
+						<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+						<input type="submit" value="{{'action.edit'|trans([],'BoAdminBundle')}}">
+					</div>
+				</form>	
+			  </div>
+			  
+			</div>
+		</div>
+	</div>	
+	
+	
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

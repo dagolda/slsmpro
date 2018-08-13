@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.orderform'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}} >> {{'entity.enquiry'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block nav %}	{%if enquiry!=null%}{%include "BoAdvisorsBundle:Orderform:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>{{'entity.orderform'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}{{'entity.enquiry'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('dash_orderform_error',{'id':enquiry.id,'opt':opt}) }}" method="post" class="style">
+			{{ form_errors(form) }}
+				{%include "BoAdvisorsBundle:Orderform:erroractions.html.twig"%}
+				<div class="show_content">
+					{%include "BoAdvisorsBundle:Enquiry:editform.html.twig"%}
+				</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+	{% block javascripts %}
+		<script>	
+			$(".field").change(function(){
+				var str=$(".field option:selected");
+				field=str.val();
+				if(field==1){
+					$(".typetraining").val("GR");
+					$(".language").val("French");
+					$(".ftorpt").val("Full Time");
+					$(".schedule").val("From Monday to Friday, 8h00-12h00 & 13h00-16h30 (7 hours per day) 1 hour for lunch time & 15 minutes for break time in the morning & afternoon");
+					$(".hourperday").val(7);
+					$(".hourperweek").val(35);
+					return false;
+				}
+				if(field==2){
+					$(".typetraining").val("GR");
+					$(".language").val("English");
+					$(".ftorpt").val("Full Time");
+					$(".schedule").val("");
+					$(".hourperday").val(7);
+					$(".hourperweek").val(35);
+					return false;
+				}
+				if(field==3){
+					$(".typetraining").val("");
+					$(".language").val("French");
+					$(".ftorpt").val("Full Time");
+					$(".schedule").val("From Monday to Friday, 8h00-12h00 & 13h00-16h30 (7 hours per day) 1 hour for lunch time & 15 minutes for break time in the morning & afternoon");
+					$(".hourperday").val(7);
+					$(".hourperweek").val(35);
+					return false;
+				}
+				if(field==4){
+					$(".typetraining").val("");
+					$(".language").val("English");
+					$(".ftorpt").val("Full Time");
+					$(".schedule").val("");
+					$(".hourperday").val(7);
+					$(".hourperweek").val(35);
+					return false;
+				}	
+				if(field==6){
+					$(".typetraining").val("PR");
+					$(".language").val("French");
+					$(".ftorpt").val("Part Time");
+					$(".schedule").val("");
+					return false;
+				}					
+				return false;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Hnoshow list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idperiodpay</th>
+                <th>Hw0</th>
+                <th>Hw1</th>
+                <th>Hw2</th>
+                <th>Hw3</th>
+                <th>Hw4</th>
+                <th>Hw5</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hnoshow in hnoshows %}
+            <tr>
+                <td><a href="{{ path('hnoshow_show', { 'id': hnoshow.id }) }}">{{ hnoshow.id }}</a></td>
+                <td>{{ hnoshow.idperiodpay }}</td>
+                <td>{{ hnoshow.hw0 }}</td>
+                <td>{{ hnoshow.hw1 }}</td>
+                <td>{{ hnoshow.hw2 }}</td>
+                <td>{{ hnoshow.hw3 }}</td>
+                <td>{{ hnoshow.hw4 }}</td>
+                <td>{{ hnoshow.hw5 }}</td>
+                <td>{{ hnoshow.total }}</td>
+                <td>{{ hnoshow.status }}</td>
+                <td>{% if hnoshow.creationdate %}{{ hnoshow.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('hnoshow_show', { 'id': hnoshow.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('hnoshow_edit', { 'id': hnoshow.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('hnoshow_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

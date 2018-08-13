@@ -1,0 +1,8 @@
+{% if criteria is defined %}
+	<div class="result_content">
+		Search results for this criteria "{{criteria}}"<br>
+		Sorry, no response seems match your request.
+	</div>
+{%else%}
+	{% include 'BoUserBundle:User:tbliste.html.twig' %}
+{%endif%}

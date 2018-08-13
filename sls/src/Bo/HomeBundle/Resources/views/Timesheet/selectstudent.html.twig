@@ -1,0 +1,6 @@
+				<select name='idstudent' id='idstudent'>
+					<option value="0" selected="delected">Select a student</option>
+					{%for student in students%}
+						<option value="{{student.id}}" {%if idstudent is defined and student.id ==idstudent%}selected='selected'{%endif%}>{{student.firstname}} {{student.name}}</option>
+					{%endfor%}
+				</select>	

@@ -1,0 +1,118 @@
+students_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Students:index" }
+    methods:  GET
+students_list:
+    path:     /list
+    defaults: { _controller: "BoAdminBundle:Students:list" }
+    methods:  GET
+students_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdminBundle:Students:page" }
+students_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Students:show" }
+    methods:  GET
+students_list_absence:
+    path:     /{id}/{offset}/list/absences
+    defaults: { _controller: "BoAdminBundle:Students:listabsence" }
+    methods:  GET
+students_evaluation:
+    path:     /{id}/{idstudent}/evaluation
+    defaults: { _controller: "BoAdminBundle:Students:evaluation" }
+    methods:  GET
+students_back:
+    path:     /back/
+    defaults: { _controller: "BoAdminBundle:Students:back" }
+    methods:  GET
+students_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Students:search" }
+    methods:  [GET, POST]
+students_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Students:pagesearch" }
+    methods:  [GET, POST]
+students_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Students:new" }
+    methods:  [GET, POST]
+students_override_1:
+    path:     /{id}/override1/
+    defaults: { _controller: "BoAdminBundle:Students:override1" }
+    methods:  [GET, POST]
+students_override_2:
+    path:     /{id}/override2/
+    defaults: { _controller: "BoAdminBundle:Students:override2" }
+    methods:  [GET, POST]
+students_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Students:edit" }
+    methods:  [GET, POST]
+students_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Students:delete" }
+    methods:  DELETE
+students_absence_day:
+    path:     /absences/today/
+    defaults: { _controller: "BoAdminBundle:Students:dayabsences" }
+students_absence_index:
+    path:     /absences/
+    defaults: { _controller: "BoAdminBundle:Students:absences" }
+    methods:  GET
+students_absence_search:
+    path:  /absences/search/
+    defaults: { _controller: "BoAdminBundle:Students:searchabs" }
+    methods:  [GET, POST]
+students_absence_pagesearch:
+    path:  /absences/pagesearch/
+    defaults: { _controller: "BoAdminBundle:Students:pagesearchabs" }
+    methods:  [GET, POST]
+students_page_absences:
+    path:     /{option}/absences/page/
+    defaults: { _controller: "BoAdminBundle:Students:absencespage" }
+    methods:  GET
+students_create_absence:
+    path:     /{idstudent}/add/absence/
+    defaults: { _controller: "BoAdminBundle:Students:addAbsence" }
+    methods:  [GET, POST]
+students_add_absence:
+    path:     /add/absence/
+    defaults: { _controller: "BoAdminBundle:Students:createabsence" }
+    methods:  [GET, POST]
+students_show_absence:
+    path:     /{id}/{option}/show/absence/
+    defaults: { _controller: "BoAdminBundle:Students:showAbsence" }
+    methods:  GET
+students_edit_absence:
+    path:     /{id}/{option}/edit/absence/
+    defaults: { _controller: "BoAdminBundle:Students:editAbsence" }
+    methods:  [GET, POST]
+students_teacher_available:
+    path:     /teacher/available/
+    defaults: { _controller: "BoAdminBundle:Students:teacheravailable" }
+    methods:  [GET, POST]
+students_delete_absence:
+    path:     /{id}/{option}/delete/absence/
+    defaults: { _controller: "BoAdminBundle:Students:deleteAbsence" }
+    methods:  DELETE
+students_newbatch:
+    path:     /newbatch
+    defaults: { _controller: "BoAdminBundle:Students:newbatch" }
+    methods:  [GET, POST]
+students_user_create:
+    path:     /{id}/createuser
+    defaults: { _controller: "BoAdminBundle:Students:createuser" }
+    methods:  GET
+students_user_new:
+    path:     /newuser/
+    defaults: { _controller: "BoAdminBundle:Students:newuser" }
+    methods:  [GET, POST]
+students_schedule:
+    path:     /{id}/schedule/
+    defaults: { _controller: "BoAdminBundle:Students:schedule" }
+    methods:  GET
+students_schedule_load:
+    path:     /schedule/load
+    defaults: { _controller: "BoAdminBundle:Students:loadschedule" }
+    methods:  [GET, POST]

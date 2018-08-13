@@ -1,0 +1,45 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.employee'|trans([],'BoAdminBundle')}} >> {{'action.send'|trans([],'BoAdminBundle')}}  {{'user.login'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}	
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'entity.employee'|trans([],'BoAdminBundle')}} >> {{'action.send'|trans([],'BoAdminBundle')}} {{'user.login'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+	<form action="{{ path('employee_sendmail')}}" method="post" class="style">
+		{%include "BoAdminBundle:Employee:slaction.html.twig"%}
+		<div id="content-liste">
+			{%include "BoAdminBundle:Employee:tbslliste.html.twig"%}
+		</div>
+		<input type="hidden" name="strids" id="strids" value="{{strids}}"/>
+	</form>
+	{% block javascripts %}
+		<script>
+			$("#select-all").click(function(){
+				$(".td_check").hide();
+				$(".td_uncheck").show();
+				var strids = $("#strids").val(); 
+				var ids = strids.split(",");
+				var arraylength = ids.length;
+				for(var i=0; i<arraylength; i++){
+					var check="chk_"+ids[i];
+					$("#"+check).attr('checked',true);
+				}
+				return false;
+			});
+			$("#deselect-all").click(function(){
+				$(".td_check").show();
+				$(".td_uncheck").hide();
+				var strids = $("#strids").val(); 
+				var ids = strids.split(",");
+				var arraylength = ids.length;
+				for(var i=0; i<arraylength; i++){
+					var check="chk_"+ids[i];
+					$("#"+check).attr('checked',false);
+				}
+				return false;
+			});	
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

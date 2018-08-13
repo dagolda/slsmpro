@@ -1,0 +1,24 @@
+dash_model_new:
+    path:     /new/
+    defaults: { _controller: "BoAdvisorsBundle:ModelTs:new" }
+    methods:  [GET, POST]
+dash_model_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdvisorsBundle:ModelTs:show" }
+    methods:  GET
+dash_model_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdvisorsBundle:ModelTs:edit" }
+    methods:  [GET, POST] 
+dash_model_index:
+    path:     /index/
+    defaults: { _controller: "BoAdvisorsBundle:ModelTs:index" }
+    methods:  [GET, POST]
+dash_model_addts:
+    path:     /{id}/addts/
+    defaults: { _controller: "BoAdvisorsBundle:ModelTs:addts" }
+    methods:  GET
+dash_model_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdvisorsBundle:ModelTs:delete" }
+    methods:  DELETE

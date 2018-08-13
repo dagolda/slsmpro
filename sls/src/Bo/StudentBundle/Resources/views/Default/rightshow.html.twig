@@ -1,0 +1,64 @@
+	<div class="employee-identity">{{'title.student.information'|trans([],'BoAdminBundle')}}</div>
+    <table>
+        <tbody>
+			{%if student.name is defined%}
+            <tr>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ student.name }}</td>
+            </tr>
+			{%endif%}
+			{%if student.firstname is defined%}
+            <tr>
+                <th>{{'label.firstname'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ student.firstname }}</td>
+            </tr>
+			{%endif%}
+			{%if student.group is defined and student.group!=null%}
+            <tr>
+                <th>{{'label.group'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ student.group.name }}</td>
+            </tr>
+			{%endif%}
+			{%if student.startdate is defined%}
+            <tr>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ student.startdate|date('Y-m-d') }}</td>
+            </tr>
+			{%endif%}
+			{%if student.enddate is defined%}
+            <tr>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ student.enddate|date('Y-m-d') }}</td>
+            </tr>
+			{%endif%}
+			{%if student.email%}
+            <tr>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ student.email }}</td>
+            </tr>
+			{%endif%}
+			{%if student.startlevel%}
+            <tr>
+                <th>{{'label.startlevel'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ student.startlevel }}</td>
+            </tr>
+			{%endif%}
+			{%if student.targetlevel%}
+            <tr>
+                <th>{{'label.targetlevel'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ student.targetlevel }}</td>
+            </tr>
+			{%endif%}
+            <tr>
+                <th>Creation date:</th>
+                <td>{% if student.creationdate %}{{ student.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+	<table class="students_edit_account">
+		<tr>
+			<td><a href="{{ path('bo_student_edit') }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a></td>
+			<td>|</td>
+			<td><a href="{{ path('fos_user_change_password') }}">{{'action.changepassword'|trans([],'BoAdminBundle')}}</a></td>
+		</tr>
+	</table>

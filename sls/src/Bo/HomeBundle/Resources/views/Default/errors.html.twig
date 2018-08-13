@@ -1,0 +1,15 @@
+{% extends 'home.html.twig' %}
+{% block title %}{{parent()}}-{{'label.technical.error'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoHomeBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}	
+	{%if employee!=null%}{%include "BoHomeBundle:Default:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block label %}<h1>{{'label.technical.error'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+	<div id="content-liste">
+		<p class="error_message">{{'message.something.broken'|trans([],'BoAdminBundle')}}</p>
+		<div class="image-sorry">
+			<center><img src="{{ asset(['images/errors/', imgname]|join) }}" width="225"/></center>
+		</div>
+	</div>
+{% endblock %}

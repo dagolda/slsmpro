@@ -1,0 +1,63 @@
+<div class="employee-identity">{{'entity.billing'|trans([],'BoAdminBundle')}}</div>
+    <table>
+        <tbody>
+            <tr>		
+				<th>Id period:</th>
+				<td>{{ billing.id }}</td>
+            </tr>
+			{% if billing.contract and billing.contract.contractnumber!=null%}
+            <tr>		
+				<th>{{'label.contractnumber'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ billing.contract.contractnumber }}</td>
+            </tr>
+			{%endif%}
+			{% if billing.startdate %}
+            <tr>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ billing.startdate|date('Y-m-d') }}</td>
+            </tr>
+			{%endif%}
+			{% if billing.enddate %}
+            <tr>
+				<th>{{'label.enddate'|trans([],'BoAdminBundle')}}:</th>			
+				<td>{{ billing.enddate|date('Y-m-d') }}</td>
+            </tr>
+			{%endif%}
+			{%if billing.numbersession %}
+            <tr>
+                <th>{{'label.numbersession'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ billing.numbersession }}</td>
+            </tr>
+			{% endif %}
+			{%if billing.hour %}
+			<tr>
+				<th>{{'label.numberhour'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ billing.hour }}</td>
+            </tr>
+			{% endif %}
+			{%if billing.hourlyrate %}
+            <tr>
+                <th>{{'label.hourlyrate'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ billing.hourlyrate }}</td>
+            </tr>
+			{% endif %}
+			{%if billing.amount %}
+            <tr>
+				<th>{{'label.amount'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ billing.amount }}</td>
+            </tr>
+			{% endif %}
+			{%if billing.status %}
+            <tr>               
+				<th>{{'label.status'|trans([],'BoAdminBundle')}}:</th>
+				<td>{% if billing.status==1 %}{{'status.nobilled'|trans([],'BoAdminBundle')}}{% elseif billing.status==2 %}{{'status.billed'|trans([],'BoAdminBundle')}}{%else%}---{%endif%}</td>            
+            </tr>
+			{% endif %}
+			{% if billing.creationdate %}
+            <tr>
+				<th>{{'label.creationdate'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ billing.creationdate|date('Y-m-d H:i:s') }}</td>               
+            </tr>
+			{% endif %}
+        </tbody>
+    </table>

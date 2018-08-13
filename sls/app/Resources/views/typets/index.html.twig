@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'label.category.ts'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'label.category.ts'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdminBundle:Typets:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div id="content-liste">
+		{%include "BoAdminBundle:Typets:tbliste.html.twig"%}
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#btn_create").click(function(){
+				if($("#inp-type").val()==""){
+					getMessage(21);
+					return false;
+				}
+				$('.message-content').hide();			
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var DATA = 'name=' + $("#inp-type").val();
+				$.ajax({
+					type: "POST",
+					url: "{{ path('typets_new')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			function getMessage(id){
+				var DATA = 'id=' + id;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('typets_message')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('.message-content').html(data);
+					}
+				});
+				return false;			
+			}
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

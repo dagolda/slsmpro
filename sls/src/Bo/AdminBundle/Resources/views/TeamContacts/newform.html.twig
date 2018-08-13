@@ -1,0 +1,26 @@
+    {{ form_start(form) }}
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+			<th width="25%" class="sty_label">{{'label.employee'|trans([],'BoAdminBundle')}}</th>
+            <th width="25%" class="sty_label">{{'label.title'|trans([],'BoAdminBundle')}}</th>
+			<th width="25%" class="sty_label">{{'label.email'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.employee) }}</td>
+			<td>{{ form_widget(form.title) }}</td>
+			<td>{{ form_widget(form.email) }}</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.location'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.extension'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.room'|trans([],'BoAdminBundle')}}</th>			
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.location) }}</td>
+			<td>{{ form_widget(form.extension) }}</td>
+			<td>{{ form_widget(form.room) }}</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+	</table>
+    {{ form_end(form) }}

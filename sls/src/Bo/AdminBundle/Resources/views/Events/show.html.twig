@@ -1,0 +1,39 @@
+    <table>
+        <tbody>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <td>{{ events.id }}</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.teacher'|trans([],'BoAdminBundle')}}</th>
+                <td>{{ events.employee.name }} {{ events.employee.firstname }}</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.room'|trans([],'BoAdminBundle')}}</th>
+                <td>{{ events.local.name }}</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.contracts'|trans([],'BoAdminBundle')}}</th>
+                <td>{{ events.contracts.reference }}</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>Year</th>
+                <td>{{ events.year }}</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>Month</th>
+                <td>{{ events.month }}</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <td>{% if events.creationdate %}{{ events.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>

@@ -1,0 +1,6 @@
+				<select name='idrecipient1' id='idrecipient1'>
+					<option value="0" selected="delected">Select a recipient</option>
+					{%for recipient in recipients%}
+						<option value="{{recipient.id}}" {%if idrecipient1 is defined and recipient.id ==idrecipient1%}selected='selected'{%endif%}>{{recipient.firstname}} {{recipient.name}}</option>
+					{%endfor%}
+				</select>	

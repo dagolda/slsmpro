@@ -1,0 +1,4 @@
+services:
+#    bo_payroll.example:
+#        class: Bo\PayrollBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

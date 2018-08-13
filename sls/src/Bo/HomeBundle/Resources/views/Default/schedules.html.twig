@@ -1,0 +1,27 @@
+	<div class="panel panel-default">
+			<div class="panel-heading">{{'label.myschedule'|trans([],'BoAdminBundle')}}</div>
+			<div class="panel-body" >
+				<div class="event_sub_title">
+					<div class="current-event">
+						<td class="total_number">
+							<button type="button" class="btn btn-primary">
+								<span class="badge">{{'label.currentweek'|trans([],'BoAdminBundle')}}</span>
+							</button>
+						</td>
+						<button type="button" class="event_next_week">{{'label.next'|trans([],'BoAdminBundle')}}</button>
+					</div>
+					<div class="next-event">
+						<td class="total_number">
+							<button type="button" class="btn btn-primary">
+								<span class="badge">{{'label.nextweek'|trans([],'BoAdminBundle')}}</span>
+							</button>
+						</td>
+						<button type="button" class="event_current_week">{{'label.current'|trans([],'BoAdminBundle')}}</button>
+					</div>
+				</div>
+				<div id="load_data">
+					{%include "BoHomeBundle:Default:event-tab.html.twig"%}
+				</div>
+				<div id="data_error"></div>
+			</div>
+	</div>

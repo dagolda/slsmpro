@@ -1,0 +1,192 @@
+{% extends 'home2.html.twig' %}
+{% block title %}{{parent()}}-{{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'entity.timesheet'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoHomeBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}	{%if employee!=null%}{%include "BoAdminBundle:User:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>{{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'entity.timesheet'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('home_timesheet_add', { 'idcontract': contract.id }) }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoHomeBundle:Timesheet:addactions.html.twig"%}
+			<div class="search_content"></div>
+			<div class="show_content">
+				{%include "BoHomeBundle:Timesheet:addform.html.twig"%}
+			</div>
+			<input id="idsgroup" type="hidden" value="{{idgroup}}" />
+			<input id="idcontract" type="hidden" value="{{contract.id}}" />
+			<input id="tsdates" type="hidden" value='{{tsdates}}' />
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+	{% block javascripts %}
+		<script>
+			$(document).ready(function(){
+				var str=$("#idgroup option:selected");
+				idgroup=str.val();
+				if(idgroup!=0){
+					$("#learner_attendance").show();
+					$('#idstudent').attr('disabled', 'disabled');
+				}
+				var ddate = $(".ddate").val();
+				var tsdates = $("#tsdates").val();
+				var tab = tsdates.split(",");
+				if($.inArray(ddate,tab)>0){
+					$(".class_btn_create").hide();
+				}
+			});
+			$("#btn-create").click(function(){
+				var str=$("#idgroup option:selected");
+				idgroup=str.val();
+				var str=$(".typeclass option:selected");
+				type=str.val();
+				var str=$("#idstudent option:selected");
+				idstudent=str.val();
+				if(type=='Teaching' && idgroup=="0" && idstudent=="0"){
+					alert("One of the two fields group or student must not be empty!");
+					return false;
+				}				
+				return true;
+			});
+			$("#ns").click(function(){
+				$("#am").val('N-S');
+				$("#pm").val('N-S');				
+				return true;
+			});
+			$("#p").click(function(){
+				$("#am").val('P');
+				$("#pm").val('P');				
+				return true;
+			});
+			$("#abs").click(function(){
+				$("#am").val('ABS');
+				$("#pm").val('ABS');				
+				return true;
+			});
+			$("#am").change(function(){
+				var str=$("#am option:selected");
+				am = str.val();
+				var str=$("#pm option:selected");
+				pm = str.val();	
+				if(am==pm){
+					if(am==1) $("#p").attr('checked', true);
+					if(am==2) $("#ns").attr('checked', true);
+					if(am==3) $("#abs").attr('checked', true);
+				}
+			});
+			$("#pm").change(function(){
+				var str=$("#am option:selected");
+				am = str.val();
+				var str=$("#pm option:selected");
+				pm = str.val();	
+				if(am==pm){
+					if(am==1) $("#p").attr('checked', true);
+					if(am==2) $("#ns").attr('checked', true);
+					if(am==3) $("#abs").attr('checked', true);
+				}
+			});
+			$("#idgroup").change(function(){
+				var str=$("#idgroup option:selected");
+				idgroup=str.val();
+				var str=$(".typeclass option:selected");
+				typets=str.val();
+				if(idgroup==0){
+					$("#learner_attendance").hide();
+					$('#idstudent').removeAttr('disabled');
+				}else{
+					$("#learner_attendance").show();
+					$('#idstudent').attr('disabled', 'disabled');
+				}
+			});
+			$("#idstudent").change(function(){
+				var str=$("#idstudent option:selected");
+				idstudent=str.val();
+				if(idstudent==0){
+					$('#idgroup').removeAttr('disabled');
+					var str=$("#idgroup option:selected");
+					idgroup=str.val();
+					if(idgroup!=0) $("#learner_attendance").show();
+				}else{
+					$("#learner_attendance").hide();
+					$('#idgroup').attr('disabled', 'disabled');
+				}
+			});
+			$(".typeclass").change(function(){
+				var str=$(".typeclass option:selected");
+				type=str.val();
+				if(type!=1){
+					var str=$("#idgroup option:selected");
+					idgroup=str.val();
+					$("#learner_attendance").hide();
+					$('#idsgroup').val(idgroup);
+					$('#idgroup').val(0);
+					$('#idstudent').val(0);
+				}else{
+					reloaddate(type,$('#idsgroup').val());
+				}
+			});
+			$("#btn-search").click(function(){
+				if($("#inp-search").val()==""){
+					alert("Search fields is empty!");
+					return false;
+				}
+				var criteria = $("#inp-search").val();	
+				$('.show_content').hide();
+				$(".list_link").show();
+				$('.search_content').html("<center>Recherche en cours >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var DATA = 'data=' + criteria;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('home_timesheet_contractsearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('.search_content').html(data);
+					}
+				});
+				return false;
+			});
+			function reloaddate(type,idgroup){
+				var DATA = 'data='+type+"-"+idgroup;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('home_timesheet_reloaddata')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#reload_timesheet').html(data);
+					}
+				});
+				return false;
+			}
+			$(".ddate").change(function(){
+				var ddate = $(".ddate").val();
+				var tsdates = $("#tsdates").val();
+				var tab = tsdates.split(",");
+				var res = tab.indexOf(ddate);
+				if(tab.indexOf(ddate)>0){
+					$(".class_btn_create").hide();
+				}else{
+					$(".class_btn_create").show();
+					$(".message-content").hide();
+				}
+				var idcontract=$("#idcontract").val();
+				reloadAttendance(ddate,idcontract);
+				return false;
+			});	
+			function reloadAttendance(ddate,idcontract){
+				var DATA = 'data='+ddate+":"+idcontract;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('home_timesheet_reloadatt')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#learner_attendance').html(data);
+					}
+				});
+				return false;
+			}			
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

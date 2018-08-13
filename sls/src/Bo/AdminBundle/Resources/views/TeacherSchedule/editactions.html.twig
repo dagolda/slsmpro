@@ -1,0 +1,19 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td><button type="submit" id="btn-create">{{'action.update'|trans([],'BoAdminBundle')}}</button></td>
+					<td>
+						<a href="{{ path('contracts_show',{'id':contract.id}) }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].ddelete==1%}
+						<td>
+							<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#myModal">
+								{{'action.delete'|trans([],'BoAdminBundle')}}
+							</button>
+						</td>
+					{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

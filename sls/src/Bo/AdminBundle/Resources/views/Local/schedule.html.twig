@@ -1,0 +1,57 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+		<th>{{'label.contract'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.daysoftraining'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hourperday'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+			{% for contract in contracts%}
+				{%if (contract.status==1 or contract.status==2) and ((contract.startdate<=now and now<=contract.enddate) or contract.startdate>=now) and ctrainings[contract.id] is defined %}
+					{%set atrainings=ctrainings[contract.id]%}
+					{% for training in atrainings%}
+						<tr>
+							<td>
+								{%if contract.group and contract.group.name%}
+									{{ contract.group.name }}
+								{%elseif contract.students and contract.students|length==1%}
+									{% for student in contract.students %}
+										{{student.firstname}} {{student.name}} 
+									{%endfor%}								
+								{%endif%}
+							</td>
+							<td>{{ contract.startdate|date('Y-m-d') }}</td>
+							<td>{{ contract.enddate|date('Y-m-d') }}</td>
+							<td class="sty_label">
+								{%if training.monday==true and training.tuesday==true and training.wednesday==true and training.thursday==true and training.friday==true%}
+									{{'label.frommonday.tofriday'|trans([],'BoAdminBundle')}}
+								{%else%}
+									{%if training.monday==true%}{{'label.monday'|trans([],'BoAdminBundle')}}, {%endif%}
+									{%if training.tuesday==true%}{{'label.tuesday'|trans([],'BoAdminBundle')}}, {%endif%}
+									{%if training.wednesday==true%}{{'label.wednesday'|trans([],'BoAdminBundle')}}, {%endif%}
+									{%if training.thursday==true%}{{'label.thursday'|trans([],'BoAdminBundle')}}, {%endif%}
+									{%if training.friday==true%}{{'label.friday'|trans([],'BoAdminBundle')}} {%endif%}
+								{%endif%}
+							</td>
+							<td>{{ training.startam|date('H:i') }}</td>
+							<td>{{ training.endam|date('H:i') }}</td>	
+							<td>{{ training.startpm|date('H:i') }}</td>
+							<td>{{ training.endpm|date('H:i') }}</td>	
+							<td>{%if training.hourperday%}{{ training.hourperday }}{%else%}---{%endif%}</td>							
+						</tr>
+					{%endfor%}
+				{%endif%}
+			{%else%}
+				<tr>
+					<td colspan="9">{{'No data found'|trans([],'BoAdminBundle')}}</td>
+				</tr>
+			{%endfor%}				
+        </tbody>
+    </table>

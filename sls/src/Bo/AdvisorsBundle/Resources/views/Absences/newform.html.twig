@@ -1,0 +1,27 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="40%" class="sty_label">{{'label.motif'|trans([],'BoAdminBundle')}}</th>
+            <th width="40%" class="sty_label">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.motif) }}</td>
+			<td>{{ form_widget(form.startdate, {'attr' : {'class' : 'abstart span3'}}) }}</td>	
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">Number day</th>
+            <th class="sty_label">{{'label.amorpm'|trans([],'BoAdminBundle')}}</th>			
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.numberday) }}</td>	
+			<td>{{ form_widget(form.amorpm) }}</td>				
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th colspan="2" class="sty_label">Comment</th>
+		</tr>
+		<tr>
+			<td colspan="2">{{ form_widget(form.comment) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+	</table>

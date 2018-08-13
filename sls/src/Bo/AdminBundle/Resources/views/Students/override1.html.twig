@@ -1,0 +1,28 @@
+{% extends 'student.html.twig' %}
+{% block title %}{{parent()}} - {{'title.coursesgiven'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoStudentBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}	
+	{%if user.students is defined and user.students!=null%}{%include "BoStudentBundle:Default:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block label %}<h1>{{'title.coursesgiven'|trans([],'BoAdminBundle')}} {{'label.id'|trans([],'BoAdminBundle')}}{{ timesheet.id }}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Students:override1actions.html.twig"%}
+		<div class="show_content">
+			{%include "BoStudentBundle:Timesheet:tbshow.html.twig"%}
+		</div>			
+		<br/>
+		<div class="container">
+			{%include "BoAdminBundle:TsValidation:newform.html.twig"%}
+		</div>		
+	</div>
+	{% block javascripts %}
+		<script>
+			$(document).ready(function(){
+				$('[data-toggle="popover"]').popover();   
+			});
+		</script>
+		  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	{% endblock %}
+{% endblock %}

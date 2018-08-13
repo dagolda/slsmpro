@@ -1,0 +1,43 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.filenumber'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.requesteddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.receiveddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.expireddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.createdby'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for securityCote in securityCotes %}
+            <tr>
+                <td><a href="{{ path('securitycote_show', { 'id': securityCote.id }) }}">{{ securityCote.id }}</a></td>
+                <td>{{ securityCote.filenumber }}</td>
+                <td>{% if securityCote.requestdate %}{{ securityCote.requestdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if securityCote.receivedate %}{{ securityCote.receivedate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if securityCote.expirydate %}{{ securityCote.expirydate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if securityCote.creationdate %}{{ securityCote.creationdate|date('Y-m-d') }}{% endif %}</td>
+				<td>{% if securityCote.createby %}{{ securityCote.createby }}{%else%}---{%endif%}</td>				
+                <td class="list-action">
+					{%if app.session.get('rights')['STAFF']['Clearance'] is defined and app.session.get('rights')['STAFF']['Clearance'].edit==1%}
+						<a href="{{ path('employee_securitycote_edit', { 'id': securityCote.id }) }}">
+							{{'action.edit'|trans([],'BoAdminBundle')}}
+						</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr>
+				<td colspan="7">{{'No data found'|trans([],'BoAdminBundle')}}</td>
+				<td class="list-action">
+					{%if app.session.get('rights')['STAFF']['Clearance'] is defined and app.session.get('rights')['STAFF']['Clearance'].edit==1%}
+						<a href="{{ path('employee_securitycote_new',{'idemployee':employee.id}) }}">{{'action.add'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+				</td>
+			</tr>
+        {% endfor %}
+        </tbody>
+    </table>

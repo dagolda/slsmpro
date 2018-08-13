@@ -1,0 +1,33 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="30%" class="sty_label">{{'label.date'|trans([],'BoAdminBundle')}}</th>
+            <th width="30%" class="sty_label">{{'label.motif'|trans([],'BoAdminBundle')}}</th>
+			<th width="30%" class="sty_label">{{'label.numberday'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.startdate) }}</td>
+			<td>{{ form_widget(edit_form.motif) }}</td>	
+			<td>{{ form_widget(edit_form.numberday) }}</td>				
+		</tr>
+		<tr><td colspan="4">&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+            <th class="sty_label">{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.startam) }}</td>
+			<td>{{ form_widget(edit_form.endam) }}</td>
+			<td>{{ form_widget(edit_form.startpm) }}</td>
+			<td>{{ form_widget(edit_form.endpm) }}</td>				
+		</tr>
+		<tr><td colspan="4">&nbsp;</td></tr>
+		<tr>
+            <th colspan="4" class="sty_label">Comment</th>
+		</tr>
+		<tr>
+			<td colspan="4">{{ form_widget(edit_form.comment) }}</td>			
+		</tr>
+		<tr><td colspan="4">&nbsp;</td></tr>
+	</table>

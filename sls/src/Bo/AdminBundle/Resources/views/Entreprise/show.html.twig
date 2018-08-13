@@ -1,0 +1,40 @@
+    <table>
+        <tbody>
+            <tr>
+                <th width="130px">Id:</th>
+                <td>{{ entreprise.id }}</td>
+            </tr>
+            <tr>
+                <th>{{'label.designation'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ entreprise.name }}</td>
+            </tr>
+            <tr>
+                <th>{{'label.type'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ entreprise.type }}</td>
+            </tr>
+            <tr>
+                <th>{{'label.master'|trans([],'BoAdminBundle')}}</th>
+                <td>{{ entreprise.master }}</td>
+            </tr>
+            <tr>
+                <th>{{'label.mainadresse'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ entreprise.address1 }}</td>
+            </tr>
+            <tr>
+                <th>{{'label.secondarydresse'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ entreprise.address2 }}</td>
+            </tr>
+            <tr>
+                <th>{{'label.phone'|trans([],'BoAdminBundle')}} 1:</th>
+                <td>{{ entreprise.phone1 }}</td>
+            </tr>
+            <tr>
+                <th>{{'label.phone'|trans([],'BoAdminBundle')}} 2:</th>
+                <td>{{ entreprise.phone2 }}</td>
+            </tr>
+            <tr>
+                <th>{{'label.mobile'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ entreprise.mobile }}</td>
+            </tr>
+        </tbody>
+    </table>

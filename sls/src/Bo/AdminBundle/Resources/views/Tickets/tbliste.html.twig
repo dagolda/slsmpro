@@ -1,0 +1,39 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>{{'label.subject'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.openedby'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.openeddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.resolveddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ticket in tickets %}
+            <tr>
+                <td><a href="{{ path('tickets_show', { 'id': ticket.id }) }}">{{ ticket.id }}</a></td>
+                <td>{{ ticket.subject }}</td>
+                <td>
+					{%if ticket.employee %}{{ ticket.employee.firstname }} {{ ticket.employee.name }}
+					{%elseif ticket.students %}{{ ticket.students.firstname }} {{ ticket.students.name }}
+					{%else%}---{%endif%}
+				</td>
+                <td>{% if ticket.openeddate %}{{ ticket.openeddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if ticket.resolveddate %}{{ ticket.resolveddate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+                <td>{{ status[ticket.status] }}</td>
+                <td>{% if ticket.creationdate %}{{ ticket.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+			<a href="{{ path('tickets_show', { 'id': ticket.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+		{%if app.session.get('rights')['ADMINISTRATION']['Tickets'] is defined and app.session.get('rights')['ADMINISTRATION']['Tickets'].edit==1%}
+			<a href="{{ path('tickets_edit', { 'id': ticket.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+		{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="8">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

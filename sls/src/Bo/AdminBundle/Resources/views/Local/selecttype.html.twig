@@ -1,0 +1,6 @@
+				<select name='idtype' id='idtype'>
+					<option value="0" selected="delected">{{'action.selecttype'|trans([],'BoAdminBundle')}}</option>
+					{%for type in types%}
+						<option value="{{type.id}}" {%if idtype is defined and type.id ==idtype%}selected='selected'{%endif%}>{{type.reference}}</option>
+					{%endfor%}
+				</select>	

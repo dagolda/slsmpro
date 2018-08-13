@@ -1,0 +1,36 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.trainingdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.group'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hour'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+				<th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for timesheet in timesheets %}
+            <tr>
+                <td>{{ timesheet.ddate|date('Y-m-d') }}</td>
+                <td>{%if timesheet.group%}{{ timesheet.group.name }}{%else%}---{%endif%}</td>
+                <td>{{ timesheet.startam|date('H:i') }}</td>
+                <td>{{ timesheet.endam|date('H:i') }}</td>
+                <td>{{ timesheet.startpm|date('H:i') }}</td>
+                <td>{{ timesheet.endpm|date('H:i') }}</td>
+                <td>{{ timesheet.hour }}</td>
+                <td>{% if timesheet.creationdate %}{{ timesheet.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+					{%if timesheet.status==1%}
+						<a href="{{ path('student_timesheet_validate', { 'id': timesheet.id }) }}">Validate</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="9">{{'message.courses.validation'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

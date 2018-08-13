@@ -1,0 +1,28 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="4%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="17%">{{'label.phonenumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="17%">{{'label.cellnumber'|trans([],'BoAdminBundle')}}</th>
+				<th width="10%">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee in ticketcontact.employee %}
+            <tr>
+                <td>{{ employee.id }}</a></td>
+                <td>{{ employee.firstname }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.homenumber }}</td>
+                <td>{{ employee.cellnumber }}</td>
+				<td class="list-action">
+					<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#myModal{{employee.id}}">{{'action.remove'|trans([],'BoAdminBundle')}}</button>
+				</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

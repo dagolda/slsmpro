@@ -1,0 +1,55 @@
+security:
+    encoders:
+        Bo\UserBundle\entity\User: sha512
+
+
+    role_hierarchy:
+        ROLE_STUDENT:     [ROLE_USER]
+        ROLE_COORDINATOR: [ROLE_STUDENT]	
+        ROLE_TEACHER:     [ROLE_COORDINATOR]			
+        ROLE_ADMIN:       [ROLE_TEACHER]	
+        ROLE_SUPERADMIN:  [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        fos_userbundle:
+            id:  fos_user.user_manager
+
+    firewalls:
+        main:
+            pattern:  .*
+            form_login:
+                provider: fos_userbundle
+                login_path: /user/login
+                use_forward: false
+                check_path: /user/login_check
+                failure_path: null
+                default_target_path: /student/
+            logout:
+                path: /user/logout
+                target: /user/login
+            anonymous: true
+
+    access_control:
+        # Liste des pages accessibles à tous les utilisateurs (ne pas toucher)
+        - { path: ^/_wdt/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/_profiler/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/js/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/css/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/login_check$, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/register$, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        - { path: ^/resseting$, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        # PAGES ACCESSIBLES AUX UTILISATEURS CONNECTES
+        #- { path: ^/user/change-password, role: ROLE_USER }
+        # PAGES ACCESSIBLES À TOUS
+        - { path: ^/accueil.*, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        # PAGES ACCESSIBLES AUX ADMINISTRATEURS        
+        - { path: ^/admin/, role: ROLE_ADMIN, requires_channel: https } 
+        # PAGES ACCESSIBLES AUX TEACHERS        
+        - { path: ^/teacher/, role: ROLE_TEACHER, requires_channel: https }  
+        # PAGES ACCESSIBLES AUX APPRENANTS        
+        - { path: ^/student/, role: ROLE_STUDENT, requires_channel: https } 
+        # PAGES ACCESSIBLES AUX COORDINATORS        
+        - { path: ^/coordinator/, role: ROLE_COORDINATOR, requires_channel: https }         
+        # PAGES ACCESSIBLES AUX UTILISATEURS CONNECTES        
+        - { path: ^/user/change-password, role: ROLE_USER, requires_channel: https }    

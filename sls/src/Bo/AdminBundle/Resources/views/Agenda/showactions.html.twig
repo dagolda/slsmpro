@@ -1,0 +1,36 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td class="delete-action">
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#myModal">
+							{{'action.delete'|trans([],'BoAdminBundle')}}
+						</button>
+					</td>
+					<td>
+						<a href="{{ path('agenda_index') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				{%if app.session.get('rights')['STAFF']['Substitution'] is defined and app.session.get('rights')['STAFF']['Substitution'].creation==1%}
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_cancel">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.canceling'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				{%endif%}
+					{%if app.session.get('rights')['CONTRACTS']['Diary'] is defined and app.session.get('rights')['CONTRACTS']['Diary'].creation==1%}
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_diary">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.diary'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					{%endif%}
+				{%if app.session.get('rights')['STAFF']['Substitution'] is defined and app.session.get('rights')['STAFF']['Substitution'].creation==1%}
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_substitution">{{'label.addsubstitution'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				{%endif%}
+					<td class="total_number">
+						<button type="button" class="btn btn-primary">
+							{{'label.status'|trans([],'BoAdminBundle')}} <span class="badge">{{agendastatus[schedule.status]}}</span>
+						</button>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

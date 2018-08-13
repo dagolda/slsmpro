@@ -1,0 +1,39 @@
+dash_help_index:
+    path:     /
+    defaults: { _controller: "BoAdvisorsBundle:Help:index" }
+    methods:  GET
+dash_help_list:
+    path:     /list/
+    defaults: { _controller: "BoAdvisorsBundle:Help:list" }
+    methods:  GET
+dash_help_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdvisorsBundle:Help:page" }
+dash_help_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdvisorsBundle:Help:show" }
+    methods:  GET
+dash_help_new:
+    path:     /new
+    defaults: { _controller: "BoAdvisorsBundle:Help:new" }
+    methods:  [GET, POST]
+dash_help_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdvisorsBundle:Help:edit" }
+    methods:  [GET, POST]
+dash_help_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdvisorsBundle:Help:delete" }
+    methods:  DELETE
+dash_help_back:
+    path:     /back/
+    defaults: { _controller: "BoAdvisorsBundle:Help:back" }
+    methods:  GET
+dash_help_search:
+    path:  /search/
+    defaults: { _controller: "BoAdvisorsBundle:Help:search" }
+    methods:  [GET, POST]
+dash_help_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdvisorsBundle:Help:pagesearch" }
+    methods:  [GET, POST]

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.quiz'|trans([],'BoAdminBundle')}} >> {{'label.usereval'|trans([],'BoAdminBundle')}} >> {{'action.edit'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.quiz'|trans([],'BoAdminBundle')}} >> {{'label.usereval'|trans([],'BoAdminBundle')}} >> {{'action.edit'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('evalquiz_edit',{'id':evalquiz.id}) }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoQuizBundle:Evalquiz:editactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoQuizBundle:Evalquiz:editform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

@@ -1,0 +1,28 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="9%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+				<th width="9%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th width="9%">{{'label.targetlevel'|trans([],'BoAdminBundle')}}</th>
+                <th width="9%">{{'label.phonenumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.email'|trans([],'BoAdminBundle')}}</th>
+				<th width="14%">{{'label.attendanceoflearners'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.firstname }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.targetlevel }}</td>
+                <td>{{ student.phonenumber }}</td>
+                <td>{{ student.email }}</td>
+				<td class='ts_presence_value'>
+					<input type='radio' name='student{{student.id}}' value='P' {%if absleg[student.id] is not defined%}checked{%endif%}> P
+					<input type='radio' name='student{{student.id}}' value='N-S' {%if absleg[student.id] is defined and absleg[student.id]=="N-S"%}checked{%endif%}> N-S
+					<input type='radio' name='student{{student.id}}' value='ABS' {%if absleg[student.id] is defined and absleg[student.id]=="ABS"%}checked{%endif%}> ABS				
+				</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

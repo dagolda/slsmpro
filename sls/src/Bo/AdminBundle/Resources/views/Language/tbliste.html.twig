@@ -1,0 +1,23 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for language in languages %}
+            <tr>
+                <td><a href="{{ path('language_show', { 'id': language.id }) }}">{{ language.id }}</a></td>
+                <td>{{ language.name }}</td>
+                <td>{% if language.creationdate %}{{ language.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('language_show', { 'id': language.id }) }}">show</a>
+					<a href="{{ path('language_edit', { 'id': language.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

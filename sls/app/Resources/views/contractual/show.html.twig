@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.contractual'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.contractual'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Contractual:showactions.html.twig"%}
+		<div class="show_content">
+			{%include "BoAdminBundle:Contractual:show.html.twig"%}
+		</div>			
+	</div>
+{% endblock %}

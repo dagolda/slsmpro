@@ -1,0 +1,96 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.pricesreference'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'entity.pricesreference'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdminBundle:Pricesreference:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	{%if total is defined and total>nb_cpp%}
+		<div class="pagination_content">
+			{% include 'BoAdminBundle:Pricesreference:pagination.html.twig' %}
+		</div>
+	{%endif%}
+	<div id="content-liste">
+		{%include "BoAdminBundle:Pricesreference:tbliste.html.twig"%}
+	</div>
+	
+	<!-- begin add Price guide creation form by modal dialog-->
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_priceguide" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'entity.priceguide'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('pricesreference_new')}}" method="post" class="style" class="form_submitt">
+				<div class="modal-message"></div>
+				<div class="modal-body">
+					{{ form_errors(form) }}
+						{%include "BoAdminBundle:Pricesreference:newform.html.twig"%}
+					{{ form_rest(form) }}
+				</div>
+				<div class="modal-footer">
+					<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+					<input id="btn-create" type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<!-- end price guide creation form by modal dialog-->	
+	
+	{% block javascripts %}
+		<script>
+			$("#idpage").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idpage option:selected");
+				page=str.text();
+				var DATA = 'motcle=' + page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('pricesreference_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});	
+			$("#btn-search").click(function(){
+				if($("#inp-search").val()==""){
+					alert("Search fields is empty!");
+					return false;
+				}
+				var criteria = $("#inp-search").val();				
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				$(".pagination_content").hide();
+				$(".total_number").hide();
+				$(".list_link").show();
+				var DATA = 'description=' + criteria;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('pricesreference_search')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

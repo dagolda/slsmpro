@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Hadmin list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idperiodpay</th>
+                <th>Hw0</th>
+                <th>Hw1</th>
+                <th>Hw2</th>
+                <th>Hw3</th>
+                <th>Hw4</th>
+                <th>Hw5</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hadmin in hadmins %}
+            <tr>
+                <td><a href="{{ path('hadmin_show', { 'id': hadmin.id }) }}">{{ hadmin.id }}</a></td>
+                <td>{{ hadmin.idperiodpay }}</td>
+                <td>{{ hadmin.hw0 }}</td>
+                <td>{{ hadmin.hw1 }}</td>
+                <td>{{ hadmin.hw2 }}</td>
+                <td>{{ hadmin.hw3 }}</td>
+                <td>{{ hadmin.hw4 }}</td>
+                <td>{{ hadmin.hw5 }}</td>
+                <td>{{ hadmin.total }}</td>
+                <td>{{ hadmin.status }}</td>
+                <td>{% if hadmin.creationdate %}{{ hadmin.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('hadmin_show', { 'id': hadmin.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('hadmin_edit', { 'id': hadmin.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('hadmin_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

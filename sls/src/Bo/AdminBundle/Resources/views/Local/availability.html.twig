@@ -1,0 +1,5 @@
+				<select name='idstatus' id='idstatus'>
+					<option value="0" selected="delected">{{'action.selectstatus'|trans([],'BoAdminBundle')}}</option>
+					<option value="1" {%if idstatus is defined and idstatus==1%}selected='selected'{%endif%}>Available</option>
+					<option value="2" {%if idstatus is defined and idstatus==2%}selected='selected'{%endif%}>Unavailable</option>
+				</select>	

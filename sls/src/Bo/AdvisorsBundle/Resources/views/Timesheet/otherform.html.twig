@@ -1,0 +1,26 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="20%" class="sty_label">Date</th>
+			<th width="20%" class="sty_label">{{'label.category'|trans([],'BoAdminBundle')}}</th>
+			<th width="20%" class="sty_label">{{'label.numberofhour'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.ddate) }}</td>
+			<td>{{ form_widget(form.typets, {'attr' : {'class' : 'typeclass span3'}}) }}</td>
+			<td>{{ form_widget(form.hour, {'attr' : {'class' : 'hour span3'}}) }}</td>
+		</tr>
+		<tr><td colspan="4">&nbsp;</td></tr>
+		<tr>
+			<th width="20%" class="sty_label">{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+			<th width="20%" class="sty_label">{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+			<th width="20%" class="sty_label">{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+			<th width="20%" class="sty_label">{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.startam, {'attr' : {'class' : 'startam span3'}}) }}</td>
+			<td>{{ form_widget(form.endam, {'attr' : {'class' : 'endam span3'}}) }}</td>
+			<td>{{ form_widget(form.startpm, {'attr' : {'class' : 'startpm span3'}}) }}</td>
+			<td>{{ form_widget(form.endpm, {'attr' : {'class' : 'endpm span3'}}) }}</td>
+		</tr>
+		<tr><td colspan="4">&nbsp;</td></tr>
+	</table>

@@ -1,0 +1,7 @@
+{% if criteria is defined %}
+	<div class="result_content">
+		{{'message.search.noresult'|trans([],'BoAdminBundle')}}
+	</div>
+{%else%}
+	{% include 'BoAdminBundle:Robot:tbliste.html.twig' %}
+{%endif%}

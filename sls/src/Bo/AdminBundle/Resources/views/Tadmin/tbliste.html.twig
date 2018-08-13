@@ -1,0 +1,37 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="6%">Id</th>
+                <th width="12%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th width="9%">{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th width="9%">{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th width="9%">{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th width="9%">{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th width="9%">{{'label.hour'|trans([],'BoAdminBundle')}}</th>
+                <th width="13%">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tadmin in tadmins %}
+            <tr>
+                <td><a href="{{ path('tadmin_show', { 'id': tadmin.id }) }}">{{ tadmin.id }}</a></td>
+                <td>{% if tadmin.startdate %}{{ tadmin.startdate|date('Y-m-d') }}{% else %}---{% endif %}</td>
+                <td>{% if tadmin.enddate %}{{ tadmin.enddate|date('Y-m-d') }}{% else %}---{% endif %}</td>
+                <td>{% if tadmin.startam %}{{ tadmin.startam|date('H:i:s') }}{% else %}---{% endif %}</td>
+                <td>{% if tadmin.endam %}{{ tadmin.endam|date('H:i:s') }}{% else %}---{% endif %}</td>
+                <td>{% if tadmin.startpm %}{{ tadmin.startpm|date('H:i:s') }}{% else %}---{% endif %}</td>
+                <td>{% if tadmin.endpm %}{{ tadmin.endpm|date('H:i:s') }}{% else %}---{% endif %}</td>
+                <td>{% if tadmin.hour %}{{ tadmin.hour }}{% else %}---{% endif %}</td>
+                <td>{% if tadmin.creationdate %}{{ tadmin.creationdate|date('Y-m-d H:i:s') }}{% else %}---{% endif %}</td>
+				<td class="list-action">
+					<a href="{{ path('tadmin_show', { 'id': tadmin.id }) }}">show</a>
+					<a href="{{ path('tadmin_edit', { 'id': tadmin.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+				</td>
+            </tr>
+		{%else%}
+			<tr><td colspan="10">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

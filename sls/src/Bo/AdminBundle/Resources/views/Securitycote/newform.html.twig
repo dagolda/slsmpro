@@ -1,0 +1,37 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+			<th width="30%" class="sty_label">Employee</th>
+            <th width="30%" class="sty_label">{{'label.filenumber'|trans([],'BoAdminBundle')}}</th>
+			<td width="30%">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.employee) }}</td>	
+			<td>{{ form_widget(form.filenumber) }}</td>
+			<td>&nbsp;</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.requesteddate'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.receiveddate'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.expireddate'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>
+				{{ form_widget(form.requestdate) }}
+			</td>
+			<td>
+				{{ form_widget(form.receivedate) }}
+			</td>
+			<td>
+				{{ form_widget(form.expirydate) }}
+			</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+            <th colspan="3" class="sty_label">Comment</th>
+		</tr>
+		<tr>
+			<td colspan="3">{{ form_widget(form.comment) }}</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+	</table>

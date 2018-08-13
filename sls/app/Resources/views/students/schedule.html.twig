@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.student'|trans([],'BoAdminBundle')}} >> {{'title.schedule'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block stylesheets %}{{parent()}} <style>.row.content {height: 100%;}</style>{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block nav %}
+	{%include "BoAdminBundle:Students:rightshow.html.twig"%}
+{% endblock %}
+{% block label %}<h1>{{'entity.student'|trans([],'BoAdminBundle')}} >> {{'title.schedule'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Students:scheduleactions.html.twig"%}
+
+		{%include "BoAdminBundle:Students:schedules.html.twig"%}
+		<div id="data_error"></div>			
+	</div>
+
+	{% block javascripts %}
+		<script>	
+			$("#btn_next").click(function(){
+				var idstudent=$("#idstudent").val();
+				var startdate=$("#nstartdate").val();
+				var enddate=$("#nenddate").val();
+				$('#load_data').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var DATA = 'data='+idstudent+"#"+startdate+"#"+enddate;
+				loaddata(DATA);
+				return false;
+			});
+			$("#btn_current").click(function(){
+				var idstudent=$("#idstudent").val();
+				var startdate=0;
+				var enddate=0;
+				$('#load_data').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var DATA = 'data='+idstudent+"#"+startdate+"#"+enddate;
+				loaddata(DATA);
+				return false;
+			});
+			$("#btn_previous").click(function(){
+				var idstudent=$("#idstudent").val();
+				var startdate=$("#pstartdate").val();
+				var enddate=$("#penddate").val();
+				$('#load_data').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var DATA = 'data='+idstudent+"#"+startdate+"#"+enddate;
+				loaddata(DATA);
+				return false;
+			});
+			$("#btn_add_schedule").click(function(){
+				var startam = getRealTime($(".startam").val());
+				var endam = getRealTime($(".endam").val());
+				var startpm = getRealTime($(".startpm").val());
+				var endpm = getRealTime($(".endpm").val());
+				var tot = (endam - startam)  + (endpm - startpm);
+				if(startam==0 && endam==0 && startpm==0 && endpm==0){
+					$('#error_message').html("You have to enter the schedule");
+					return false;
+				}
+				if($(".asc_start").val()>$(".asc_end").val()){
+					$('#error_message').html("Schedule startdate can not be equal to or greater than the end date!");
+					return false;
+				}
+				if($(".hourperday").val()==""){
+					$('#error_message').html("You have to fill the Hour/day field");
+					return false;
+				}
+				if(tot != $(".hourperday").val()){
+					$('#error_message').html("The Hour/day entered is not correct");
+					return false;
+				}				
+				return true;			
+			});	
+			function loaddata(DATA){
+				$.ajax({
+					type: "POST",
+					url: "{{ path('students_schedule_load')}}",
+					data: DATA,
+					cache: true,
+					success: function(data){
+						$('#load_data').html(data);
+					},
+					error: function(data,status,error){
+						$('#data_error').html(error);
+					}
+				});
+				return false;
+			}
+			function getRealTime(time){
+				var at = time.split(":");
+				var h=parseInt(at[0]);
+				var m=parseInt(at[1]);
+				if(m==0) return h; 
+				var d=m/60;
+				var nt = h + d;
+				return  parseFloat(nt);
+			} 
+		</script>		
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

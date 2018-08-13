@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.quiz'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.quiz'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('quiz_edit',{'id':quiz.id}) }}" method="post" class="style">
+			{{ form_errors(edit_form) }}
+			{%include "BoQuizBundle:Quiz:editactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoQuizBundle:Quiz:editform.html.twig"%}
+			</div>
+			{{ form_rest(edit_form) }}
+		</form>	
+	</div>
+
+	<!-- begin edit category quiz form by modal dialog-->
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_category" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.category'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('category_new',{'idquiz':quiz.id})}}" method="post" class="style">
+				<div class="modal-body">
+					{{ form_errors(cat_form) }}
+						{%include "BoQuizBundle:Category:newform.html.twig"%}
+					{{ form_rest(cat_form) }}
+				</div>
+				<div class="modal-footer">
+					<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+					<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<!-- end edit category quiz form by modal dialog-->
+
+	<!-- begin edit type quiz form by modal dialog-->
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_type" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.typequiz'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('typequiz_new',{'idquiz':quiz.id})}}" method="post" class="style">
+				<div class="modal-body">
+					{{ form_errors(type_form) }}
+						{%include "BoQuizBundle:Typequiz:newform.html.twig"%}
+					{{ form_rest(type_form) }}
+				</div>
+				<div class="modal-footer">
+					<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+					<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<!-- end edit typequiz quiz form by modal dialog-->
+
+
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

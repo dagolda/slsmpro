@@ -1,0 +1,44 @@
+    <table>
+        <tbody>
+            <tr>
+                <th width="120px">Id:</th>
+                <td>{{ client.id }}</td>
+            </tr>
+			{%if client.reference%}
+            <tr>
+                <th>{{'label.reference'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ client.reference }}</td>
+            </tr>
+			{%endif%}
+			{%if client.designation%}
+            <tr>
+                <th>{{'label.designation'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ client.designation }}</td>
+            </tr>
+			{%endif%}
+			{%if client.phonenumber%}
+            <tr>
+                <th>Phone number:</th>
+                <td>{{ client.phonenumber }}</td>
+            </tr>
+			{%endif%}
+			{%if client.email%}
+            <tr>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ client.email }}</td>
+            </tr>
+			{%endif%}
+			{%if client.address%}
+            <tr>
+                <th>{{'label.address'|trans([],'BoAdminBundle')}}e:</th>
+                <td>{{ client.address }}</td>
+            </tr>
+			{%endif%}
+			{%if client.details%}
+            <tr>
+                <th>Others details:</th>
+                <td>{{ client.details }}</td>
+            </tr>
+			{%endif%}
+        </tbody>
+    </table>

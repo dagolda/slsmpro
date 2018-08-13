@@ -1,0 +1,81 @@
+{%set j=1%}
+	<div class="title"><b>QUESTION</b>&nbsp;&nbsp;{%if question.qorder%}{{question.qorder}}{%endif%}&nbsp;
+		<a href="{{ path('question_edit', { 'id': question.id,'idquiz': quiz.id }) }}"><img src="{{ asset('images/actions/modifier.png') }}" alt="{{'action.edit'|trans([],'BoAdminBundle')}} {{'label.question'|trans([],'BoAdminBundle')}}"/></a>
+	</div>
+	<div class="content">{{question.content|raw}}</div>
+	<div class="quiz_question_response">
+		{%if question.answer%}
+			<ol class="answer">
+				{%for answer in question.answer%}
+				{%set answer_form=edit_answer[answer.id]%}
+				<!-- begin edit answer form by modal dialog-->
+				<div class="container">
+				  <!-- Modal -->
+				  <div class="modal fade" id="edit_answer{{answer.id}}" role="dialog">
+					<div class="modal-dialog">
+		
+					  <!-- Modal content-->
+					  <div class="modal-content">
+						<div class="modal-header">
+						  <button type="button" class="close" data-dismiss="modal">&times;</button>
+						  <h4 class="modal-title">{{'action.edit'|trans([],'BoAdminBundle')}} {{'label.answer'|trans([],'BoAdminBundle')}}</h4>
+						</div>
+						<form action="{{ path('question_editanswer',{'id':answer.id})}}" method="post" class="style">
+							<div class="modal-body">
+								{{ form_errors(answer_form) }}
+									{%include "BoQuizBundle:Answer:newform.html.twig"%}
+								{{ form_rest(answer_form) }}
+							</div>
+							<div class="modal-footer">
+								<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+								<input type="submit" value="{{'action.update'|trans([],'BoAdminBundle')}}">
+							</div>
+						</form>	
+					  </div>
+					  
+					</div>
+				  </div>
+				</div>
+				<!-- end answer edition form by modal dialog-->
+					<li><span {%if answer.choice==1%}class="wax_3d_2"{%endif%}>{{answer.response}}</span>&nbsp;&nbsp;{%if answer.choice==1%}<img src="{{ asset('images/actions/ok.gif') }}" alt="" width="20px"/>{%endif%}&nbsp;&nbsp;<button type="button" class="modal-edit2" data-toggle="modal" data-target="#edit_answer{{answer.id}}"><img src="{{ asset('images/actions/modifier.png') }}" alt="{{'action.edit'|trans([],'BoAdminBundle')}} {{'label.answer'|trans([],'BoAdminBundle')}}"/></button>
+					{%set j=j+1%}
+				{%endfor%}
+			</ol>
+		{%endif%}	
+		{%if j<=question.noa%}
+		<!-- begin add quiz question creation form by modal dialog-->
+		<div class="container">
+		  <!-- Modal -->
+		  <div class="modal fade" id="add_answer" role="dialog">
+			<div class="modal-dialog">
+		
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				  <h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.answer'|trans([],'BoAdminBundle')}}</h4>
+				</div>
+				<form action="{{ path('question_addanswer',{'idquestion':question.id,'idquiz':quiz.id})}}" method="post" class="style">
+					<div class="modal-body">
+						{{ form_errors(answer_form) }}
+							{%include "BoQuizBundle:Answer:newform.html.twig"%}
+						{{ form_rest(answer_form) }}
+					</div>
+					<div class="modal-footer">
+						<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+						<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+					</div>
+				</form>	
+			  </div>
+			  
+			</div>
+		  </div>
+		</div>
+		<!-- end answer creation form by modal dialog-->
+
+		<div class="quiz_question">
+		<!--end quiz question creation form by modal dialog-->
+			<p><button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#add_answer">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.answer'|trans([],'BoAdminBundle')}}</button></p>
+		</div>
+		{%endif%}		
+	</div>

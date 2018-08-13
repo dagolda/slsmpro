@@ -1,0 +1,37 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+				<th>{{'label.days'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hourperday'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.hourperweek'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for schedule in schedules %}
+			<tr>
+				<td class="sty_label">
+					{%if schedule.monday==true and schedule.tuesday==true and schedule.wednesday==true and schedule.thursday==true and schedule.friday==true%}
+						{{'label.frommonday.tofriday'|trans([],'BoAdminBundle')}}
+					{%else%}
+						{%if schedule.monday==true%}{{'label.monday'|trans([],'BoAdminBundle')}}, {%endif%}
+						{%if schedule.tuesday==true%}{{'label.tuesday'|trans([],'BoAdminBundle')}}, {%endif%}
+						{%if schedule.wednesday==true%}{{'label.wednesday'|trans([],'BoAdminBundle')}}, {%endif%}
+						{%if schedule.thursday==true%}{{'label.thursday'|trans([],'BoAdminBundle')}}, {%endif%}
+						{%if schedule.friday==true%}{{'label.friday'|trans([],'BoAdminBundle')}} {%endif%}
+					{%endif%}
+				</td>
+				<td>{{ schedule.startam|date('H:i') }}</td>
+				<td>{{ schedule.endam|date('H:i') }}</td>	
+				<td>{{ schedule.startpm|date('H:i') }}</td>
+				<td>{{ schedule.endpm|date('H:i') }}</td>	
+				<td>{%if schedule.hourperday%}{{ schedule.hourperday }}{%else%}---{%endif%}</td>				
+				<td>{%if schedule.hourperweek%}{{ schedule.hourperweek }}{%else%}---{%endif%}</td>
+		{%else%}
+			<tr><td colspan="7">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}			
+        </tbody>
+    </table>

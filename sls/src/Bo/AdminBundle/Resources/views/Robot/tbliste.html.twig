@@ -1,0 +1,32 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.date'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.number'|trans([],'BoAdminBundle')}} {{'label.contracts'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.number'|trans([],'BoAdminBundle')}} {{'label.group'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.start'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.end'|trans([],'BoAdminBundle')}}</th>
+                <th>Source</th>
+                <th width="126px">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for robot in robots %}
+            <tr>
+                <td><a href="{{ path('robot_show', { 'id': robot.id }) }}">{{ robot.id }}</a></td>
+                <td>{% if robot.ddate %}{{ robot.ddate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ robot.nbcontract }}</td>
+                <td>{{ robot.nbgroup }}</td>
+                <td>{{ robot.start }}</td>
+                <td>{{ robot.end }}</td>
+                <td>{{ robot.source }}</td>
+                <td class="list-action">
+                    <a href="{{ path('robot_show', { 'id': robot.id }) }}">show</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="8">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

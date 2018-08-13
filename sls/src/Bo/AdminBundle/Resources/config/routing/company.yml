@@ -1,0 +1,24 @@
+company_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Company:index" }
+    methods:  GET
+company_show:
+    path:     /{id}/show/
+    defaults: { _controller: "BoAdminBundle:Company:show" }
+    methods:  GET
+company_new:
+    path:     /new/
+    defaults: { _controller: "BoAdminBundle:Company:new" }
+    methods:  [GET, POST]
+company_edit:
+    path:     /{id}/edit/
+    defaults: { _controller: "BoAdminBundle:Company:edit" }
+    methods:  [GET, POST]
+company_duplicate:
+    path:     /{id}/duplicate/
+    defaults: { _controller: "BoAdminBundle:Company:duplicate" }
+    methods:  [GET, POST]
+company_delete:
+    path:     /{id}/delete/
+    defaults: { _controller: "BoAdminBundle:Company:delete" }
+    methods:  DELETE

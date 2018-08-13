@@ -1,0 +1,30 @@
+{% extends 'home.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}	{%if employee!=null%}{%include "BoAdminBundle:User:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>Timesheet creation</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('home_timesheet_new') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Timesheet:newactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Timesheet:newform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#btn-create").click(function(){
+				var str=$("#idgroup option:selected");
+				idgroup=str.val();
+				if(idgroup=="0"){
+					alert("The group's field is empty!");
+					return false;
+				}				
+				return true;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

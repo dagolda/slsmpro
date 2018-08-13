@@ -1,0 +1,27 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>Number of month</th>
+                <th>Month (en)</th>
+                <th>Month (fr)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tmonth in tmonths %}
+            <tr>
+                <td><a href="{{ path('tmonth_show', { 'id': tmonth.id }) }}">{{ tmonth.id }}</a></td>
+                <td>{{ tmonth.imonth }}</td>
+                <td>{{ tmonth.smonthen }}</td>
+                <td>{{ tmonth.smonthfr }}</td>
+                <td class="list-action">
+                    <a href="{{ path('tmonth_show', { 'id': tmonth.id }) }}">show</a>
+                    <a href="{{ path('tmonth_edit', { 'id': tmonth.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="5">Aucune entrée de campus trouvée dans la base de données</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

@@ -1,0 +1,24 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>			
+			<th width="25%" class="sty_label">Order number</th>
+			<th width="25%" class="sty_label">contract number</th>
+			<th width="25%" class="sty_label">Method of supply</th>			
+		</tr>
+		<tr>		
+			<td>{{ form_widget(edit_form.ordernumber) }}</td>
+			<td>{{ form_widget(edit_form.contractnumber) }}</td>
+			<td>{{ form_widget(edit_form.methodofsupply) }}</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">Client</th>
+			<th class="sty_label">Department</th>
+			<th class="sty_label">Program</th>	
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.client) }}</td>
+			<td>{{ form_widget(edit_form.department) }}</td>
+			<td>{{ form_widget(edit_form.program) }}</td>				
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+	</table>

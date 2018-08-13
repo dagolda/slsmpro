@@ -1,0 +1,28 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.quiz'|trans([],'BoAdminBundle')}} >> {{'entity.evaluation'|trans([],'BoAdminBundle')}} >> {{'title.confirmation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.quiz'|trans([],'BoAdminBundle')}} >> {{'entity.evaluation'|trans([],'BoAdminBundle')}} >> {{'title.confirmation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('evalquiz_confirmation',{'id':evalquiz.id}) }}" method="post" class="style">	
+			{%include "BoQuizBundle:Evalquiz:confirmactions.html.twig"%}				
+			<div class="show_content">
+				{{ form_errors(form) }}
+				<div class="title2">{{'message.send.confirmation'|trans([],'BoAdminBundle')}}</div>
+				{%if emailstudents %}
+					<div class="aeration"><input type="checkbox" name="student" value="1" checked> {{ emailstudents }}</div>
+				{%endif%}
+				{%if evalquiz.notification and evalquiz.notification!=null%}
+					<div class="aeration"><input type="checkbox" name="notification" value="1" checked> {{evalquiz.notification}}</div>
+				{%endif%}
+				<div class="aeration"><input type="checkbox" name="clientservice" value="1" checked> {{clientservice}}</div>
+				<div class="aeration">
+					<b>{{'label.other'|trans([],'BoAdminBundle')}}</b>: <input type="text" name="other" size="60" value="" />
+				</div>
+				<br/>
+			</div>
+			{{ form_rest(form) }}
+		</form>
+	</div>
+{% endblock %}

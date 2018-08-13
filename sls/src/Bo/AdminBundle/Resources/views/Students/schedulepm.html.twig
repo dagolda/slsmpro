@@ -1,0 +1,29 @@
+				{%set i=1%}
+				{%if tb_pm|length==0%}						
+					<tr>
+						<td class="events-amorpm">
+							{{'label.pm'|trans([],'BoAdminBundle')}}
+						</td>
+						{% for i in range(0,4) %}
+							<td class='events-value'>&nbsp;</td>
+						{%endfor%}
+					</tr>
+				{%elseif tb_pm|length==1%}
+					{%set tab=tb_pm[0]%}
+					<tr>
+						<td class="events-amorpm">
+							{{'label.pm'|trans([],'BoAdminBundle')}}
+						</td>					
+						{%include "BoAdminBundle:Students:tab.html.twig"%}
+					</tr>
+				{%else%}
+					{% for tab in tb_pm %}
+					<tr>
+						<td class="events-amorpm">
+							{%if i==1%}{{'label.pm'|trans([],'BoAdminBundle')}}{%else%}&nbsp;{%endif%}
+						</td>
+						{%include "BoAdminBundle:Students:tab.html.twig"%}
+					</tr>
+					{%set i=i+1%}
+					{%endfor%}
+				{%endif%}

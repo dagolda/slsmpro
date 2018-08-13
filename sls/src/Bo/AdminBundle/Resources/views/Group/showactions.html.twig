@@ -1,0 +1,63 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['CONTRACTS']['Groups'] is defined and app.session.get('rights')['CONTRACTS']['Groups'].ddelete==1%}
+					<td class="delete-action">
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#myModal">
+							{{'action.delete'|trans([],'BoAdminBundle')}}
+						</button>
+					</td>
+				{%endif%}
+				{%if app.session.get('search') is defined and app.session.get('search') is not null%}	
+					<td>
+						<a href="{{ path('group_back') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				{%endif%}
+				{%if app.session.get('rights')['CONTRACTS']['Groups'] is defined and app.session.get('rights')['CONTRACTS']['Groups'].edit==1 and group.status!=0%}
+					<td class="delete-action">
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#close_group">
+							{{'action.close'|trans([],'BoAdminBundle')}}
+						</button>
+					</td>
+				{%endif%}
+				{%if app.session.get('rights')['CONTRACTS']['Groups'] is defined and app.session.get('rights')['CONTRACTS']['Groups'].edit==1 and group.status==0%}
+					<td class="delete-action">
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#reopen_group">
+							{{'action.open'|trans([],'BoAdminBundle')}}
+						</button>
+					</td>
+				{%endif%}
+				{%if historics|length>0%}
+					<td>
+						<a href="{{ path('group_historic',{'id':group.id}) }}">{{'action.historic'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				{%endif%}
+				{%if dba==1%}
+					<td>
+						<a href="{{ path('group_actualize',{'id':group.id}) }}">{{'action.actualize'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				{%endif%}
+					<td>
+						<a href="{{ path('group_index') }}">{{'action.list'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				<!--td><button type="submit" id="btn-update">{{'action.update'|trans([],'BoAdminBundle')}}</button></td--!>
+					<td>
+						{%if group.status==0%}
+							<span class="btn completed_contracts">
+								{{'label.closed'|trans([],'BoAdminBundle')}}
+							</span>
+						{%elseif group.status==1%}
+							<span class="btn green_3d_21">
+								{{'label.inprogress'|trans([],'BoAdminBundle')}}
+							</span>
+						{%elseif group.status==2%}
+							<span class="btn wax_3d_3">
+								{{'label.upcoming'|trans([],'BoAdminBundle')}}
+							</span>
+						{%endif%}
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

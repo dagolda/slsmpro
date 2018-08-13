@@ -1,0 +1,20 @@
+		<form action="{{ path('contracts_schedule_new') }}" method="post" class="style">
+			{%if form_errors(schedule_form) %}
+				<tr><td colspan="7">{{ form_errors(schedule_form) }}</td></tr>
+			{%endif%}
+            <tr>
+                <td>{{ form_widget(schedule_form.dayfrom) }}</td>
+                <td>{{ form_widget(schedule_form.dayto) }}</td>
+                <td>{{ form_widget(schedule_form.startam) }}</td>
+                <td>{{ form_widget(schedule_form.endam) }}</td>
+                <td>{{ form_widget(schedule_form.startpm) }}</td>
+                <td>{{ form_widget(schedule_form.endpm) }}</td>
+				<td>&nbsp;</td>
+                <td class="list-action">
+					{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].creation==1%}
+						<button type="submit" id="btn-create">{{'action.add'|trans([],'BoAdminBundle')}}</button>
+					{%endif%}
+                </td>
+            </tr>
+			{{ form_rest(schedule_form) }}
+		</form>

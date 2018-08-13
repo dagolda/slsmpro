@@ -1,0 +1,56 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.otherprices'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'entity.otherprices'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdminBundle:Otherprices:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	{%if total is defined and total>nb_cpp%}
+		<div class="pagination_content">
+			{% include 'BoAdminBundle:Otherprices:pagination.html.twig' %}
+		</div>
+	{%endif%}
+	<div id="content-liste">
+		{%include "BoAdminBundle:Otherprices:tbliste.html.twig"%}
+	</div>
+	
+	<!-- begin add Price guide creation form by modal dialog-->
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_price" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'entity.price'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('otherprices_new')}}" method="post" class="style" class="form_submitt">
+				<div class="modal-message"></div>
+				<div class="modal-body">
+					{{ form_errors(form) }}
+						{%include "BoAdminBundle:Otherprices:newform.html.twig"%}
+					{{ form_rest(form) }}
+				</div>
+				<div class="modal-footer">
+					<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+					<input id="btn-create" type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<!-- end price guide creation form by modal dialog-->	
+	
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

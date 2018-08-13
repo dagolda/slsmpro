@@ -1,0 +1,41 @@
+	<form action="{{ path('contracts_xls') }}" method="post" }} id="criteria_form">
+		<table width="100%">
+				<td width="20">&nbsp;</td>
+				<td align="left">
+					<span class="sty_label">{{'label.employee'|trans([],'BoAdminBundle')}}</span>:
+					{% include "BoPayrollBundle:Timesheet:selectemployee.html.twig" %}				
+				</td>
+				<td width="20">&nbsp;</td>
+				<td align="left">
+					<span class="sty_label">{{'label.year'|trans([],'BoAdminBundle')}}</span>:
+					{{ form_widget(ccd_form.year, {'attr' : {'class' : 'year span3'}}) }}
+				</td>
+				<td width="20">&nbsp;</td>
+				<td align="left">
+					<span class="sty_label">{{'label.month'|trans([],'BoAdminBundle')}}</span>:
+					{{ form_widget(ccd_form.month, {'attr' : {'class' : 'month span3'}}) }}
+				</td>
+				<td width="20">&nbsp;</td>
+				<td align="left">
+					<span class="sty_label">{{'label.status'|trans([],'BoAdminBundle')}}</span>:
+					{% include "BoPayrollBundle:Timesheet:selectstatus.html.twig" %}
+				</td>
+				<td width="20">&nbsp;</td>
+				<td align="left">
+					<span class="sty_label">{{'label.category'|trans([],'BoAdminBundle')}}</span>:
+					{% include "BoPayrollBundle:Timesheet:selecttype.html.twig" %}
+				</td>
+				<td width="20">&nbsp;</td>
+				<td align="left">
+					<span class="sty_label">{{'label.from'|trans([],'BoAdminBundle')}}</span>:
+					{{ form_widget(ccd_form.startdate, {'attr' : {'class' : 'startdate span3'}}) }}
+				</td>
+				<td width="20">&nbsp;</td>
+				<td class="sty_value" align="left">
+					<span class="sty_label">{{'label.to'|trans([],'BoAdminBundle')}}</span>:
+					{{ form_widget(ccd_form.enddate, {'attr' : {'class' : 'enddate span3'}}) }}
+				</td>
+				<td class="extract_btn"><button type="submit"><img src="{{ asset('images/actions/xls.gif') }}" /></button></td>	
+			</tr>
+		</table>
+	</form>

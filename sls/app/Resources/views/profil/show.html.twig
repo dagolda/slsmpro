@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.profile'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tools.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.profile'|trans([],'BoAdminBundle')}} {{profil.name}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Profil:showactions.html.twig"%}
+		<div class="display_content">
+			<legend>{{'label.right'|trans([],'BoAdminBundle')}}s</legend>
+			{%include "BoAdminBundle:Profil:rights.html.twig"%}
+			<input type="hidden" id="idprofil" value="{{profil.id}}"/>
+		</div>
+		<div class="display_content">
+			<legend>{{'label.employees'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Profil:employee.html.twig"%}
+			<input type="hidden" id="idprofil" value="{{profil.id}}"/>
+		</div>
+	</div>
+	
+	<!-- begin add right creation form by modal dialog-->
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_right" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.right'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('rights_add', { 'idprofil': profil.id }) }}" method="post" class="style">
+				<div class="modal-body">
+					{{ form_errors(right_form) }}
+						{%include "BoAdminBundle:Profil:addrightform.html.twig"%}
+					{{ form_rest(right_form) }}
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<!-- end Training creation form by modal dialog-->
+	
+	{% block javascripts %}
+		<script>
+			$(".idrubric").change(function(){
+				$('.select_srubric').html("{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' />");
+				var str=$(".idrubric option:selected");
+				rubric=str.val();
+				var profil = $("#idprofil").val();	
+				var DATA = 'data='+rubric+":"+profil;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('rights_srubric_load')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('.select_srubric').html(data);
+					}
+				});
+				return false;
+			});
+			$("#idsrubric").change(function(){
+				var str=$("#idsrubric option:selected");
+				srubric=str.val();
+				alert(srubric);
+				return false;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

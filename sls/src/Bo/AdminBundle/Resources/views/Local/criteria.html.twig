@@ -1,0 +1,24 @@
+	<!--form action="{{ path('local_xls') }}" method="post" }} id="criteria_form"--!>
+		<table width="100%">
+				<td width="20">&nbsp;</td>
+				<td class="sty_label" align="right">{{'label.campus'|trans([],'BoAdminBundle')}}:&nbsp;</td>
+				<td>{% include "BoAdvisorsBundle:Local:selectcampus.html.twig" %}</td>
+				<td width="20">&nbsp;</td>
+				<td class="sty_label" align="right">{{'label.contracttype'|trans([],'BoAdminBundle')}}:&nbsp;</td>
+				<td>{% include "BoAdvisorsBundle:Local:selecttype.html.twig" %}</td>
+				<td width="20">&nbsp;</td>
+				<td class="sty_label" align="right">{{'label.status'|trans([],'BoAdminBundle')}}:&nbsp;</td>
+				<td>{% include "BoAdvisorsBundle:Local:selectstatus.html.twig" %}</td>
+				<td width="20">&nbsp;</td>
+				<td class="sty_label" align="right">{{'label.category'|trans([],'BoAdminBundle')}}:&nbsp;</td>
+				<td>{% include "BoAdvisorsBundle:Timesheet:selecttype.html.twig" %}</td>
+				<td width="20">&nbsp;</td>
+				<td class="sty_label" align="right">{{'label.startdate'|trans([],'BoAdminBundle')}}:&nbsp;</td>
+				<td class="sty_value">{{ form_widget(ccd_form.startdate, {'attr' : {'class' : 'startdate span3'}}) }}</td>
+				<td width="20">&nbsp;</td>
+				<td class="sty_label" align="right">{{'label.enddate'|trans([],'BoAdminBundle')}}:&nbsp;</td>
+				<td class="sty_value">{{ form_widget(ccd_form.enddate, {'attr' : {'class' : 'enddate span3'}}) }}</td>
+				<td class="extract_btn"><button type="submit"><img src="{{ asset('images/actions/xls.gif') }}" /></button></td>	
+			</tr>
+		</table>
+	<!--/form--!>

@@ -1,0 +1,20 @@
+billing_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Billing:index" }
+    methods:  GET
+billing_billed:
+    path:     /billed/
+    defaults: { _controller: "BoAdminBundle:Billing:billed" }
+    methods:  GET
+billing_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Billing:show" }
+    methods:  GET
+billing_showts:
+    path:     /{id}/{idbilling}/showts
+    defaults: { _controller: "BoAdminBundle:Billing:showts" }
+    methods:  GET
+billing_bill:
+    path:     /{id}/bill
+    defaults: { _controller: "BoAdminBundle:Billing:bill" }
+    methods:  GET

@@ -1,0 +1,40 @@
+bo_quiz_homepage:
+    path:     /
+    defaults: { _controller: BoQuizBundle:Default:index }   
+bo_quiz_scoring:
+    resource: "@BoQuizBundle/Resources/config/routing/scoring.yml"
+    prefix:   /scoring
+bo_quiz_evaluation:
+    path:     /{id}/evaluation/
+    defaults: { _controller: BoQuizBundle:Default:evaluation } 
+bo_quiz_quiz:
+    path:     /{id}/{idevalquiz}/quiz/
+    defaults: { _controller: BoQuizBundle:Default:quiz } 
+bo_quiz_evalquiz:
+    path:     /{id}/evalquiz/
+    defaults: { _controller: BoQuizBundle:Default:evalquiz } 
+bo_quiz_resultquiz:
+    path:     /{id}/{iduser}/result/
+    defaults: { _controller: BoQuizBundle:Default:resultquiz } 
+bo_quiz_login:
+    path:     /login/
+    defaults: { _controller: BoQuizBundle:Default:login }   
+bo_quiz_logout:
+    path:     /logout/
+    defaults: { _controller: BoQuizBundle:Default:logout }   
+bo_quiz_check:
+    path:     /check/
+    defaults: { _controller: BoQuizBundle:Default:check } 
+bo_quiz_error:
+    path:     /error/{code}/
+    defaults: { _controller: BoQuizBundle:Default:error } 
+bo_quiz_reckon:
+    path:     /{id}/{idevalquiz}/reckon
+    defaults: { _controller: "BoQuizBundle:Default:reckon" }
+    methods:  [GET, POST]
+   
+
+
+
+
+

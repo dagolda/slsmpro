@@ -1,0 +1,45 @@
+{% extends 'home2.html.twig' %}
+{% block title %}{{parent()}}- {{'layout.menu.contracts'|trans([],'BoAdminBundle')}} >> {{'action.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoHomeBundle:Default:contract.html.twig"%}{% endblock %}
+{% block nav %}	
+	{%if employee!=null%}
+		{%include "BoHomeBundle:Contracts:rightshow.html.twig"%}
+	{%endif%}	
+{% endblock %}
+{% block label %}
+	<h1>{{'layout.menu.contracts'|trans([],'BoAdminBundle')}} >> {{'action.show'|trans([],'BoAdminBundle')}}</h1>
+{% endblock %}	
+{% block actions %}				
+{% endblock %}
+{% block body %}
+	<div class="home-content">
+		<div class="display_content">
+			{%if groups and groups[0] is defined%}
+				<legend>{{'label.group'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoHomeBundle:Contracts:group.html.twig"%}
+			{%else%}
+				<legend>{{'label.group'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoHomeBundle:Contracts:nogroup.html.twig"%}
+			{%endif%}
+			{%if contracts and contracts[0] is defined%}
+				<legend>{{'label.contract'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoHomeBundle:Contracts:contractlist.html.twig"%}
+			{%else%}
+				<legend>{{'label.contract'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoHomeBundle:Contracts:nocontract.html.twig"%}
+			{%endif%}
+		</div>
+		{%if groups and groups[0] is defined%}
+			<div class="display_content">
+				<legend>{{'title.schedule'|trans([],'BoAdminBundle')}} {{'label.group'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoHomeBundle:Contracts:schedulegroup.html.twig"%}
+			</div>
+		{%endif%}
+		{%if contracts and contracts[0] is defined%}
+			<div class="display_content">
+				<legend>{{'title.schedule'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoHomeBundle:Contracts:schedule.html.twig"%}
+			</div>
+		{%endif%}
+	</div>
+{% endblock %}

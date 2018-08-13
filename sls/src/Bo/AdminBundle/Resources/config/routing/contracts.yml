@@ -1,0 +1,237 @@
+contracts_index: 
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Contracts:index" }
+    methods:  GET
+contracts_list:
+    path:     /list
+    defaults: { _controller: "BoAdminBundle:Contracts:list" }
+    methods:  GET
+contracts_upcoming:
+    path:     /upcoming/
+    defaults: { _controller: "BoAdminBundle:Contracts:upcoming" }
+    methods:  [GET, POST]
+contracts_back:
+    path:     /back/
+    defaults: { _controller: "BoAdminBundle:Contracts:back" }
+    methods:  GET
+contracts_page:
+    path:     /{option}/page
+    defaults: { _controller: "BoAdminBundle:Contracts:page" }
+    methods:  GET
+contracts_show:
+    path:     /{id}/show/
+    defaults: { _controller: "BoAdminBundle:Contracts:show" }
+    methods:  GET
+contracts_elapsed: 
+    path:     /elapsed/
+    defaults: { _controller: "BoAdminBundle:Contracts:elapsed" }
+    methods:  GET
+contracts_elapsed_back: 
+    path:     /elapsed/back/
+    defaults: { _controller: "BoAdminBundle:Contracts:elapsedback" }
+    methods:  GET
+contracts_elapsed_update: 
+    path:     /elapsed/update/
+    defaults: { _controller: "BoAdminBundle:Contracts:elapsedupdate" }
+    methods:  [GET, POST]
+contracts_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Contracts:search" }
+    methods:  [GET, POST]
+contracts_statistic:
+    path:  /statistic/
+    defaults: { _controller: "BoAdminBundle:Contracts:statistic" }
+    methods:  [GET, POST]
+contracts_confirmation:
+    path:  /{idcontract}/confirmation/
+    defaults: { _controller: "BoAdminBundle:Contracts:confirmation" }
+    methods:  [GET, POST]
+contracts_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Contracts:pagesearch" }
+    methods:  [GET, POST]
+contracts_close:
+    path:  /{id}/close/
+    defaults: { _controller: "BoAdminBundle:Contracts:close" }
+    methods:  [GET, POST]
+contracts_reopen:
+    path:  /{id}/reopen/
+    defaults: { _controller: "BoAdminBundle:Contracts:reopen" }
+    methods:  [GET, POST]
+contracts_open:
+    path:  /open/
+    defaults: { _controller: "BoAdminBundle:Contracts:open" }
+    methods:  [GET, POST]
+contracts_plan:
+    path:  /plan/
+    defaults: { _controller: "BoAdminBundle:Contracts:plan" }
+    methods:  [GET, POST]
+contracts_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Contracts:new" }
+    methods:  [GET, POST]
+contracts_duplicate:
+    path:     /{id}/duplicate
+    defaults: { _controller: "BoAdminBundle:Contracts:duplicate" }
+    methods:  [GET, POST]
+contracts_client_new:
+    path:     /client/new
+    defaults: { _controller: "BoAdminBundle:Contracts:newclient" }
+    methods:  [GET, POST]
+contracts_coordinator_new:
+    path:     /coordinator/new
+    defaults: { _controller: "BoAdminBundle:Contracts:coordinator" }
+    methods:  [GET, POST]
+contracts_create_cbilling:
+    path:     /cbilling/new
+    defaults: { _controller: "BoAdminBundle:Contracts:cbilling" }
+    methods:  [GET, POST]
+contracts_create_contractual:
+    path:     /contractual/ccnew
+    defaults: { _controller: "BoAdminBundle:Contracts:ccnew" }
+    methods:  [GET, POST]
+contracts_contractual_new:
+    path:     /{idcontract}/contractual/new
+    defaults: { _controller: "BoAdminBundle:Contracts:contractual" }
+    methods:  [GET, POST]
+contracts_contractual_edit:
+    path:     /{id}/contact/edit
+    defaults: { _controller: "BoAdminBundle:Contracts:contractualedit" }
+    methods:  [GET, POST]
+contracts_create_client:
+    path:     /create/client/
+    defaults: { _controller: "BoAdminBundle:Contracts:createclient" }
+    methods:  [GET, POST]
+contracts_create_group:
+    path:     /create/group/
+    defaults: { _controller: "BoAdminBundle:Contracts:creategroup" }
+    methods:  [GET, POST]
+contracts_students_new:
+    path:     /student/create/
+    defaults: { _controller: "BoAdminBundle:Contracts:createstudent" }
+    methods:  [GET, POST]
+contracts_students_edit:
+    path:     /{id}/student/edit/
+    defaults: { _controller: "BoAdminBundle:Contracts:editstudent" }
+    methods:  [GET, POST]
+contracts_billingcontact_edit:
+    path:     /{id}/{idcontract}/billingcontact/edit/
+    defaults: { _controller: "BoAdminBundle:Contracts:editbillingcontact" }
+    methods:  [GET, POST]
+contracts_students_select:
+    path:     /{idstudent}/{idcontract}/student/select/
+    defaults: { _controller: "BoAdminBundle:Contracts:selectstudent" }
+    methods:  [GET, POST]
+contracts_contractual_select:
+    path:     /{idcontractual}/{idcontract}/contractual/select/
+    defaults: { _controller: "BoAdminBundle:Contracts:selectcontractual" }
+    methods:  [GET, POST]
+contracts_contractual_remove:
+    path:     /{idcontractual}/{idcontract}/contractual/remove/
+    defaults: { _controller: "BoAdminBundle:Contracts:removecontractual" }
+    methods:  [GET, POST]
+contracts_teacher_new:
+    path:     /teacher/create/
+    defaults: { _controller: "BoAdminBundle:Contracts:teacher" }
+    methods:  [GET, POST]
+contracts_local_new:
+    path:     /local/create/
+    defaults: { _controller: "BoAdminBundle:Contracts:local" }
+    methods:  [GET, POST]
+contracts_local_remove:
+    path:     /{id}/local/remove/
+    defaults: { _controller: "BoAdminBundle:Contracts:removelocal" }
+    methods:  [POST]
+contracts_add_advisor:
+    path:     /add/advisor/
+    defaults: { _controller: "BoAdminBundle:Contracts:addAdvisor" }
+    methods:  [GET, POST]
+contracts_advisor_remove:
+    path:     /{idcontract}/{idemployee}/advisor/remove/
+    defaults: { _controller: "BoAdminBundle:Contracts:removeadvisor" }
+    methods:  DELETE
+contracts_training_remove:
+    path:     /training/remove/
+    defaults: { _controller: "BoAdminBundle:Contracts:removetraining" }
+    methods:  [POST]
+contracts_students_remove0:
+    path:     /{idcontract}/{idstudent}/students/remove/
+    defaults: { _controller: "BoAdminBundle:Contracts:removestudents0" }
+    methods:  [GET]
+contracts_students_remove1:
+    path:     /students/remove/
+    defaults: { _controller: "BoAdminBundle:Contracts:removestudents1" }
+    methods:  [GET]
+contracts_students_remove2:
+    path:     /{idcontract}/{idstudent}/students/remove/
+    defaults: { _controller: "BoAdminBundle:Contracts:removestudents2" }
+    methods:  DELETE
+contracts_teacher_remove:
+    path:     /{id}/{idemployee}/teacher/remove/
+    defaults: { _controller: "BoAdminBundle:Contracts:removeteacher" }
+    methods:  [POST]
+contracts_revision_new:
+    path:     /revision/create/
+    defaults: { _controller: "BoAdminBundle:Contracts:revision" }
+    methods:  [GET, POST]
+contracts_schedule_new:
+    path:     /assign/to/
+    defaults: { _controller: "BoAdminBundle:Contracts:createschedule" }
+    methods:  [GET, POST]
+contracts_newbatch:
+    path:     /batch
+    defaults: { _controller: "BoAdminBundle:Contracts:batch" }
+    methods:  [GET, POST]
+contracts_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Contracts:edit" }
+    methods:  [GET, POST]
+contracts_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Contracts:delete" }
+    methods:  DELETE
+contracts_location:
+    path:     /location/
+    defaults: { _controller: "BoAdminBundle:Contracts:location" }
+    methods:  [GET, POST]
+contracts_addteacher:
+    path:     /addteacher/
+    defaults: { _controller: "BoAdminBundle:Contracts:addteacher" }
+contracts_update:
+    path:     /update/
+    defaults: { _controller: "BoAdminBundle:Contracts:update" }
+contracts_active_agenda:
+    path:     /{idagenda}/{idcontract}/active/agenda
+    defaults: { _controller: "BoAdminBundle:Contracts:update" }
+contracts_extrasearch:
+    path:     /extrasearch/
+    defaults: { _controller: "BoAdminBundle:Contracts:extrasearch" }
+    methods:  [GET, POST]
+contracts_periodsearch:
+    path:     /periodsearch/
+    defaults: { _controller: "BoAdminBundle:Contracts:periodsearch" }
+    methods:  [GET, POST]
+contracts_fieldsearch:
+    path:     /fieldearch/
+    defaults: { _controller: "BoAdminBundle:Contracts:fieldsearch" }
+    methods:  [GET, POST]
+contracts_xls:
+    path:     /extract/xls/
+    defaults: { _controller: "BoAdminBundle:Contracts:xls" }
+    methods:  [GET, POST]
+contracts_presencexls:
+    path:     /{id}/presence/xls/
+    defaults: { _controller: "BoAdminBundle:Contracts:presencexls" }
+    methods:  [GET, POST]
+contracts_substitution_new:
+    path:     /{idagenda}/substitution/new
+    defaults: { _controller: "BoAdminBundle:Contracts:substitute" }
+    methods:  [GET, POST]
+contracts_historic:
+    path:     /{id}/historic/
+    defaults: { _controller: "BoAdminBundle:Contracts:historic" }
+    methods:  GET
+contracts_addnote:
+    path:     /{id}/add/note
+    defaults: { _controller: "BoAdminBundle:Contracts:addnote" }
+    methods:  [GET, POST]

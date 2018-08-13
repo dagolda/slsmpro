@@ -1,0 +1,31 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th width="22px">Id</th>
+				<th width="22px">{{'label.module'|trans([],'BoAdminBundle')}}</th>
+				<th width="22px">{{'label.author'|trans([],'BoAdminBundle')}}</th>
+				<th width="22px">{{'label.datecreation'|trans([],'BoAdminBundle')}}</th>               
+            </tr>
+            <tr>
+                <td>{{ specification.id }}</td>
+                <td>{{ specification.module }}</td>
+				<td>{{ specification.author }}</td>
+				<td>{% if specification.dateCreation %}{{ specification.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <th colspan="4">Objet</th>
+            </tr>
+            <tr>
+                <td colspan="4">{{ specification.objet }}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <th colspan="4">Description</th>
+            </tr>
+            <tr>
+                <td colspan="4">{{ specification.description|raw }}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+        </tbody>
+    </table>

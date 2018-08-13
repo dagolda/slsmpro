@@ -1,0 +1,115 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+			<th width="30%">{{'label.student'|trans([],'BoAdminBundle')}}</th>		
+			<th width="30%">{{'label.other'|trans([],'BoAdminBundle')}}</th>
+            <th width="30%">{{'label.title'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>		
+			<td>{{ form_widget(form.students) }}</td>
+			<td>{{ form_widget(form.other) }}</td>
+			<td>{{ form_widget(form.title) }}</td>		
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.phone'|trans([],'BoAdminBundle')}}</th>
+            <th>{{'label.currentprofile'|trans([],'BoAdminBundle')}}</th>
+            <th>{{'label.customer'|trans([],'BoAdminBundle')}}</th>			
+		</tr>
+		<tr>		
+			<td>{{ form_widget(form.phone) }}</td>	
+			<td>{{ form_widget(form.currentprofile) }}</td>
+			<td>{{ form_widget(form.customer) }}</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.contact'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.contactphone'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.location'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.contact) }}</td>
+			<td>{{ form_widget(form.phonecontact) }}</td>	
+			<td>{{ form_widget(form.evallocation) }}</td>
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.typeoftraining'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.ftorpt'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.language'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.typeoftraining) }}</td>
+			<td>{{ form_widget(form.typetime) }}</td>	
+			<td>{{ form_widget(form.languages) }}</td>
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>		
+            <th>{{'label.yearofgratduation'|trans([],'BoAdminBundle')}}</th>
+            <th>{{'label.targetprofile'|trans([],'BoAdminBundle')}}</th>
+            <th>{{'label.result'|trans([],'BoAdminBundle')}}</th>			
+		</tr>
+		<tr>			
+			<td>{{ form_widget(form.yearofgratduation) }}</td>
+			<td>{{ form_widget(form.targetprofile) }}</td>		
+			<td>{{ form_widget(form.result) }}</td>
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.notes'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.oralunderstanding'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.qualityofdiscourse'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>			
+			<td>{{ form_widget(form.notes) }}</td>
+			<td>{{ form_widget(form.oralunderstanding) }}</td>	
+			<td>{{ form_widget(form.qualityofdiscourse) }}</td>				
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.prononciation'|trans([],'BoAdminBundle')}}</th>
+            <th>{{'label.grammar'|trans([],'BoAdminBundle')}}</th>
+            <th>{{'label.verbs'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.grammar) }}</td>
+			<td>{{ form_widget(form.verbs) }}</td>
+			<td>{{ form_widget(form.vocabulary) }}</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.vocabulary'|trans([],'BoAdminBundle')}}</th>
+            <th>{{'label.writencomprehension'|trans([],'BoAdminBundle')}}</th>
+            <th>{{'label.writenexpression'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.prononciation) }}</td>
+			<td>{{ form_widget(form.writencomprehension) }}</td>
+			<td>{{ form_widget(form.writenexpression) }}</td>
+		</tr>
+		<tr><td colspan='3'>&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.syntax'|trans([],'BoAdminBundle')}}</th>
+            <th>{{'label.evaldate'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.sendevaldate'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.syntaxe) }}</td>
+			<td>{{ form_widget(form.evaldate) }}</td>
+			<td>{{ form_widget(form.sendevaldate) }}</td>
+		</tr>
+		<tr><td colspan='3'>&nbsp;</td></tr>
+		<tr>			
+			<th colspan='3'>{{'label.address'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>			
+			<td colspan='3'>{{ form_widget(form.addresse) }}</td>
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>			
+			<th colspan='3'>{{'label.comment'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>			
+			<td colspan='3'>{{ form_widget(form.comment) }}</td>
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+	</table>

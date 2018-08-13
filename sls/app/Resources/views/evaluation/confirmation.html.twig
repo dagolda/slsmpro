@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.evaluation'|trans([],'BoAdminBundle')}} >> {{'title.confirmation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block stylesheets %}{{parent()}} <style>.row.content {height: 100%;}</style>{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}	
+{% block nav %}{%include "BoAdminBundle:Evaluation:rightshow.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.evaluation'|trans([],'BoAdminBundle')}} >> {{'title.confirmation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('evaluation_confirmation',{'id':evaluation.id}) }}" method="post" class="style">	
+			{%include "BoAdminBundle:Evaluation:confirmactions.html.twig"%}				
+			<div class="show_content">
+				{{ form_errors(form) }}
+				<div class="title2">{{'message.send.confirmation'|trans([],'BoAdminBundle')}}</div>
+				{%if emailstudents %}
+					<div class="aeration"><input type="checkbox" name="student" value="1" checked> {{ emailstudents }}</div>
+				{%endif%}
+				{%if evaluation.emailcontact and evaluation.emailcontact!=null%}
+					<div class="aeration"><input type="checkbox" name="contact" value="1" checked> {{evaluation.emailcontact}}</div>
+				{%endif%}
+				{%if evaluation.evaluator%}
+					<div class="aeration"><input type="checkbox" name="evaluator" value="1" checked> {{evaluation.evaluator.email}}</div>
+				{%endif%}
+				<div class="aeration"><input type="checkbox" name="clientservice" value="1" checked> {{clientservice}}</div>
+				<div class="aeration">
+					<b>{{'label.other'|trans([],'BoAdminBundle')}}</b>: <input type="text" name="other" size="60" value="" />
+				</div>
+				<br/>
+			</div>
+			{{ form_rest(form) }}
+		</form>
+	</div>
+{% endblock %}

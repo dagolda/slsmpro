@@ -1,0 +1,20 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td class="students_company_name">{{ company.nname }} {% if company.compte %}- {{ company.compte }} {{'label.account'|trans([],'BoAdminBundle')}}{%endif%}</td>
+                <td width="30%px">{% if company.dateCreation %}<b>{{'label.created'|trans([],'BoAdminBundle')}}: {{ company.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</b></td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <td colspan="2" width=80%>
+					{{ company.messageen|raw }}
+				</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <td colspan="2" width=80%>
+					{{ company.messagefr|raw }}
+				</td>
+            </tr>
+        </tbody>
+    </table>

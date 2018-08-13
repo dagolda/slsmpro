@@ -1,0 +1,50 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th>Id</th>
+				<th>Monday</th>
+                <th>Tuesday</th>
+				<th>Wednesday</th>
+            </tr>
+            <tr>
+                <td>{{ modelT.id }}</td>
+                <td>{% if modelT.monday %}Yes{% else %}No{% endif %}</td>
+				<td>{% if modelT.tuesday %}Yes{% else %}No{% endif %}</td>
+				<td>{% if modelT.wednesday %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>Thursday</th>
+				<th>Friday</th>
+                <th>Saturday</th>
+				<th>Startam</th>
+            </tr>
+            <tr>
+                <td>{% if modelT.thursday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if modelT.friday %}Yes{% else %}No{% endif %}</td>
+				<td>{% if modelT.saturday %}Yes{% else %}No{% endif %}</td>
+				<td>{% if modelT.startam %}{{ modelT.startam|date('H:i:s') }}{% endif %}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>Endam</th>
+				<th>Startpm</th>
+                <th>Endpm</th>
+				<th>Hour</th>
+            </tr>
+            <tr>
+                <td>{% if modelT.endam %}{{ modelT.endam|date('H:i:s') }}{% endif %}</td>
+                <td>{% if modelT.startpm %}{{ modelT.startpm|date('H:i:s') }}{% endif %}</td>
+				<td>{% if modelT.endpm %}{{ modelT.endpm|date('H:i:s') }}{% endif %}</td>
+				<td>{{ modelT.hour }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th colspan="4">Creationdate</th>
+            </tr>
+            <tr>
+                <td colspan="4">{% if modelT.creationdate %}{{ modelT.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+        </tbody>
+    </table>

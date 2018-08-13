@@ -1,0 +1,26 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+			<th class="sty_label">{{'label.holder'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{agenda.employee.firstname}} {{agenda.employee.name}}</td>
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.substitute'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>
+				<select name='teachers' id='teachers' required="true">
+					<option value="">Select substitute</option>
+					{%for teacher in substitutes%}
+						<option value="{{teacher[0]}}" {%if idteacher is defined and teacher[0]==idteacher%}selected="selected"{%endif%}>{{teacher[1]}}</option>
+					{%endfor%}
+				</select>				
+			</td>
+		</tr>
+	</table>
+	<br/>
+
+	{%include "BoAdminBundle:Contracts:subschedule.html.twig"%}
+

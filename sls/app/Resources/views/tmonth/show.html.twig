@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block nav %}{% endblock %}
+{% block label %}<h1>Month</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Tmonth:showactions.html.twig"%}
+		<div class="show_content">
+			{%include "BoAdminBundle:Tmonth:show.html.twig"%}
+		</div>			
+	</div>
+{% endblock %}

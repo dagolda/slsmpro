@@ -1,0 +1,24 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.category'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.createdby'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for invitation in invitations %}
+            <tr>
+                <td {%if invitation.status==2%}class="ping-color"{%elseif invitation.status==1%}class="wax_3d_1"{%endif%}>{{ invitation.id }}</td>
+                <td {%if invitation.status==2%}class="ping-color"{%elseif invitation.status==1%}class="wax_3d_1"{%endif%}>{%if invitation.category==1 %}{{'label.contract'|trans([],'BoAdminBundle')}}{%elseif invitation.category==2 %}{{'label.substitution'|trans([],'BoAdminBundle')}}{%endif%}</td>
+                <td {%if invitation.status==2%}class="ping-color"{%elseif invitation.status==1%}class="wax_3d_1"{%endif%}>{% if schedule.status==1 %}{{'status.accepted'|trans([],'BoAdminBundle')}}{%elseif schedule.status==2 %}{{'status.rejected'|trans([],'BoAdminBundle')}}{% else %}{{'status.sent'|trans([],'BoAdminBundle')}}{% endif %}</td>
+                <td {%if invitation.status==2%}class="ping-color"{%elseif invitation.status==1%}class="wax_3d_1"{%endif%}>{{ invitation.createdby }}</td>
+                <td {%if invitation.status==2%}class="ping-color"{%elseif invitation.status==1%}class="wax_3d_1"{%endif%}>{% if invitation.creationdate %}{{ invitation.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+		{%else%}
+			<tr><td colspan="5">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

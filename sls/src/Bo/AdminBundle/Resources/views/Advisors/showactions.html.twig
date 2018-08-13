@@ -1,0 +1,38 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['STAFF']['Employees'] is defined and app.session.get('rights')['STAFF']['Employees'].ddelete==1%}
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#myModal">
+							{{'action.delete'|trans([],'BoAdminBundle')}}
+						</button>
+					</td>
+				{%endif%}
+					<td>
+						<a href="{{ path('advisors_index') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					{%if contracts|length!=0%}
+						<td class="total_number">
+							<button type="button" class="btn btn-primary">
+								{{'label.curentcontract'|trans([],'BoAdminBundle')}} <span class="badge">{{contracts|length}}</span>
+							</button>
+						</td>
+					{%endif%}
+					{%if charge['hour']!=0 and charge['percent']!=0%}
+						<td class="total_number">
+							<button type="button" class="btn btn-primary">
+								{{'label.chargehour'|trans([],'BoAdminBundle')}} <span class="badge">{{charge['hour']|number_format(2,"."," ")}}</span>
+							</button>
+							<button type="button" class="btn btn-primary">
+								{{'label.chargepercent'|trans([],'BoAdminBundle')}} <span class="badge">{{charge['percent']|number_format(2,"."," ")}}%</span>
+							</button>
+						</td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#show_detail">{{'label.details'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

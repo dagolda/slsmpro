@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block nav %}	
+    <ul>
+        <li>
+            <a href="{{ path('typeteacher_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
+{% block body %}
+    <h1>TypeTeacher list</h1>
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Reference</th>
+                <th>Designation</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for typeTeacher in typeTeachers %}
+            <tr>
+                <td><a href="{{ path('typeteacher_show', { 'id': typeTeacher.id }) }}">{{ typeTeacher.id }}</a></td>
+                <td>{{ typeTeacher.reference }}</td>
+                <td>{{ typeTeacher.designation }}</td>
+                <td>{% if typeTeacher.creationdate %}{{ typeTeacher.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('typeteacher_show', { 'id': typeTeacher.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('typeteacher_edit', { 'id': typeTeacher.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="5">Aucune entrée d'apprenant trouvée dans la base de données</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

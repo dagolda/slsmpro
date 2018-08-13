@@ -1,0 +1,14 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					{%if timesheet.status and timesheet.status==2%}
+					<td><button type="submit" id="btn-create">Reject</button></td>
+					{%endif%}
+					<td>
+						<a href="{{ path('payroll_employee_show', { 'id': timesheet.employee.id }) }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

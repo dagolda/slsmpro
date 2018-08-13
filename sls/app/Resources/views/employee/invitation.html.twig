@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.employee'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}} >> {{'label.invitation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block stylesheets %}{{parent()}} <style>.row.content {height: 100%;}</style>{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}	
+{% block nav %}
+	{%include "BoAdminBundle:Employee:rightshow.html.twig"%}
+{% endblock %}
+{% block label %}<h1>{{'entity.employee'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}} >> {{'label.invitation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="field-content">
+		{%include "BoAdminBundle:Employee:invitationactions.html.twig"%}
+		<fieldset class="show_content">
+			<legend>{{'label.agenda'|trans([],'BoAdminBundle')}}</legend>
+			{%set schedule=agenda%}
+			{%include "BoAdminBundle:Agenda:tbshow.html.twig"%}
+		</fieldset>	
+		{%for invitation in agenda.invitation%}
+			<br/>
+			<fieldset class="show_content">
+				<legend>{{'label.invitation'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Invitation:show.html.twig"%}
+			</fieldset>
+		{%endfor%}	
+	</div>
+{% endblock %}

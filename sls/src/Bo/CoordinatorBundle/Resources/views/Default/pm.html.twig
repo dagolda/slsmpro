@@ -1,0 +1,16 @@
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li {%if pm=="tabeau-bord"%}class="active"{%endif%}>
+							<a href="{{ path('bo_coordinator_homepage') }}">
+								{{'layout.menu.dashboard'|trans([],'BoAdminBundle')|upper}}
+							</a>
+						</li>
+						<li {%if pm=="supervision"%}class="active"{%endif%}>
+							<a href="{{ path('coordinator_supervision_contracts',{'status':1}) }}">
+								{{'layout.menu.supervision'|trans([],'BoAdminBundle')|upper}}
+							</a>
+						</li>
+					</ul>
+				</div>
+				
+				

@@ -1,0 +1,18 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.absence'|trans([],'BoAdminBundle')}} >> {{'label.teacher'|trans([],'BoAdminBundle')}} {{'label.available'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block label %}<h1>{{'entity.absence'|trans([],'BoAdminBundle')}} >> {{'label.teacher'|trans([],'BoAdminBundle')}} {{'label.available'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+
+	<div id="body-content">
+		{%include "BoAdminBundle:Students:availableactions.html.twig"%}
+		<div id="content-liste">
+			{%include "BoAdminBundle:Students:teacherlist.html.twig"%}
+		</div>
+	</div>
+
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

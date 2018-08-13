@@ -1,0 +1,33 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="4%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.date'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.student'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.employee'|trans([],'BoAdminBundle')}}</th>
+                <th width="8%">{{'label.group'|trans([],'BoAdminBundle')}}</th>
+                <th width="6%">{{'label.id'|trans([],'BoAdminBundle')}} {{'label.contract'|trans([],'BoAdminBundle')}}</th>
+                <th width="40%">{{'label.note'|trans([],'BoAdminBundle')}}</th>
+                <th width="130px" nowrap>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+		{% for diary in diaries %}
+		    <tr>
+		        <td>{{ diary.id }}</td>
+		        <td>{{ diary.ddate|date("d-m-Y") }}</td>
+		        <td>{%if diary.students %}{{ diary.students.firstname }} {{ diary.students.name }}{%else%}---{%endif%}</td>
+		        <td>{%if diary.employee %}{{ diary.employee.firstname }} {{ diary.employee.name }}{%else%}---{%endif%}</td>
+		        <td>{%if diary.group %}{{ diary.group }}{%else%}---{%endif%}</td>
+		        <td>{%if diary.contracts %}{{ diary.contracts.id }}{%else%}---{%endif%}</td>
+		        <td>{{ diary.note }}</td>
+		        <td class="list-action" nowrap>
+		            <a href="{{ path('diary_show', { 'id': diary.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+		            <a href="{{ path('diary_edit', { 'id': diary.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+		        </td>
+		    </tr>
+		{%else%}
+		    <tr><td colspan="6">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+		{% endfor %}
+        </tbody>
+    </table>

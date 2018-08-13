@@ -1,0 +1,15 @@
+{% extends 'FrAdminBundle::servicelayout.html.twig' %}
+{% block title %}
+	{{ parent() }} - Modification diapositive
+{% endblock %} 
+{% block stylesheets %}
+	{{parent()}}
+	<link href="{{ asset('css/view.css') }}" type="text/css" rel="stylesheet" media="screen" />
+{% endblock %}
+{% block left -%}
+    <h2>Modifier la diapositive N°{{entity.id}}</h2>
+	<form {{ form_enctype(form) }}>
+		{{ form_errors(form) }}	
+		{% include "FrAdminBundle:Slider:editform.html.twig" %}		
+	</form>
+{% endblock %}

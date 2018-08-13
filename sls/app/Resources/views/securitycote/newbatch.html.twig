@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>Clearance Level creation batch</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('securitycote_newbatch') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Securitycote:newbatchactions.html.twig"%}
+			{%include "BoAdminBundle:Securitycote:newbatchform.html.twig"%}
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

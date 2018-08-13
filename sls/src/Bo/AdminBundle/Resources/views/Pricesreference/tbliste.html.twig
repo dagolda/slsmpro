@@ -1,0 +1,35 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.offernumber'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.description'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.field'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.location'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pricesreference in pricesreferences %}
+            <tr>
+                <td><a href="{{ path('pricesreference_show', { 'id': pricesreference.id }) }}">{{ pricesreference.id }}</a></td>
+                <td>{{ pricesreference.typecontract }}</td>
+                <td>{{ pricesreference.offernumber }}</td>
+                <td>{{ pricesreference.description }}</td>
+                <td>{{ pricesreference.field }}</td>
+                <td>{{ pricesreference.location }}</td>
+                <td>{% if pricesreference.creationdate %}{{ pricesreference.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('pricesreference_show', { 'id': pricesreference.id }) }}">show</a>
+					{%if app.session.get('rights')['CONTRACTS']['Prices'] is defined and app.session.get('rights')['CONTRACTS']['Prices'].edit==1%}
+						<a href="{{ path('pricesreference_edit', { 'id': pricesreference.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="7">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

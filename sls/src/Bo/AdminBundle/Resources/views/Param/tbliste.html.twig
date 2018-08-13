@@ -1,0 +1,31 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.reference'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.category'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.unit'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.value'|trans([],'BoAdminBundle')}}</th>
+                <th width="130px" nowrap>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for param in params %}
+            <tr>
+                <td><a href="{{ path('param_show', { 'id': param.id }) }}">{{ param.id }}</a></td>
+                <td>{{ param.reference }}</td>
+                <td>{{ param.category }}</td>
+                <td>{{ param.name }}</td>
+                <td>{{ param.unit }}</td>
+                <td>{{ param.value }}</td>
+                <td class="list-action">
+                    <a href="{{ path('param_show', { 'id': param.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+                    <a href="{{ path('param_edit', { 'id': param.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="6">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

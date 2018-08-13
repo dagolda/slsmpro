@@ -1,0 +1,54 @@
+	<div class="employee-identity">Pay period</div>
+    <table width="100%">
+        <tbody>		
+			{%if periodPay.year%}
+            <tr>
+				<th>Year</th>
+				<td>{{ periodPay.year }}</td>
+            </tr>
+			{%endif%}
+			{%if periodPay.month %}
+            <tr>               
+				<th>Month</th>
+				<td>{{ periodPay.month }}</td>
+            </tr>
+			{%endif%}
+			{%if periodPay.startdate %}
+            <tr>
+				<th>Startdate</th>
+				<td>{% if periodPay.startdate %}{{ periodPay.startdate|date('Y-m-d') }}{% endif %}</td>				
+            </tr>
+			{%endif%}
+			{%if periodPay.enddate %}
+            <tr>               
+                <th>Enddate</th>
+				<td>{% if periodPay.enddate %}{{ periodPay.enddate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+			{%endif%}
+			{%if periodPay.numberhour %}
+            <tr>
+                <th>Numberhour</th>
+				<td>{{ periodPay.numberhour }}</td>
+            </tr>
+			{%endif%}
+			{%if periodPay.status %}
+            <tr>
+                <th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+                <td>{%if periodPay.status==1 %}Generated{%else%}Paid{%endif%}</td>
+            </tr>
+			{%endif%}
+			{%if periodPay.paydate %}
+            <tr>
+				<th>Paydate</th>
+				<td>{% if periodPay.paydate %}{{ periodPay.paydate|date('Y-m-d H:i:s') }}{% endif %}</td>               
+            </tr>
+			{%endif%}
+			{% if periodPay.creationdate %}
+            <tr>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <td>{{ periodPay.creationdate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+			{%endif%}
+        </tbody>
+    </table>

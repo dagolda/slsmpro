@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.student'|trans([],'BoAdminBundle')}} >> {{'entity.absence'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}	
+{% block nav %}	{%include "BoAdminBundle:Students:rightshow.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.student'|trans([],'BoAdminBundle')}} >> {{'entity.absence'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('students_edit_absence',{'id':absence.id,'option':option}) }}" method="post" class="style">
+			{{ form_errors(absence_form) }}
+			{%include "BoAdminBundle:Students:editabsenceactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Students:editabsenceform.html.twig"%}
+			</div>
+			{{ form_rest(absence_form) }}
+		</form>	
+	</div>
+{% endblock %}

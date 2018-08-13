@@ -1,0 +1,68 @@
+'no notification found': 'no notification found.'
+'No data found': 'No data found.'
+'No data found in database': 'No data found in database.'
+'You must enter a comment': 'You must enter a comment.'
+'Can not create this data. It already exist': 'Can not create this data. It already exist in the database.'
+'Can not close this contracts': 'Can not close this contracts.'
+'Can not update this contract': "Can not update this contract"
+'This enquiry is processed succefully': 'This request has been succefully processed.'
+'The system can not process this enquiry': 'The system can not process this request.'
+'No teacher is found': 'No teacher is found. Cheick if you have selected a teacher.'
+'A student already exists under this identity. Click on select button to add it to the contract': "A student already exists under this identity. Click on select button to add it to the contract."
+'A substitution already exists for this teacher and this date': "A substitution already exists for this teacher and this date."
+'SLS can not delete this group': "SLS can not delete this group. Please contact the system administrator."
+'The timesheet hour is null': "The value of the course hour field is null."
+'The timesheet times given are not valids': "The timesheet times given are not valids."
+'Thank you to click the [Confirm] button to validate all': "Thank you to click the 'Confirm' button to validate those timesheets."
+'Thank you to click the [Confirm] button to validate': "Thank you to click the 'Confirm' button to validate this timesheet."
+'Those timesheets are validated successfully': "The following courses have been successfully validated :"
+'This timesheet is rejected successfully': "The following course have been successfully rejected :"
+'validated': "Validated"
+'submitted': "Submitted"
+'pending validation': "Pending validation"
+'rejected': "Rejected"
+'payroll traitement': "Payroll traitement"
+'paid': "Paid"
+'billing': "Billing"
+'Confirmation is sent for the contract': "Confirmation is sent for the contract"
+'Can not sent confirmation': "Can not sent confirmation"
+'This contract has been reopened successfully': "This contract has been successfully reopened"
+'This contract has been updated successfully': "This contract has been updated successfully"
+'Something is wrong. Please contact the system administrator': "Something is not right. Please contact the SLS Manager Administrator."
+'Login timeout expired': "Login timeout expired"
+'Unable to find the specified contract': "Unable to find the specified contract."
+'Timesheets are created successfully': "Timesheets have been successfully created"
+'Something is broken. Please let us know what you were doing when this error occurred. We will fix it as soon as possible. Sorry for any inconvenience caused.': "Something is broken. Please let us know what you were doing when this error occurred. We will fix it as soon as possible. Sorry for any inconvenience caused."
+'The pedagogical advisor is added to the contract': "The pedagogical advisor has been added to the contract"
+'Request executed successfully': "The request has been successfully executed"
+'Welcome page already exists for this account': "Welcome page already exists for this account"
+'Course time can not be found. Please contact the payroll manager.': "Course number of hour can not be found. Please contact the payroll manager"
+'This contract is a group contract. You have to choose a group before adding a teacher or a room': This contract is a group contract. You must choose a group before adding a teacher or a room.
+'This room is already occupied by this group': "This room is already occupied by this group"
+'This room is already occupied by this contract': "This room is already occupied by this contract"
+'A timesheet already exists for this date': "A timesheet already exists for this date"
+'unable to create a login for this employee. This account already exist' : "unable to create a login for this employee. This account already exist"
+'Disease': Disease
+'Family emergency': Family emergency
+'Family problem': Family problem
+'Personal reason': Personal reason
+'Other': Other
+'The contract type is not defined this request. Impossible to create the proposal price': "The contract type is not entered for this request. Impossible to create the proposal price"
+'The work field is not defined this request. Impossible to create the proposal price': "The work field is not entered for this request. Impossible to create the proposal price"
+'The hours number is not defined for this request. Impossible to create the proposal price': "The hours number is not entered for this request. Impossible to create the proposal price"
+'An absence is already created for the this employee and for this date': "An absence is already created for the this employee and for this date"
+'An absence already exists for you and for this date': "An absence already exists for you and for this date"
+'Some timesheet are already created for you, so you can not create absence for this date': "Some timesheet are already created for you, so you can not create absence for this date"
+'A secury cote already exists for the this employee': "A secury cote already exists for the this employee"
+'Can not add a teacher': "You must enter the schedules of the training before adding a teacher"
+'Teacher not avalaible': "The teacher is not available"
+'You must select a student': 'You must select a student'
+'Can not create this absence': 'Can not create this absence. Something is wrong'
+'Unable to update this timesheet': "Unable to update this timesheet."
+'Hour per day is different the total of AM and PM hours': "Hour per day is different of the total of AM and PM hours."
+'An error occured while logging in to your account. Please contact the system administrator with this code': "An error occured while logging in to your account. Please contact the system administrator with this code"
+'Some questions did not receive any response': "Some questions did not receive any response"
+'Your validation has been saved successfully': "Your validation has been saved successfully"
+'The schedules entered are not correct': "The schedules entered are not correct"
+'Schedule startdate can not be equal to or greater than the end date!': "Schedule startdate can not be equal to or greater than the end date!"
+'The name entered already exists': "The name entered already exists"

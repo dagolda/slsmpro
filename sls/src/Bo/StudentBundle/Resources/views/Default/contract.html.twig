@@ -1,0 +1,41 @@
+{% extends 'student.html.twig' %}
+{% block title %}{{parent()}}- {{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'entity.contrat'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoStudentBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}{%if student is defined and student!=null%}{%include "BoStudentBundle:Default:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>{{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'entity.contract'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}				
+{% endblock %}
+{% block body %}
+	<div class="home-content">
+		<div class="display_content">
+			<legend>{{'label.contract'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoStudentBundle:Default:contractliste.html.twig"%}
+		</div>
+		<div class="display_content">
+			<legend>{{'title.schedule'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoStudentBundle:Default:schedule.html.twig"%}
+		</div>
+		<div class="display_content">
+			<legend>{{'Teacher'|trans([],'BoAdminBundle')}}</legend>
+			<div id="teacher_content">
+				{%include "BoStudentBundle:Default:teachers.html.twig"%}
+			</div>
+		</div>
+		{%if contract.advisor or group.advisor%}
+			<div class="display_content">
+				<legend>{{'label.pa'|trans([],'BoAdminBundle')}}</legend>
+				<div id="teacher_content">
+					{%include "BoStudentBundle:Default:advisor.html.twig"%}
+				</div>
+			</div>
+		{%endif%}
+		{%if contract.coordinator%}
+			<div class="display_content">
+				<legend>{{'title.departmentcontact'|trans([],'BoAdminBundle')}}</legend>
+				<div id="teacher_content">
+					{%include "BoStudentBundle:Default:coordinator.html.twig"%}
+				</div>
+			</div>
+		{%endif%}
+	</div>
+{% endblock %}

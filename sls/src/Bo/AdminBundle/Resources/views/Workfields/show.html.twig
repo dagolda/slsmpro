@@ -1,0 +1,23 @@
+    <table>
+        <tbody>
+            <tr>
+                <th width="120px">Id:</th>
+                <td>{{ workfield.id }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>Name:</th>
+                <td>{{ workfield.wfname }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>Details:</th>
+                <td>{%if workfield.details!=null and workfield.details!="" %}{{ workfield.details }}{%else%}---{%endif%}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}:</th>
+                <td>{% if workfield.creationdate %}{{ workfield.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>

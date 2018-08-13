@@ -1,0 +1,47 @@
+user_index:
+    path:     /
+    defaults: { _controller: "BoUserBundle:User:index" }
+    methods:  GET
+user_list:
+    path:     /list/
+    defaults: { _controller: "BoUserBundle:User:list" }
+    methods:  GET
+user_teacher_connected:
+    path:     /teacher/connected/
+    defaults: { _controller: "BoUserBundle:User:tconnected" }
+    methods:  GET
+user_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoUserBundle:User:page" }
+user_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoUserBundle:User:show" }
+    methods:  GET
+user_search:
+    path:  /search/
+    defaults: { _controller: "BoUserBundle:User:search" }
+    methods:  [GET, POST]
+user_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoUserBundle:User:pagesearch" }
+    methods:  [GET, POST]
+user_new:
+    path:     /new
+    defaults: { _controller: "BoUserBundle:User:new" }
+    methods:  [GET, POST]
+user_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoUserBundle:User:edit" }
+    methods:  [GET, POST]
+user_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoUserBundle:User:delete" }
+    methods:  DELETE
+user_send_account:
+    path:     /{id}/sendmail/
+    defaults: { _controller: "BoUserBundle:User:sendmail" }
+    methods:  GET
+user_initialize_account:
+    path:     /{id}/initialize/
+    defaults: { _controller: "BoUserBundle:User:initialize" }
+    methods:  GET

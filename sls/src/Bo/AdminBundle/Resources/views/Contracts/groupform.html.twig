@@ -1,0 +1,16 @@
+	<div id="contract_group_errormsg"></div>
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="27%" class="sty_label">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+			<th width="27%" class="sty_label">{{'label.targetlevel'|trans([],'BoAdminBundle')}}</th>
+			<th width="27%" class="sty_label">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+			<th width="15%" class="sty_label">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>	
+		</tr>
+		<tr>
+			<td>{{ form_widget(group_form.name, {'attr' : {'class' : 'gro_name span3'}}) }}</td>
+			<td>{{ form_widget(group_form.targetlevel, {'attr' : {'class' : 'gro_targetlevel span3'}}) }}</td>	
+			<td>{{ form_widget(group_form.startdate, {'attr' : {'class' : 'gro_start span3'}}) }}</td>
+			<td>{{ form_widget(group_form.enddate, {'attr' : {'class' : 'gro_end span3'}}) }}</td>				
+		</tr>
+		<tr><td colspan='4'>&nbsp;</td></tr>
+	</table>

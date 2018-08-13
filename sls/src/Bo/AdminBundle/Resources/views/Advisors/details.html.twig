@@ -1,0 +1,26 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.field'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.number'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.coefficient'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.total'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+	{%set total=0%}
+        {% for detail in details %}
+	{%set total=total+detail['total']%}
+            <tr>
+                <td>{{detail['label']}}</td>
+                <td align='right'>{{detail['number']}}</td>
+                <td align='right'>{{detail['param']}}</td>
+                <td align='right'>{{detail['total']}}</td>
+            </tr>
+        {% endfor %}
+            <tr>
+                <td colspan="3"><b>{{'label.total'|trans([],'BoAdminBundle')}}</b></td>
+                <td align='right'><b>{{total}}</b></td>
+            </tr>
+        </tbody>
+    </table>

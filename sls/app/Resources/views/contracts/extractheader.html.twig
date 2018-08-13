@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.contracts'|trans([],'BoAdminBundle')}} >> Extraction{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.contracts'|trans([],'BoAdminBundle')}} >> Extraction</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('contracts_xls') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Contracts:extractactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Contracts:extractheader.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

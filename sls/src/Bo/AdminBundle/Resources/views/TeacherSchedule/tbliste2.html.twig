@@ -1,0 +1,40 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>{{'label.teacher'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hourperday'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.contract'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.group'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.days'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.actions'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for schedule in schedules %}
+            <tr>
+                <td>{{ schedule.id }}</a></td>
+                <td>{{ schedule.teacher }}</a></td>
+                <td>{% if schedule['startdate'] is defined %}{{ schedule['startdate']|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if schedule['enddate'] is defined %}{{ schedule['enddate']|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ schedule['hourperday'] }}</td>
+                <td>{{ schedule['contract'] }}</td>
+                <td>{{ schedule['group'] }}</td>
+                <td>{{ schedule['dayschedule'] }}</td>
+                <td>{% if schedule['startam'] %}{{ schedule['startam']|date('H:i') }}{% endif %}</td>
+                <td>{% if schedule['endam'] %}{{ schedule['endam']|date('H:i') }}{% endif %}</td>
+                <td>{% if schedule['startpm'] %}{{ schedule['startpm']|date('H:i') }}{% endif %}</td>
+                <td>{% if schedule['endpm'] %}{{ schedule['endpm']|date('H:i') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('teacherschedule_show', { 'id': schedule.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

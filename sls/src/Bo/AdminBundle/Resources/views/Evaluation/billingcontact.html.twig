@@ -1,0 +1,16 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="15%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th width="40%">{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="15%">{{'label.phone'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{% if evaluation.billingcontact %}{{ evaluation.billingcontact }}{% else %}---{% endif %}</td>
+                <td>{% if evaluation.billingemail %}{{ evaluation.billingemail }}{% else %}---{% endif %}</td>
+                <td>{% if evaluation.billingphone %}{{ evaluation.billingphone }}{% else %}---{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>

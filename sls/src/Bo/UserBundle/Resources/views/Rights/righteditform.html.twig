@@ -1,0 +1,35 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="25%" class="sty_label">First rubric</th>
+            <th width="25%" class="sty_label">Second rubric</th>
+            <td width="25%">Active</td>			
+		</tr>
+		<tr>
+			<td>{{right.rubric.nameen}}</td>	
+			<td>{{right.subrubric.nameen}}</td>	
+			<td>{{ form_widget(form.active) }}</td>	
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">List</th>
+            <th class="sty_label">Creation</th>
+            <th class="sty_label">Edit</th>		
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.liste) }}</td>	
+			<td>{{ form_widget(form.creation) }}</td>	
+			<td>{{ form_widget(form.edit) }}</td>	
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">{{'action.delete'|trans([],'BoAdminBundle')}}</th>
+            <th class="sty_label">search</th>
+            <th class="sty_label">Others</th>		
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.ddelete) }}</td>	
+			<td>{{ form_widget(form.search) }}</td>	
+			<td>{{ form_widget(form.others) }}</td>	
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+	</table>

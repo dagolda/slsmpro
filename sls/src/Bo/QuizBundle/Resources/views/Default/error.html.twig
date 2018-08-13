@@ -1,0 +1,11 @@
+{% extends 'quiz.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.quiz'|trans([],'BoAdminBundle')}} >> {{'label.error'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'entity.quiz'|trans([],'BoAdminBundle')}} >> {{'label.error'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+	<div id="content-liste">
+		{{error_message}}: {{code}}.
+	</div>
+	
+{% endblock %}

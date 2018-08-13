@@ -1,0 +1,20 @@
+student_message_index:
+    path:     /
+    defaults: { _controller: "BoStudentBundle:Message:index" }
+    methods:  GET
+student_message_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoStudentBundle:Message:show" }
+    methods:  GET
+student_message_new:
+    path:     /new
+    defaults: { _controller: "BoStudentBundle:Message:new" }
+    methods:  [GET, POST]
+student_message_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoStudentBundle:Message:edit" }
+    methods:  [GET, POST]
+student_message_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoStudentBundle:Message:delete" }
+    methods:  DELETE

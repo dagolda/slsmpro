@@ -1,0 +1,29 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.reference'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+				<th>Cration date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for typecontract in typecontracts %}
+            <tr>
+                <td><a href="{{ path('typecontract_show', { 'id': typecontract.id }) }}">{{ typecontract.id }}</a></td>
+                <td>{{ typecontract.reference }}</td>
+                <td>{{ typecontract.designation }}</td>
+				<td>{% if typecontract.creationdate %}{{ typecontract.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('typecontract_show', { 'id': typecontract.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+					{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].edit==1%}
+						<a href="{{ path('typecontract_edit', { 'id': typecontract.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="4">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

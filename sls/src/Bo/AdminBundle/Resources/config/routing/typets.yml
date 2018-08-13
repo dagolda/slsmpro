@@ -1,0 +1,21 @@
+typets_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Typets:index" }
+    methods:  GET   
+typets_new:
+    path:     /create
+    defaults: { _controller: "BoAdminBundle:Typets:new" }
+    methods:  [GET, POST]
+typets_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Typets:edit" }
+    methods:  [GET, POST]
+typets_message:
+    path:     /message
+    defaults: { _controller: "BoAdminBundle:Typets:message" }
+    methods:  [GET, POST]
+typets_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Typets:delete" }
+    methods:  DELETE
+

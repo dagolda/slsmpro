@@ -1,0 +1,135 @@
+<?php
+namespace Bo\AdminBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+/**
+* @ORM\Entity
+* @ORM\Entity(repositoryClass="Bo\AdminBundle\Repository\ParamRepository")
+*/
+class Param
+{
+    /**
+    * @ORM\GeneratedValue
+    * @ORM\Id
+    * @ORM\Column(type="integer")
+    */
+    private $id;
+	
+    /**
+    * @ORM\Column(type="string",length=255)
+    */    
+    private $reference;
+	
+    /**
+    * @ORM\Column(type="string",length=255)
+    */    
+    private $category;
+	
+    /**
+    * @ORM\Column(type="string",length=255)
+    */    
+    private $unit;
+
+    /**
+    * @ORM\Column(type="string",length=255)
+    */    
+    private $name;
+	
+    /**
+    * @ORM\Column(type="string",length=255)
+    */    
+    private $value;
+
+    /**
+    * Get id
+    * @return integer
+    */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     * @param string $name
+     * @return Param
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+    * Get name
+    * @return string
+    */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+    * Set value
+    * @param string $value
+    * @return Param
+    */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+    * Get value
+    * @return string
+    */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+    * Set reference
+    * @param string $reference
+    * @return Param
+	*/
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    /**
+    * Get reference
+    * @return string
+    */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+    * Set category
+    * @param string $category
+    * @return Param
+    */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+    * Get category
+    * @return string
+    */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+}

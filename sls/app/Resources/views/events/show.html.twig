@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block nav %}{% endblock %}
+{% block label %}<h1>Events</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Events:showactions.html.twig"%}
+		{%include "BoAdminBundle:Events:show.html.twig"%}
+	</div>
+{% endblock %}

@@ -1,0 +1,103 @@
+    <table width=100%>
+        <tbody>
+            <tr>
+                <th width=20%>Id</th>
+				<th width=20%>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th width=20%>{{'label.title'|trans([],'BoAdminBundle')}}</th>
+				<th width=20%>{{'label.phone'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ evaluation.id }}</td>
+                <td>{%if evaluation.firstname and evaluation.name%}{{ evaluation.firstname }} {{ evaluation.name }}{%elseif evaluation.students%}{{ evaluation.students.firstname}} {{ evaluation.students.name}}{%else%}---{%endif%}</td>
+		<td>{{ evaluation.title }}</td>
+		<td>{{ evaluation.phone }}</td>
+            </tr>
+            <tr><td colspam=4>&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.currentprofile'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.customer'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.contact'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.contractphone'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ evaluation.currentprofile }}</td>
+                <td>{{ evaluation.customer }}</td>
+                <td>{{ evaluation.contact }}</td>
+				<td>{{ evaluation.phonecontact }}</td>
+            </tr>
+            <tr><td colspam=4>&nbsp;</td></tr>
+            <tr>
+				<th>{{'label.ftorpt'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.typeoftraining'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.language'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.sendevaldate'|trans([],'BoAdminBundle')}}</th>   
+            </tr>
+            <tr>
+				<td>{{ evaluation.typetime }}</td>
+				<td>{{ evaluation.typeoftraining }}</td>	
+				<td>{{ evaluation.languages }}</td>
+				<td>{{ evaluation.sendevaldate|date('Y-m-d') }}</td>	
+            </tr>
+            <tr><td colspam=4>&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.yearofgratduation'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.targetprofile'|trans([],'BoAdminBundle')}}</th>
+				<th colspan=2>{{'label.address'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ evaluation.yearofgratduation }}</td>
+                <td>{{ evaluation.targetprofile }}</td>
+				<td colspan=2>{{ evaluation.addresse }}</td>
+            </tr>
+            <tr><td colspam=4>&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.rcresult'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.eeresult'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.oralunderstanding'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.qualityofdiscourse'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ evaluation.rcresult }}</td>
+                <td>{{ evaluation.eeresult }}</td>
+		<td>{{ evaluation.oralunderstanding }}</td>
+		<td>{{ evaluation.qualityofdiscourse }}</td>
+            </tr>
+            <tr><td colspam=4>&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.prononciation'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.grammar'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.verb'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.vocabulary'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ evaluation.prononciation }}</td>
+                <td>{{ evaluation.grammar }}</td>
+                <td>{{ evaluation.verbs }}</td>
+                <td>{{ evaluation.vocabulary }}</td>
+            </tr>
+			<tr><td colspam=4>&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.writencomprehension'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.writenexpression'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.syntax'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.evaldate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ evaluation.writencomprehension }}</td>
+                <td>{{ evaluation.writenexpression }}</td>
+                <td>{{ evaluation.syntaxe }}</td>
+                <td>{% if evaluation.evaldate %}{{ evaluation.evaldate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+			<tr><td colspam=4>&nbsp;</td></tr>
+            <tr>
+				<th>{{'label.location'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th coslpan=2>Comment</th>
+            </tr>
+            <tr>
+                <td>{% if evaluation.creationdate %}{{ evaluation.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td coslpan=2>{{ evaluation.comment }}</td>
+            </tr>
+			<tr><td colspam=4>&nbsp;</td></tr>
+        </tbody>
+    </table>

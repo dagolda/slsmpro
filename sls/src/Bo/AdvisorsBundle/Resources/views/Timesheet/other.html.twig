@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'entity.timesheet'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}	{%if employee!=null%}{%include "BoAdminBundle:User:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>{{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'entity.timesheet'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('dash_timesheet_other') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdvisorsBundle:Timesheet:otheractions.html.twig"%}
+			<div class="search_content"></div>
+			<div class="show_content">
+				{%include "BoAdvisorsBundle:Timesheet:otherform.html.twig"%}
+				<input type="hidden" value="{%if app.session.get('_locale') is defined%}{{app.session.get('_locale')}}{%endif%}" id="lang">
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#btn-create").click(function(){
+				var hour = $(".hour").val();	
+				if(hour=="0"){
+					var lang = $("#lang").val();
+					if(lang=="fr"){
+						alert("Le champ Hour ne peut pas être vide.");
+					}else{
+						alert("The hour field can not be empty.");
+					}
+					return false;
+				}
+				/*
+				var startam = $(".startam").val();
+				var endam = $(".endam").val();
+				if(startam=="00:00" and endam=="00:00" and ){
+					var lang = $("#lang").val();
+					if(lang=="fr"){
+						alert("Le champ Hour ne peut pas être vide.");
+					}else{
+						alert("The hour field can not be empty.");
+					}
+					return false;
+				}
+				*/				
+
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

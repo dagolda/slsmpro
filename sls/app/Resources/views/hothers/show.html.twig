@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Hothers</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ hother.id }}</td>
+            </tr>
+            <tr>
+                <th>Idperiodpay</th>
+                <td>{{ hother.idperiodpay }}</td>
+            </tr>
+            <tr>
+                <th>Hw0</th>
+                <td>{{ hother.hw0 }}</td>
+            </tr>
+            <tr>
+                <th>Hw1</th>
+                <td>{{ hother.hw1 }}</td>
+            </tr>
+            <tr>
+                <th>Hw2</th>
+                <td>{{ hother.hw2 }}</td>
+            </tr>
+            <tr>
+                <th>Hw3</th>
+                <td>{{ hother.hw3 }}</td>
+            </tr>
+            <tr>
+                <th>Hw4</th>
+                <td>{{ hother.hw4 }}</td>
+            </tr>
+            <tr>
+                <th>Hw5</th>
+                <td>{{ hother.hw5 }}</td>
+            </tr>
+            <tr>
+                <th>Total</th>
+                <td>{{ hother.total }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ hother.status }}</td>
+            </tr>
+            <tr>
+                <th>Creationdate</th>
+                <td>{% if hother.creationdate %}{{ hother.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('hothers_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('hothers_edit', { 'id': hother.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

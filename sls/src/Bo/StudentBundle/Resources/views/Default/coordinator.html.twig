@@ -1,0 +1,20 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.phone'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ coordinator.name }}</td>
+                <td>{{ coordinator.email }}</td>
+                <td>{% if coordinator.phone %}{{ coordinator.phone }}{% else %}---{% endif %}</td>
+                <td>{{ coordinator.typecontract }}</td>
+                <td>{% if coordinator.creationdate %}{{ coordinator.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>

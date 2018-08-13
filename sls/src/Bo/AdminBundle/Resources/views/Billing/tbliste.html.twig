@@ -1,0 +1,47 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.contract'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.student'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.numbersession'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.numberhour'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hourlyrate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.amount'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="110px" nowrap>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for billing in billings %}
+            <tr>
+                <td {%if billing.status==2%}class="validated"{%endif%}>{{ billing.contract.contractnumber }}</td>
+                <td {%if billing.status==2%}class="validated"{%endif%}>
+					{%if billing.contract and billing.contract.students|length==1%}
+						{%for student in billing.contract.students%}
+							{{ student.firstname }} {{ student.name }}
+							{%else%}
+							---
+						{%endfor%}
+					{%endif%}
+				</td>
+                <td {%if billing.status==2%}class="validated"{%endif%}>{% if billing.startdate %}{{ billing.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td {%if billing.status==2%}class="validated"{%endif%}>{% if billing.enddate %}{{ billing.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td {%if billing.status==2%}class="validated"{%endif%}>{{ billing.numbersession }}</td>
+                <td {%if billing.status==2%}class="validated"{%endif%}>{{ billing.hour }}</td>
+                <td {%if billing.status==2%}class="validated"{%endif%}>{{ billing.hourlyrate }}</td>
+                <td {%if billing.status==2%}class="validated"{%endif%}>{{ billing.amount }}</td>
+                <td {%if billing.status==2%}class="validated"{%endif%}>{% if billing.status==1 %}{{'status.nobilled'|trans([],'BoAdminBundle')}}{% elseif billing.status==2 %}{{'status.billed'|trans([],'BoAdminBundle')}}{%else%}---{%endif%}</td>
+                <td {%if billing.status==2%}class="validated"{%endif%}>{% if billing.creationdate %}{{ billing.creationdate|date('Y-m-d') }}{% endif %}</td>
+                <td  {%if billing.status==2%}class="validated list-action"{%endif%} >
+                    <a href="{{ path('billing_show', { 'id': billing.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+                    <a href="{{ path('billing_bill', { 'id': billing.id }) }}">{{'action.bill'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="10">{{'message.no.found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

@@ -1,0 +1,30 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td>
+						<a href="{{ path('employee_show',{ 'id': employee.id }) }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td class="sty-label" align="left">
+						<button type="submit" name="previous" title="{{'label.previouspage'|trans([],'BoAdminBundle')}}" value="1">
+							{{'label.previous'|trans([],'BoAdminBundle')}}
+						</button>
+					</td>
+					<td class="sty-label" align="left">
+						<button type="submit"  name="next" title="{{'label.nextpage'|trans([],'BoAdminBundle')}}" value="2">
+							{{'label.next'|trans([],'BoAdminBundle')}}
+						</button>					
+					</td>
+					<td class="total_number">
+						<button type="button" class="btn btn-primary">
+							{{'label.week'|trans([],'BoAdminBundle')}}
+							{{dates[0]|date("W")}} >>
+							{{'label.from'|trans([],'BoAdminBundle')}} <span>{{dates[0]|date("d")}} {{'label.to'|trans([],'BoAdminBundle')}} {{dates[6]|date("d")}} {{dates[6]|date("F")|trans([],'BoAdminBundle')}} {{dates[6]|date("Y")}}</span>
+						</button>
+					</td>					
+				</tr>
+			</table>		
+		</div>
+	</div>	
+	<input id="startdate" name="startdate" type="hidden" value="{{dates[0]|date("d-m-Y")}}" />
+	<input id="enddate" name="enddate" type="hidden" value="{{dates[6]|date("d-m-Y")}}" />

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- Payroll{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>Payroll list</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdminBundle:Payroll:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div id="content-liste">
+		{%include "BoAdminBundle:Payroll:tbliste.html.twig"%}
+	</div>
+{% endblock %}

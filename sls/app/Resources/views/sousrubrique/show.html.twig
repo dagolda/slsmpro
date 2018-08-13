@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>SousRubrique</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sousRubrique.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ sousRubrique.name }}</td>
+            </tr>
+            <tr>
+                <th>Ordre</th>
+                <td>{{ sousRubrique.ordre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('sousrubrique_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('sousrubrique_edit', { 'id': sousRubrique.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

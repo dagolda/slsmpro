@@ -1,0 +1,17 @@
+{%set i=1%}
+{%for question in questions%}
+	{%set j=1%}
+	<div class="title"><b>QUESTION {{i}}</b></div>
+	<div class="content">{{question.content|raw}}</div>
+	<div class="quiz_question_response">
+		{%if question.answer%}
+			<ol class="answer">
+				{%for answer in question.answer%}
+					<li><input type="radio" name="radio{{question.id}}" value="{{answer.id}}" {%if answers and answers[question.id] is defined and answers[question.id]==answer.id%}checked{%endif%}>{{answer.response}}</li>
+					{%set j=j+1%}
+				{%endfor%}
+			</ol>
+		{%endif%}	
+	</div>
+	{%set i=i+1%}	
+{%endfor%}

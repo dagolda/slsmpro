@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Resultsquizzes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Iduser</th>
+                <th>Result</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Ttime</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for resultsquiz in resultsquizzes %}
+            <tr>
+                <td><a href="{{ path('resultsquiz_show', { 'id': resultsquiz.id }) }}">{{ resultsquiz.id }}</a></td>
+                <td>{{ resultsquiz.iduser }}</td>
+                <td>{{ resultsquiz.result }}</td>
+                <td>{% if resultsquiz.start %}{{ resultsquiz.start|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if resultsquiz.end %}{{ resultsquiz.end|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ resultsquiz.ttime }}</td>
+                <td>{% if resultsquiz.creationdate %}{{ resultsquiz.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('resultsquiz_show', { 'id': resultsquiz.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('resultsquiz_edit', { 'id': resultsquiz.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('resultsquiz_new') }}">Create a new resultsquiz</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,32 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.week'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.trainingdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.studentname'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hour'|trans([],'BoAdminBundle')}}</th>
+                <th>Submission date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for timesheet in timesheets %}
+            <tr>
+                <td>{{ timesheet.tsweek.numberweek }}</td>
+                <td>{{ timesheet.ddate|date('Y-m-d') }}</td>
+                <td>{%if timesheet.group%}{{ timesheet.group.name }}{%elseif timesheet.students%}{{ timesheet.students.firstname }} {{ timesheet.students.name }}{%else%}N/A{%endif%}</td>
+                <td>{{ timesheet.startam|date('H:i') }}</td>
+                <td>{{ timesheet.endam|date('H:i') }}</td>
+                <td>{{ timesheet.startpm|date('H:i') }}</td>
+                <td>{{ timesheet.endpm|date('H:i') }}</td>
+                <td>{{ timesheet.hour }}</td>
+                <td>{% if timesheet.creationdate %}{{ timesheet.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+		{%else%}
+			<tr><td colspan="8">No data found</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

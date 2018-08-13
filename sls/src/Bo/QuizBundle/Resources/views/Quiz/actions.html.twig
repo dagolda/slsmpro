@@ -1,0 +1,29 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td class="form-group">
+						<input type="text" class="form-control" id="inp-search">
+					</td>
+					<td><button type="submit" id="btn-search">{{'action.search'|trans([],'BoAdminBundle')}}</button></td>
+					<td>
+						<a href="{{ path('evalquiz_index') }}">{{'label.usereval'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td>
+						<a href="{{ path('category_index') }}">{{'label.category'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td>
+						<a href="{{ path('scoring_index') }}">{{'label.scoring'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_quiz">{{'action.add'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-primary">
+							Total quiz <span class="badge">{{quizzes|length|number_format(0,""," ")}}</span>
+						</button>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>

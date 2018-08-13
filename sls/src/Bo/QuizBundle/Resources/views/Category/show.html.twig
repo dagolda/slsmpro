@@ -1,0 +1,15 @@
+    <table width="80%">
+        <tbody>
+            <tr>
+                <th width='20%'>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+		<th width='30%'>{{'label.category'|trans([],'BoAdminBundle')}}</th>  
+                <th width='30%'>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>              
+            </tr>
+            <tr>                
+		<td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td>{% if category.creationdate %}{{ category.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+	    <tr><td>&nbsp;</td></tr>
+        </tbody>
+    </table>

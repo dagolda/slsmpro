@@ -1,0 +1,8 @@
+user_changepassword:
+    path:     /change/password/
+    defaults: { _controller: "BoUserBundle:Manager:changepassword" }
+    methods:  [GET, POST]
+user_user_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoUserBundle:Manager:edit" }
+    methods:  [GET, POST]

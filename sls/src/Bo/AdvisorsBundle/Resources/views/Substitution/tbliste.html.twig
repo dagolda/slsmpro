@@ -1,0 +1,43 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="9%">Date</th>
+                <th width="14%">{{'label.holder'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.student'|trans([],'BoAdminBundle')}}/{{'label.group'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th width="8%">{{'label.hour'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for substitution in substitutions %}
+            <tr>
+                <td>{% if substitution.ddate %}{{ substitution.ddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ teachers[substitution.idholder].firstname }} {{ teachers[substitution.idholder].name }}</td>
+                <td>
+					{%if contracts[substitution.idcontract].group %}
+						{{ contracts[substitution.idcontract].group }}
+					{%elseif contracts[substitution.idcontract].students %}
+						{%for student in contracts[substitution.idcontract].students %}
+							{{ contracts[substitution.idcontract].firstname }} {{ contracts[substitution.idcontract].students.name }}</td>
+						{%endfor%}
+					{% endif %}
+                <td align="right">{% if substitution.startam %}{{ substitution.startam|date('H:i:s') }}{% endif %}</td>
+                <td align="right">{% if substitution.endam %}{{ substitution.endam|date('H:i:s') }}{% endif %}</td>
+                <td align="right">{% if substitution.startpm %}{{ substitution.startpm|date('H:i:s') }}{% endif %}</td>
+                <td align="right">{% if substitution.endpm %}{{ substitution.endpm|date('H:i:s') }}{% endif %}</td>
+                <td align="right">{{ substitution.hour }}</td>
+                <td class="list-action">
+					{%if existts[substitution.id] is defined%}
+					<a href="{{ path('dash_substitution_newts', { 'id': substitution.id }) }}">{{'action.newts'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="9">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>		
+        {% endfor %}
+        </tbody>
+    </table>

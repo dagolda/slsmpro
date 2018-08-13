@@ -1,0 +1,6 @@
+bo_home_newabsence:
+    path:     /absence/new/
+    defaults: { _controller: "BoHomeBundle:Default:newabsence" }
+bo_home_newticket:
+    path:     /ticket/new/
+    defaults: { _controller: "BoHomeBundle:Default:newticket" }

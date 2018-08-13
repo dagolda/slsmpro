@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:setting.html.twig"%}{% endblock %}
+{% block label %}<h1>Message</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Message:showactions.html.twig"%}
+		<div class="show_content">
+			{%include "BoAdminBundle:Message:show.html.twig"%}
+		</div>			
+	</div>
+{% endblock %}

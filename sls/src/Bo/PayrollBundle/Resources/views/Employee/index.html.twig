@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.accounting'|trans([],'BoAdminBundle')}} >> {{'title.tscreation'|trans([],'BoAdminBundle')}} >> {{'label.byemployee'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.accounting'|trans([],'BoAdminBundle')}} >> {{'title.tscreation'|trans([],'BoAdminBundle')}} >> {{'label.byemployee'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoPayrollBundle:Employee:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div id="content-liste">
+		{%include "BoPayrollBundle:Employee:tbliste.html.twig"%}
+	</div>
+{% endblock %}

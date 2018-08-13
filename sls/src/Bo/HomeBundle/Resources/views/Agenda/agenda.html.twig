@@ -1,0 +1,41 @@
+    <table class="agenda_tableau">
+        <thead>
+            <tr>
+				<td class="without_btl">&nbsp;</td>
+				{% for i in 0..5 %}
+					<th>{{formatdates[i]}}</th>
+				{%endfor%}
+            </tr>
+        </thead>
+        <tbody>
+        {% for tt in ttkeys %}
+			{%set att = tt|split(":")%}
+            <tr>
+				{%if att[1]=="00" or att[1]=="30"%}
+					<td rowspan="2" class="agenda-tt" width="4%">{{tt}}</td>
+				{%endif%}
+				{% for i in 0..5 %}
+					{%if agenda[i] is defined%}
+						{%if times[tt]<=12%}
+							{%if agenda[i][tt] is defined%}
+								<td class="{%if dates[i]<today %}agenda-week-p{%elseif agenda[i][tt]['option']==1%}agenda-week{%else%}agenda-week-s{%endif%}" rowspan="{{agenda[i][tt]['hour']}}">{{agenda[i][tt]['label']|raw}}</td>
+							{%elseif (agenda[i]['endam'] is defined and times[tt]<agenda[i]['endam']) and (agenda[i]['startam'] is defined and times[tt]>=agenda[i]['startam'])%}
+							{%else%}
+								<td class="agenda-week1">&nbsp;</td>
+							{%endif%}
+						{%else%}
+							{%if agenda[i][tt] is defined%}
+								<td class="{%if dates[i]<today %}agenda-week-p{%elseif agenda[i][tt]['option']==1%}agenda-week{%else%}agenda-week-s{%endif%}" rowspan="{{agenda[i][tt]['hour']}}">{{agenda[i][tt]['label']|raw}}</td>
+							{%elseif (agenda[i]['endpm'] is defined and times[tt]<agenda[i]['endpm']) and (agenda[i]['startpm'] is defined and times[tt]>=agenda[i]['startpm'])%}
+							{%else%}
+								<td class="agenda-week1">&nbsp;</td>
+							{%endif%}						
+						{%endif%}
+					{%else%}
+						<td class="agenda-week1">&nbsp;</td>
+					{%endif%}
+				{%endfor%}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

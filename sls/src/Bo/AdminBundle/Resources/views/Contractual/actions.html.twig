@@ -1,0 +1,29 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['CONTRACTS']['Contractuals'] is defined and app.session.get('rights')['CONTRACTS']['Contractuals'].search==1%}
+					<td class="form-group">
+						<input type="text" class="form-control" id="inp-search">
+					</td>
+					<td><button type="submit" id="btn-search">{{'action.search'|trans([],'BoAdminBundle')}}</button></td>
+				{%endif%}
+				{%if app.session.get('rights')['CONTRACTS']['Contractuals'] is defined and app.session.get('rights')['CONTRACTS']['Contractuals'].creation==1%}
+					<td>
+						<a href="{{ path('contractual_new') }}">{{'action.add'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				{%endif%}
+				{%if app.session.get('rights')['CONTRACTS']['Contractuals'] is defined and app.session.get('rights')['CONTRACTS']['Contractuals'].liste==1%}
+					<td class="list_link">
+						<a href="{{ path('contractual_index') }}">Contractual list</a>
+					</td>
+					<td>
+						<button type="button" class="btn btn-primary">
+							Total contractuals <span class="badge">{{total|number_format(0,""," ")}}</span>
+						</button>
+					</td>
+				{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

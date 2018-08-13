@@ -1,0 +1,24 @@
+cyclepay_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:CyclePay:index" }
+    methods:  GET
+
+cyclepay_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:CyclePay:show" }
+    methods:  GET
+
+cyclepay_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:CyclePay:new" }
+    methods:  [GET, POST]
+
+cyclepay_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:CyclePay:edit" }
+    methods:  [GET, POST]
+
+cyclepay_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:CyclePay:delete" }
+    methods:  DELETE

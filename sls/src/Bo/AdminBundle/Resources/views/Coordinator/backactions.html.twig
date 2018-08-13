@@ -1,0 +1,24 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['CONTRACTS']['Coordinators'] is defined and app.session.get('rights')['CONTRACTS']['Coordinators'].search==1%}
+					<td class="form-group">
+						<input type="text" class="form-control" id="inp-search">
+					</td>
+					<td><button type="submit" id="btn-search">{{'action.search'|trans([],'BoAdminBundle')}}</button></td>
+				{%endif%}
+				{%if app.session.get('rights')['CONTRACTS']['Coordinators'] is defined and app.session.get('rights')['CONTRACTS']['Coordinators'].creation==1%}
+					<td>
+						<a href="{{ path('coordinator_new') }}">{{'action.add'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				{%endif%}
+				{%if app.session.get('rights')['CONTRACTS']['Coordinators'] is defined and app.session.get('rights')['CONTRACTS']['Coordinators'].liste==1%}
+					<td>
+						<a href="{{ path('coordinator_index') }}">Coordinator list</a>
+					</td>
+				{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

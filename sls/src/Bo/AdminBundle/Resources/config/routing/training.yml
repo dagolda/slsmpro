@@ -1,0 +1,28 @@
+training_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Training:index" }
+    methods:  GET
+training_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Training:show" }
+    methods:  GET
+training_new:
+    path:     /{idcontract}/new
+    defaults: { _controller: "BoAdminBundle:Training:new" }
+    methods:  [GET, POST]
+training_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Training:edit" }
+    methods:  [GET, POST]
+training_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Training:delete" }
+    methods:  DELETE
+training_update:
+    path:     /update
+    defaults: { _controller: "BoAdminBundle:Training:update" }
+    methods:  [GET, POST]
+training_update2:
+    path:     /update2
+    defaults: { _controller: "BoAdminBundle:Training:update2" }
+    methods:  [GET, POST]

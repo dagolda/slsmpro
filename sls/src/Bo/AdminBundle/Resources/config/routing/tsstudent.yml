@@ -1,0 +1,24 @@
+tsstudent_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:TsStudent:index" }
+    methods:  GET
+
+tsstudent_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:TsStudent:show" }
+    methods:  GET
+
+tsstudent_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:TsStudent:new" }
+    methods:  [GET, POST]
+
+tsstudent_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:TsStudent:edit" }
+    methods:  [GET, POST]
+
+tsstudent_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:TsStudent:delete" }
+    methods:  DELETE

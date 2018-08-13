@@ -1,0 +1,35 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th width="30%">Id</th>
+				<th width="30%">Title</th>
+                <th width="30%">Email</th>
+            </tr>
+            <tr>
+                <td>{{ teamcontact.id }}</td>
+                <td>{{ teamcontact.title }}</td>
+				<td>{{ teamcontact.email }}</td>
+            </tr>
+			<tr><td colspan="3">&nbsp;</td></tr>
+            <tr>
+                <th>Location</th>
+				<th>Extension</th>
+				<th>Room</th>
+            </tr>
+            <tr>
+                 <td>{{ teamcontact.location }}</td>
+                <td>{{ teamcontact.extension }}</td>
+				<td>{{ teamcontact.room }}</td>
+            </tr>
+			<tr><td colspan="3">&nbsp;</td></tr>
+            <tr>
+                <th>Creationdate</th>
+				<th>Createby</th>                
+            </tr>
+            <tr>
+                <td>{% if teamcontact.creationdate %}{{ teamcontact.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ teamcontact.createby }}</td>
+            </tr>
+			<tr><td colspan="3">&nbsp;</td></tr>
+        </tbody>
+    </table>

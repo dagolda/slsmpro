@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ModelTs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Startam</th>
+                <th>Endam</th>
+                <th>Startpm</th>
+                <th>Endpm</th>
+                <th>Hour</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for modelT in modelTs %}
+            <tr>
+                <td><a href="{{ path('modelts_show', { 'id': modelT.id }) }}">{{ modelT.id }}</a></td>
+                <td>{% if modelT.monday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if modelT.tuesday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if modelT.wednesday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if modelT.thursday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if modelT.friday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if modelT.saturday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if modelT.startam %}{{ modelT.startam|date('H:i:s') }}{% endif %}</td>
+                <td>{% if modelT.endam %}{{ modelT.endam|date('H:i:s') }}{% endif %}</td>
+                <td>{% if modelT.startpm %}{{ modelT.startpm|date('H:i:s') }}{% endif %}</td>
+                <td>{% if modelT.endpm %}{{ modelT.endpm|date('H:i:s') }}{% endif %}</td>
+                <td>{{ modelT.hour }}</td>
+                <td>{% if modelT.creationdate %}{{ modelT.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('modelts_show', { 'id': modelT.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('modelts_edit', { 'id': modelT.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('modelts_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

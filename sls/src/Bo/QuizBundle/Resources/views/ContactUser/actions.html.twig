@@ -1,0 +1,26 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td class="form-group">
+						<input type="text" class="form-control" id="inp-search">
+					</td>
+					<td><button type="submit" id="btn-search">{{'action.search'|trans([],'BoAdminBundle')}}</button></td>
+					<td>
+						<a href="{{ path('evalquiz_index') }}">{{'label.evaluation'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td>
+						<a href="{{ path('quiz_index') }}">{{'label.quiz'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_user">{{'action.add'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-primary">
+							Total quiz user <span class="badge">{{users|length|number_format(0,""," ")}}</span>
+						</button>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>

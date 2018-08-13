@@ -1,0 +1,29 @@
+				{%set i=1%}
+				{%if tb_am|length==0%}						
+					<tr>
+						<td class="events-amorpm">
+							<span>{{'label.am'|trans([],'BoAdminBundle')}}</span>
+						</td>
+						{% for i in range(0,4) %}
+							<td class='events-value'>&nbsp;</td>
+						{%endfor%}
+					</tr>
+				{%elseif tb_am|length==1%}
+					{%set ntab=ntb_am[0]%}
+					<tr>
+						<td class="events-amorpm">
+							<span>{{'label.am'|trans([],'BoAdminBundle')}}</span>
+						</td>					
+						{%include "BoHomeBundle:Default:ntab.html.twig"%}
+					</tr>
+				{%else%}
+					{% for tab in ntb_am %}
+					<tr>
+						<td class="events-amorpm">
+							{%if i==1%}{{'label.am'|trans([],'BoAdminBundle')}}{%else%}&nbsp;{%endif%}
+						</td>
+						{%include "BoHomeBundle:Default:ntab.html.twig"%}
+					</tr>
+					{%set i=i+1%}
+					{%endfor%}
+				{%endif%}

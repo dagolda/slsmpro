@@ -1,0 +1,26 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.subject'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.to'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for userMessage in userMessages %}
+            <tr>
+                <td>{{ userMessage.subject }}</td>
+                <td>{% if userMessage.sto1 %}{{ userMessage.sto1 }}{%endif%}{%if userMessage.sto2 %},{{ userMessage.sto2 }}{%endif%}</td>
+                <td>{% if userMessage.dateCreation %}{{ userMessage.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{status[userMessage.status]}}</td>
+                <td class="list-action" nowrap>
+                    <a href="{{ path('student_message_show', { 'id': userMessage.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="9">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

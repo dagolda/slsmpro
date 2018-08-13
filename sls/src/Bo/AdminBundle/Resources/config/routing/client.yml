@@ -1,0 +1,36 @@
+client_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Client:index" }
+    methods:  GET
+client_list:
+    path:     /list/
+    defaults: { _controller: "BoAdminBundle:Client:list" }
+    methods:  GET
+client_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Client:show" }
+    methods:  GET
+client_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Client:new" }
+    methods:  [GET, POST]
+client_coordinator_new:
+    path:     /{idclient}master/new
+    defaults: { _controller: "BoAdminBundle:Client:masternew" }
+    methods:  [GET, POST]
+client_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Client:edit" }
+    methods:  [GET, POST]
+client_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Client:search" }
+    methods:  [GET, POST]
+client_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Client:pagesearch" }
+    methods:  [GET, POST]
+client_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Client:delete" }
+    methods:  DELETE

@@ -1,0 +1,33 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.reference'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.designation'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.address'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.city'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for campus in campuses %}
+            <tr>
+                <td><a href="{{ path('campus_show', { 'id': campus.id }) }}">{{ campus.id }}</a></td>
+                <td>{{ campus.reference }}</td>
+                <td>{{ campus.designation }}</td>
+                <td>{{ campus.address }}</td>
+                <td>{{ campus.city }}</td>
+                <td>{% if campus.creationdate %}{{ campus.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('campus_show', { 'id': campus.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+					{%if app.session.get('rights')['ROOMS']['Campus'] is defined and app.session.get('rights')['ROOMS']['Campus'].edit==1%}
+						<a href="{{ path('campus_edit', { 'id': campus.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="7">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

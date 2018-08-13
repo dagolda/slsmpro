@@ -1,0 +1,33 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Month</th>
+                <th>Startdate</th>
+                <th>Enddate</th>
+                <th>Total hour</th>
+                <th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+                <th>Paydate</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for periodPay in periodPays %}
+            <tr>
+                <td>{{ periodPay.year }}</td>
+                <td>{{ periodPay.month }}</td>
+                <td>{% if periodPay.startdate %}{{ periodPay.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if periodPay.enddate %}{{ periodPay.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ periodPay.numberhour }}</td>
+                <td>{{ periodPay.status }}</td>
+                <td>{% if periodPay.paydate %}{{ periodPay.paydate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if periodPay.creationdate %}{{ periodPay.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('periodpay_show', { 'id': periodPay.id }) }}">show</a>
+                    <a href="{{ path('periodpay_edit', { 'id': periodPay.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

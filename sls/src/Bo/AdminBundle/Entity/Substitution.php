@@ -1,0 +1,654 @@
+<?php
+/*
+* Date Création: 20/02/2016
+* Auteur: N'VEKOUNOU Moise José
+* Nom fichier : Substitution.php
+* Description: Entité des Substitutions
+*/
+namespace Bo\AdminBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+/**
+* @ORM\Entity
+* @ORM\Table(name="adm_substitution")
+* @ORM\Entity(repositoryClass="Bo\AdminBundle\Repository\SubstitutionRepository")
+*/
+class Substitution 
+{
+    /**
+    * @ORM\GeneratedValue
+    * @ORM\Id
+    * @ORM\Column(type="integer")
+    */
+    private $id;
+		
+    /**
+    * @ORM\Column(type="integer")
+    */      
+    private $idholder;
+		
+    /**
+    * @ORM\Column(type="integer")
+    */      
+    private $idsubstitute;		
+		
+    /**
+    * @ORM\Column(type="integer", nullable=true)
+    */      
+    private $idcontract;
+			
+    /**
+    * @ORM\Column(type="integer", nullable=true)
+    */      
+    private $idgroup;
+			
+    /**
+    * @ORM\Column(type="integer", nullable=true)
+    */      
+    private $idabsence;
+		  
+    /**
+    * @ORM\ManyToOne(targetEntity="Agenda", inversedBy="substitution")
+    */      
+    private $agenda;
+	
+    /**
+    * @ORM\ManyToOne(targetEntity="Tsweek")
+	* @ORM\JoinColumn(name="idtsweek",referencedColumnName="id")
+    */      
+    private $tsweek;
+		
+    /**
+    * @ORM\Column(type="date", nullable=true)
+    */    
+	private $startdate;	
+		
+    /**
+    * @ORM\Column(type="date", nullable=true)
+    */    
+	private $enddate;	
+	
+    /**
+    * @ORM\Column(type="time",nullable=true)
+    */    
+    private $startam;
+	
+    /**
+    * @ORM\Column(type="time",nullable=true)
+    */    
+    private $endam;
+
+    /**
+    * @ORM\Column(type="time",nullable=true)
+    */    
+    private $startpm;
+	
+    /**
+    * @ORM\Column(type="time",nullable=true)
+    */    
+    private $endpm;
+	
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */    
+    private $monday;
+	
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */    
+    private $tuesday;
+	
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */    
+    private $wednesday;
+	
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */    
+    private $thursday;
+	
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */    
+    private $friday;	
+	
+    /**
+    * @ORM\Column(type="string",length=255,nullable=true)
+    */ 
+    private $student;
+	
+    /**
+    * @ORM\Column(type="string",length=7)
+    */ 
+    private $hour;
+	
+    /**
+    * @ORM\Column(type="datetime")
+    */    
+	private $creationdate;	
+	
+    /**
+    * Constructor
+    */
+    public function __construct()
+    {
+		$this->monday=$this->tuesday=$this->wednesday=$this->thursday=$this->friday=false;
+		$this->creationdate=$this->ddate=new \DateTime();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set idholder
+     *
+     * @param integer $idholder
+     *
+     * @return Substitution
+     */
+    public function setIdholder($idholder)
+    {
+        $this->idholder = $idholder;
+
+        return $this;
+    }
+
+    /**
+     * Get idholder
+     *
+     * @return integer
+     */
+    public function getIdholder()
+    {
+        return $this->idholder;
+    }
+
+    /**
+     * Set idsubstitute
+     *
+     * @param integer $idsubstitute
+     *
+     * @return Substitution
+     */
+    public function setIdsubstitute($idsubstitute)
+    {
+        $this->idsubstitute = $idsubstitute;
+
+        return $this;
+    }
+
+    /**
+     * Get idsubstitute
+     *
+     * @return integer
+     */
+    public function getIdsubstitute()
+    {
+        return $this->idsubstitute;
+    }
+
+    /**
+     * Set idcontract
+     *
+     * @param integer $idcontract
+     *
+     * @return Substitution
+     */
+    public function setIdcontract($idcontract)
+    {
+        $this->idcontract = $idcontract;
+
+        return $this;
+    }
+
+    /**
+     * Get idcontract
+     *
+     * @return integer
+     */
+    public function getIdcontract()
+    {
+        return $this->idcontract;
+    }
+
+
+    /**
+     * Set startam
+     *
+     * @param \DateTime $startam
+     *
+     * @return Substitution
+     */
+    public function setStartam($startam)
+    {
+        $this->startam = $startam;
+
+        return $this;
+    }
+
+    /**
+     * Get startam
+     *
+     * @return \DateTime
+     */
+    public function getStartam()
+    {
+        return $this->startam;
+    }
+
+    /**
+     * Set endam
+     *
+     * @param \DateTime $endam
+     *
+     * @return Substitution
+     */
+    public function setEndam($endam)
+    {
+        $this->endam = $endam;
+
+        return $this;
+    }
+
+    /**
+     * Get endam
+     *
+     * @return \DateTime
+     */
+    public function getEndam()
+    {
+        return $this->endam;
+    }
+
+    /**
+     * Set startpm
+     *
+     * @param \DateTime $startpm
+     *
+     * @return Substitution
+     */
+    public function setStartpm($startpm)
+    {
+        $this->startpm = $startpm;
+
+        return $this;
+    }
+
+    /**
+     * Get startpm
+     *
+     * @return \DateTime
+     */
+    public function getStartpm()
+    {
+        return $this->startpm;
+    }
+
+    /**
+     * Set endpm
+     *
+     * @param \DateTime $endpm
+     *
+     * @return Substitution
+     */
+    public function setEndpm($endpm)
+    {
+        $this->endpm = $endpm;
+
+        return $this;
+    }
+
+    /**
+     * Get endpm
+     *
+     * @return \DateTime
+     */
+    public function getEndpm()
+    {
+        return $this->endpm;
+    }
+
+    /**
+     * Set hour
+     *
+     * @param integer $hour
+     *
+     * @return Substitution
+     */
+    public function setHour($hour)
+    {
+        $this->hour = $hour;
+
+        return $this;
+    }
+
+    /**
+     * Get hour
+     *
+     * @return integer
+     */
+    public function getHour()
+    {
+        return $this->hour;
+    }
+
+    /**
+     * Set creationdate
+     *
+     * @param \DateTime $creationdate
+     *
+     * @return Substitution
+     */
+    public function setCreationdate($creationdate)
+    {
+        $this->creationdate = $creationdate;
+
+        return $this;
+    }
+
+    /**
+     * Get creationdate
+     *
+     * @return \DateTime
+     */
+    public function getCreationdate()
+    {
+        return $this->creationdate;
+    }
+
+    /**
+     * Set tsweek
+     *
+     * @param \Bo\AdminBundle\Entity\Tsweek $tsweek
+     *
+     * @return Substitution
+     */
+    public function setTsweek(\Bo\AdminBundle\Entity\Tsweek $tsweek = null)
+    {
+        $this->tsweek = $tsweek;
+
+        return $this;
+    }
+
+    /**
+     * Get tsweek
+     *
+     * @return \Bo\AdminBundle\Entity\Tsweek
+     */
+    public function getTsweek()
+    {
+        return $this->tsweek;
+    }
+
+    /**
+     * Set idgroup
+     *
+     * @param integer $idgroup
+     *
+     * @return Substitution
+     */
+    public function setIdgroup($idgroup)
+    {
+        $this->idgroup = $idgroup;
+
+        return $this;
+    }
+
+    /**
+     * Get idgroup
+     *
+     * @return integer
+     */
+    public function getIdgroup()
+    {
+        return $this->idgroup;
+    }
+
+    /**
+     * Set student
+     *
+     * @param string $student
+     *
+     * @return Substitution
+     */
+    public function setStudent($student)
+    {
+        $this->student = $student;
+
+        return $this;
+    }
+
+    /**
+     * Get student
+     *
+     * @return string
+     */
+    public function getStudent()
+    {
+        return $this->student;
+    }
+
+    /**
+     * Set enddate
+     *
+     * @param \DateTime $enddate
+     *
+     * @return Substitution
+     */
+    public function setEnddate($enddate)
+    {
+        $this->enddate = $enddate;
+
+        return $this;
+    }
+
+    /**
+     * Get enddate
+     *
+     * @return \DateTime
+     */
+    public function getEnddate()
+    {
+        return $this->enddate;
+    }
+
+    /**
+     * Set idabsence
+     *
+     * @param integer $idabsence
+     *
+     * @return Substitution
+     */
+    public function setIdabsence($idabsence)
+    {
+        $this->idabsence = $idabsence;
+
+        return $this;
+    }
+
+    /**
+     * Get idabsence
+     *
+     * @return integer
+     */
+    public function getIdabsence()
+    {
+        return $this->idabsence;
+    }
+
+    /**
+     * Set agenda
+     *
+     * @param \Bo\AdminBundle\Entity\Agenda $agenda
+     *
+     * @return Substitution
+     */
+    public function setAgenda(\Bo\AdminBundle\Entity\Agenda $agenda = null)
+    {
+        $this->agenda = $agenda;
+
+        return $this;
+    }
+
+    /**
+     * Get agenda
+     *
+     * @return \Bo\AdminBundle\Entity\Agenda
+     */
+    public function getAgenda()
+    {
+        return $this->agenda;
+    }
+
+    /**
+     * Set startdate
+     *
+     * @param \DateTime $startdate
+     *
+     * @return Substitution
+     */
+    public function setStartdate($startdate)
+    {
+        $this->startdate = $startdate;
+
+        return $this;
+    }
+
+    /**
+     * Get startdate
+     *
+     * @return \DateTime
+     */
+    public function getStartdate()
+    {
+        return $this->startdate;
+    }
+
+    /**
+     * Set monday
+     *
+     * @param boolean $monday
+     *
+     * @return Substitution
+     */
+    public function setMonday($monday)
+    {
+        $this->monday = $monday;
+
+        return $this;
+    }
+
+    /**
+     * Get monday
+     *
+     * @return boolean
+     */
+    public function getMonday()
+    {
+        return $this->monday;
+    }
+
+    /**
+     * Set tuesday
+     *
+     * @param boolean $tuesday
+     *
+     * @return Substitution
+     */
+    public function setTuesday($tuesday)
+    {
+        $this->tuesday = $tuesday;
+
+        return $this;
+    }
+
+    /**
+     * Get tuesday
+     *
+     * @return boolean
+     */
+    public function getTuesday()
+    {
+        return $this->tuesday;
+    }
+
+    /**
+     * Set wednesday
+     *
+     * @param boolean $wednesday
+     *
+     * @return Substitution
+     */
+    public function setWednesday($wednesday)
+    {
+        $this->wednesday = $wednesday;
+
+        return $this;
+    }
+
+    /**
+     * Get wednesday
+     *
+     * @return boolean
+     */
+    public function getWednesday()
+    {
+        return $this->wednesday;
+    }
+
+    /**
+     * Set thursday
+     *
+     * @param boolean $thursday
+     *
+     * @return Substitution
+     */
+    public function setThursday($thursday)
+    {
+        $this->thursday = $thursday;
+
+        return $this;
+    }
+
+    /**
+     * Get thursday
+     *
+     * @return boolean
+     */
+    public function getThursday()
+    {
+        return $this->thursday;
+    }
+
+    /**
+     * Set friday
+     *
+     * @param boolean $friday
+     *
+     * @return Substitution
+     */
+    public function setFriday($friday)
+    {
+        $this->friday = $friday;
+
+        return $this;
+    }
+
+    /**
+     * Get friday
+     *
+     * @return boolean
+     */
+    public function getFriday()
+    {
+        return $this->friday;
+    }
+}

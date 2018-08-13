@@ -1,0 +1,14 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.evaluation'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}  >> {{'entity.quiz'|trans([],'BoAdminBundle')}} >> {{'label.result'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.evaluation'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}  >> {{'entity.quiz'|trans([],'BoAdminBundle')}} >> {{'label.result'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Evaluation:resultsaction.html.twig"%}
+		<h2 class="quiz">{{quiz.name}}</h2>
+		{%include "BoQuizBundle:Quiz:head.html.twig"%}
+		<div class="quiz_question">
+			{%include "BoQuizBundle:ResultsQuiz:show.html.twig"%}
+		</div>
+	</div>
+{% endblock %}

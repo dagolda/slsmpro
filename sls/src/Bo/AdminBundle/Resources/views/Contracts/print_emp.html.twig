@@ -1,0 +1,14 @@
+							{%set tab={}%}
+							{%set j=1%}
+							{%set al=agendas|length%}
+							{%for agenda in agendas %}
+								{%set teacher=agenda.employee%}
+								{%if agenda.status==1 or agenda.status==2 and tab[teacher.firstname~' '~teacher.name] is not defined%}
+									{{ teacher.firstname }} {{ teacher.name }}{%if j<al%},{%endif%}
+{%set j=j+1%}
+									{%set tab = tab|merge({(teacher.firstname~' '~teacher.name):(teacher.id)})%}
+								{%else%}
+									{%set al=al-1%}
+								{%endif%}
+							{%endfor%}
+

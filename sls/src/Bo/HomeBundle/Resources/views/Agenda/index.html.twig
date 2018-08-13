@@ -1,0 +1,101 @@
+{% extends 'home2.html.twig' %}
+{% block title %}{{parent()}}- {{'admin.default.home'|trans([],'BoAdminBundle')}} >> {{'title.agenda'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block stylesheets %}{{parent()}} <style>.row.content {height: 100%;}</style>{% endblock %}
+{% block smenu %}{%include "BoHomeBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}
+	<div id="right_show">
+		{%if employee!=null%}{%include "BoHomeBundle:Default:rightshow.html.twig"%}{%endif%}	
+	</div>
+{% endblock %}
+{% block label %}
+	<h1>{{'admin.default.home'|trans([],'BoAdminBundle')}} >> {{'title.agenda'|trans([],'BoAdminBundle')}}</h1>
+{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoHomeBundle:Agenda:actions.html.twig"%}
+		<div id="agenda_content">
+			{%include "BoHomeBundle:Agenda:content.html.twig"%}
+		</div>	
+		<div id="agenda_error"></div>			
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#btn_previous").click(function(){
+				$('.agenda_title').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var number=-7;
+				var idemployee=$("#idemployee").val();
+				var startdate=$("#startdate").val();
+				var enddate=$("#enddate").val();
+				var DATA = 'data='+idemployee+"#"+startdate+"#"+enddate+"#"+number;
+				loaddata(DATA);
+				return false;
+			});
+			$("#btn_next").click(function(){
+				$('.agenda_title').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var number=7;
+				var idemployee=$("#idemployee").val();
+				var startdate=$("#startdate").val();
+				var enddate=$("#enddate").val();
+				var DATA = 'data='+idemployee+"#"+startdate+"#"+enddate+"#"+number;
+				loaddata(DATA);
+				return false;
+			});
+			$("#btn_current").click(function(){
+				$('.agenda_title').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var number=0;
+				var idemployee=$("#idemployee").val();
+				var startdate=$("#csd").val();
+				var enddate=$("#ced").val();
+				var DATA = 'data='+idemployee+"#"+startdate+"#"+enddate+"#"+number;
+				loaddata(DATA);
+				return false;
+			});
+			$("#idteacher").change(function(){
+				$('.agenda_title').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				$('#right_show').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idteacher option:selected");
+				idteacher=str.val();
+				var number=0;
+				var idemployee=$("#idemployee").val(idteacher);
+				var startdate=$("#startdate").val();
+				var enddate=$("#enddate").val();
+				var DATA = 'idemployee='+idteacher;				
+				loadright(DATA);
+				var DATA = 'data='+idteacher+"#"+startdate+"#"+enddate+"#"+number;
+				loaddata(DATA);
+				return false;
+			});	
+			function loaddata(DATA){
+				$.ajax({
+					type: "POST",
+					url: "{{ path('home_agenda_search')}}",
+					data: DATA,
+					cache: true,
+					success: function(data){
+						$('#agenda_content').html(data);
+					},
+					error: function(data,status,error){
+						$('#agenda_error').html(error);
+					}
+				});
+				return false;
+			}
+			function loadright(DATA){
+				$.ajax({
+					type: "POST",
+					url: "{{ path('employee_right_show')}}",
+					data: DATA,
+					cache: true,
+					success: function(data){
+						$('#right_show').html(data);
+					},
+					error: function(data,status,error){
+						$('#right_show').html(error);
+					}
+				});
+				return false;
+			}
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

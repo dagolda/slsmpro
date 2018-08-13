@@ -1,0 +1,13 @@
+{% extends 'home2.html.twig' %}
+{% block title %}{{parent()}}-{{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'label.invitation'|trans([],'BoAdminBundle')}} >> {{'action.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoHomeBundle:Default:tdb.html.twig"%}{% endblock %}	
+{% block nav %}{%if employee!=null%}{%include "BoHomeBundle:Default:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>{{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'label.invitation'|trans([],'BoAdminBundle')}} >> {{'action.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoHomeBundle:Invitation:showactions.html.twig"%}
+		<div class="show_content">
+			{%include "BoHomeBundle:Invitation:tbshow.html.twig"%}
+		</div>		
+	</div>
+{% endblock %}

@@ -1,0 +1,110 @@
+    <div class="message_error">{%if message is defined and message!=null%}{{message}}{%endif%}</div>
+	<table width="100%">
+        <tbody>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>               
+				<td>{{ enquiry.id }}</td>
+                <td>{{ enquiry.firstname }}</td>
+                <td>{{ enquiry.name }}</td>
+                <td>{{ enquiry.email }}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+				<th>{{'label.phone'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.targetlanguage'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.targetlevel'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.privateorgroup'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>               
+                <td>{{ enquiry.phone }}</td>
+				<td>{{ enquiry.language }}</td>
+				<td>{%if enquiry.targetlevel %}{{ enquiry.targetlevel }}{%else%}---{%endif%}</td>
+				<td>{%if enquiry.privateorgroup %}{{ enquiry.privateorgroup }}{%else%}---{%endif%}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+				<th>{{'label.traininglocation'|trans([],'BoAdminBundle')}}</th>	
+				<th>{{'label.hours'|trans([],'BoAdminBundle')}}</th>				
+                <th>{{'label.ftorpt'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr> 
+				<td>{%if enquiry.location %}{{ enquiry.location }}{%else%}---{%endif%}</td>
+				<td>{%if enquiry.hours %}{{ enquiry.hours }}{%else%}---{%endif%}</td>
+				<td>{%if enquiry.ftorpt %}{{ enquiry.ftorpt }}{%else%}---{%endif%}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+				<th colspan="4">{{'label.schedule'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr> 
+				<td colspan="4">{%if enquiry.schedule %}{{ enquiry.schedule }}{%else%}---{%endif%}</td>	
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+				<th>{{'label.gouvemp'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.gtso'|trans([],'BoAdminBundle')}}</th>				
+				<th>{{'label.workon'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.status'|trans([],'BoAdminBundle')}}</th>				
+            </tr>
+            <tr>                
+                <td>{%if enquiry.gouvemp %}{{ enquiry.gouvemp }}{%else%}---{%endif%}</td>
+                <td>{%if enquiry.gtso %}{{ enquiry.gtso }}{%else%}---{%endif%}</td>
+				<td>{%if enquiry.workon %}{{ enquiry.workon }}{%else%}---{%endif%}</td>
+				<td>{%if enquiry.status%}{{status[enquiry.status]|trans([],'BoAdminBundle')}}{%else%}---{%endif%}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>                
+                <th>{{'label.contact'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.contactphone'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.contactemail'|trans([],'BoAdminBundle')}}</th>
+				<td></td>
+            </tr>
+            <tr>                				
+                <td>{% if enquiry.contact %}{{ enquiry.contact }}{%else%}---{% endif %}</td>
+                <td>{% if enquiry.phonecontact %}{{ enquiry.phonecontact }}{%else%}---{% endif %}</td>
+				<td>{% if enquiry.emailcontact %}{{ enquiry.emailcontact }}{%else%}---{% endif %}</td>
+				<td></td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+				<th>{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>			
+                <th>{{'label.field'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.hourperday'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.hourperweek'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+				<td>{% if enquiry.typecontract %}{{ enquiry.typecontract }}{%else%}---{% endif %}</td>			
+                <td>{% if enquiry.field %}{{ enquiry.field.wfname }}{%else%}---{% endif %}</td>
+                <td>{% if enquiry.hourperday %}{{ enquiry.hourperday }}{%else%}---{% endif %}</td>
+				<td>{% if enquiry.hourperweek %}{{ enquiry.hourperweek }}{%else%}---{% endif %}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>                
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.createdby'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>                				
+                <td>{% if enquiry.startdate %}{{ enquiry.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if enquiry.enddate %}{{ enquiry.enddate|date('Y-m-d') }}{% endif %}</td>
+				<td>{% if enquiry.creationdate %}{{ enquiry.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+				<td>{% if enquiry.employee %}{{ enquiry.employee.firstname }} {{ enquiry.employee.name }}{% endif %}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+			{% if enquiry.comment %}
+            <tr>
+                <th colspan="4">Comment</th>               
+            </tr>
+            <tr>
+                <td colspan="4">{{ enquiry.comment }}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+			{%endif%}
+        </tbody>
+    </table>

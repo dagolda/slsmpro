@@ -1,0 +1,31 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th class="sty_label">{{'label.module'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.module) }}</td>	
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">{{'label.author'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.author) }}</td>	
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">{{'label.object'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.objet) }}</td>	
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+			{{ tinymce_init() }}
+            <th class="sty_label">{{'label.description'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.description) }}</td>	
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+	</table>

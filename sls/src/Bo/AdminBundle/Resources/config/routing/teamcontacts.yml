@@ -1,0 +1,43 @@
+teamcontacts_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:TeamContacts:index" }
+    methods:  GET
+teamcontacts_list:
+    path:     /list/
+    defaults: { _controller: "BoAdminBundle:TeamContacts:list" }
+    methods:  GET
+teamcontacts_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdminBundle:TeamContacts:page" }
+teamcontacts_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:TeamContacts:show" }
+    methods:  GET
+teamcontacts_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:TeamContacts:new" }
+    methods:  [GET, POST]
+teamcontacts_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:TeamContacts:edit" }
+    methods:  [GET, POST]
+teamcontacts_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:TeamContacts:search" }
+    methods:  [GET, POST]
+teamcontacts_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:TeamContacts:pagesearch" }
+    methods:  [GET, POST]
+teamcontacts_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:TeamContacts:delete" }
+    methods:  DELETE
+teamcontacts_extrasearch:
+    path:     /extrasearch/
+    defaults: { _controller: "BoAdminBundle:TeamContacts:extrasearch" }
+    methods:  [GET, POST]
+teamcontacts_xls:
+    path:     /extract/xls/
+    defaults: { _controller: "BoAdminBundle:TeamContacts:xls" }
+    methods:  [GET, POST]

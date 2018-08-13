@@ -1,0 +1,10 @@
+<li {%if sm=="emppj"%} class="active"{%endif%}>
+	<a href="{{ path('home_emppj_index') }}">
+		{{'layout.menu.emppj'|trans([],'BoAdminBundle')}}
+	</a>
+</li>
+<li>
+	<a href="http://slsmpro.com/wpslsm/" target="_blank">
+		{{'entity.pedagogical'|trans([],'BoAdminBundle')}}
+	</a>
+</li>

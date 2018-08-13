@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.group'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block nav %}
+	{%include "BoAdminBundle:Group:rightshow.html.twig"%}
+{% endblock %}
+{% block label %}<h1>{{'entity.group'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Group:showactions.html.twig"%}
+		{%if trainings|length>0%}
+		<div class="display_content">
+			<legend>{{'title.training'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Group:training.html.twig"%}
+		</div>
+		{%endif%}
+		{%if contracts|length<2%}
+		<div class="display_content">
+			<legend>{{'entity.contract'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Group:contracts.html.twig"%}
+		</div>
+		{%endif%}
+		<div class="display_content">
+			<legend>{{'entity.student'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Group:students.html.twig"%}
+		</div>
+		<div class="display_content">
+			<legend>{{'Teacher'|trans([],'BoAdminBundle')}}</legend>
+			<div id="teacher_content">
+				{%include "BoAdminBundle:Group:teachers.html.twig"%}
+			</div>
+		</div>
+		<div class="display_content">
+			<legend>{{'entity.local'|trans([],'BoAdminBundle')}}</legend>
+			<div id="teacher_content">
+				{%include "BoAdminBundle:Group:local.html.twig"%}
+			</div>
+		</div>		
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(delete_form) }}
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(delete_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+
+	<!-- Begin Close form Modal -->
+	<div class="container">
+	  <div class="modal fade" id="close_group" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.close'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.close'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(close_form) }}
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(close_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<!-- End Reopen form Modal -->
+
+	<!-- Begin reopen form Modal -->
+	<div class="container">
+	  <div class="modal fade" id="reopen_group" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.reopen'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.reopen'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(reopen_form) }}
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(reopen_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<!-- End Reopen form Modal -->
+
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

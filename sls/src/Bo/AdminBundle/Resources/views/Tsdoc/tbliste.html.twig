@@ -1,0 +1,36 @@
+    <table class='table table-bordered records_list'>
+        <thead>
+            <tr>
+                <th width="6%">Id</th>
+                <th width="6%">{{'label.year'|trans([],'BoAdminBundle')}}</th>
+                <th width="6%">{{'label.month'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.studentname'|trans([],'BoAdminBundle')}}</th>
+                <th width="16%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="16%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.nbhour'|trans([],'BoAdminBundle')}}</th>
+                <th width="184px" nowrap>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+			{% for tsdoc in tsdocs %}
+				<tr>
+					<td>{{ tsdoc.id }}</td>
+					<td>{{ tsdoc.year }}</td>
+					<td>{{ tsdoc.month }}</td>
+					<td>{{ tsdoc.student }}</td>
+					<td>{{ tsdoc.startdate|date('Y-m-d') }}</td>
+					<td>{{ tsdoc.enddate|date('Y-m-d') }}</td>
+					<td>{{ tsdoc.nbhour }}</td>
+					<td class="list-action">                         
+						<a href="{{ path('tsdoc_show', { 'id': tsdoc.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+						<a class="btn btn-info btn-lg modal-create" href="{{ asset('uploads/tsdoc/' ~ tsdoc.filename) }}">Download</a>
+					</td>
+				</tr>
+			{% endfor %}
+			<tr>
+				<td colspan="10"class="panel-body">
+					<button type="button" class="modal-create" data-toggle="modal" data-target="#add_tsdoc">{{'action.add'|trans([],'BoAdminBundle')}}</button>	
+				</td>
+			</tr>
+        </tbody>
+    </table>

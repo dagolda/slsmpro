@@ -1,0 +1,306 @@
+<div class="employee-identity">{%if contract and contract.typecontract %}{{ contract.typecontract }} - {%endif%}{%if contract and contract.contractnumber %}{{ contract.contractnumber }}{%endif%}</div>
+    <table> 
+        <tbody>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ contract.id }}</td>
+            </tr>
+			{% if contract.client %}
+            <tr>
+                <th>{{'label.customer'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ contract.client }}</td>
+            </tr>
+			{%endif%}
+			{%if contract.ordernumber %}
+            <tr>		
+				<th width="120px">{{'label.ordernumber'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ contract.ordernumber }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.group and contract.group.id>0 %}
+            <tr>
+                <th>{{'label.group'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ contract.group.name }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.advisor %}
+            <tr>
+                <th>{{'label.pa'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ contract.advisor }}</td>
+            </tr>
+			{%endif%}
+			{%if contract.methodofsupply %}
+            <tr>		
+				<th width="120px">{{'label.ordernumber'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ contract.methodofsupply }}</td>
+            </tr>
+			{%endif%}
+			{%if contract.ryacc %}
+            <tr>		
+				<th width="120px">{{'label.ryacc'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ contract.ryacc }}</td>
+            </tr>
+			{%endif%}
+			{%if contract.typetime %}
+            <tr>		
+				<th width="120px">FT or PT:</th>
+				<td>{{ contract.typetime }}</td>
+            </tr>
+			{%endif%}
+			{%if contract.language %}
+            <tr>		
+				<th>{{'label.language'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ contract.language }}</td>
+            </tr>
+			{%endif%}
+			{%if contract.typeoftraining %}
+            <tr>		
+				<th>{{'label.typeoftraining'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ contract.typeoftraining }}</td>
+            </tr>
+			{%endif%}
+			{%if contract.schedule %}
+            <tr>		
+				<th>{{'label.schedule'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ contract.schedule }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.targetlevel %}
+            <tr>
+                <th>{{'label.targetlevel'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ contract.targetlevel }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.workfields %}
+            <tr>
+                <th>{{'label.workfields'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ contract.workfields }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.session %}
+            <tr>
+                <th>{{'label.session'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ contract.session }}</td>
+            </tr>
+			{%endif%}	
+			{% if contract.program %}
+            <tr>
+                <th>{{'label.program'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ contract.program }}</td>
+            </tr>
+			{%endif%}	
+			{% if contract.step %}
+            <tr>
+                <th>{{'label.step'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ contract.step }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.startlesson %}
+            <tr>
+                <th>{{'label.startlesson'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ contract.startlesson }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.planreceived %}
+            <tr>
+                <th>{{'label.planreceived'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ contract.planreceived }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.learningplan %}
+            <tr>
+                <th>{{'label.learningplan'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ contract.learningplan }}</td>
+            </tr>
+			{%endif%}	
+			{% if contract.initialhours %}
+            <tr>
+				<th>{{'label.initialhours'|trans([],'BoAdminBundle')}}:</th>			
+				<td>{{ contract.initialhours }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.startrate %}
+            <tr>
+				<th>{{'label.daterate'|trans([],'BoAdminBundle')}} {% if contract.startrate1 %}1{%endif%}:</th>			
+				<td>{{ contract.startrate|date('Y-m-d') }}</td>
+            </tr>
+			{%endif%}			
+			{% if contract.hoursnumber %}
+            <tr>
+				<th>{{'label.numberhour'|trans([],'BoAdminBundle')}} {% if contract.startrate1 %}1{%endif%}:</th>			
+				<td>{{ contract.hoursnumber }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.hourlyrate %}
+            <tr>
+				<th>{{'label.hourlyrate'|trans([],'BoAdminBundle')}} {% if contract.startrate1 %}1{%endif%}:</th>			
+				<td>{{ contract.hourlyrate }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.estimatedcost %}
+            <tr>
+				<th>{{'label.estimatedcost'|trans([],'BoAdminBundle')}} {% if contract.startrate1 %}1{%endif%}:</th>			
+				<td>{{ contract.estimatedcost|number_format(2, '.', ' ') }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.startrate1 %}
+            <tr>
+				<th>{{'label.daterate'|trans([],'BoAdminBundle')}} 2:</th>			
+				<td>{{ contract.startrate1|date('Y-m-d') }}</td>
+            </tr>
+			{%endif%}			
+			{% if contract.hoursnumber1 %}
+            <tr>
+				<th>{{'label.numberhour'|trans([],'BoAdminBundle')}} 2:</th>			
+				<td>{{ contract.hoursnumber1 }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.hourlyrate1 %}
+            <tr>
+				<th>{{'label.hourlyrate'|trans([],'BoAdminBundle')}} 2:</th>			
+				<td>{{ contract.hourlyrate1 }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.estimatedcost1 %}
+            <tr>
+				<th>{{'label.estimatedcost'|trans([],'BoAdminBundle')}} 2:</th>			
+				<td>{{ contract.estimatedcost1|number_format(2, '.', ' ') }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.startrate2 %}
+            <tr>
+				<th>{{'label.daterate'|trans([],'BoAdminBundle')}} 3:</th>			
+				<td>{{ contract.startrate2|date('Y-m-d') }}</td>
+            </tr>
+			{%endif%}			
+			{% if contract.hoursnumber2 %}
+            <tr>
+				<th>{{'label.numberhour'|trans([],'BoAdminBundle')}} 3:</th>			
+				<td>{{ contract.hoursnumber2 }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.hourlyrate2 %}
+            <tr>
+				<th>{{'label.hourlyrate'|trans([],'BoAdminBundle')}} 3:</th>			
+				<td>{{ contract.hourlyrate2 }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.estimatedcost2 %}
+            <tr>
+				<th>{{'label.estimatedcost'|trans([],'BoAdminBundle')}} 3:</th>			
+				<td>{{ contract.estimatedcost2|number_format(2, '.', ' ') }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.totalhours %}
+            <tr>
+				<th>{{'label.totalhours'|trans([],'BoAdminBundle')}}:</th>			
+				<td>{{ contract.totalhours }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.usedhours %}
+            <tr>
+				<th>{{'label.usedhours'|trans([],'BoAdminBundle')}}: </th>			
+				<td>{{ contract.usedhours }}</td>
+            </tr>
+			{%endif%}
+			{%if lefthours is defined and lefthours!=null %}
+            <tr>
+				<th>{{'label.lefthours'|trans([],'BoAdminBundle')}}:</th>			
+				<td>{{ lefthours|number_format(0,""," ") }}</td>
+            </tr>
+			{%endif%}
+			{% if contract.hourperweek %}
+            <tr>
+				<th>{{'label.hourperweek'|trans([],'BoAdminBundle')}}:</th>			
+				<td>{{ contract.hourperweek }}</td>
+            </tr>
+			{%endif%}
+			{%if contract.receivedate %}
+            <tr>
+                <th>{{'label.receiveddate'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ contract.receivedate|date('Y-m-d') }}</td>
+            </tr>
+			{% endif %}
+			{%if contract.startdate %}
+            <tr>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ contract.startdate|date('Y-m-d') }}</td>
+            </tr>
+			{% endif %}
+		{%if contract.initialenddate %}
+		<tr>
+			<th>{{'label.initialdate'|trans([],'BoAdminBundle')}}:</th>
+                	<td>{{ contract.initialenddate|date('Y-m-d') }}</td>
+            	</tr>
+		{% endif %}
+		{%if contract.enddate %}
+			<tr>
+				<th>{{'label.enddate'|trans([],'BoAdminBundle')}}:</th>
+                		<td>{{ contract.enddate|date('Y-m-d') }}</td>
+            		</tr>
+		{% endif %}
+		{%if contract.renddate %}
+			<tr>
+				<th>{{'label.renddate'|trans([],'BoAdminBundle')}}:</th>
+                		<td>{{ contract.renddate|date('Y-m-d') }}</td>
+            		</tr>
+		{% endif %}
+		{%if contract.clientsignaturedate %}
+            <tr>
+                <th>Client Signature:</th>
+                <td>{{ contract.clientsignaturedate|date('Y-m-d') }}</td>
+            </tr>
+		{% endif %}
+		{%if contract.clicsignaturedate %}
+            <tr>
+                <th>Clic Signature:</th>
+                <td>{{ contract.clicsignaturedate|date('Y-m-d') }}</td>
+            </tr>
+			{% endif %}
+			{% if contract.campus%}
+            <tr>
+				<th>Location:</th>
+				<td>{{ contract.campus.designation }}</td>               
+            </tr>
+			{%elseif contract.location%}
+            <tr>
+				<th>Location:</th>
+				<td>{{ contract.location }}</td>               
+            </tr>
+			{% endif %}
+			{% if contract.adresse%}
+            <tr>
+				<th>{{'label.address'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ contract.adresse }}</td>               
+            </tr>
+			{% endif %}
+            <tr>
+				<th>Status:</th>
+				<td>{{ status[contract.status] }}</td>               
+            </tr>
+			{% if contract.creationdate %}
+            <tr>
+				<th>{{'label.creationdate'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ contract.creationdate|date('Y-m-d H:i:s') }}</td>               
+            </tr>
+			{% endif %}
+			{% if contract.createby %}
+            <tr>
+				<th>{{'label.createdby'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ contract.createby}}</td>               
+            </tr>
+			{% endif %}
+			{% if contract.closeddate %}
+            <tr>
+				<th>{{'label.closeddate'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ contract.closeddate|date('Y-m-d H:i:s')}}</td>               
+            </tr>
+			{% endif %}
+			{% if contract.status==0 and contract.closedby%}
+            <tr>
+				<th>{{'label.closedby'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ contract.closedby }}</td>               
+            </tr>
+			{% endif %}
+        </tbody>
+    </table>

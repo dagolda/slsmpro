@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.mail'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tools.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.mail'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Mails:showactions.html.twig"%}
+		<div class="show_content">
+			{%include "BoAdminBundle:Mails:show.html.twig"%}
+		</div>
+	</div>
+{% endblock %}

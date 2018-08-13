@@ -1,0 +1,61 @@
+<p>Bonjour / Hello {{evaluation.firstname}} {{evaluation.name}},</p>
+{%if mailhead!=null%}
+	<p>
+	{{mailhead|raw}}
+	</p>
+{%endif%}
+<p>
+	{%if evaluation.languages%}
+		<div><b>Langue / Language </b>: {{evaluation.languages}}</div>
+	{%endif%}
+	{%if evaluation.evaldate%}
+		<div><b>Date de l'évaluation / Evaluation Date</b>: {{evaluation.evaldate|date("d-m-Y")}}</div>
+	{%endif%}
+	{%if evaluation.evaltime%}
+		<div><b>Heure de l'évaluation / Evaluation Time</b>: {{evaluation.evaltime|date("H:i")}}</div>
+	{%endif%}
+	{%if evaluation.evallocation%}
+		<div><b>Lieu de l'évaluation / Evaluation Location</b>: {{evaluation.evallocation}}</div>
+	{%endif%}
+	{%if evaluation.addresse%}
+		<div><b>Adresse de l'évaluation / Evaluation Address</b>: {{evaluation.addresse}}</div>
+	{%endif%}
+	{%if evaluation.expenses%}
+		<div><b>Frais de l'évaluation / Evaluation fees</b>: {{evaluation.expenses}}$</div>
+	{%endif%}
+	{%if evaluation.evaluator%}
+		<div><b>Evaluateur / Evaluator</b>: {{evaluation.evaluator.firstname}} {{evaluation.evaluator.name}}</div>
+	{%endif%}
+	{%if evaluation.evaltype%}
+		<div><b>Type d'évaluation  / Evaluation Type</b>: {{evaluation.evaltype}}</div>	
+	{%endif%}
+	{%if evaluation.options%}
+		<div><b>Options </b>: {{evaluation.options}}</div>	
+	{%endif%}
+	{%if evaluation.currentprofile%}
+		<div><b>Profil actuel / Current Profile</b>: {{evaluation.currentprofile}}</div>
+	{%endif%}
+	{%if evaluation.targetprofile %}
+		<div><b>Profil recherché / Target Profile</b>: {{evaluation.targetprofile}}</div>
+	{%endif%}
+	{%if evaluation.evaltype!="Oral"%}
+		<p>
+			<b>Lien pour évaluation / Evaluation link</b>:
+			{%if evaluation.online==true and evalquiz is defined and evalquiz!=null%}
+				<a href="{{ link }}">{{ link }}</a>
+				<div><b>Username/Nom utilisateur</b>: {{evalquiz.user.email}} </div>
+				<div><b>Password/Lot de passe</b>: {{evalquiz.user.password}}</div>
+				<br/>
+			{%else%}
+				<div>
+					<a href="https://slsmpro.com/wpslsm/evaluations-for-reading-comprehension-and-written-expression/" target="blank">https://slsmpro.com/wpslsm/evaluations-for-reading-comprehension-and-written-expression/</a>
+				</div>	
+			{%endif%}
+		</p>
+	{%endif%}
+</p>
+{%if mailfooter!=null%}
+	<p>
+		{{mailfooter|raw}}
+	</p>
+{%endif%}

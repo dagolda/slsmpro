@@ -1,0 +1,135 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.quiz'|trans([],'BoAdminBundle')}} >> {{'label.category'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.quiz'|trans([],'BoAdminBundle')}} >> {{'label.category'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoQuizBundle:Category:showactions.html.twig"%}
+		<div class="show_content">
+			{%include "BoQuizBundle:Category:show.html.twig"%}
+		</div>
+		<div class="display_content">
+			<legend>{{'label.quiz'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoQuizBundle:Category:quizes.html.twig"%}
+		</div>
+	</div>
+
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(delete_form) }}
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(delete_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+
+	<!-- begin remove quiz from category form by modal dialog-->	
+	{%for quiz in quizzes%}
+		{%set rq_form = rq_forms[quiz.id]%}
+		<div class="container">
+		  <!-- Modal -->
+		  <div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+		
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+				</div>
+				<div class="modal-body">
+				  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+				</div>
+				<div class="modal-footer">
+					{{ form_start(rq_form) }}
+						<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+					{{ form_end(rq_form) }}
+				</div>
+			  </div>
+			  
+			</div>
+		  </div>
+		</div>
+	{%endfor%}
+	<!-- end remove quiz from category form by modal dialog-->
+
+	<!-- begin add quiz to category form by modal dialog-->
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_quiz" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.question'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('category_add_quiz',{'id':category.id})}}" method="post" class="style">
+				<div class="modal-body">
+					{%include "BoQuizBundle:Category:addform.html.twig"%}
+				</div>
+				<div class="modal-footer">
+					<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+					<input type="submit" value="{{'action.add'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<!-- end add quiz to category form by modal dialog-->
+
+	<!-- begin category edition form by modal dialog-->
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="edit_category" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'action.edit'|trans([],'BoAdminBundle')}} {{'label.category'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('category_edit',{'id':category.id})}}" method="post" class="style">
+				<div class="modal-body">
+					{{ form_errors(cat_form) }}
+						{%include "BoQuizBundle:Category:editform.html.twig"%}
+					{{ form_rest(cat_form) }}
+				</div>
+				<div class="modal-footer">
+					<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+					<input type="submit" value="{{'action.update'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<!-- end category edition form by modal dialog-->
+
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

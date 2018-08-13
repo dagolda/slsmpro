@@ -1,0 +1,44 @@
+category_index:
+    path:     /
+    defaults: { _controller: "BoQuizBundle:Category:index" }
+    methods:  GET
+
+category_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoQuizBundle:Category:show" }
+    methods:  GET
+
+category_add_quiz:
+    path:     /{id}/add/quiz/
+    defaults: { _controller: "BoQuizBundle:Category:addquiz" }
+    methods:  [GET, POST]
+
+category_quiz_show:
+    path:     /{idquiz}/quiz/show
+    defaults: { _controller: "BoQuizBundle:Category:showquiz" }
+    methods:  GET
+
+category_new:
+    path:     /{idquiz}/new
+    defaults: { _controller: "BoQuizBundle:Category:new" }
+    methods:  [GET, POST]
+
+category_create:
+    path:     /create
+    defaults: { _controller: "BoQuizBundle:Category:create" }
+    methods:  [GET, POST]
+
+category_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoQuizBundle:Category:edit" }
+    methods:  [GET, POST]
+
+category_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoQuizBundle:Category:delete" }
+    methods:  DELETE
+
+category_remove_quiz:
+    path:     /{id}/{idquiz}/remove/
+    defaults: { _controller: "BoQuizBundle:Category:removequiz" }
+    methods:  DELETE

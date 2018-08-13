@@ -1,0 +1,29 @@
+    <table class="table table-bordered records_list">
+            <tr>
+		<th>{{'label.from'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.to'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ form_widget(available_form.startdate) }}</td>
+                <td>{{ form_widget(available_form.enddate) }}</td>
+            </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>	
+            <tr>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ form_widget(available_form.startam) }}</td>
+                <td>{{ form_widget(available_form.endam) }}</td>
+            </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ form_widget(available_form.startpm) }}</td>
+                <td>{{ form_widget(available_form.endpm) }}</td>
+            </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>
+    </table>

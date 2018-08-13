@@ -1,0 +1,28 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.phone'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.createdby'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creation'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contractual in contractuals %}
+            <tr>
+                <td><a href="{{ path('contractual_show', { 'id': contractual.id }) }}">{{ contractual.id }}</a></td>
+                <td>{{ contractual.name }}</td>
+                <td>{{ contractual.email }}</td>
+                <td>{{ contractual.phone }}</td>
+                <td>{{ contractual.createby }}</td>
+                <td>{% if contractual.creationdate %}{{ contractual.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+					<a href="{{ path('contracts_contractual_select', { 'idcontractual': contractual.id,'idcontract': idcontract }) }}">{{'action.select'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

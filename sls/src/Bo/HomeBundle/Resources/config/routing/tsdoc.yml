@@ -1,0 +1,35 @@
+home_tsdoc_index:
+    path:     /index/
+    defaults: { _controller: "BoHomeBundle:Tsdoc:index" }
+    methods:  GET
+home_tsdoc_list:
+    path:     /list/
+    defaults: { _controller: "BoHomeBundle:Tsdoc:list" }
+    methods:  GET
+home_tsdoc_page:
+    path:     /{option}/page/
+    defaults: { _controller: "BoHomeBundle:Tsdoc:page" }
+home_tsdoc_show:
+    path:     /{id}/show/
+    defaults: { _controller: "BoHomeBundle:Tsdoc:show" }
+    methods:  GET
+home_tsdoc_new:
+    path:     /new/
+    defaults: { _controller: "BoHomeBundle:Tsdoc:new" }
+    methods:  [GET, POST]
+home_tsdoc_edit:
+    path:     /{id}/edit/
+    defaults: { _controller: "BoHomeBundle:Tsdoc:edit" }
+    methods:  [GET, POST]
+home_tsdoc_delete:
+    path:     /{id}/delete/
+    defaults: { _controller: "BoHomeBundle:Tsdoc:delete" }
+    methods:  DELETE
+home_tsdoc_search:
+    path:  /search/
+    defaults: { _controller: "BoHomeBundle:Tsdoc:search" }
+    methods:  [GET, POST]
+home_tsdoc_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoHomeBundle:Tsdoc:pagesearch" }
+    methods:  [GET, POST]

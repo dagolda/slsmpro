@@ -1,0 +1,14 @@
+<table>
+	<tbody>
+		{%set i=0%}
+		{%for label in labels%}
+			{%set i=i+1%}
+				<tr>
+					<td width="20%"><input type="checkbox" name="{{label.nameen}}" value="{{label.nameen}}"> {{label.nameen}}</td>
+				</tr>
+			{%if i>5%}
+				<tr><td colspan="5">&nbsp;</td></tr>
+			{%endif%}
+		{%endfor%}
+	<tbody>
+</table>

@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Training list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Hourperday</th>
+                <th>Idcontracts</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Startam</th>
+                <th>Endam</th>
+                <th>Startpm</th>
+                <th>Endpm</th>
+                <th>Teacheram</th>
+                <th>Teacherpm</th>
+                <th>Ttdnumber</th>
+                <th>Ttwnumber</th>
+                <th>Enddate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for training in trainings %}
+            <tr>
+                <td><a href="{{ path('training_show', { 'id': training.id }) }}">{{ training.id }}</a></td>
+                <td>{{ training.hourperday }}</td>
+                <td>{{ training.idcontracts }}</td>
+                <td>{% if training.monday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if training.tuesday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if training.wednesday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if training.thursday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if training.friday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if training.Saturday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if training.startam %}{{ training.startam|date('H:i:s') }}{% endif %}</td>
+                <td>{% if training.endam %}{{ training.endam|date('H:i:s') }}{% endif %}</td>
+                <td>{% if training.startpm %}{{ training.startpm|date('H:i:s') }}{% endif %}</td>
+                <td>{% if training.endpm %}{{ training.endpm|date('H:i:s') }}{% endif %}</td>
+                <td>{{ training.teacheram }}</td>
+                <td>{{ training.teacherpm }}</td>
+                <td>{{ training.ttdnumber }}</td>
+                <td>{{ training.ttwnumber }}</td>
+                <td>{% if training.enddate %}{{ training.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('training_show', { 'id': training.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('training_edit', { 'id': training.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('training_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

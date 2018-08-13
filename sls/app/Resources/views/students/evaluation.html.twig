@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.student'|trans([],'BoAdminBundle')}} >> {{'entity.evaluation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}
+{% block nav %}	{%include "BoAdminBundle:Students:rightshow.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.student'|trans([],'BoAdminBundle')}} >> {{'entity.evaluation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Students:evalshowactions.html.twig"%}
+		
+		<div class="display_content">
+			<legend>{{'title.student'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Evaluation:students.html.twig"%}
+		</div>	
+
+		<div class="display_content">
+			<legend>{{'label.contact'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Evaluation:contractual.html.twig"%}
+		</div>	
+		
+		<div class="display_content">
+			<legend>{{'title.billingcontact'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Evaluation:billingcontact.html.twig"%}
+		</div>
+		{%if evaluation.status!=1 and evaluation.status!=11 and (resdisp==null or resdisp==1 or resdisp=="left")%}
+			<div class="display_content">
+				<legend>{{'label.result'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Evaluation:result.html.twig"%}
+			</div>
+		{%endif%}	
+		{%if evaluation.comment%}
+			<div class="display_content">
+				<legend>{{'label.comment'|trans([],'BoAdminBundle')}}</legend>
+				<div>{{evaluation.comment}}</div>
+			</div>	
+		{%endif%}			
+		<br/>
+	</div>
+{% endblock %}

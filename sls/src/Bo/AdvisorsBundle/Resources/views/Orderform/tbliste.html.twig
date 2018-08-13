@@ -1,0 +1,43 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.ordernumber'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.nbstudent'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.program'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.totalhours'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.totalcost'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.language'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th width="120px" nowrap>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for orderform in orderforms %}
+            <tr>
+                <td {%if orderform.status==1%}class="wax_3d_1"{%elseif orderform.status==2%}class="validated"{%elseif orderform.status==3%}class="rejected"{%endif%}>{{ orderform.id }}</td>
+                <td {%if orderform.status==1%}class="wax_3d_1"{%elseif orderform.status==2%}class="validated"{%elseif orderform.status==3%}class="rejected"{%endif%}>{%if orderform.enquiry %}{{ orderform.enquiry.name }}{%else%}---{%endif%}</td>
+                <td {%if orderform.status==1%}class="wax_3d_1"{%elseif orderform.status==2%}class="validated"{%elseif orderform.status==3%}class="rejected"{%endif%}>{%if orderform.enquiry %}{{ orderform.enquiry.firstname }}{%else%}---{%endif%}</td>
+                <td {%if orderform.status==1%}class="wax_3d_1"{%elseif orderform.status==2%}class="validated"{%elseif orderform.status==3%}class="rejected"{%endif%}>{{ orderform.ordernumber }}</td>
+                <td {%if orderform.status==1%}class="wax_3d_1"{%elseif orderform.status==2%}class="validated"{%elseif orderform.status==3%}class="rejected"{%endif%}>{{ orderform.nbstudent }}</td>
+                <td {%if orderform.status==1%}class="wax_3d_1"{%elseif orderform.status==2%}class="validated"{%elseif orderform.status==3%}class="rejected"{%endif%}>{{ orderform.program }}</td>
+                <td {%if orderform.status==1%}class="wax_3d_1"{%elseif orderform.status==2%}class="validated"{%elseif orderform.status==3%}class="rejected"{%endif%} align="right">{{ orderform.totalhours|number_format(0,""," ") }}</td>
+                <td {%if orderform.status==1%}class="wax_3d_1"{%elseif orderform.status==2%}class="validated"{%elseif orderform.status==3%}class="rejected"{%endif%} align="right">{{ orderform.totalcost|number_format(2,"."," ") }}</td>
+                <td {%if orderform.status==1%}class="wax_3d_1"{%elseif orderform.status==2%}class="validated"{%elseif orderform.status==3%}class="rejected"{%endif%}>{%if orderform.enquiry %}{{ orderform.enquiry.language }}{%else%}---{%endif%}</td>
+                <td {%if orderform.status==1%}class="wax_3d_1"{%elseif orderform.status==2%}class="validated"{%elseif orderform.status==3%}class="rejected"{%endif%}>{% if orderform.enquiry and orderform.enquiry.startdate %}{{ orderform.enquiry.startdate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+                <td {%if orderform.status==1%}class="wax_3d_1"{%elseif orderform.status==2%}class="validated"{%elseif orderform.status==3%}class="rejected"{%endif%}>{% if orderform.enquiry and orderform.enquiry.enddate %}{{ orderform.enquiry.enddate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+                <td class="list-action {%if orderform.status==1%}wax_3d_1{%elseif orderform.status==2%}validated{%elseif orderform.status==3%}rejected{%endif%}">
+                    <a href="{{ path('dash_orderform_show', { 'id': orderform.id }) }}">show</a>
+					{%if orderform.status==0 and (employee.profil and employee.profil.name=="Superadmin")%}
+						<a href="{{ path('dash_orderform_edit', { 'id': orderform.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="12">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

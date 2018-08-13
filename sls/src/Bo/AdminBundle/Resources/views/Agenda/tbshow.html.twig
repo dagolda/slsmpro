@@ -1,0 +1,73 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th width="20%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+		<th width="20%">{{'label.teacher'|trans([],'BoAdminBundle')}}</th>
+		<th width="20%">{{'label.studentname'|trans([],'BoAdminBundle')}}</th>
+                <th width="20%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+		<th width="20%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+		<td>{{ schedule.id }}</td>
+ 		<td>{%if schedule.employee %}{{ schedule.employee.firstname }} {{ schedule.employee.name }}{%endif%}</td>  
+		<td>{% if schedule.students %}{{ schedule.students.firstname }} {{ schedule.students.name }}{%elseif schedule.contracts and schedule.contracts.students and schedule.contracts.students|length==1%}{%set student=schedule.contracts.students[0]%}{{ student.firstname }} {{ student.name }}{%else%}---{%endif%}</td>  
+                <td>{% if schedule.startdate %}{{ schedule.startdate|date('Y-m-d') }}{% endif %}</td>
+		<td>{% if schedule.enddate %}{{ schedule.enddate|date('Y-m-d') }}{% endif %}</td>         
+            </tr>
+	    <tr><td colspan="5">&nbsp;</td></tr>
+            <tr>
+                <th width="20%">{{'label.contractid'|trans([],'BoAdminBundle')}}</th>
+		<th width="20%">{{'label.groupid'|trans([],'BoAdminBundle')}}</th>
+		<th width="20%">{{'label.status'|trans([],'BoAdminBundle')}}/{{'label.group'|trans([],'BoAdminBundle')}}</th>
+                <th width="20%">{{'label.invitation'|trans([],'BoAdminBundle')}} {{'label.status'|trans([],'BoAdminBundle')}}</th>
+		<th width="20%">{{'label.invitation'|trans([],'BoAdminBundle')}} {{'label.ddate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+		<td>{%if schedule.contracts %}{{ schedule.contracts.id }}{%else%}---{%endif%}</td>
+		<td>{%if schedule.group %}{{ schedule.group.id }}{%else%}---{%endif%}</td>
+		<td>{% if schedule.status %}{{ schedule.status }}{%else%}No{%endif%}</td>  
+                <td>{% if schedule.istatus %}{{ schedule.istatus }}{% endif %}</td>
+		<td>{% if schedule.idate %}{{ schedule.idate|date('Y-m-d') }}{% endif %}</td>         
+            </tr>
+	    <tr><td colspan="5">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.hourperday'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ schedule.hourperday }}</td>
+                <td>{% if schedule.startam %}{{ schedule.startam|date('H:i') }}{%else%}---{% endif %}</td>
+                <td>{% if schedule.endam %}{{ schedule.endam|date('H:i') }}{%else%}---{% endif %}</td>
+                <td>{% if schedule.startpm %}{{ schedule.startpm|date('H:i') }}{%else%}---{% endif %}</td>
+                <td>{% if schedule.endpm %}{{ schedule.endpm|date('H:i') }}{%else%}---{% endif %}</td>
+            </tr>
+	    <tr><td colspan="5">&nbsp;</td></tr>
+            <tr>
+                <th>{{'Monday'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'Tuesday'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'Wednesday'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'Thursday'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'Friday'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>               
+		<td><input type="checkbox" {% if schedule.monday %}checked{% endif %} disabled="disabled"></td>
+                <td><input type="checkbox" {% if schedule.tuesday %}checked{% endif %} disabled="disabled"></td>
+		<td><input type="checkbox" {% if schedule.wednesday %}checked{% endif %} disabled="disabled"></td>
+                <td><input type="checkbox" {% if schedule.thursday %}checked{% endif %} disabled="disabled"></td>
+                <td><input type="checkbox" {% if schedule.friday %}checked{% endif %} disabled="disabled"></td>
+            </tr>
+	    <tr><td colspan="5">&nbsp;</td></tr>
+	    {%if schedule.description %}
+            <tr>
+                <th>{{'label.description'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>               
+		<td>{{ schedule.description }}</td>
+            </tr>
+	    <tr><td colspan="5">&nbsp;</td></tr>
+	    {% endif %}
+        </tbody>
+    </table>

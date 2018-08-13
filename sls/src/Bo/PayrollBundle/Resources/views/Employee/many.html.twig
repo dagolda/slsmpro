@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.accounting'|trans([],'BoAdminBundle')}} >> {{'title.tscreation'|trans([],'BoAdminBundle')}} >> {{'label.byemployee'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}	
+{% block nav %}{%include "BoAdminBundle:Employee:rightshow.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.accounting'|trans([],'BoAdminBundle')}} >> {{'title.tscreation'|trans([],'BoAdminBundle')}} >> {{'label.byemployee'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('payroll_employee_tgenerate') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoPayrollBundle:Employee:manyactions.html.twig"%}
+			<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+				<tr>
+					<th width="20%" class="sty_label">{{'label.date'|trans([],'BoAdminBundle')}}</th>
+				</tr>
+				<tr>
+					<td>{{ form_widget(form.ddate, {'attr' : {'class' : 'date span3'}}) }}</td>
+				</tr>
+				<tr><td colspan="4">&nbsp;</td></tr>
+			</table>
+			{%include "BoPayrollBundle:Employee:manyliste.html.twig"%}
+			<input id="idemployee" name="idemployee" type="hidden" value="{{employee.id}}" />
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#ns").click(function(){
+				$("#am").val('N-S');
+				$("#pm").val('N-S');				
+				return true;
+			});
+			$("#p").click(function(){
+				$("#am").val('P');
+				$("#pm").val('P');				
+				return true;
+			});
+			$("#abs").click(function(){
+				$("#am").val('ABS');
+				$("#pm").val('ABS');				
+				return true;
+			});
+			$("#am").change(function(){
+				var str=$("#am option:selected");
+				am = str.val();
+				var str=$("#pm option:selected");
+				pm = str.val();	
+				if(am==pm){
+					if(am==1) $("#p").attr('checked', true);
+					if(am==2) $("#ns").attr('checked', true);
+					if(am==3) $("#abs").attr('checked', true);
+				}
+			});
+			$("#pm").change(function(){
+				var str=$("#am option:selected");
+				am = str.val();
+				var str=$("#pm option:selected");
+				pm = str.val();	
+				if(am==pm){
+					if(am==1) $("#p").attr('checked', true);
+					if(am==2) $("#ns").attr('checked', true);
+					if(am==3) $("#abs").attr('checked', true);
+				}
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

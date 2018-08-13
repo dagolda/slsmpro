@@ -1,0 +1,29 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td class="form-group">
+						<input type="text" class="form-control" id="inp-search">
+					</td>
+					<td><button type="submit" id="btn-search">{{'action.search'|trans([],'BoAdminBundle')}}</button></td>
+					{%if existts==0%}
+						<!--td>
+							<a href="{{ path('home_timesheet_new') }}">{{'action.add'|trans([],'BoAdminBundle')}}</a>
+						</td--!>
+					{%endif%}
+					{%if adminauthorize==1%}
+						<td>
+							<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_tsother">{{'action.addother'|trans([],'BoAdminBundle')}}</button>
+						</td>
+					{%endif%}
+					{%if dtth is defined and dtth==1%}
+					<td class="total_number">
+						<button type="button" class="btn btn-primary">
+							Total Hour <span class="badge">{{tothour|number_format(2,"."," ")}}</span>
+						</button>
+					</td>
+					{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

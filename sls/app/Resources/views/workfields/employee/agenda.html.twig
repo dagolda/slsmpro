@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.employee'|trans([],'BoAdminBundle')}} >> {{'title.agenda'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block stylesheets %}{{parent()}} <style>.row.content {height: 100%;}</style>{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}	
+{% block nav %}
+	{%include "BoAdminBundle:Employee:rightshow.html.twig"%}
+{% endblock %}
+{% block label %}<h1>{{'entity.employee'|trans([],'BoAdminBundle')}} >> {{'title.agenda'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Employee:agendaactions.html.twig"%}
+		<div id="agenda_content">
+			{%include "BoAdminBundle:Employee:agenda.html.twig"%}
+		</div>	
+		<div id="agenda_error"></div>			
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#btn_previous").click(function(){
+				$('#agenda_title').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var number=-7;
+				var idemployee=$("#idemployee").val();
+				var startdate=$("#startdate").val();
+				var enddate=$("#enddate").val();
+				var DATA = 'data='+idemployee+"#"+startdate+"#"+enddate+"#"+number;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('employee_agenda_search')}}",
+					data: DATA,
+					cache: true,
+					success: function(data){
+						$('#agenda_content').html(data);
+					}
+				});
+				return false;
+			});
+			$("#btn_next").click(function(){
+				$('#agenda_title').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var number=7;
+				var idemployee=$("#idemployee").val();
+				var startdate=$("#startdate").val();
+				var enddate=$("#enddate").val();
+				var DATA = 'data='+idemployee+"#"+startdate+"#"+enddate+"#"+number;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('employee_agenda_search')}}",
+					data: DATA,
+					cache: true,
+					success: function(data){
+						$('#agenda_content').html(data);
+					},
+					error: function(data,status,error){
+						$('#agenda_error').html(error);
+					}
+				});
+				return false;
+			});
+			$("#idemployee").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idpage option:selected");
+				page=str.text();
+				var DATA = 'motcle=' + page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('employee_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});	
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

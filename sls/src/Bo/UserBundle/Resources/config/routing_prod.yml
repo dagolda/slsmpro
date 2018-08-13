@@ -1,0 +1,29 @@
+bo_user_user:
+    resource: "@BoUserBundle/Resources/config/routing/user.yml"
+    prefix:   /manager
+bo_user_rights:
+    resource: "@BoUserBundle/Resources/config/routing/rights.yml"
+    prefix:   /rights
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix: /
+    schemes:  [https]
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+    schemes:  [https]
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+    schemes:  [https]
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /change-password
+    schemes:  [https]
+fos_user_change_password2:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password2.xml"
+    prefix: /first-connexion/change-password/
+    schemes:  [https]    

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.contracts'|trans([],'BoAdminBundle')}} >> {{'label.historic'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block nav %}{%include "BoAdminBundle:Contracts:rightshow.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.contracts'|trans([],'BoAdminBundle')}} >> {{'label.historic'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}{%include "BoAdminBundle:Histocontract:actions.html.twig"%}{% endblock %}
+{% block body %}
+	<div id="content-liste">
+	    <table class="table table-bordered records_list">
+		<thead>
+		    <tr>
+		        <th width="15%">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+			<th width="15%">{{'label.user'|trans([],'BoAdminBundle')}}</th>
+		        <th width="70%">{{'label.description'|trans([],'BoAdminBundle')}}</th>
+		    </tr>
+		</thead>
+		<tbody>
+		{% for historic in historics %}
+		    <tr>
+ 			  <td>{% if historic.creationdate %}{{ historic.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+			  <td>{% if historic.user %}{{ historic.user }}{% endif %}</td>
+			  <td>{% if historic.description %}{{ historic.description }}{% endif %}</td>
+		    </tr>
+			{%else%}
+				<tr><td colspan="3">{{'message.no.found'|trans([],'BoAdminBundle')}}</td></tr>
+		{% endfor %}
+		</tbody>
+	    </table>
+	</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+robot_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Robot:index" }
+    methods:  GET
+robot_list:
+    path:     /list/
+    defaults: { _controller: "BoAdminBundle:Robot:list" }
+    methods:  GET
+robot_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Robot:show" }
+    methods:  GET
+robot_work:
+    path:     /work/
+    defaults: { _controller: "BoAdminBundle:Robot:work" }
+    methods:  GET
+robot_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Robot:search" }
+    methods:  [GET, POST]
+robot_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Robot:pagesearch" }
+    methods:  [GET, POST]

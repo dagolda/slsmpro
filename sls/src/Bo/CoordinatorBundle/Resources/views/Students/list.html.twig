@@ -1,0 +1,65 @@
+{% extends 'coordinator.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.supervision'|trans([],'BoAdminBundle')}}  >> {{'label.students'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoCoordinatorBundle:Default:supervision.html.twig"%}{% endblock %}
+{% block nav %}
+	{%if coordinator!=null%}{%include "BoAdminBundle:Students:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block label %}<h1>{{'entity.supervision'|trans([],'BoAdminBundle')}}  >> {{'label.students'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block actions %}{%include "BoCoordinatorBundle:Supervision:actions.html.twig"%}{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<div class="display_content">
+			<input type="hidden" id="nb_pages" value="{{nb_pages}}" /> 
+			<legend>{{'label.contracts'|trans([],'BoAdminBundle')}}</legend>
+			{%if total is defined and total>nb_cpp%}
+				<div class="pagination_content">
+					{% include 'BoCoordinatorBundle:Students:pagination.html.twig' %}
+				</div>
+			{%endif%}
+			<div id="content-liste">
+				{%include "BoCoordinatorBundle:Students:list.html.twig"%}
+			</div>
+		</div>			
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#idpage").change(function(){
+				var str=$("#idpage option:selected");
+				page=str.text();
+				var DATA = 'motcle=' + page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('students_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});	
+			$("#btn_search").click(function(){
+				if($("#inp-search").val()==""){
+					alert("Search fields is empty!");
+					return false;
+				}
+				var criteria = $("#inp-search").val();			
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				$(".pagination_content").hide();
+				$(".list_link").show();
+				var DATA = 'description=' + criteria;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('students_search')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

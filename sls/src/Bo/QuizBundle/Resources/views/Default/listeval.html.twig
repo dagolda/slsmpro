@@ -1,0 +1,12 @@
+{% extends 'quiz.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.evaluation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block label %}<h1>{{'entity.evaluation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<div class="quiz_evaluation">
+			{%for evalquiz in evalquizzes%}
+                		<div class='quiz_list'><a href="{{ path('bo_quiz_evaluation', { 'id': evalquiz.id}) }}">{{ evalquiz.title }} {{ evalquiz.evaldate|date("d-m-Y") }}</a></div>
+			{%endfor%}
+		</div>
+	</div>
+{% endblock %}

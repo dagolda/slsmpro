@@ -1,0 +1,28 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="20%" class="sty_label">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+            <th width="20%" class="sty_label">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+			<th width="20%" class="sty_label">{{'label.hour'|trans([],'BoAdminBundle')}}</th>
+			<td width="20%">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>{{ form_widget(substitution_form.startdate) }}</td>
+			<td>{{ form_widget(substitution_form.enddate) }}</td>
+			<td>{{ form_widget(substitution_form.hour) }}</td>	
+			<td>&nbsp;</td>
+		</tr>
+		<tr><td colspan="4">&nbsp;</td></tr>
+		<tr>
+            <th width="20%" class="sty_label">{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+            <th width="20%" class="sty_label">{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+            <th width="20%" class="sty_label">{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+            <th width="20%" class="sty_label">{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(substitution_form.startam) }}</td>
+			<td>{{ form_widget(substitution_form.endam) }}</td>
+			<td>{{ form_widget(substitution_form.startpm) }}</td>
+			<td>{{ form_widget(substitution_form.endpm) }}</td>			
+		</tr>
+		<tr><td colspan="4">&nbsp;</td></tr>
+	</table>

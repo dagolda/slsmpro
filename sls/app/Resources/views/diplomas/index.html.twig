@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block nav %}	
+    <ul>
+        <li>
+            <a href="{{ path('diplomas_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}	
+{% block body %}
+    <h1>Diplomas list</h1>
+
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Diploma's name</th>
+                <th>Date Creation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for diploma in diplomas %}
+            <tr>
+                <td><a href="{{ path('diplomas_show', { 'id': diploma.id }) }}">{{ diploma.id }}</a></td>
+                <td>{{ diploma.diplomasName }}</td>
+                <td>{% if diploma.creationdate %}{{ diploma.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('diplomas_show', { 'id': diploma.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('diplomas_edit', { 'id': diploma.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="4">Aucune entrée de diplôme trouvée dans la base de données</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

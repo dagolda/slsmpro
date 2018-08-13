@@ -1,0 +1,18 @@
+    <table>
+        <thead>
+            <tr>
+                <th width="8%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="8%">{{'label.description'|trans([],'BoAdminBundle')}}</th>
+                <th width="8%">{{'label.user'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for histocontract in histocontracts %}
+            <tr>
+                <td><a href="{{ path('histocontract_show', { 'id': histocontract.id }) }}">{{ histocontract.id }}</a></td>
+                <td>{{ histocontract.description }}</td>
+                <td>{{ histocontract.user }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

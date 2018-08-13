@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.workfield'|trans([],'BoAdminBundle')}} >> {{'title.new'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:setting.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>Work field creation</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('workfields_new') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Workfields:newactions.html.twig"%}
+			{%include "BoAdminBundle:Workfields:newform.html.twig"%}
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

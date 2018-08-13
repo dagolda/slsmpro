@@ -1,0 +1,240 @@
+tools_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Tools:index" }
+    methods:  GET
+tools_send:
+    path:     /send/
+    defaults: { _controller: "BoAdminBundle:Tools:send" }
+    methods:  GET
+tools_remove_group:
+    path:     /remove/group/
+    defaults: { _controller: "BoAdminBundle:Tools:removeofgroup" }
+    methods:  [GET, POST]
+tools_remove_schedule:
+    path:     /remove/schedule/
+    defaults: { _controller: "BoAdminBundle:Tools:removeschedule" }
+    methods:  [GET, POST]
+tools_display_schedule:
+    path:     /display/schedule/
+    defaults: { _controller: "BoAdminBundle:Tools:displayschedule" }
+    methods:  [GET, POST]
+tools_display_schedulebis:
+    path:     /display/schedulebis/
+    defaults: { _controller: "BoAdminBundle:Tools:displayschedulebis" }
+    methods:  [GET, POST]
+tools_display_schedulebyid:
+    path:     /display/schedulebyid/
+    defaults: { _controller: "BoAdminBundle:Tools:displayschedulebyid" }
+    methods:  [GET, POST]
+tools_show_schedule:
+    path:     /show/schedule/
+    defaults: { _controller: "BoAdminBundle:Tools:showschedule" }
+    methods:  [GET, POST]
+tools_show_missing:
+    path:     /show/missing/
+    defaults: { _controller: "BoAdminBundle:Tools:missing" }
+    methods:  [GET, POST]
+tools_add_localtogroup:
+    path:     /addlocal/togroup/
+    defaults: { _controller: "BoAdminBundle:Tools:addlocaltogroup" }
+    methods:  [GET, POST]
+tools_add_teacheremail:
+    path:     /update/teacher/email/
+    defaults: { _controller: "BoAdminBundle:Tools:updateteacheremail" }
+    methods:  [GET, POST]
+tools_add_updatelogin:
+    path:     /update/login/
+    defaults: { _controller: "BoAdminBundle:Tools:updatelogin" }
+    methods:  [GET, POST]
+tools_add_localtocontract:
+    path:     /addlocal/tocontract/
+    defaults: { _controller: "BoAdminBundle:Tools:addlocaltocontract" }
+    methods:  [GET, POST]
+tools_remove_tbsgroup:
+    path:     /remove/tbs/group/
+    defaults: { _controller: "BoAdminBundle:Tools:removeTbsGroupEmployee" }
+    methods:  [GET, POST]
+tools_close_contracts:
+    path:     /close/contrats/
+    defaults: { _controller: "BoAdminBundle:Tools:closecontract" }
+    methods:  [GET, POST]
+tools_update_tlgroup:
+    path:     /update/tlgroup/
+    defaults: { _controller: "BoAdminBundle:Tools:updatetlgroup" }
+    methods:  [GET, POST]
+tools_update_statusofgroup:
+    path:     /update/statusofgroup/
+    defaults: { _controller: "BoAdminBundle:Tools:statusofgroup" }
+    methods:  [GET, POST]
+tools_update_amorpm:
+    path:     /update/amorpm/
+    defaults: { _controller: "BoAdminBundle:Tools:updateamorpm" }
+    methods:  [GET, POST]
+tools_update_localstatus:
+    path:     /update/releaseroom/
+    defaults: { _controller: "BoAdminBundle:Tools:releaseroom" }
+    methods:  [GET, POST]
+tools_free_allroom:
+    path:     /free/allroom/
+    defaults: { _controller: "BoAdminBundle:Tools:freeroom" }
+    methods:  [GET, POST]
+tools_remove_ofcontract:
+    path:     /remove/teacher/
+    defaults: { _controller: "BoAdminBundle:Tools:teacherofcontract" }
+    methods:  [GET, POST]
+tools_remove_ofcontract2:
+    path:     /remove/teacher2/
+    defaults: { _controller: "BoAdminBundle:Tools:teacherofcontract2" }
+    methods:  [GET, POST]
+tools_removeteacher_fromcontract:
+    path:     /remove/teacher/contract/
+    defaults: { _controller: "BoAdminBundle:Tools:removefromcontract" }
+    methods:  [GET, POST]
+tools_removelocal_fromcontract:
+    path:     /remove/local/contract/
+    defaults: { _controller: "BoAdminBundle:Tools:remlocalfromcontract" }
+    methods:  [GET, POST]
+tools_removelocal_fromgroup:
+    path:     /remove/local/group/
+    defaults: { _controller: "BoAdminBundle:Tools:remlocalfromgroup" }
+    methods:  [GET, POST]
+tools_update_training:
+    path:     /update/training/
+    defaults: { _controller: "BoAdminBundle:Tools:updatetraining" }
+    methods:  [GET, POST]
+tools_update_tcgroup:
+    path:     /update/tcgroup/
+    defaults: { _controller: "BoAdminBundle:Tools:updatetcgroup" }
+    methods:  [GET, POST]
+tools_update_training2:
+    path:     /update/training2/
+    defaults: { _controller: "BoAdminBundle:Tools:updatetraining2" }
+    methods:  [GET, POST]
+tools_update_contract:
+    path:     /update/contract/
+    defaults: { _controller: "BoAdminBundle:Tools:updatecontract" }
+    methods:  [GET, POST]
+tools_update_allcontract:
+    path:     /update/allcontract/
+    defaults: { _controller: "BoAdminBundle:Tools:updateallcontract" }
+    methods:  [GET, POST]
+tools_update_contract2:
+    path:     /2/update/contract/
+    defaults: { _controller: "BoAdminBundle:Tools:updatecontract2" }
+    methods:  [GET, POST]
+tools_update_groupstatus:
+    path:     /update/localstatus/
+    defaults: { _controller: "BoAdminBundle:Tools:updatelocalstatus" }
+    methods:  [GET, POST]
+tools_update_localsuite:
+    path:     /update/localsuite/
+    defaults: { _controller: "BoAdminBundle:Tools:localsuite" }
+    methods:  [GET, POST]
+tools_disable_local:
+    path:     /disable/suite/
+    defaults: { _controller: "BoAdminBundle:Tools:disablesuite"}
+    methods:  [GET, POST]
+tools_update_contract3:
+    path:     /update/contractgroup/
+    defaults: { _controller: "BoAdminBundle:Tools:updatecontractgroup" }
+    methods:  [GET, POST]
+tools_addtype_togroup:
+    path:     /add/type/togroup/
+    defaults: { _controller: "BoAdminBundle:Tools:addtypetogroup" }
+    methods:  [GET, POST]
+tools_update_mastercontract:
+    path:     /master/contract/
+    defaults: { _controller: "BoAdminBundle:Tools:mastercontract" }
+    methods:  [GET, POST]
+tools_create_coordinator:
+    path:     /create/coordinator/
+    defaults: { _controller: "BoAdminBundle:Tools:updateUser" }
+    methods:  GET
+tools_connected:
+    path:     /connected/
+    defaults: { _controller: "BoAdminBundle:Tools:connected" }
+    methods:  [GET, POST]
+tools_update_advisor:
+    path:     /update/advisor/
+    defaults: { _controller: "BoAdminBundle:Tools:updateadvisor" }
+    methods:  [GET, POST]
+tools_update_schedule:
+    path:     /update/schedule/
+    defaults: { _controller: "BoAdminBundle:Tools:updateschedule" }
+    methods:  [GET, POST]
+tools_update_schedule2:
+    path:     /update/schedule/2/
+    defaults: { _controller: "BoAdminBundle:Tools:updateschedule2" }
+    methods:  [GET, POST]
+tools_schedule_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Tools:deleteschedule" }
+    methods:  DELETE
+tools_generate_agenda:
+    path:     /generate/agenda/
+    defaults: { _controller: "BoAdminBundle:Tools:generateagenda" }
+    methods:  [GET, POST]
+tools_generate_event:
+    path:     /generate/event/
+    defaults: { _controller: "BoAdminBundle:Tools:generateEvent" }
+    methods:  [GET, POST]
+tools_agenda_update:
+    path:     /update/agenda/
+    defaults: { _controller: "BoAdminBundle:Tools:updateagenda" }
+    methods:  [GET, POST]
+tools_absence_update:
+    path:     /update/absence/
+    defaults: { _controller: "BoAdminBundle:Tools:updateabsence" }
+    methods:  [GET, POST]
+tools_check:
+    path:     /check/
+    defaults: { _controller: "BoAdminBundle:Tools:check" }
+    methods:  [GET, POST]
+tools_checkbis:
+    path:     /checkbis/
+    defaults: { _controller: "BoAdminBundle:Tools:checkbis" }
+    methods:  [GET, POST]
+tools_checkcontract:
+    path:     /check/contract/
+    defaults: { _controller: "BoAdminBundle:Tools:checkcontract" }
+    methods:  [GET, POST]
+tools_findsch:
+    path:     /findsch/
+    defaults: { _controller: "BoAdminBundle:Tools:findsch" }
+    methods:  [GET, POST]
+tools_test:
+    path:     /test/
+    defaults: { _controller: "BoAdminBundle:Tools:test" }
+    methods:  [GET, POST]
+tools_test2:
+    path:     /test2/
+    defaults: { _controller: "BoAdminBundle:Tools:test2" }
+    methods:  [GET, POST]
+tools_employeelogin:
+    path:     /employee/login/
+    defaults: { _controller: "BoAdminBundle:Tools:employeelogin" }
+    methods:  [GET, POST]
+tools_addagenda:
+    path:     /add/agenda/
+    defaults: { _controller: "BoAdminBundle:Tools:addagenda" }
+    methods:  [GET, POST]
+tools_genagenda:
+    path:     /gen/agenda/
+    defaults: { _controller: "BoAdminBundle:Tools:genagenda" }
+    methods:  [GET, POST]
+tools_gethour:
+    path:     /get/hour/
+    defaults: { _controller: "BoAdminBundle:Tools:gethour" }
+    methods:  [GET, POST]
+tools_disable_user:
+    path:     /disable/user/
+    defaults: { _controller: "BoAdminBundle:Tools:disableuser" }
+    methods:  [GET, POST]
+tools_check_ticket:
+    path:     /check/ticket/
+    defaults: { _controller: "BoAdminBundle:Tools:checkticket" }
+    methods:  [GET, POST]
+tools_check_date:
+    path:     /check/date/
+    defaults: { _controller: "BoAdminBundle:Tools:checkdate" }
+    methods:  [GET, POST]

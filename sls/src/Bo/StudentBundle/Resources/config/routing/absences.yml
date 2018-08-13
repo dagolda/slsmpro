@@ -1,0 +1,20 @@
+student_absences_index:
+    path:     /
+    defaults: { _controller: "BoStudentBundle:Absences:index" }
+    methods:  GET
+student_absences_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoStudentBundle:Absences:show" }
+    methods:  GET
+student_absences_new:
+    path:     /new
+    defaults: { _controller: "BoStudentBundle:Absences:new" }
+    methods:  [GET, POST]
+student_absences_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoStudentBundle:Absences:edit" }
+    methods:  [GET, POST]
+student_absences_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoStudentBundle:Absences:delete" }
+    methods:  DELETE

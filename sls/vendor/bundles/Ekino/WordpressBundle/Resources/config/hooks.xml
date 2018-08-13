@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="ekino.wordpress.response_subscriber.class">Ekino\WordpressBundle\Event\Subscriber\WordpressResponseSubscriber</parameter>
+    </parameters>
+    <services>
+
+        <service id="ekino.wordpress.event.hook.user" class="Ekino\WordpressBundle\Event\Hook\UserHookListener">
+            <tag name="kernel.event_listener" event="ekino.wordpress.user_login" method="onLogin" priority="64"/>
+            <tag name="kernel.event_listener" event="ekino.wordpress.user_logout" method="onLogout" priority="64"/>
+
+            <argument type="service" id="ekino.wordpress.manager.user" />
+            <argument type="service" id="logger" />
+            <argument type="service" id="security.token_storage" />
+            <argument type="service" id="session" />
+            <argument>%ekino.wordpress.firewall_name%</argument>
+        </service>
+
+        <service id="ekino.wordpress.response_subscriber" class="%ekino.wordpress.response_subscriber.class%">
+            <tag name="kernel.event_subscriber" />
+
+            <argument type="service" id="ekino.wordpress.wordpress"/>
+        </service>
+
+        <service id="ekino.wordpress.metadata_subscriber" class="Ekino\WordpressBundle\Event\Subscriber\LoadMetadataSubscriber" public="false">
+            <argument>%ekino.wordpress.repositories%</argument>
+            <tag name="doctrine.event_subscriber"/>
+        </service>
+
+    </services>
+</container>

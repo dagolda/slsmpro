@@ -1,0 +1,23 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="50%" class="sty_label">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.wfname) }}</td>	
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">{{'label.hourlycharge'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.chargescale) }}</td>	
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+            <th width="50%" class="sty_label">Details</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.details) }}</td>	
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+	</table>

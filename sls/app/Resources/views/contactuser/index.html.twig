@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Contactusers list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Firstname</th>
+                <th>Phone</th>
+                <th>Department</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Createby</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contactUser in contactUsers %}
+            <tr>
+                <td><a href="{{ path('contactuser_show', { 'id': contactUser.id }) }}">{{ contactUser.id }}</a></td>
+                <td>{{ contactUser.name }}</td>
+                <td>{{ contactUser.firstname }}</td>
+                <td>{{ contactUser.phone }}</td>
+                <td>{{ contactUser.department }}</td>
+                <td>{{ contactUser.email }}</td>
+                <td>{{ contactUser.password }}</td>
+                <td>{{ contactUser.createby }}</td>
+                <td>{% if contactUser.creationdate %}{{ contactUser.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('contactuser_show', { 'id': contactUser.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('contactuser_edit', { 'id': contactUser.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('contactuser_new') }}">Create a new contactUser</a>
+        </li>
+    </ul>
+{% endblock %}

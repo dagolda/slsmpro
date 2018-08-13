@@ -1,0 +1,29 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Messageen</th>
+                <th>Messagefr</th>
+                <th>Datecreation</th>
+                <th width="120px" nowrap>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mail in mails %}
+            <tr>
+                <td><a href="{{ path('mails_show', { 'id': mail.id }) }}">{{ mail.id }}</a></td>
+                <td>{{ mail.name }}</td>
+                <td>{{ mail.messageen|raw }}</td>
+                <td>{{ mail.messagefr|raw }}</td>
+                <td>{% if mail.dateCreation %}{{ mail.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('mails_show', { 'id': mail.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+                    <a href="{{ path('mails_edit', { 'id': mail.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>	
+            </tr>
+		{%else%}
+			<tr><td colspan="7">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

@@ -1,0 +1,38 @@
+    <table>
+        <tbody>
+            <tr>		
+				<th>{{'label.id'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ robot.id }}</td>
+            </tr>
+			{% if robot.ddate %}
+            <tr>		
+                		<th>{{'label.date'|trans([],'BoAdminBundle')}}</th>
+				<td>{% if robot.ddate %}{{ robot.ddate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+			{%endif%}
+            <tr>		
+				<th>{{'label.number'|trans([],'BoAdminBundle')}} {{'label.contracts'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ robot.nbcontract }}</td>
+            </tr>
+            <tr>		
+				<th>{{'label.number'|trans([],'BoAdminBundle')}} {{'label.group'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ robot.nbgroup }}</td>
+            </tr>
+            <tr>		
+				<th>{{'label.start'|trans([],'BoAdminBundle')}}:</th>
+				<td>{%if robot.start %}{{ robot.start }}{%else%}---{%endif%}</td>
+            </tr>
+            <tr>		
+				<th>{{'label.end'|trans([],'BoAdminBundle')}}:</th>
+				<td>{%if robot.end %}{{ robot.end }}{%else%}---{%endif%}</td>
+            </tr>
+            <tr>		
+				<th>Source</th>
+				<td>{%if robot.source %}{{ robot.source }}{%else%}---{%endif%}</td>
+            </tr>
+            <tr>		
+				<th>Note</th>
+				<td>{%if robot.note %}{{ robot.note }}{%else%}---{%endif%}</td>
+            </tr>
+        </tbody>
+    </table>

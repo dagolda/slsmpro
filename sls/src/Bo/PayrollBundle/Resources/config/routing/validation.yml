@@ -1,0 +1,39 @@
+payroll_validation_index:
+    path:     /
+    defaults: { _controller: "BoPayrollBundle:Validation:index" }
+    methods:  GET
+payroll_validation_list:
+    path:     /list/
+    defaults: { _controller: "BoPayrollBundle:Validation:list" }
+    methods:  GET
+payroll_validation_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoPayrollBundle:Validation:page" }
+payroll_validation_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoPayrollBundle:Validation:show" }
+    methods:  GET
+payroll_validation_showts:
+    path:     /{id}/showts
+    defaults: { _controller: "BoPayrollBundle:Validation:showts" }
+    methods:  GET
+payroll_validation_search:
+    path:  /search/
+    defaults: { _controller: "BoPayrollBundle:Validation:search" }
+    methods:  [GET, POST]
+payroll_validation_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoPayrollBundle:Validation:pagesearch" }
+    methods:  [GET, POST]
+payroll_validation_validate:
+    path:     /{id}/validate/
+    defaults: { _controller: "BoPayrollBundle:Validation:validate" }
+    methods:  [GET, POST]
+payroll_validation_reject:
+    path:     /{id}/reject/
+    defaults: { _controller: "BoPayrollBundle:Validation:reject" }
+    methods:  [GET, POST]
+payroll_validation_allvalidate:
+    path:     /{id}/allvalidate
+    defaults: { _controller: "BoPayrollBundle:Validation:allvalidate" }
+    methods:  [GET, POST]

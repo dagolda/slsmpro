@@ -1,0 +1,24 @@
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav">
+						<li {%if pm=="tabeau-bord"%}class="active"{%endif%}>
+							<a href="{{ path('bo_home_homepage') }}">
+								{{'layout.menu.dashboard'|trans([],'BoAdminBundle')|upper}}
+							</a>
+						</li>
+						<li {%if pm=="contracts"%}class="active"{%endif%}>
+							<a href="{{ path('home_contract_show') }}">
+								{{'layout.menu.contracts'|trans([],'BoAdminBundle')|upper}}
+							</a>
+						</li>
+						<li {%if pm=="request"%}class="active"{%endif%}>
+							<a href="{{ path('home_absences_index') }}">
+								{{'layout.menu.request'|trans([],'BoAdminBundle')|upper}}
+							</a>
+						</li>
+						<li {%if pm=="document"%}class="active"{%endif%}>
+							<a href="{{ path('home_emppj_index') }}">
+								{{'layout.menu.documents'|trans([],'BoAdminBundle')|upper}}
+							</a>
+						</li>
+					</ul>
+				</div>

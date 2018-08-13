@@ -1,0 +1,195 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.evaluation'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block nav %}{%include "BoAdminBundle:Evaluation:rightshow.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.evaluation'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+
+	<div id="body-content">
+		{%include "BoAdminBundle:Evaluation:showactions.html.twig"%}
+		
+		<div class="display_content">
+			<legend>{{'title.student'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Evaluation:students.html.twig"%}
+		</div>	
+
+		<div class="display_content">
+			<legend>{{'label.contact'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Evaluation:contractual.html.twig"%}
+		</div>	
+		
+		<div class="display_content">
+			<legend>{{'title.billingcontact'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Evaluation:billingcontact.html.twig"%}
+		</div>
+		{%if evaluation.status!=1 and evaluation.status!=11%}
+			<div class="display_content">
+				<legend>{{'label.result'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Evaluation:result.html.twig"%}
+			</div>
+		{%endif%}	
+		{%if evaluation.comment%}
+			<div class="display_content">
+				<legend>{{'label.comment'|trans([],'BoAdminBundle')}}</legend>
+				<div>{{evaluation.comment}}</div>
+			</div>	
+		{%endif%}			
+		<br/>
+	</div>
+	
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(delete_form) }}
+					<button class="close_modal_delete" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(delete_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="remove_pdf" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.removepdf'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(remove_form) }}
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(remove_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>	
+	
+	{%if evaluation.status==1 or evaluation.status==11%}
+		<!-- begin edit first evaluation form by modal dialog-->
+			<div class="container">
+			  <!-- Modal -->
+			  <div class="modal fade" id="editfirst_eval" role="dialog">
+				<div class="modal-dialog">
+				
+				  <!-- Modal content-->
+				  <div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">{{'action.edit'|trans([],'BoAdminBundle')}} {{'entity.evaluation'|trans([],'BoAdminBundle')}}</h4>
+					</div>
+					<form action="{{ path('evaluation_editfirst',{'id':evaluation.id})}}" method="post" class="style">
+						<div class="modal-body">
+							{{ form_errors(edit_form) }}
+								{%include "BoAdminBundle:Evaluation:editfirstform.html.twig"%}
+							{{ form_rest(edit_form) }}
+						</div>
+						<div class="modal-footer">
+							<button class="close_modal_edit" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+							<input type="submit" value="{{'action.update'|trans([],'BoAdminBundle')}}">
+						</div>
+					</form>	
+				  </div>
+				  
+				</div>
+			  </div>
+			</div>
+		<!-- end eveluation edtion first form by modal dialog-->
+		
+		<!-- begin evaluation of the advisor form by modal dialog-->
+		<div class="container">
+		  <!-- Modal -->
+		  <div class="modal fade" id="evaluate" role="dialog">
+			<div class="modal-dialog">
+			
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">{{'action.evaluate'|trans([],'BoAdminBundle')}} {{evaluation.firstname}} {{evaluation.name}}</h4>
+				</div>
+				<form action="{{ path('evaluation_evaluate',{'id':evaluation.id})}}" method="post" class="style">
+					<div class="modal-body">
+						{{ form_errors(eval_form) }}
+							{%include "BoAdminBundle:Evaluation:part2form.html.twig"%}
+						{{ form_rest(eval_form) }}
+					</div>
+					<div class="modal-footer">
+						<button class="close_modal_edit" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+						<input type="submit" value="{{'action.update'|trans([],'BoAdminBundle')}}">
+					</div>
+				</form>	
+			  </div>
+			  
+			</div>
+		  </div>
+		</div>
+		<!-- end eveluation creation form by modal dialog-->
+	{%elseif form!=null%}
+		<!-- begin edit evaluation all form by modal dialog-->
+		<div class="container">
+		  <!-- Modal -->
+		  <div class="modal fade" id="edit_eval" role="dialog">
+			<div class="modal-dialog">
+			
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">{{'action.edit'|trans([],'BoAdminBundle')}} {{'entity.evaluation'|trans([],'BoAdminBundle')}}</h4>
+				</div>
+				<form action="{{ path('evaluation_edit',{'id':evaluation.id})}}" method="post" class="style">
+					<div class="modal-body">
+						{{ form_errors(form) }}
+							{%include "BoAdminBundle:Evaluation:modalform.html.twig"%}
+						{{ form_rest(form) }}
+					</div>
+					<div class="modal-footer">
+						<button class="close_modal_edit" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+						<input type="submit" value="{{'action.update'|trans([],'BoAdminBundle')}}">
+					</div>
+				</form>	
+			  </div>
+			  
+			</div>
+		  </div>
+		</div>
+		<!-- end evaluation edition all form by modal dialog-->
+	{%endif%}
+	
+	{% block javascripts %}
+		<script>
+			$(".close_modal_edit").click(function(){
+				$('#edit_eval').modal('hide');
+			});
+			$(".close_modal_delete").click(function(){
+				$('#myModal').modal('hide');
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

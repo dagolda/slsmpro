@@ -1,0 +1,26 @@
+{% extends "BoQuizBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+		<div id="fos_user_registration">
+			<legend><h1>{{'user.login'|trans([],'BoAdminBundle')}}</h1></legend>
+			<form action="{{ path("bo_quiz_check") }}" method="post" class="fos_user_registration_register">
+				{{ form_errors(form) }}
+				{% if message is defined and message%}
+					<div class="message_error">{{ message }}</div>
+				{% endif %}
+
+				<label for="email">{{'label.email'|trans([],'BoAdminBundle')}}</label>
+				{{ form_widget(form.email) }}
+
+				<label for="password">{{'label.password'|trans([],'BoAdminBundle')}}</label>
+				{{ form_widget(form.password) }}
+
+				<div>
+					<input type="submit" id="_submit" name="_submit" value="Validate" />
+				</div>
+				{{ form_rest(form) }}
+			</form>
+		</div>
+{% endblock fos_user_content %}

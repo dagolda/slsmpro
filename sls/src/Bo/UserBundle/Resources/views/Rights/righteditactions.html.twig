@@ -1,0 +1,15 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td><button type="submit" id="btn-create">{{'action.update'|trans([],'BoAdminBundle')}}</button></td>
+					<td>
+						<a href="{{ path('profil_show', { 'id': right.idprofil }) }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td>
+						<a href="{{ path('rights_enableall', { 'id': right.id }) }}">Enable all</a>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

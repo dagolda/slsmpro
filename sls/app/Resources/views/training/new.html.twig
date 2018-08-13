@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.training'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('training_new',{'idcontract':idcontract}) }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Training:newactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Training:newform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#btn_enable").click(function(){
+				contractid = $("#btn_close").val();
+				var DATA = 'id='+contractid;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('contracts_close')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('.message-content').html(data);
+					}
+				});
+				return false;			
+			});
+		</script>	
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

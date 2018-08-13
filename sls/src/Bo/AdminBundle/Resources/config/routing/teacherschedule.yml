@@ -1,0 +1,44 @@
+teacherschedule_index:
+    path:     /index/
+    defaults: { _controller: "BoAdminBundle:TeacherSchedule:index" }
+    methods:  GET
+teacherschedule_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:TeacherSchedule:show" }
+    methods:  GET
+teacherschedule_new:
+    path:     /{idcontract}/new
+    defaults: { _controller: "BoAdminBundle:TeacherSchedule:new" }
+    methods:  [GET, POST]
+teacherschedule_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:TeacherSchedule:edit" }
+    methods:  [GET, POST]
+teacherschedule_schedule:
+    path:     /{idemployee}/{idcontract}/edit
+    defaults: { _controller: "BoAdminBundle:TeacherSchedule:schedule" }
+    methods:  [GET, POST]
+teacherschedule_check:
+    path:     /check/
+    defaults: { _controller: "BoAdminBundle:TeacherSchedule:check" }
+    methods:  [GET, POST]
+teacherschedule_remove:
+    path:     /{idemployee}/{idcontract}/remove
+    defaults: { _controller: "BoAdminBundle:TeacherSchedule:remove" }
+    methods:  [GET, POST]
+teacherschedule_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:TeacherSchedule:delete" }
+    methods:  DELETE
+teacherschedule_historic:
+    path:     /{idcontract}/new
+    defaults: { _controller: "BoAdminBundle:TeacherSchedule:new" }
+    methods:  [GET, POST]
+teacherschedule_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:TeacherSchedule:pagesearch" }
+    methods:  [GET, POST]
+teacherschedule_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:TeacherSchedule:search" }
+    methods:  [GET, POST]

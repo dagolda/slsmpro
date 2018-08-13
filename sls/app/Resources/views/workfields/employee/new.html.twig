@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.employee'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}	
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.employee'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('employee_new') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Employee:newactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Employee:newform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_status" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.addstatus'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('employee_create_status') }}" method="post" class="style">
+			<div class="modal-body">
+				{{ form_errors(status_form) }}
+					{%include "BoAdminBundle:Employee:statusnewform.html.twig"%}
+				{{ form_rest(status_form) }}
+			</div>
+			<div class="modal-footer">
+				<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+			</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_category" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.addcategory'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('employee_create_category') }}" method="post" class="style">
+				<div class="modal-body">
+					{{ form_errors(category_form) }}
+						{%include "BoAdminBundle:Employee:categorynewform.html.twig"%}
+					{{ form_rest(category_form) }}
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_language" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'title.add.language'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('employee_create_language') }}" method="post" class="style">
+				<div class="modal-body">
+					{{ form_errors(language_form) }}
+						{%include "BoAdminBundle:Employee:languagenewform.html.twig"%}
+					{{ form_rest(language_form) }}
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

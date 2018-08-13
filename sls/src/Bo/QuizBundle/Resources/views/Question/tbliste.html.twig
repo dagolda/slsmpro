@@ -1,0 +1,27 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.content'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for question in questions %}
+            <tr>
+                <td><a href="{{ path('question_show', { 'id': question.id }) }}">{{ question.id }}</a></td>
+                <td>{{ question.name }}</td>
+                <td>{{ question.content }}</td>
+                <td class="list-action">
+                    <a href="{{ path('question_show', { 'id': question.id }) }}">show</a>
+		{%if app.session.get('rights')['ADMIN']['Question'] is defined and app.session.get('rights')['ADMIN']['Question'].edit==1%}
+			<a href="{{ path('question_edit', { 'id': question.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+		{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="5">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

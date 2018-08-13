@@ -1,0 +1,49 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+				<th>{{'label.group'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.daysoftraining'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hourperday'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.hourperweek'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+			{% for group in groups%}
+				{%if (group.status==1 or group.status==2) and ((group.startdate<=now and now<=group.enddate) or group.startdate>=now) and gtrainings[group.id] is defined %}
+					{%set atrainings=gtrainings[group.id]%}
+					{% for training in atrainings%}
+						<tr>
+							<td>
+								{{ group.name }}							
+							</td>
+							<td class="sty_label">
+								{%if training.monday==true and training.tuesday==true and training.wednesday==true and training.thursday==true and training.friday==true%}
+									{{'label.frommonday.tofriday'|trans([],'BoAdminBundle')}}
+								{%else%}
+									{%if training.monday==true%}{{'label.monday'|trans([],'BoAdminBundle')}}, {%endif%}
+									{%if training.tuesday==true%}{{'label.tuesday'|trans([],'BoAdminBundle')}}, {%endif%}
+									{%if training.wednesday==true%}{{'label.wednesday'|trans([],'BoAdminBundle')}}, {%endif%}
+									{%if training.thursday==true%}{{'label.thursday'|trans([],'BoAdminBundle')}}, {%endif%}
+									{%if training.friday==true%}{{'label.friday'|trans([],'BoAdminBundle')}} {%endif%}
+								{%endif%}
+							</td>
+							<td>{{ training.startam|date('H:i') }}</td>
+							<td>{{ training.endam|date('H:i') }}</td>	
+							<td>{{ training.startpm|date('H:i') }}</td>
+							<td>{{ training.endpm|date('H:i') }}</td>	
+							<td>{%if training.hourperday%}{{ training.hourperday }}{%else%}---{%endif%}</td>				
+							<td>{%if training.hourperweek%}{{ training.hourperweek }}{%else%}---{%endif%}</td>				
+						</tr>
+					{%endfor%}
+				{%endif%}
+			{%else%}
+				<tr>
+					<td colspan="8">{{'No data found'|trans([],'BoAdminBundle')}}</td>
+				</tr>
+			{%endfor%}				
+        </tbody>
+    </table>

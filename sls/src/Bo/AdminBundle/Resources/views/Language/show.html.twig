@@ -1,0 +1,25 @@
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+            </tr>
+            <tr>
+                <td>{{ language.id }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>Name</th>
+            </tr>
+            <tr>
+                <td>{{ language.name }}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <th>Creationdate</th>
+            </tr>
+            <tr>
+                <td>{% if language.creationdate %}{{ language.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+        </tbody>
+    </table>

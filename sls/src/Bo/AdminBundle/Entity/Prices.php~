@@ -1,0 +1,192 @@
+<?php
+/*
+* Date Création: 08/02/2017
+* Auteur: N'VEKOUNOU Moise José
+* Nom fichier : Prices.php
+* Description: Prices for the offers
+*/
+namespace Bo\AdminBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="adm_prices")
+ * @ORM\Entity(repositoryClass="Bo\AdminBundle\Repository\PricesRepository")
+ */
+class Prices
+{
+    /**
+    * @ORM\Id
+    * @ORM\Column(type="integer")
+    * @ORM\GeneratedValue(strategy="AUTO")
+    */
+    protected $id;
+	
+    /**
+    * @ORM\Column(type="date")
+    */ 
+    protected $startdate;	
+	
+    /**
+    * @ORM\Column(type="date")
+    */ 
+    protected $enddate;
+	
+    /**
+    * @ORM\Column(type="decimal", scale=2)
+    */
+    protected $price;
+	
+    /**
+    * @ORM\ManyToOne(targetEntity="Pricesreference")
+	* @ORM\JoinColumn(name="idpreference",referencedColumnName="id")
+    */   
+    private $reference;
+	
+    /**
+    * @ORM\Column(type="datetime")
+    */    
+	private $creationdate;
+
+    /**
+    * Constructor
+    */
+    public function __construct()
+    {
+		$this->creationdate=new \DateTime();
+    }
+
+	public function __toString(){
+		return $this->field;
+	}	
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set startdate
+     *
+     * @param \DateTime $startdate
+     *
+     * @return Prices
+     */
+    public function setStartdate($startdate)
+    {
+        $this->startdate = $startdate;
+
+        return $this;
+    }
+
+    /**
+     * Get startdate
+     *
+     * @return \DateTime
+     */
+    public function getStartdate()
+    {
+        return $this->startdate;
+    }
+
+    /**
+     * Set enddate
+     *
+     * @param \DateTime $enddate
+     *
+     * @return Prices
+     */
+    public function setEnddate($enddate)
+    {
+        $this->enddate = $enddate;
+
+        return $this;
+    }
+
+    /**
+     * Get enddate
+     *
+     * @return \DateTime
+     */
+    public function getEnddate()
+    {
+        return $this->enddate;
+    }
+
+    /**
+     * Set price
+     *
+     * @param integer $price
+     *
+     * @return Prices
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return integer
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set reference
+     *
+     * @param \Bo\AdminBundle\Entity\Pricesreference $reference
+     *
+     * @return Prices
+     */
+    public function setReference(\Bo\AdminBundle\Entity\Pricesreference $reference = null)
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    /**
+     * Get reference
+     *
+     * @return \Bo\AdminBundle\Entity\Pricesreference
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+     * Set creationdate
+     *
+     * @param \DateTime $creationdate
+     *
+     * @return Prices
+     */
+    public function setCreationdate($creationdate)
+    {
+        $this->creationdate = $creationdate;
+
+        return $this;
+    }
+
+    /**
+     * Get creationdate
+     *
+     * @return \DateTime
+     */
+    public function getCreationdate()
+    {
+        return $this->creationdate;
+    }
+}

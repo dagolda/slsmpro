@@ -1,0 +1,55 @@
+	<table class="table table-bordered records_list">
+        <thead>
+            <tr>
+				<th>{{'label.daysoftraining'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hourperday'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.hourperweek'|trans([],'BoAdminBundle')}}</th>
+                <th><a href="#" class="infobb">NDT<span>{{'label.numberdaytraining'|trans([],'BoAdminBundle')}}</span></a></th>
+				<th><a href="#" class="infobb">NWT<span>{{'label.numberweektraining'|trans([],'BoAdminBundle')}}</span></a></th>
+				{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].edit==1%}	
+					<th>Actions</th>
+				{%endif%}
+            </tr>
+        </thead>
+        <tbody>
+			{% for training in trainings %}
+				<tr>
+					<td class="sty_label">
+						{%if training.monday==true and training.tuesday==true and training.wednesday==true and training.thursday==true and training.friday==true%}
+							{{'label.frommonday.tofriday'|trans([],'BoAdminBundle')}}
+						{%else%}
+							{%if training.monday==true%}{{'label.monday'|trans([],'BoAdminBundle')}}, {%endif%}
+							{%if training.tuesday==true%}{{'label.tuesday'|trans([],'BoAdminBundle')}}, {%endif%}
+							{%if training.wednesday==true%}{{'label.wednesday'|trans([],'BoAdminBundle')}}, {%endif%}
+							{%if training.thursday==true%}{{'label.thursday'|trans([],'BoAdminBundle')}}, {%endif%}
+							{%if training.friday==true%}{{'label.friday'|trans([],'BoAdminBundle')}} {%endif%}
+						{%endif%}
+					</td>
+					<td>{%if training.startam!=null%}{{ training.startam|date('H:i') }}{%else%}00:00{%endif%}</td>
+					<td>{%if training.endam!=null%}{{ training.endam|date('H:i') }}{%else%}00:00{%endif%}</td>	
+					<td>{%if training.startpm!=null%}{{ training.startpm|date('H:i') }}{%else%}00:00{%endif%}</td>
+					<td>{%if training.endpm!=null%}{{ training.endpm|date('H:i') }}{%else%}00:00{%endif%}</td>	
+					<td>{%if training.hourperday%}{{ training.hourperday }}{%else%}---{%endif%}</td>				
+					<td>{%if training.hourperweek%}{{ training.hourperweek }}{%else%}---{%endif%}</td>
+					<td>{%if training.ttdnumber%}{{ training.ttdnumber }}{%else%}---{%endif%}</td>				
+					<td>{%if training.ttwnumber%}{{ training.ttwnumber }}{%else%}---{%endif%}</td>	
+					{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].edit==1 and (contract.status==1 or contract.status==2)%}					
+						<td class="list-action">
+							<a href="{{ path('training_edit', { 'id': training.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+						</td>
+					{%endif%}
+				</tr>
+			{%endfor%}
+			{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].creation==1 and (contract.status==1 or contract.status==2)%}
+				<tr>
+					<td colspan="10" class="list-action">
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_training">{{'action.add'|trans([],'BoAdminBundle')}}</button>							
+					</td>
+				</tr>	
+			{%endif%}			
+        </tbody>
+    </table>

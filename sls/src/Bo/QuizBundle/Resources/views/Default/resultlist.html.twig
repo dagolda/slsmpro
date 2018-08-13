@@ -1,0 +1,3 @@
+        {% for quiz in quizzes %}
+                <div class='quiz_list'><a href="{{ path('bo_quiz_resultquiz', { 'id': quiz.id,'iduser':user.id}) }}">{{ quiz.name }}  <img src="{{ asset('images/actions/ok.gif') }}" alt="" width="20px"/></a></div>
+        {% endfor %}

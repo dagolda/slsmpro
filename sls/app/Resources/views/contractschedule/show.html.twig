@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ContractSchedule</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contractSchedule.id }}</td>
+            </tr>
+            <tr>
+                <th>Idcontracts</th>
+                <td>{{ contractSchedule.idcontracts }}</td>
+            </tr>
+            <tr>
+                <th>From</th>
+                <td>{{ contractSchedule.from }}</td>
+            </tr>
+            <tr>
+                <th>To</th>
+                <td>{{ contractSchedule.to }}</td>
+            </tr>
+            <tr>
+                <th>Startam</th>
+                <td>{% if contractSchedule.startam %}{{ contractSchedule.startam|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Startpm</th>
+                <td>{% if contractSchedule.startpm %}{{ contractSchedule.startpm|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Endam</th>
+                <td>{% if contractSchedule.endam %}{{ contractSchedule.endam|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Endpm</th>
+                <td>{% if contractSchedule.endpm %}{{ contractSchedule.endpm|date('H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('contractschedule_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('contractschedule_edit', { 'id': contractSchedule.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

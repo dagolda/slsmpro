@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.contracts'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block stylesheets %}{{parent()}} <style>.row.content {height: 100%;}</style>{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}
+{% block nav %}
+	{%if contract is defined and contract!=null%}{%include "BoAdminBundle:Contracts:rightshow.html.twig"%}{%else%}{%include "BoAdminBundle:Group:rightshow.html.twig"%}{%endif%}
+{% endblock %}
+{% block label %}<h1>{{'entity.contracts'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('payroll_contracts_allgenerate') }}" method="post" class="style">
+			{%include "BoPayrollBundle:Contracts:showactions.html.twig"%}
+
+			{%if contract.group is defined and contract.group!=null%}
+				<div class="display_content">
+					<legend>{{'label.group'|trans([],'BoAdminBundle')}}</legend>
+					{%include "BoAdminBundle:Contracts:group.html.twig"%}
+				</div>
+			{%endif%}
+			<div class="display_content">
+				<legend>{{'title.training'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Training:tbliste.html.twig"%}
+			</div>
+			<div class="display_content">
+				<legend>{{'Teacher'|trans([],'BoAdminBundle')}}</legend>
+				<div id="teacher_content">
+					{%include "BoPayrollBundle:Contracts:teachers.html.twig"%}
+				</div>
+			</div>
+			{%if contract.campus is defined and contract.campus!=null%}
+				<div class="display_content">
+					<legend>{{'label.room'|trans([],'BoAdminBundle')}}</legend>
+					{%include "BoPayrollBundle:Contracts:local.html.twig"%}
+				</div>
+			{%endif%}
+			<div class="display_content">
+				<legend>{{'Student'|trans([],'BoAdminBundle')}}</legend>
+				<div id="students_content">
+					{%include "BoPayrollBundle:Contracts:students.html.twig"%}
+				</div>
+			</div>
+			{%if contract is defined and contract!=null%}	
+				<input type="hidden" name="idcontract" value="{{contract.id}}"/>
+			{%endif%}
+			{%if group is defined and group!=null%}	
+				<input type="hidden" name="idgroup" value="{{group.id}}"/>
+			{%endif%}
+			<br/>
+		</form>
+	</div>	
+{% endblock %}

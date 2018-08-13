@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.substitution'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}	
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.substitution'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('employee_substitution_group',{'idgroup':group.id,'idabsence':absence.id}) }}" method="post" class="style">
+			{{ form_errors(substitution_form) }}
+			{%include "BoAdminBundle:Substitution:newactions.html.twig"%}
+			<div class="display_content">
+				<legend>{{'entity.contract'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Substitution:group.html.twig"%}
+			</div>
+			<div class="show_content">
+				{%include "BoAdminBundle:Employee:subsgroupform.html.twig"%}
+			</div>
+			{{ form_rest(substitution_form) }}
+			<input type="hidden" name="idgroup" id="idgroup" value="{{group.id}}"/>
+		</form>	
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#holders").change(function(){
+				$(".schedule_content").show();
+				$('.schedule_content').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#holders option:selected");
+				holders=str.val();
+				var obj = $("#idcontract");
+				idcontract = obj.val();
+				var DATA = 'data='+holders+"-"+idcontract;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('substitution_reload')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('.schedule_content').html(data);
+					}
+				});
+				return false;
+			});	
+			$("#btn-create").click(function(){
+				var str=$("#holders option:selected");
+				holders=str.val();
+				var str=$("#teachers option:selected");
+				teachers=str.val();
+				if(holders==0){
+					alert("You have to select a holder!");
+					return false;
+				}
+				if(teachers==0){
+					alert("You have to select a substitute!");
+					return false;
+				}
+				return true;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

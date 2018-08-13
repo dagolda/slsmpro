@@ -1,0 +1,26 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.price'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+				<th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for price in prices %}
+            <tr>
+                <td>{% if price.startdate %}{{ price.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if price.enddate %}{{ price.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ price.price }}</td>
+				<td>{% if price.creationdate %}{{ price.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+					<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#edit_price{{price.id}}">{{'action.edit'|trans([],'BoAdminBundle')}}</button>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="5">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}			
+        </tbody>
+    </table>

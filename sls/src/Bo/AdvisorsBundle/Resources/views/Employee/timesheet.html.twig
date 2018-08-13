@@ -1,0 +1,57 @@
+	{%if message is defined%}
+		<div class="message-container">
+			{%if message['type']=="Success"%}
+				<div class="alert alert-success">
+					<strong>Success!</strong> {{message['texte']}}.
+				</div>
+			{%endif%}
+			{%if message['type']=="Warning"%}
+				<div class="alert alert-warning">
+					<strong>Warning!</strong> {{message['texte']}}.
+				</div>
+			{%endif%}
+		</div>
+	{%endif%}
+	<table class="table table-bordered records_list">
+        <thead>
+            <tr>
+				<th>{{'label.week'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.trainingdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.student'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.legende'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hour'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+				<th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for timesheet in timesheets %}
+            <tr>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{{ timesheet.tsweek.numberweek }}</td>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{{ timesheet.ddate|date('Y-m-d') }}</td>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{%if timesheet.group%}{{ timesheet.group.name }}{%elseif timesheet.students is defined%}{{ timesheet.students.firstname }} {{ timesheet.students.name }}{%else%}---{%endif%}</td>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{{ timesheet.legende }}</td>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{{ timesheet.startam|date('H:i') }}</td>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{{ timesheet.endam|date('H:i') }}</td>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{{ timesheet.startpm|date('H:i') }}</td>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{{ timesheet.endpm|date('H:i') }}</td>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{{ timesheet.hour }}</td>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{% if timesheet.creationdate %}{{ timesheet.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+					{%if timesheet.status and timesheet.status==2%}
+						<a href="{{ path('dash_validation_validate', { 'id': timesheet.id }) }}">Validate</a>
+						<a href="{{ path('dash_validation_reject', { 'id': timesheet.id }) }}">Reject</a>
+					{%else%}
+						<a href="{{ path('dash_validation_show', { 'id': timesheet.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="10">No data found.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

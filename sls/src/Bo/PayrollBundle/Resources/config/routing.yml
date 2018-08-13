@@ -1,0 +1,15 @@
+bo_payroll_homepage:
+    path:     /
+    defaults: { _controller: BoPayrollBundle:Default:index }
+bo_payroll_timesheet:
+    resource: "@BoPayrollBundle/Resources/config/routing/timesheet.yml"
+    prefix:   /timesheet/
+bo_payroll_employee:
+    resource: "@BoPayrollBundle/Resources/config/routing/employee.yml"
+    prefix:   /employee/
+bo_payroll_contracts:
+    resource: "@BoPayrollBundle/Resources/config/routing/contracts.yml"
+    prefix:   /contracts/
+bo_payroll_validation:
+    resource: "@BoPayrollBundle/Resources/config/routing/validation.yml"
+    prefix:   /validation/

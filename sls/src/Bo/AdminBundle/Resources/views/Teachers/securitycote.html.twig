@@ -1,0 +1,31 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.filenumber'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.requesteddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.receiveddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.expireddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans[],'BoAdminBundle'}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for securityCote in securityCotes %}
+            <tr>
+                <td><a href="{{ path('securitycote_show', { 'id': securityCote.id }) }}">{{ securityCote.id }}</a></td>
+                <td>{{ securityCote.filenumber }}</td>
+                <td>{% if securityCote.requestdate %}{{ securityCote.requestdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if securityCote.receivedate %}{{ securityCote.receivedate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if securityCote.expirydate %}{{ securityCote.expirydate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if securityCote.creationdate %}{{ securityCote.creationdate|date('Y-m-d') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('securitycote_show', { 'id': securityCote.id }) }}">show</a>
+                    <a href="{{ path('securitycote_edit', { 'id': securityCote.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="7">Aucune entrée de cote de sécurité trouvée dans la base de données</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

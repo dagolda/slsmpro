@@ -1,0 +1,38 @@
+message_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Message:index" }
+    methods:  GET
+message_list:
+    path:     /list/
+    defaults: { _controller: "BoAdminBundle:Message:list" }
+    methods:  GET
+message_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdminBundle:Message:page" }
+message_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Message:show" }
+    methods:  GET
+message_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Message:new" }
+    methods:  [GET, POST]
+message_duplicate:
+    path:     /{id}/duplicate
+    defaults: { _controller: "BoAdminBundle:Message:duplicate" }
+    methods:  [GET, POST]
+message_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Message:edit" }
+    methods:  [GET, POST]
+message_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Message:delete" }
+    methods:  DELETE
+message_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Message:search" }
+    methods:  [GET, POST]
+message_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Message:pagesearch" }

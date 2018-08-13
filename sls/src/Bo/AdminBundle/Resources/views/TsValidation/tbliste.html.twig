@@ -1,0 +1,24 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Motif</th>
+                <th>Comment</th>
+                <th>Validator</th>
+                <th>Canal</th>
+                <th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+                <th>Validation date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tsValidation in tsv %}
+            <tr>
+                <td>{{ tsValidation.motif }}</td>
+                <td>{{ tsValidation.comment }}</td>
+                <td>{{ tsValidation.validator }}</td>
+                <td>{{ tsValidation.canal }}</td>
+                <td>{%if tsValidation.status==1 %}Submitted{%elseif tsValidation.status==2 %}Validated level 1{%elseif tsValidation.status==3 %}Validated level 2{%elseif tsValidation.status==4 %}Rejected{%else%}N/A{%endif%}</td>
+                <td>{% if tsValidation.creationdate %}{{ tsValidation.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

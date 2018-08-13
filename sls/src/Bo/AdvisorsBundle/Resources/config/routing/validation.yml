@@ -1,0 +1,39 @@
+dash_validation_index:
+    path:     /
+    defaults: { _controller: "BoAdvisorsBundle:Validation:index" }
+    methods:  GET
+dash_validation_list:
+    path:     /list/
+    defaults: { _controller: "BoAdvisorsBundle:Validation:list" }
+    methods:  GET
+dash_validation_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdvisorsBundle:Validation:page" }
+dash_validation_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdvisorsBundle:Validation:show" }
+    methods:  GET
+dash_validation_timesheet_show:
+    path:     /{id}/timesheet/show
+    defaults: { _controller: "BoPayrollBundle:Validation:tsshow" }
+    methods:  GET
+dash_validation_search:
+    path:  /search/
+    defaults: { _controller: "BoAdvisorsBundle:Validation:search" }
+    methods:  [GET, POST]
+dash_validation_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdvisorsBundle:Validation:pagesearch" }
+    methods:  [GET, POST]
+dash_validation_allvalidate:
+    path:     /{id}/allvalidate
+    defaults: { _controller: "BoAdvisorsBundle:Validation:allvalidate" }
+    methods:  [GET, POST]
+dash_validation_validate:
+    path:     /{id}/timesheet/
+    defaults: { _controller: "BoAdvisorsBundle:Validation:validate" }
+    methods:  [GET, POST]
+dash_validation_reject:
+    path:     /{id}/reject
+    defaults: { _controller: "BoAdvisorsBundle:Validation:reject" }
+    methods:  [GET, POST]

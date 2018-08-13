@@ -1,0 +1,24 @@
+qualification_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Qualification:index" }
+    methods:  GET
+
+qualification_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Qualification:show" }
+    methods:  GET
+
+qualification_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Qualification:new" }
+    methods:  [GET, POST]
+
+qualification_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Qualification:edit" }
+    methods:  [GET, POST]
+
+qualification_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Qualification:delete" }
+    methods:  DELETE

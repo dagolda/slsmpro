@@ -1,0 +1,25 @@
+		<ul>
+			<li class="sty-label">Page:</li>
+			<li class="page_first">
+				<a href="{{ path('substitution_page', {'option': 1}) }}" title="{{'label.firstpage'|trans([],'BoAdminBundle')}}">
+					<img src="{{ asset('images/actions/first.gif') }}"/>
+				</a>
+			</li>
+			<li>
+				<a href="{{ path('substitution_page', {'option': 2}) }}" title="{{'label.previouspage'|trans([],'BoAdminBundle')}}">
+					<img src="{{ asset('images/actions/prev.gif') }}" />
+				</a>
+			</li>
+			<li><select id="idpage" name="idpage">{%for i in range(1,nb_pages)%}<option value="{{i}}" {%if i==page%}selected="selected"{%endif%}>{{i}}</option>{%endfor%}</select>/{{nb_pages}}
+			</li>
+			<li>
+				<a href="{{ path('substitution_page', {'option': 3}) }}" title="{{'label.nextpage'|trans([],'BoAdminBundle')}}">
+					<img src="{{ asset('images/actions/next.gif') }}"/>
+				</a>
+			</li>
+			<li>
+				<a href="{{ path('substitution_page', {'option': nb_pages}) }}" title="{{'label.lastpage'|trans([],'BoAdminBundle')}}">
+					<img src="{{ asset('images/actions/last.gif') }}"/>
+				</a>
+			</li>
+		</ul>

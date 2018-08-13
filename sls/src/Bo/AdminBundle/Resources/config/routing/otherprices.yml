@@ -1,0 +1,24 @@
+otherprices_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Otherprices:index" }
+    methods:  GET
+
+otherprices_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Otherprices:show" }
+    methods:  GET
+
+otherprices_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Otherprices:new" }
+    methods:  [GET, POST]
+
+otherprices_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Otherprices:edit" }
+    methods:  [GET, POST]
+
+otherprices_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Otherprices:delete" }
+    methods:  DELETE

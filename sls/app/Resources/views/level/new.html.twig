@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}	
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>Level creation</h1>{% endblock %}	
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('level_new') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Level:newactions.html.twig"%}
+			{%include "BoAdminBundle:Level:newform.html.twig"%}
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

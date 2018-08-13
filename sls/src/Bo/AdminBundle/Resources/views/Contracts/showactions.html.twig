@@ -1,0 +1,93 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].ddelete==1%}
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#myModal">{{'action.delete'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				{%endif%}
+				{%if (app.session.get('search') is defined and app.session.get('search') is not null) or (app.session.get('data') is defined and app.session.get('data') is not null)%}	
+					<td>
+						<a href="{{ path('contracts_back') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				{%else%}
+					<td>
+						<a href="{{ path('contracts_index') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				{%endif%}	
+				{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].creation==1%}				
+					<td>
+						<a href="{{ path('contracts_duplicate', { 'id': contract.id }) }}">{{'action.duplicate'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					{%if contract.advisor==null%}
+						<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_advisor">{{'label.addadvisor'|trans([],'BoAdminBundle')}}</button>
+						</td>
+					{%endif%}
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#extract_presence">{{'label.tspresence'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					{%if (contract.status==1 or contract.status==2) and contract.group==null%}
+						<td>
+							<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#close_contract">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+						</td>
+					{%endif%}
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_note">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.note'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				{%endif%}
+				{%if contract.status==0%}
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#reopen_contract">{{'action.open'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				{%endif%}
+				{%if app.session.get('rights')['STAFF']['Substitution'] is defined and app.session.get('rights')['STAFF']['Substitution'].creation==1 and trainings!=null and teachers!=null and holders!=null%}
+					<!--td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_substitution">{{'label.addsubstitution'|trans([],'BoAdminBundle')}}</button>
+					</td-->
+				{%endif%}
+				{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].creation==1%}
+					{%if schedules[0] is defined and teachers[0] is defined and locals[0] is defined%}
+					<td>
+						<button type="button" id="btn_plan" value="{{contract.id}}">{{'action.plan'|trans([],'BoAdminBundle')}}</button>
+						<!--a href="{{ path('schedule_new') }}">Schedule</a-->
+					</td>
+					{%endif%}
+				{%endif%}
+				{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].others==1 and historics|length>0%}
+					<td>
+						<a href="{{ path('contracts_historic',{'id':contract.id}) }}">{{'action.historic'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				{%endif%}
+				{%if lefthours is defined and lefthours!=0%}
+					<!--td class="total_number">
+						<button type="button" class="btn btn-primary">
+							{{'label.lefthours'|trans([],'BoAdminBundle')}} <span class="badge">{{lefthours|number_format(0,""," ")}}</span>
+						</button>
+					</td-->
+				{%endif%}
+				{% if app.user is defined and app.user.employee.profil is not null and (app.user.employee.profil=="Superadmin" or app.user.employee.profil=="Payroll" or app.user.employee.profil=="RH" or app.user.employee.profil=="Executive")%}
+					{% if contract.confirmation==null and students|length>0 and contract.advisor and contract.status!=0%}
+						<td>
+							<a href="{{ path('contracts_confirmation', { 'idcontract': contract.id }) }}">{{'action.sendconfirmation'|trans([],'BoAdminBundle')}}</a>
+							<!--button type="button" id="btn_confirmation"  value="{{contract.id}}">{{'action.sendconfirmation'|trans([],'BoAdminBundle')}}</button--!>
+						</td>
+					{%elseif contract.confirmation==1%}
+						<td class="total_number">
+							<button type="button" class="btn btn-primary">
+								{{'label.confirmationsent'|trans([],'BoAdminBundle')}}
+							</button>
+						</td>
+					{%elseif contract.confirmation!=null%}
+						<td class="total_number">
+							<button type="button" class="btn btn-primary">
+								{{'label.confirmationsent'|trans([],'BoAdminBundle')}} <span class="badge">{{contract.confirmation}}</span>
+							</button>
+						</td>
+					{%endif%}
+				{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

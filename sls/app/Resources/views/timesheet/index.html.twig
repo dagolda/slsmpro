@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- Timesheet list{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}	
+	{%if employee!=null%}{%include "BoAdminBundle:User:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block label %}<h1>Timesheet list</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdminBundle:Timesheet:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div id="content-liste">
+		{%include "BoAdminBundle:Timesheet:tbliste.html.twig"%}
+	</div>
+{% endblock %}

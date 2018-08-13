@@ -1,0 +1,33 @@
+    <table>
+        <tbody>
+            <tr>
+                <th width="120px">Id:</th>
+                <td width="500px">{{ mobiliers.id }}</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.reference'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ mobiliers.reference }}</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.designation'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ mobiliers.designation }}</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.address'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ mobiliers.address }}</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>City:</th>
+                <td>{{ mobiliers.city }}</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}:</th>
+                <td>{% if mobiliers.creationdate %}{{ mobiliers.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>

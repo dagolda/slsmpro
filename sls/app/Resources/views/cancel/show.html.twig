@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.cancel'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block stylesheets %}
+	{{parent()}}
+	<style>
+		.row.content {min-height: 660px}
+	</style>
+{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}	
+{% block nav %}
+	{%include "BoAdminBundle:cancel:rightshow.html.twig"%}
+{% endblock %}
+{% block label %}<h1>{{'entity.cancel'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Cancel:showactions.html.twig"%}	
+		<div class="show_content">
+			{%include "BoAdminBundle:Cancel:show.html.twig"%}
+		</div>			
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(delete_form) }}
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(delete_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+
+	<!-- begin displaying detail charges of advisor by modal dialog-->
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="show_detail" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.details'|trans([],'BoAdminBundle')}} {{'label.charges'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+				<div class="modal-body">
+					{%include "BoAdminBundle:cancel:details.html.twig"%}
+				</div>
+				<div class="modal-footer">
+					<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+				</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<!-- end displaying detail charges of advisor by modal dialog-->
+
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

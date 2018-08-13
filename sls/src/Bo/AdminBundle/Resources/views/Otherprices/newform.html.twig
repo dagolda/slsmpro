@@ -1,0 +1,29 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+			<th class="sty_label">{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+            <th class="sty_label">{{'label.language'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.ftorpt'|trans([],'BoAdminBundle')}}</th>           
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.contracttype) }}</td>
+			<td>{{ form_widget(form.language) }}</td>
+			<td>{{ form_widget(form.ftorpt) }}</td>				
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.priceonsite'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.priceoffsite'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>	
+			<td>{{ form_widget(form.priceonsite) }}</td>	
+			<td>{{ form_widget(form.priceoffsite) }}</td>
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label" colspan="3">{{'label.feature'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td colspan="3">{{ form_widget(form.feature) }}</td>		
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+	</table>

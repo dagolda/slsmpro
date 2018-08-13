@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'label.room'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:local.html.twig"%}{% endblock %}
+{% block nav %}{%include "BoAdminBundle:Local:rightshow.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'label.room'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Local:showactions.html.twig"%}		
+		<div class="display_content">
+			<legend>Occupation</legend>
+			{%if contracts==null and groups==null%}
+				{%include "BoAdminBundle:Local:nooccupation.html.twig"%}
+			{%endif%}			
+			{%if contracts!=null%}
+				{%include "BoAdminBundle:Local:schedule.html.twig"%}
+			{%endif%}
+			{%if groups!=null%}
+				{%include "BoAdminBundle:Local:schedulegroup.html.twig"%}
+			{%endif%}
+		</div>
+		{%if groups!=null%}
+			<div class="display_content">
+				<legend>{{'label.group'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Local:group.html.twig"%}
+			</div>
+		{%endif%}
+		{%if contracts|length==1  and cstudents|length==1%}
+			<div class="display_content">
+				<legend>{{'entity.student'|trans([],'BoAdminBundle')}}</legend>
+				{%if contracts|length==1  and cstudents|length>0%}
+					{%include "BoAdminBundle:Local:students.html.twig"%}
+				{%endif%}
+				{%if groups!=null and gstudents|length>0%}
+					{%include "BoAdminBundle:Local:studentsgroup.html.twig"%}
+				{%endif%}
+			</div>
+		{%endif%}
+		{%if cteachers|length>0 or gteachers|length>0%}
+			<div class="display_content">
+				{%if contracts!=null%}
+					<legend>{{'Teacher'|trans([],'BoAdminBundle')}}</legend>
+					<div id="teacher_content">
+						{%include "BoAdminBundle:Local:teachers.html.twig"%}
+					</div>
+				{%endif%}
+				{%if groups!=null%}
+					<legend>{{'Teacher'|trans([],'BoAdminBundle')}}</legend>
+					<div id="teacher_content">				
+						{%include "BoAdminBundle:Local:teachersgroup.html.twig"%}
+					</div>
+				{%endif%}	
+			</div>
+		{%endif%}			
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(delete_form) }}
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(delete_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	
+	<!-- end enable a room form by modal dialog -->	
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

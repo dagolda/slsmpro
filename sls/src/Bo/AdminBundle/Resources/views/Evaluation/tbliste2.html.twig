@@ -1,0 +1,45 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+		<th width="5%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th width="9%">{{'label.title'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.phone'|trans([],'BoAdminBundle')}}</th>
+                <th width="9%">{{'label.currentprofile'|trans([],'BoAdminBundle')}}</th>
+                <th width="9%">{{'label.customer'|trans([],'BoAdminBundle')}}</th>
+                <th width="9%">{{'label.contact'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.evaluator'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.evaldate'|trans([],'BoAdminBundle')}}</th>
+                <th nowrap>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evaluation in evaluations %}
+            <tr>
+				<td {%if evaluation.status!=1 and evaluation.status!=11 %}class="completed_contracts"{%endif%}>{{ evaluation.id }}</td>
+                <td {%if evaluation.status!=1 and evaluation.status!=11 %}class="completed_contracts"{%endif%}>{{ evaluation.firstname }}</td>
+                <td {%if evaluation.status!=1 and evaluation.status!=11 %}class="completed_contracts"{%endif%}>{{ evaluation.name }}</td>
+                <td {%if evaluation.status!=1 and evaluation.status!=11 %}class="completed_contracts"{%endif%}>{{ evaluation.title }}</td>
+                <td {%if evaluation.status!=1 and evaluation.status!=11 %}class="completed_contracts"{%endif%}>{{ evaluation.phone }}</td>
+                <td {%if evaluation.status!=1 and evaluation.status!=11 %}class="completed_contracts"{%endif%}>{{ evaluation.currentprofile }}</td>
+                <td {%if evaluation.status!=1 and evaluation.status!=11 %}class="completed_contracts"{%endif%}>{{ evaluation.customer }}</td>
+                <td {%if evaluation.status!=1 and evaluation.status!=11 %}class="completed_contracts"{%endif%}>{{ evaluation.contact }}</td>
+                <td {%if evaluation.status!=1 and evaluation.status!=11 %}class="completed_contracts"{%endif%}>{{ evaluation.evaluator.firstname }} {{ evaluation.evaluator.name }}</td>
+                <td {%if evaluation.status!=1 and evaluation.status!=11 %}class="completed_contracts"{%endif%}>{% if evaluation.evaldate %}{{ evaluation.evaldate|date('Y-m-d') }}{% endif %}</td>
+                <td class="list-action  {%if evaluation.status!=1 and evaluation.status!=11 %}completed_contracts{%endif%}" nowrap>
+                    <a href="{{ path('evaluation_show', { 'id': evaluation.id,'page':page }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+					{%if (app.session.get('rights')['ADMINISTRATION']['Evaluation'] is defined and app.session.get('rights')['ADMINISTRATION']['Evaluation'].edit==1) %}
+						{%if (evaluation.status=="1" or evaluation.status=="11") and app.session.get('rights')['ADMINISTRATION']['Evaluation'].others==1%}
+							<a href="{{ path('evaluation_evaluate', { 'id': evaluation.id }) }}">{{'action.evaluate'|trans([],'BoAdminBundle')}}</a>
+						{%else%}
+							<a href="{{ path('evaluation_edit', { 'id': evaluation.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+						{%endif%}
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="9">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

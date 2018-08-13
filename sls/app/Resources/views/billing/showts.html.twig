@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.billing'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}} >> {{'title.timesheet'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}
+{% block nav %}
+	{%if billing is defined%}{%include "BoAdminBundle:Billing:rightshow.html.twig"%}{%endif%}
+{% endblock %}
+{% block label %}<h1>{{'entity.billing'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}} </h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Billing:showtsactions.html.twig"%}
+		<div class="show_content">
+			<legend>{{'title.timesheet'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Billing:tbshow.html.twig"%}
+		</div>
+		<br/>
+		{%if tsv%}
+			<div id="content-liste">
+				{%include "BoAdminBundle:TsValidation:tbliste.html.twig"%}
+			</div>
+		{%endif%}		
+	</div>
+{% endblock %}

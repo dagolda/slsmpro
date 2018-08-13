@@ -1,0 +1,44 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.reference'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.designation'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.dimension'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.capacity'|trans([],'BoAdminBundle')}}</th>
+                <th>Max</th>
+                <th>Campus</th>
+				<th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+			{% for local in locals %}
+				<tr>
+					<td>{{ local.reference }}</td>
+					<td>{{ local.designation }}</td>
+					<td>{{ local.dimension }}</td>
+					<td>{{ local.capability }}</td>
+					<td>{{ local.max }}</td>
+					<td>{{ local.campus.designation }}</td>
+					<td class="list-action">
+					{%if contract.status==1 or contract.status==2%}
+						{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].creation==1%}
+							{{ form_start(localdelete_form) }}
+								<input type="submit" value="{{'action.remove'|trans([],'BoAdminBundle')}}">
+							{{ form_end(localdelete_form) }}
+						{%endif%}
+					{%endif%}
+					</td>
+				</tr>
+			{%else%}
+				<tr>
+					<td colspan="7">
+						{%if trainings|length>0%}
+							{%include "BoAdminBundle:Contracts:localform.html.twig"%}				
+						{%else%}
+							{{'message.error.addlocal'|trans([],'BoAdminBundle')}}
+						{%endif%}	
+					</td>			
+				</tr>
+			{% endfor %}
+        </tbody>
+    </table>

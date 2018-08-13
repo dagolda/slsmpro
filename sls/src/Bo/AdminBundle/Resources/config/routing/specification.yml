@@ -1,0 +1,24 @@
+specification_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Specification:index" }
+    methods:  GET
+
+specification_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Specification:show" }
+    methods:  GET
+
+specification_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Specification:new" }
+    methods:  [GET, POST]
+
+specification_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Specification:edit" }
+    methods:  [GET, POST]
+
+specification_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Specification:delete" }
+    methods:  DELETE

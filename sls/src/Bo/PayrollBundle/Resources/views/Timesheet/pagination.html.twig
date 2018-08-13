@@ -1,0 +1,17 @@
+		<ul>
+			<li class="sty-label">Page:</li>
+			<li class="page_first">
+				<button type="submit" id="first"><img src="{{ asset('images/actions/first.gif') }}"/></button>
+			</li>
+			<li>
+				<button type="submit" id="preview"><img src="{{ asset('images/actions/prev.gif') }}" /></button>
+			</li>
+			<li><select id="idpage" name="idpage">{%for i in range(1,nb_pages)%}<option value="{{i}}" {%if i==page%}selected="selected"{%endif%}>{{i}}</option>{%endfor%}</select>/{{nb_pages}}
+			</li>
+			<li>
+				<button type="submit" id="next"><img src="{{ asset('images/actions/next.gif') }}"/></button>
+			</li>
+			<li>
+				<button type="submit" id="preview" value="{{nb_pages}}"><img src="{{ asset('images/actions/last.gif') }}"/></button>
+			</li>
+		</ul>

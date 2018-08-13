@@ -1,0 +1,34 @@
+<p>Bonjour / Hello {{employee.firstname}} {{employee.name}},</p>
+{%if mailhead!=null%}
+	<p>
+	{{mailhead|raw}}
+	</p>
+{%endif%}
+<p>
+	{%if contract.language%}
+		<div><b>Langue / Language </b>: {{contract.language}}</div>
+	{%endif%}
+	{%if contract.startdate%}
+		<div><b>Date de D&#233;but / Start Date</b>: {{contract.startdate|date("d-m-Y")}}</div>
+	{%endif%}
+	{%if contract.enddate%}
+		<div><b>Date de Fin / End Date</b>:{{contract.enddate|date("d-m-Y")}}</div>
+	{%endif%}
+	{%if contract.schedule%}
+		<div><b>Horaire / Schedule</b>:{{contract.schedule}}</div>
+	{%endif%}
+	{%if contract.targetlevel%}
+		<div><b>Niveau vis&#233; / Target Level</b>:{{contract.targetlevel}}</div>
+	{%endif%}
+	{%if contract.advisor and contract.advisor!=null%}
+		<div><b>Conseiller p&#233;dagogique / Pedagogical Advisor</b>: {{contract.advisor}}</div>
+	{%endif%}
+	{%if contract.adresse%}
+		<div><b>Lieu / Address</b>:{{contract.adresse}}</div>
+	{%elseif contract.location and contract.location=="Campus" and contract.campus%}
+		<div><b>Lieu / Address</b>:{{contract.campus.address}}</div>
+	{%endif%}
+	{%if contract.location=="Campus" and contract.room%}
+		<div><b>Salle de classe</b>: contract.room</div>
+	{%endif%}
+</p>

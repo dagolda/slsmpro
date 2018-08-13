@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Extrapay</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ extrapay.id }}</td>
+            </tr>
+            <tr>
+                <th>Hour</th>
+                <td>{{ extrapay.hour }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ extrapay.status }}</td>
+            </tr>
+            <tr>
+                <th>Creationdate</th>
+                <td>{% if extrapay.creationdate %}{{ extrapay.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('extrapay_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('extrapay_edit', { 'id': extrapay.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

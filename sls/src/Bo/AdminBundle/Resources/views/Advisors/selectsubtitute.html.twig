@@ -1,0 +1,6 @@
+				<select name='substitute' id='substitute' required="true">
+					<option value="0" selected="delected">Select substitute</option>
+					{%for advisor in advisors%}
+						<option value="{{advisor.id}}" {%if idsubstitute is defined and idsubstitute ==advisor.id%}selected='selected'{%endif%}>{{advisor.advisor}}</option>
+					{%endfor%}
+				</select>	

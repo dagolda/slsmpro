@@ -1,0 +1,511 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.contracts'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.contracts'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form id=="contract_form" action="{{ path('contracts_new') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Contracts:newactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Contracts:newform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+	
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_client" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.addclient'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('contracts_create_client') }}" method="post" class="style">
+			<div class="modal-body">
+				{{ form_errors(client_form) }}
+					{%include "BoAdminBundle:Contracts:clientnewform.html.twig"%}
+				{{ form_rest(client_form) }}
+			</div>
+			<div class="modal-footer">
+				<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+			</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+
+	{% block javascripts %}
+		<script>
+			$("#btn-create").click(function(){
+				if($(".contractnumber").val()==""){
+					alert("Contract number field is empty!");
+					return false;
+				}
+				var str=$(".typecontract option:selected");
+				type=str.text();
+				if(type==""){
+					alert("Contract type field is empty!");
+					return false;
+				}
+				var str=$(".language option:selected");
+				language=str.text();
+				if(language==""){
+					alert("Language field is empty!");
+					return false;
+				}
+				var str=$(".group option:selected");
+				group=str.text();	
+				if(group==null || group==""){
+					if($(".gro_start").val()>$(".gro_end").val()){
+						alert("Group startdate can not be equal to or greater than the end date!");
+						return false;
+					}
+				}
+				if($(".startdate").val()>=$(".enddate").val()){
+					alert("Contract startdate can not be equal to or greater than the end date!");
+					return false;
+				}
+				return true;
+			});
+			$(".hoursnumber").change(function(){
+				//if hoursnumber is null
+				if($(".hoursnumber").val()=="" || $(".hoursnumber").val()==null){
+					var hoursnumber=0;
+				}else{
+					var hoursnumber = parseInt($(".hoursnumber").val());
+				}
+				//if hourlyrate is null
+				if($(".hourlyrate").val()=="" || $(".hourlyrate").val()==null){
+					var estimatedcost=0;
+				}else{
+					var hourlyrate = parseFloat($(".hourlyrate").val());
+					var estimatedcost = hoursnumber*hourlyrate;
+				}				
+				$(".estimatedcost").val(estimatedcost);
+				if($(".estimatedcost1").val()=="" || $(".estimatedcost1").val()==null){
+					var estimatedcost1=0;
+				}else{
+					var estimatedcost1=parseFloat($(".estimatedcost1").val());
+				}
+				if($(".estimatedcost2").val()=="" || $(".estimatedcost2").val()==null){
+					var estimatedcost2=0;
+				}else{
+					var estimatedcost2=parseFloat($(".estimatedcost2").val());
+				}
+				var totalcost = estimatedcost+estimatedcost1+estimatedcost2;
+				$(".totalcost").val(totalcost);
+				if($(".hoursnumber1").val()=="" || $(".hoursnumber1").val()==null){
+					var hoursnumber1=0;
+				}else{
+					var hoursnumber1 = parseInt($(".hoursnumber1").val());
+				}
+				if($(".hoursnumber2").val()=="" || $(".hoursnumber2").val()==null){
+					var hoursnumber2=0;
+				}else{
+					var hoursnumber2 = parseInt($(".hoursnumber2").val());
+				}
+				var totalhours = hoursnumber+hoursnumber1+hoursnumber2;
+				$(".totalhours").val(totalhours);
+				return false;
+			});
+			$(".hourlyrate").change(function(){
+				//if hoursnumber is null
+				if($(".hoursnumber").val()=="" || $(".hoursnumber").val()==null){
+					var hoursnumber=0;
+				}else{
+					var hoursnumber = parseInt($(".hoursnumber").val());
+				}
+				//if hourlyrate is null
+				if($(".hourlyrate").val()=="" || $(".hourlyrate").val()==null){
+					var estimatedcost=0;
+				}else{
+					var hourlyrate = parseFloat($(".hourlyrate").val());
+					var estimatedcost = hoursnumber*hourlyrate;
+				}					
+				$(".estimatedcost").val(estimatedcost);
+				if($(".estimatedcost1").val()=="" || $(".estimatedcost1").val()==null){
+					var estimatedcost1=0;
+				}else{
+					var estimatedcost1=parseFloat($(".estimatedcost1").val());
+				}
+				if($(".estimatedcost2").val()=="" || $(".estimatedcost2").val()==null){
+					var estimatedcost2=0;
+				}else{
+					var estimatedcost2=parseFloat($(".estimatedcost2").val());
+				}
+				var totalcost = estimatedcost+estimatedcost1+estimatedcost2;
+				$(".totalcost").val(totalcost);
+				return false;
+			});
+			$(".hoursnumber1").change(function(){
+				//if hoursnumber1 is null
+				if($(".hoursnumber1").val()=="" || $(".hoursnumber1").val()==null){
+					var hoursnumber1=0;
+				}else{
+					var hoursnumber1 = parseInt($(".hoursnumber1").val());
+				}
+				//if hourlyrate is null
+				if($(".hourlyrate1").val()=="" || $(".hourlyrate1").val()==null){
+					var estimatedcost1=0;
+				}else{
+					var hourlyrate1 = parseFloat($(".hourlyrate1").val());
+					var estimatedcost1 = hoursnumber1*hourlyrate1;
+				}				
+				$(".estimatedcost1").val(estimatedcost1);
+				if($(".estimatedcost").val()=="" || $(".estimatedcost").val()==null){
+					var estimatedcost=0;
+				}else{
+					var estimatedcost=parseFloat($(".estimatedcost").val());
+				}
+				if($(".estimatedcost2").val()=="" || $(".estimatedcost2").val()==null){
+					var estimatedcost2=0;
+				}else{
+					var estimatedcost2=parseFloat($(".estimatedcost2").val());
+				}
+				var totalcost = estimatedcost+estimatedcost1+estimatedcost2;
+				$(".totalcost").val(totalcost);
+				if($(".hoursnumber").val()=="" || $(".hoursnumber").val()==null){
+					var hoursnumber=0;
+				}else{
+					var hoursnumber = parseInt($(".hoursnumber").val());
+				}
+				if($(".hoursnumber2").val()=="" || $(".hoursnumber2").val()==null){
+					var hoursnumber2=0;
+				}else{
+					var hoursnumber2 = parseInt($(".hoursnumber2").val());
+				}
+				var totalhours = hoursnumber+hoursnumber1+hoursnumber2;
+				$(".totalhours").val(totalhours);
+				return false;
+			});
+			$(".hourlyrate1").change(function(){
+				//if hoursnumber1 is null
+				if($(".hoursnumber1").val()=="" || $(".hoursnumber1").val()==null){
+					var hoursnumber1=0;
+				}else{
+					var hoursnumber1 = parseInt($(".hoursnumber1").val());
+				}
+				//if hourlyrate1 is null
+				if($(".hourlyrate1").val()=="" || $(".hourlyrate1").val()==null){
+					var estimatedcost1=0;
+				}else{
+					var hourlyrate1 = parseFloat($(".hourlyrate1").val());
+					var estimatedcost1 = hoursnumber1*hourlyrate1;
+				}					
+				$(".estimatedcost1").val(estimatedcost1);
+				if($(".estimatedcost").val()=="" || $(".estimatedcost").val()==null){
+					var estimatedcost=0;
+				}else{
+					var estimatedcost=parseFloat($(".estimatedcost").val());
+				}
+				if($(".estimatedcost2").val()=="" || $(".estimatedcost2").val()==null){
+					var estimatedcost2=0;
+				}else{
+					var estimatedcost2=parseFloat($(".estimatedcost2").val());
+				}
+				var totalcost = estimatedcost+estimatedcost1+estimatedcost2;
+				$(".totalcost").val(totalcost);
+				return false;
+			});
+			$(".hoursnumber2").change(function(){
+				//if hoursnumber2 is null
+				if($(".hoursnumber2").val()=="" || $(".hoursnumber2").val()==null){
+					var hoursnumber2=0;
+				}else{
+					var hoursnumber2 = parseInt($(".hoursnumber2").val());
+				}
+				//if hourlyrate is null
+				if($(".hourlyrate2").val()=="" || $(".hourlyrate2").val()==null){
+					var estimatedcost2=0;
+				}else{
+					var hourlyrate2 = parseFloat($(".hourlyrate2").val());
+					var estimatedcost2 = hoursnumber2*hourlyrate2;
+				}				
+				$(".estimatedcost2").val(estimatedcost2);
+				if($(".hoursnumber").val()=="" || $(".hoursnumber").val()==null){
+					var hoursnumber=0;
+				}else{
+					var hoursnumber = parseInt($(".hoursnumber").val());
+				}
+				if($(".hoursnumber1").val()=="" || $(".hoursnumber1").val()==null){
+					var hoursnumber1=0;
+				}else{
+					var hoursnumber1 = parseInt($(".hoursnumber1").val());
+				}
+				var totalhours = hoursnumber+hoursnumber1+hoursnumber2;
+				$(".totalhours").val(totalhours);
+				if($(".estimatedcost").val()=="" || $(".estimatedcost").val()==null){
+					var estimatedcost=0;
+				}else{
+					var estimatedcost=parseFloat($(".estimatedcost").val());
+				}
+				if($(".estimatedcost").val()=="" || $(".estimatedcost").val()==null){
+					var estimatedcost=0;
+				}else{
+					var estimatedcost=parseFloat($(".estimatedcost").val());
+				}
+				var totalcost = estimatedcost+estimatedcost1+estimatedcost2;
+				$(".totalcost").val(totalcost);
+				return false;
+			});
+			$(".hourlyrate2").change(function(){
+				//if hoursnumber2 is null
+				if($(".hoursnumber2").val()=="" || $(".hoursnumber2").val()==null){
+					var hoursnumber2=0;
+				}else{
+					var hoursnumber2 = parseInt($(".hoursnumber2").val());
+				}
+				//if hourlyrate2 is null
+				if($(".hourlyrate2").val()=="" || $(".hourlyrate2").val()==null){
+					var estimatedcost2=0;
+				}else{
+					var hourlyrate2 = parseFloat($(".hourlyrate2").val());
+					var estimatedcost2 = hoursnumber2*hourlyrate2;
+				}					
+				$(".estimatedcost2").val(estimatedcost2);
+				if($(".estimatedcost").val()=="" || $(".estimatedcost").val()==null){
+					var estimatedcost=0;
+				}else{
+					var estimatedcost=parseFloat($(".estimatedcost").val());
+				}
+				if($(".estimatedcost1").val()=="" || $(".estimatedcost1").val()==null){
+					var estimatedcost1=0;
+				}else{
+					var estimatedcost1=parseFloat($(".estimatedcost1").val());
+				}
+				var totalcost = estimatedcost+estimatedcost1+estimatedcost2;
+				$(".totalcost").val(totalcost);
+				return false;
+			});
+			$(".show_coo_new").click(function(){
+				$("#coordinator_form").show();
+				$(".show_coo_new").hide();
+				$(".coo_list").hide();
+				$(".hide_coo_new").show();
+				return false;
+			});
+			$(".hide_coo_new").click(function(){
+				$("#coordinator_form").hide();
+				$(".show_coo_new").show();
+				$(".coo_list").show();
+				$(".hide_coo_new").hide();
+				return false;
+			});
+			$(".coordinator").change(function(){
+				var str=$(".coordinator option:selected");
+				coordinator=str.text();	
+				if(coordinator!=null && coordinator!=""){
+					$(".show_coo_new").hide();
+					$(".co_name").val("");
+					$(".co_email").val("");
+					$(".co_phone").val("");
+				}else{
+					$(".show_coo_new").show();
+				}
+				return false;
+			});	
+			$(".show_con_new").click(function(){
+				$("#contractual_form").show();
+				$(".show_con_new").hide();
+				$(".con_list").hide();
+				$(".hide_con_new").show();
+				return false;
+			});
+			$(".hide_con_new").click(function(){
+				$("#contractual_form").hide();
+				$(".show_con_new").show();
+				$(".con_list").show();
+				$(".hide_con_new").hide();
+				return false;
+			});
+			$(".contractual").change(function(){
+				var str=$(".contractual option:selected");
+				contractual=str.text();	
+				if(contractual!=null && contractual!=""){
+					$(".show_con_new").hide();
+					$(".con_name").val("");
+					$(".con_email").val("");
+					$(".con_phone").val("");
+				}else{
+					$(".show_con_new").show();
+				}
+				return false;
+			});
+			$(".show_gro_new").click(function(){
+				$("#group_form").show();
+				$(".show_gro_new").hide();
+				$(".gro_list").hide();
+				$(".hide_gro_new").show();
+				return false;
+			});
+			$(".hide_gro_new").click(function(){
+				$("#group_form").hide();
+				$(".show_gro_new").show();
+				$(".gro_list").show();
+				$(".hide_gro_new").hide();
+				return false;
+			});
+			$(".group").change(function(){
+				var str=$(".group option:selected");
+				group=str.text();	
+				if(group!=null && group!=""){
+					$(".show_gro_new").hide();
+					$(".gro_name").val("");
+				}else{
+					$(".show_gro_new").show();
+				}
+				return false;
+			});				
+			$(".show_cb_new").click(function(){
+				$("#cbilling_form").show();
+				$(".show_cb_new").hide();
+				$(".cb_list").hide();
+				$(".hide_cb_new").show();
+				return false;
+			});
+			$(".hide_cb_new").click(function(){
+				$("#cbilling_form").hide();
+				$(".show_cb_new").show();
+				$(".cb_list").show();
+				$(".hide_cb_new").hide();
+				return false;
+			});
+			$(".cbilling").change(function(){
+				var str=$(".cbilling option:selected");
+				cbilling=str.text();	
+				if(cbilling!=null && cbilling!=""){
+					$(".show_cb_new").hide();
+					$(".cb_name").val("");
+					$(".cb_email").val("");
+					$(".cb_phone").val("");
+				}else{
+					$(".show_cb_new").show();
+				}
+				return false;
+			});
+			$(".typecontract").change(function(){
+				var str=$(".typecontract option:selected");
+				type=str.val();
+				$(".cotypecontract").val(type);	
+				$(".cctypecontract").val(type);					
+				return false;
+			});
+			$(".campusclass").change(function(){
+				var str=$(".campusclass option:selected");
+				campus=str.text();
+				var address = $("#"+campus).val();
+				$(".addressclass").val(address);				
+				return false;
+			});
+			$(".addressclass").change(function(){
+				var str=$(".campusclass option:selected");
+				campus=str.text();
+				if(campus==null || campus==""){
+					$(".location").val("Office");				
+				}
+				return false;
+			});
+			$(".tipetime").change(function(){
+				var str=$(".tipetime option:selected");
+				tipetime=str.val();
+				if(tipetime=="Full Time"){
+					$(".schedule").val("From Monday to Friday, 8h00-12h00 & 13h00-16h30 (7 hours per day) 1 hour for lunch time & 15 minutes for break time in the morning & afternoon");
+					return false;
+				}else{
+					$(".schedule").val("");
+				}
+			});								
+			$(".field").change(function(){
+				var str=$(".field option:selected");
+				field=str.val();
+				if(field==1){
+					$(".group_pane").show();
+					$(".typetraining").val("GR");
+					$(".language").val("1");
+					$(".typecontract").val("1");
+					$(".tipetime").val("Full Time");
+					$(".schedule").val("From Monday to Friday, 8h00-12h00 & 13h00-16h30 (7 hours per day) 1 hour for lunch time & 15 minutes for break time in the morning & afternoon");
+					return false;
+				}
+				if(field==2){
+					$(".group_pane").show();
+					$(".typetraining").val("GR");
+					$(".typecontract").val("1");
+					$(".language").val("2");
+					$(".tipetime").val("Full Time");
+					return false;
+				}
+				if(field==3){
+					$(".group_pane").hide();
+					$(".typetraining").val("");
+					$(".language").val("1");
+					$(".typecontract").val("1");
+					$(".tipetime").val("Full Time");
+					$(".schedule").val("From Monday to Friday, 8h00-12h00 & 13h00-16h30 (7 hours per day) 1 hour for lunch time & 15 minutes for break time in the morning & afternoon");
+					return false;
+				}
+				if(field==4){
+					$(".group_pane").hide();
+					$(".typetraining").val("");
+					$(".language").val("2");
+					$(".typecontract").val("1");
+					$(".tipetime").val("Full Time");
+					$(".schedule").val("");
+					return false;
+				}	
+				if(field==6){
+					$(".group_pane").hide();
+					$(".typetraining").val("PR");
+					$(".language").val("French");
+					$(".typecontract").val("1");
+					$(".tipetime").val("Part Time");
+					$(".schedule").val("");
+					return false;
+				}
+				if(field==""){
+					$(".group_pane").hide();
+					$(".typetraining").val("");
+					$(".language").val("");
+					$(".typecontract").val("");
+					$(".tipetime").val("");
+					$(".schedule").val("");
+					return false;
+				}					
+				return false;
+			});
+			$("#contract_form").submit(function(){
+				var str=$(".typecontract option:selected");
+				type=str.text();
+				if($("#inp-search").val()==""){
+					alert("Search fields is empty!");
+					return false;
+				}
+				return false;
+			});
+			$(".advisor").change(function(){
+				return checkAdvisor();
+			});
+			function checkAdvisor(){
+				var str=$(".advisor option:selected");
+				idadvisor=str.val();
+				var outcharged = $("#emp"+idadvisor).val();
+				if(outcharged==1){
+					alert("Attention: Le conseiller pédagogique choisi ne plus recevoir de contrat. Sa charge dépasse la normale.");
+					return false;	
+				}
+				return true;		
+			}
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

@@ -1,0 +1,35 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.type'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.target'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.path'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.createdby'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+			{% for document in documents %}
+				<tr>
+					<td><a href="{{ path('documents_show', { 'id': document.id }) }}">{{ document.id }}</a></td>
+					<td>{{ document.type }}</td>
+					<td>{{ document.target }}</td>
+					<td>{{ document.name }}</td>
+					<td>{{ document.path }}</td>
+					<td>{{ document.status }}</td>
+					<td>{% if document.creationdate %}{{ document.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+					<td>{{ document.createdby }}</td>
+					<td class="list-action" nowrap>
+						<a href="{{ path('documents_show', { 'id': document.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+						<a href="{{ path('documents_edit', { 'id': document.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				</tr>
+		{%else%}
+			<tr><td colspan="9">{{'message.no.found'|trans([],'BoAdminBundle')}}</td></tr>
+			{% endfor %}
+        </tbody>
+    </table>

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Documents list </h1>
+    <hr>
+    <a class="btn btn-primary" href="{{ path('employee_pj_new') }}">Add</a>
+    <hr>
+    <table class='table -bordered records_list'>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Filename</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee_pj in employee_pjs %}
+            <tr>
+                <td><a href="{{ path('employee_pj_show', { 'id': employee_pj.id }) }}">{{ employee_pj.id }}</a></td>
+                <td>{{ employee_pj.filename }}</td>
+                <td align='center'>
+
+                    <span>
+                           
+                            <a class="btn btn-default btn-sm" href="{{ path('employee_pj_edit', { 'id': employee_pj.id }) }}">Edit</a>
+                            <a class="btn btn-default btn-sm" href="{{ asset('uploads/pieces/' ~ employee_pj.filename) }}">Download</a>
+                    </span>
+                   
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+
+    </ul>
+{% endblock %}

@@ -1,0 +1,40 @@
+    <table>
+        <tbody>
+            <tr>
+                <th width="20%">Id:</th>
+				<th width="20%">{{'label.designation'|trans([],'BoAdminBundle')}}:</th>
+				<th width="20%">{{'label.reference'|trans([],'BoAdminBundle')}}:</th>
+                <th width="20%">{{'label.dimension'|trans([],'BoAdminBundle')}}:</th>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <td>{{ local.id }}</td>
+                <td>{{ local.designation }}</td>
+				<td>{{ local.reference }}</td>
+				<td>{{ local.dimension }}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <th>Category:</th>
+                <th>Capability:</th>
+				<th>Max:</th>
+				<th>Number computer:</th>
+            </tr>
+            <tr>
+                <td>{{ local.categoryroom }}</td>                
+                <td>{{ local.capacity }}</td>
+                <td>{{ local.max }}</td>
+                <td>{{ local.nbcomputer }}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <th colspan="2">{{'label.creationdate'|trans([],'BoAdminBundle')}}:</th>
+				<th colspan="2">Details:</th>
+
+            </tr>			
+			<tr>
+				<td colspan="2">{% if local.creationdate %}{{ local.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+				<td colspan="2">{%if local.details!="" and local.details!=null%}{{ local.details }}{%else%}---{%endif%}</td>
+			</tr>
+        </tbody>
+    </table>

@@ -1,0 +1,17 @@
+{% extends 'home.html.twig' %}
+{% block title %}{{parent()}}- {{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'entity.absencerequest'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoHomeBundle:Default:request.html.twig"%}{% endblock %}
+{% block nav %}{%if employee!=null%}{%include "BoHomeBundle:Default:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>{{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'entity.absencerequest'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('home_absences_new') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoHomeBundle:Absences:newactions.html.twig"%}
+			<div class='show_content'>
+				{%include "BoHomeBundle:Absences:newform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

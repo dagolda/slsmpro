@@ -1,0 +1,31 @@
+activities_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Activities:index" }
+    methods:  GET
+activities_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdminBundle:Activities:page" }
+activities_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Activities:show" }
+    methods:  GET
+activities_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Activities:new" }
+    methods:  [GET, POST]
+activities_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Activities:edit" }
+    methods:  [GET, POST]
+activities_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Activities:delete" }
+    methods:  DELETE
+activities_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Activities:search" }
+    methods:  [GET, POST]
+activities_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Activities:pagesearch" }
+    methods:  [GET, POST]

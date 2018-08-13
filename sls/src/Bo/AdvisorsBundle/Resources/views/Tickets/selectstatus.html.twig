@@ -1,0 +1,6 @@
+				<select name='idstatus' id='idstatus'>
+					<option value="0" selected="delected">{{'action.selectstatus'|trans([],'BoAdminBundle')}}</option>
+					{%for i in range(1,status|length)%}
+						<option value="{{i}}" {%if idstatus is defined and  i==idstatus%}selected='selected'{%endif%}>{{status[i]}}</option>
+					{%endfor%}
+				</select>

@@ -1,0 +1,30 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+				<th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startlevel'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.targetlevel'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for historic in historics %}
+			{%set student=historic.student%}
+			{%set group=historic.group%}
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.firstname }}</td>
+                <td>{%if student.startlevel %}{{ student.startlevel }}{%else%}---{%endif%}</td>
+                <td>{%if student.targetlevel %}{{ student.targetlevel }}{%else%}---{%endif%}</td>
+                <td>{% if student.startdate %}{{ student.startdate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+                <td>{% if student.enddate %}{{ student.enddate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+                <td>{% if historic.creationdate %}{{ student.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+		{%else%}
+			<tr><td colspan="7">No activity entry found in database</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

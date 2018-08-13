@@ -1,0 +1,24 @@
+tmonth_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Tmonth:index" }
+    methods:  GET
+
+tmonth_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Tmonth:show" }
+    methods:  GET
+
+tmonth_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Tmonth:new" }
+    methods:  [GET, POST]
+
+tmonth_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Tmonth:edit" }
+    methods:  [GET, POST]
+
+tmonth_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Tmonth:delete" }
+    methods:  DELETE

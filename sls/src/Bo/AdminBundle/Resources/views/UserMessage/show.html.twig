@@ -1,0 +1,24 @@
+    <table>
+        <tbody>
+            <tr>
+                <th width="20%">{{'label.subject'|trans([],'BoAdminBundle')}}</th>
+				<th width="20%">{{'label.from'|trans([],'BoAdminBundle')}}</th>
+				<th width="20%">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+				<th width="20%">{{'label.status'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ userMessage.subject }}</td>
+				<td>{{ userMessage.from }}</td>
+                <td>{% if userMessage.dateCreation %}{{ userMessage.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>               
+                <td>{% if userMessage.status %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr><td colspan="4"></td></tr>
+            <tr>
+                <th colspan="4">Message</th>
+            </tr>
+            <tr>
+                <td colspan="4">{{ userMessage.message|raw }}</td>
+            </tr>
+            <tr><td colspan="4"></td></tr>
+        </tbody>
+    </table>

@@ -1,0 +1,8 @@
+home_agenda_index:
+    path:     /
+    defaults: { _controller: "BoHomeBundle:Agenda:index" }
+    methods:  [GET, POST]
+home_agenda_search:
+    path:  /agenda/search/
+    defaults: { _controller: "BoAdminBundle:Agenda:search" }
+    methods:  [GET, POST]

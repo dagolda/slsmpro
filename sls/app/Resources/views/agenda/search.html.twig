@@ -1,0 +1,46 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}-{{'label.schedule'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'label.schedule'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Agenda:searchaction.html.twig"%}
+		<div id="content-liste">
+			{%include "BoAdminBundle:Agenda:tbliste2.html.twig"%}
+		</div>
+	</div>
+
+	<!-- begin avanced search form by modal dialog-->
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="advanced_search" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.advanced.search'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('agenda_advanced_search')}}" method="post" class="style">
+				<div class="modal-body">
+					{%include "BoAdminBundle:Agenda:advancedsearch.html.twig"%}
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.validate'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<!-- end send user login form by modal dialog-->
+
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

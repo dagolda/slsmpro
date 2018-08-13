@@ -1,0 +1,6 @@
+				<select name='idcampus' id='idcampus'>
+					<option value="0" selected="delected">{{'action.selectcampus'|trans([],'BoAdminBundle')}}</option>
+					{%for campus in campuss%}
+						<option value="{{campus.id}}" {%if idcampus is defined and campus.id ==idcampus%}selected='selected'{%endif%}>{{campus.reference}}</option>
+					{%endfor%}
+				</select>	

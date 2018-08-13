@@ -1,0 +1,68 @@
+    <table>
+        <tbody>
+            <tr>
+                <th width="200px">Id:</th>
+                <td width="500px">{{ user.id }}</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+			{%if user.employee%}
+            <tr>
+                <th>{{'label.employee'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ user.employee.name }} {{ user.employee.firstname }}</td>
+            </tr>
+			{%endif%}
+			{%if user.students%}
+            <tr>
+                <th>{{'label.student'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ user.students.name }} {{ user.students.firstname }}</td>
+            </tr>
+			{%endif%}
+			<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.username'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ user.username }}</td>
+            </tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.enabled'|trans([],'BoAdminBundle')}}:</th>
+                <td>{%if user.enabled==1 %}Yes{%else%}No{%endif%}</td>
+            </tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.password'|trans([],'BoAdminBundle')}}(md5):</th>
+                <td>{{ user.pwd }}</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+		{%if user.lastLogin%}
+            <tr>
+                <th>{{'label.lastlogin'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ user.lastLogin|date('Y-m-d H:i:s') }}</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+		{%endif%}
+            <tr>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ user.email }}</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>Roles:</th>
+                <td>
+					{%for role in user.roles%}
+						{{ role }},
+					{%endfor%}
+				</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.lastlogin'|trans([],'BoAdminBundle')}}:</th>
+                <td>{% if user.lastlogin %}{{ user.lastlogin|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}:</th>
+                <td>{% if user.creationdate %}{{ user.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+        </tbody>
+    </table>

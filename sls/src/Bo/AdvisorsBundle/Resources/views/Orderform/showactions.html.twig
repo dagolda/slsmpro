@@ -1,0 +1,46 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td class="delete-action">
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#myModal">{{'action.delete'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					<td>
+						<a href="{{ path('dash_orderform_back') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					{%if orderform.bordereau%}
+						<td>
+							<a class="btn btn-info btn-lg modal-delete" href="{{ asset('pdf/orderform/' ~ orderform.bordereau) }}" target="_blank">Download</a>
+						</td>
+						{%if orderform.status==1%}
+							<td>
+								<a href="{{ path('dash_orderform_sendbordereau',{'id':orderform.id}) }}">{{'action.send'|trans([],'BoAdminBundle')}}</a>
+							</td>
+							<td class="delete-action">
+								<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#remove_pdf">{{'action.removepdf'|trans([],'BoAdminBundle')}}</button>
+							</td>
+						{%endif%}
+					{%elseif orderform.status==0%}
+						<td>
+							<a href="{{ path('dash_orderform_pdf',{'id':orderform.id}) }}">{{'action.generatepdf'|trans([],'BoAdminBundle')}}</a>
+						</td>					
+					{%endif%}
+					<!--td>
+						{%if orderform.status==1%}
+							<span class="btn wax_3d_1">
+								{{'label.created'|trans([],'BoAdminBundle')}}
+							</span>
+						{%elseif orderform.status==2%}
+							<span class="btn validated">
+								{{'label.headsup'|trans([],'BoAdminBundle')}}
+							</span>
+						{%elseif orderform.status==3%}
+							<span class="btn rejected">
+								{{'label.contractcreated'|trans([],'BoAdminBundle')}}
+							</span>
+						{%endif%}
+					</td-->
+				</tr>
+			</table>		
+		</div>
+	</div>	

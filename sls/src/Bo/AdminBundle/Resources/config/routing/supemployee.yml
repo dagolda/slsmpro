@@ -1,0 +1,43 @@
+supemployee_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:SupEmployee:index" }
+    methods:  GET
+supemployee_list:
+    path:     /list/
+    defaults: { _controller: "BoAdminBundle:SupEmployee:list" }
+    methods:  GET
+supemployee_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdminBundle:SupEmployee:page" }
+supemployee_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:SupEmployee:show" }
+    methods:  GET
+supemployee_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:SupEmployee:new" }
+    methods:  [GET, POST]
+supemployee_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:SupEmployee:edit" }
+    methods:  [GET, POST]
+supemployee_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:SupEmployee:delete" }
+    methods:  DELETE
+supemployee_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:SupEmployee:search" }
+    methods:  [GET, POST]
+supemployee_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:SupEmployee:pagesearch" }
+    methods:  [GET, POST]
+supemployee_extrasearch:
+    path:     /extrasearch/
+    defaults: { _controller: "BoAdminBundle:SupEmployee:extrasearch" }
+    methods:  [GET, POST]
+supemployee_xls:
+    path:     /extract/xls/
+    defaults: { _controller: "BoAdminBundle:SupEmployee:xls" }
+    methods:  [GET, POST]

@@ -1,0 +1,32 @@
+color_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Color:index" }
+    methods:  GET
+color_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Color:show" }
+    methods:  GET
+color_all_enable:
+    path:     /{id}/{action}/allenable
+    defaults: { _controller: "BoAdminBundle:Color:allenable" }
+    methods:  GET
+color_enableall:
+    path:     /{id}/enable/all
+    defaults: { _controller: "BoAdminBundle:Color:enableall" }
+    methods:  GET
+color_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Color:new" }
+    methods:  [GET, POST]
+color_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Color:edit" }
+    methods:  [GET, POST]
+color_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Color:delete" }
+    methods:  DELETE
+color_srubric_load:
+    path:     /rubric/reload/
+    defaults: { _controller: "BoAdminBundle:Color:srubric" }
+    methods:  [GET, POST]

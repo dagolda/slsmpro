@@ -1,0 +1,4 @@
+	{% if timesheets|length>0 %}
+		<div class='numberfound'><b>{{'message.searchresult'|trans([],'BoAdminBundle')}}</b> : <span>{{timesheets|length}} {{'message.found'|trans([],'BoAdminBundle')}}</span></div>
+	{%endif%}
+	{% include 'BoAdvisorsBundle:Timesheet:tbliste.html.twig' %}

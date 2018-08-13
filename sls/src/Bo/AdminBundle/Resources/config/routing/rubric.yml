@@ -1,0 +1,28 @@
+rubric_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Rubric:index" }
+    methods:  GET
+rubric_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Rubric:show" }
+    methods:  GET
+rubric_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Rubric:new" }
+    methods:  [GET, POST]
+subrubric_new:
+    path:     /sub/new
+    defaults: { _controller: "BoAdminBundle:Rubric:subnew" }
+    methods:  [GET, POST]
+subrubric_edit:
+    path:     /{id}/sub/edit
+    defaults: { _controller: "BoAdminBundle:Rubric:subedit" }
+    methods:  [GET, POST]
+rubric_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Rubric:edit" }
+    methods:  [GET, POST]
+rubric_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Rubric:delete" }
+    methods:  DELETE

@@ -1,0 +1,33 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startlevel'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.targetlevel'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+		{% for group in groups %}
+			{%if gstudents[group.id] is defined%}
+				{%set students=gstudents[group.id]%}
+				{% for student in students %}
+					<tr>
+						<td>{{ student.id }}</td>
+						<td>{{ student.name }}</td>
+						<td>{{ student.firstname }}</td>
+						<td>{%if student.startlevel %}{{ student.targetlevel }}{%else%}---{%endif%}</td>
+						<td>{{ student.targetlevel }}</td>
+						<td>{% if student.startdate %}{{ student.startdate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+						<td>{% if student.enddate %}{{ student.enddate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+					</tr>
+				{%endfor%}
+			{%endif%}
+		{%else%}
+			<tr><td colspan="7">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

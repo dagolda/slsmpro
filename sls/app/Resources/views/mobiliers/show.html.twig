@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:local.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>Furnitures</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Furnitures:showactions.html.twig"%}
+		{%include "BoAdminBundle:Furnitures:show.html.twig"%}
+	</div>
+{% endblock %}

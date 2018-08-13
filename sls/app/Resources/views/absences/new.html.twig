@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.absence'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}	
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.rights'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('absences_new_employee') }}" method="post" class="style">
+			{{ form_errors(absence_form) }}
+			{%include "BoAdminBundle:Absences:newactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Absences:modalform.html.twig"%}
+			</div>
+			{{ form_rest(absence_form) }}
+		</form>	
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#btn_create_absence").click(function(){
+				var str=$(".employee option:selected");
+				employee=str.text();
+				var numberday= $(".numberday").val();
+				if(employee==null || employee==""){
+					$('#error-message').html("You must select a employee");
+					return false;
+				}
+				if(numberday==null || numberday==""){
+					$('#error-message').html("You must enter a number of day");
+					return false;
+				}
+				return true;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

@@ -1,0 +1,24 @@
+hnoshow_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Hnoshow:index" }
+    methods:  GET
+
+hnoshow_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Hnoshow:show" }
+    methods:  GET
+
+hnoshow_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Hnoshow:new" }
+    methods:  [GET, POST]
+
+hnoshow_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Hnoshow:edit" }
+    methods:  [GET, POST]
+
+hnoshow_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Hnoshow:delete" }
+    methods:  DELETE

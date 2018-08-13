@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.mail'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tools.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.mail'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('mails_edit',{'id':mail.id}) }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Mails:editactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Mails:editform.html.twig"%}
+				<br/>
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

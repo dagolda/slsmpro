@@ -1,0 +1,6 @@
+				<select name='idfield' id='idfield'>
+					<option value="0" selected="delected">{{'action.selectfield'|trans([],'BoAdminBundle')}}</option>
+					{%for field in fields%}
+						<option value="{{field.id}}" {%if idfield is defined and field.id ==idfield%}selected='selected'{%endif%}>{{field.wfname}}</option>
+					{%endfor%}
+				</select>	

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>Employee creation batch</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('employee_newbatch') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Employee:newbatchactions.html.twig"%}
+			{%include "BoAdminBundle:Employee:newbatchform.html.twig"%}
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

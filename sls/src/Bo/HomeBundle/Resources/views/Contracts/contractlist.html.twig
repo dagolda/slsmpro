@@ -1,0 +1,50 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="13%">{{'label.contractnumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="15%">{{'label.group'|trans([],'BoAdminBundle')}}/{{'label.student'|trans([],'BoAdminBundle')}}</th>
+                <th width="13%">{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+                <th width="15%">{{'label.pa'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.status'|trans([],'BoAdminBundle')}}</th>
+		{%if app.session.get('dts') is defined and app.session.get('dts')==1%}	
+                <th>Actions</th>
+		{%endif%}
+            </tr>
+        </thead>
+        <tbody>
+        {% for contract in contracts %}
+            <tr>
+                <td {%if contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{{ contract.contractnumber }}</td>
+                <td {%if contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>
+					{%if contract.group%}
+						{{contract.group.name}}
+					{%elseif contract.students and contract.students|length==1%}
+						{%for student in contract.students %}
+							{{ student.firstname }} {{ student.name }}
+						{%else%}
+							---
+						{%endfor%}							
+					{%endif%}			
+				</td>
+                <td {%if contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{{ contract.typecontract }}</td>
+                <td {%if contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{{ contract.advisor }}</td>
+                <td {%if contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{% if contract.startdate %}{{ contract.startdate|date('d-m-Y') }}{% endif %}</td>
+                <td {%if contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{% if contract.enddate %}{{ contract.enddate|date('d-m-Y') }}{% endif %}</td>
+                <td {%if contract.status==0%}class="completed_contracts"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1"{%endif%}>{%if contract.status==0%}{{'status.completed'|trans([],'BoAdminBundle')}}{%elseif contract.startdate>now%}{{'label.upcoming'|trans([],'BoAdminBundle')}}{%elseif contract.status==1%}{{'status.inprogress'|trans([],'BoAdminBundle')}}{%endif%}</td>
+		{%if app.session.get('dts') is defined and app.session.get('dts')==1%}	
+                <td {%if contract.status==0%}class="completed_contracts list-action"{%elseif (contract.status==1 or contract.status==2) and contract.startdate>=now%}class="wax_3d_1 list-action"{%else%}class="list-action"{%endif%}  width="126px">
+					{%if existcontabs[contract.id] is not defined and contract.startdate<=now and now<=contract.enddate%}
+						{%if ((authorization==1 and contract.status==1) or (contract.status==1 and etsc[contract.id] is not defined and subcontr[contract.id] is not defined)) and now|date("D")!="Sat" and now|date("D")!="Sun"%} 
+							<a href="{{ path('home_timesheet_add', { 'idcontract': contract.id }) }}" {%if dtsbc[contract.id] is defined and dtsbc[contract.id]==0%}class="disabled"{%endif%}>{{'action.addts'|trans([],'BoAdminBundle')}}</a>
+						{%endif%}
+					{%endif%}
+                </td>
+		{%endif%}
+            </tr>
+		{%else%}
+			<tr><td colspan="8">No contract found</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

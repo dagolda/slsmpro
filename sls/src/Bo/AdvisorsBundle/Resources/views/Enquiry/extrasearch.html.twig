@@ -1,0 +1,4 @@
+	{% if enquiries|length>0 %}
+		<div class='numberfound'><b>{{'message.searchresult'|trans([],'BoAdminBundle')}}</b> : <span>{{enquiries|length}} {{'message.found'|trans([],'BoAdminBundle')}}</span></div>
+	{%endif%}
+	{% include 'BoAdvisorsBundle:Enquiry:tbliste.html.twig' %}

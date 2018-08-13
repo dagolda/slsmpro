@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.company'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tools.html.twig"%}{% endblock %}	
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.company'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('company_new') }}" method="post" class="style" id="company_form">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Company:newactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Company:editform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#company_form").submit(function(){
+				var str=$(".account option:selected");
+				account=str.text();
+				if(account==""){
+					alert("Vide");
+					return false;				
+				}
+				return true;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

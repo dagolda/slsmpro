@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.rubric'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:setting.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'entity.rubric'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}} >> {{rubric.nameen}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Rubric:showactions.html.twig"%}
+		<div class="display_content">
+			{%include "BoAdminBundle:Rubric:show.html.twig"%}
+		</div>
+	</div>
+{% endblock %}

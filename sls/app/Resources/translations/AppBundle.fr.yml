@@ -1,0 +1,4 @@
+admin:
+    default:
+        home: 'Accueil'
+

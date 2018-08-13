@@ -1,0 +1,20 @@
+<p>Bonjour / Hello {{user.firstname}} {{user.name}},</p>
+{%if mailhead!=null%}
+	<p>
+	{{mailhead|raw}}
+	</p>
+{%endif%}
+<p>
+	{%if mailcontent is defined and mailcontent!=null%}
+		{{mailcontent|raw}}
+	{%endif%}
+	<div><b>Username/Nom utilisateur</b>: {{user.email}} </div>
+	<div><b>Password/Lot de passe</b>: {{user.password}}</div>
+	<br/>
+	<div><a href="{{ path('bo_quiz_evaluation', { 'id': evalquiz.id }) }}">Start quiz</a></div>
+</p>
+{%if mailfooter!=null%}
+	<p>
+		{{mailfooter|raw}}
+	</p>
+{%endif%}

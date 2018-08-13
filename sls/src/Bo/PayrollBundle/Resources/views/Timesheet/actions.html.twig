@@ -1,0 +1,21 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td class="form-group">
+						<input type="text" class="form-control" id="inp-search">
+					</td>
+					<td><button type="submit" id="btn-search">{{'action.search'|trans([],'BoAdminBundle')}}</button></td>
+					<td class="sty-label" align="left">
+						<button type="submit" id="btn_today" title="{{'label.today'|trans([],'BoAdminBundle')}}">
+							{{'label.today'|trans([],'BoAdminBundle')}}
+						</button>
+					</td>
+					<!--td>
+						<a href="{{ path('timesheet_new') }}">{{'action.add'|trans([],'BoAdminBundle')}}</a>
+					</td--!>
+				</tr>
+			</table>		
+		</div>
+	</div>
+<input name="ddate" type="hidden" id="today_date" value="{{today|date("d-m-Y")}}" />

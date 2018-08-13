@@ -1,0 +1,27 @@
+						<tr>
+							{%set nbd=5%}
+							<td>{{ employee.firstname }} {{ employee.name }}</td>
+							<td class="sty_label">
+								{%include "BoAdminBundle:Contracts:days.html.twig"%}
+							</td>
+							<td align="center">{%if schedule.startdate!=null%}{{ schedule.startdate|date('d-m-Y') }}{%else%}---{%endif%}</td>
+							<td align="center">{%if schedule.enddate!=null%}{{ schedule.enddate|date('d-m-Y') }}{%else%}---{%endif%}</td>
+							<td align="center">{%if schedule.amorpm!=null%}{{ schedule.amorpm }}{%else%}---{%endif%}</td>
+							<td align="center">{%if schedule.startam!=null%}{{ schedule.startam|date('H:i') }}{%else%}00:00{%endif%}</td>
+							<td align="center">{%if schedule.endam!=null%}{{ schedule.endam|date('H:i') }}{%else%}00:00{%endif%}</td>	
+							<td align="center">{%if schedule.startpm!=null%}{{ schedule.startpm|date('H:i') }}{%else%}00:00{%endif%}</td>
+							<td align="center">{%if schedule.endpm!=null%}{{ schedule.endpm|date('H:i') }}{%else%}00:00{%endif%}</td>	
+							<td align="center">{%if schedule.hourperday%}{{ schedule.hourperday }}{%else%}---{%endif%}</td>	
+							<td class="list-action" nowrap>
+								{%if app.session.get('rights')['CONTRACTS']['Teacher Schedule'] is defined and app.session.get('rights')['CONTRACTS']['Teacher Schedule'].edit==1%}
+									{%if schedule is defined%}
+										<a href="{{ path('teacherschedule_edit',{'id':schedule.id}) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+									{%else%}
+										<a href="{{ path('teacherschedule_schedule',{'idemployee':employee.id,'idcontract':contract.id}) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+									{%endif%}
+								{%endif%}
+								{%if app.session.get('rights')['CONTRACTS']['Teacher Schedule'] is defined and app.session.get('rights')['CONTRACTS']['Teacher Schedule'].ddelete==1%}
+									<a href="{{ path('teacherschedule_remove',{'idemployee':employee.id,'idcontract':contract.id}) }}">{{'action.remove'|trans([],'BoAdminBundle')}}</a>
+								{%endif%}			
+							</td>
+						</tr>	

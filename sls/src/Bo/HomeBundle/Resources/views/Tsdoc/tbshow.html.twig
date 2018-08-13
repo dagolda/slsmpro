@@ -1,0 +1,44 @@
+    <table>
+        <tbody>
+            <tr>
+                <th width="30%">Id</th>
+                <th width="30%">{{'label.year'|trans([],'BoAdminBundle')}}</th>
+                <th width="30%">{{'label.month'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ tsdoc.id }}</td>
+                <td>{%if tsdoc.year %}{{ tsdoc.year }}{%else%}---{%endif%}</td>
+                <td>{%if tsdoc.month %}{{ tsdoc.month }}{%else%}---{%endif%}</td>
+            </tr>
+	    <tr><td colspan="3">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.studentname'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.numberhour'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.filename'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ tsdoc.student }}</td>
+                <td>{{ tsdoc.nbhour }}</td>
+                <td>{{ tsdoc.filename }}</td>
+            </tr>
+	    <tr><td colspan="3">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{% if tsdoc.startdate %}{{ tsdoc.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if tsdoc.enddate %}{{ tsdoc.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if tsdoc.creationdate %}{{ tsdoc.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+	    <tr><td colspan="3">&nbsp;</td></tr>
+            <tr>
+                <th colspan="3">{{'label.createdby'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td colspan="3">{%if tsdoc.createby %}{{ tsdoc.createby }}{%else%}---{%endif%}</td>
+            </tr>
+	    <tr><td colspan="3">&nbsp;</td></tr>
+        </tbody>
+    </table>

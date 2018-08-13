@@ -1,0 +1,27 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="120px">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>Catname</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categoryroom in categoryrooms %}
+            <tr>
+                <td><a href="{{ path('categoryroom_show', { 'id': categoryroom.id }) }}">{{ categoryroom.id }}</a></td>
+                <td>{{ categoryroom.catname }}</td>
+                <td>{% if categoryroom.creationdate %}{{ categoryroom.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('categoryroom_show', { 'id': categoryroom.id }) }}">show</a>
+					{%if app.session.get('rights')['ROOMS']['Category Room'] is defined and app.session.get('rights')['ROOMS']['Category Room'].edit==1%}
+						<a href="{{ path('categoryroom_edit', { 'id': categoryroom.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="4">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

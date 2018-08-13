@@ -1,0 +1,251 @@
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<th width="40%">{{'label.evaltype'|trans([],'BoAdminBundle')}}</th>		
+			<th width="40%">{{'label.options'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>		
+			<td>{{ form_widget(form.evaltype, {'attr' : {'class' : 'evaltype span3'}}) }}</td>
+			<td>{{ form_widget(form.options, {'attr' : {'class' : 'options span3'}}) }}</td>	
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>	
+			<th>{{'label.evaluator'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>		
+			<td>{{ form_widget(form.evaluator, {'attr' : {'class' : 'evaluator span3'}}) }}</td>	
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.evaldate'|trans([],'BoAdminBundle')}}</th>  
+			<th>{{'label.evalhour'|trans([],'BoAdminBundle')}}</th>  			
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.evaldate) }}</td>	
+			<td>{{ form_widget(form.evaltime) }}</td>					
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.sendevaldate'|trans([],'BoAdminBundle')}}</th>
+            <th>{{'label.sendto'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.sendevaldate) }}</td>
+			<td>{{ form_widget(form.sendto) }}</td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.language'|trans([],'BoAdminBundle')}}</th>	
+			<th>{{'label.ryacc'|trans([],'BoAdminBundle')}}</th>			
+		</tr>
+		<tr>			
+			<td>{{ form_widget(form.languages) }}</td>
+			<td>{{ form_widget(form.ryacc) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.ftorpt'|trans([],'BoAdminBundle')}}</th>
+            <th>{{'label.typeoftraining'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.typetime) }}</td>
+			<td>{{ form_widget(form.typeoftraining) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.campus'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.address'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.campus, {'attr' : {'class' : 'campusclass span3'}}) }}</td>
+			<td>{{ form_widget(form.addresse, {'attr' : {'class' : 'addressclass span3'}}) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>				
+		<tr>
+			<th>{{'label.student'|trans([],'BoAdminBundle')}}</th>		
+		</tr>
+		<tr>		
+			<td>{{ form_widget(form.students, {'attr' : {'class' : 'student span3'}}) }}</td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.name'|trans([],'BoAdminBundle')}}</th>		
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.firstname, {'attr' : {'class' : 'name span3'}}) }}</td>			
+			<td>{{ form_widget(form.name, {'attr' : {'class' : 'student span3'}}) }}</td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.title'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.phone'|trans([],'BoAdminBundle')}}</th>	
+		</tr>
+		<tr>		
+			<td>{{ form_widget(form.title) }}</td>
+			<td>{{ form_widget(form.phone) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.studentemail'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.expenses'|trans([],'BoAdminBundle')}}</th>	
+		</tr>
+		<tr>		
+			<td>{{ form_widget(form.emailstudent) }}</td>
+			<td>{{ form_widget(form.expenses) }}</td>		
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.currentprofile'|trans([],'BoAdminBundle')}}</th>
+            <th>{{'label.targetprofile'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.currentprofile) }}</td>		
+			<td>{{ form_widget(form.targetprofile) }}</td>				
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.customer'|trans([],'BoAdminBundle')}} (<span class="customer_detail">{{'label.customerdetail'|trans([],'BoAdminBundle')}}</span>)</th>
+            <th>{{'label.contact'|trans([],'BoAdminBundle')}}</th>			
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.customer) }}</td>	
+			<td>{{ form_widget(form.contact) }}</td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.contactemail'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.contactphone'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.emailcontact) }}</td>
+			<td>{{ form_widget(form.phonecontact) }}</td>					
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.billingcontact'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.billingemail'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.billingcontact) }}</td>
+			<td>{{ form_widget(form.billingemail) }}</td>					
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.billingphone'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.location'|trans([],'BoAdminBundle')}}</th>			
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.billingphone) }}</td>	
+			<td>{{ form_widget(form.evallocation, {'attr' : {'class' : 'evallocation span3'}}) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.campus'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.address'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.campus, {'attr' : {'class' : 'campusclass span3'}}) }}</td>
+			<td>{{ form_widget(form.addresse, {'attr' : {'class' : 'addressclass span3'}}) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>			
+		<tr>
+            <th>{{'label.readingcomprehension'|trans([],'BoAdminBundle')}}</th>
+            <th>{{'label.writenexpression'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.writencomprehension) }}</td>
+			<td>{{ form_widget(form.writenexpression) }}</td>
+		</tr>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.rcresult'|trans([],'BoAdminBundle')}}</th>
+            <th>{{'label.eeresult'|trans([],'BoAdminBundle')}}</th>
+
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.rcresult) }}</td>	
+			<td>{{ form_widget(form.eeresult) }}</td>	
+		</tr>
+		<tr><td colspan='2'>&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.syntax'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.oralcomprehension'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.syntaxe) }}</td>
+			<td>{{ form_widget(form.oralunderstanding) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th>{{'label.qualityofdiscourse'|trans([],'BoAdminBundle')}}</th>		
+            <th>{{'label.pronunciation'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.qualityofdiscourse) }}</td>		
+			<td>{{ form_widget(form.prononciation) }}</td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.grammar'|trans([],'BoAdminBundle')}}</th>		
+            <th>{{'label.verbs'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.grammar) }}</td>	
+			<td>{{ form_widget(form.verbs) }}</td>		
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.vocabulary'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.vocabulary) }}</td>	
+		</tr>
+		<tr><td colspan='2'>&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.ftgroup'|trans([],'BoAdminBundle')}}<br/><span class="customer_detail">{{'label.ftgroup.detail'|trans([],'BoAdminBundle')}}</span></th>
+            <th>{{'label.hourgroup'|trans([],'BoAdminBundle')}}<br/><span class="customer_detail">{{'label.hourgroup.detail'|trans([],'BoAdminBundle')}}</span></th>
+
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.ftgroup) }}</td>	
+			<td>{{ form_widget(form.hourgroup) }}</td>		
+		</tr>
+		<tr><td colspan='2'>&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.ftindividual'|trans([],'BoAdminBundle')}}<br/><span class="customer_detail">{{'label.ftindividual.detail'|trans([],'BoAdminBundle')}}</span></th>
+            <th>{{'label.hourftindividual'|trans([],'BoAdminBundle')}}<br/><span class="customer_detail">{{'label.hourftindividual.detail'|trans([],'BoAdminBundle')}}</span></th>
+
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.ftindividual) }}</td>	
+			<td>{{ form_widget(form.hourftindividual) }}</td>
+		</tr>
+		<tr><td colspan='2'>&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.ptstarting'|trans([],'BoAdminBundle')}}<br/><span class="customer_detail">{{'label.ptstarting.detail'|trans([],'BoAdminBundle')}}</span></th>
+            <th>{{'label.hourptindividual'|trans([],'BoAdminBundle')}}<br/><span class="customer_detail">{{'label.hourptindividual.detail'|trans([],'BoAdminBundle')}}</span></th>
+
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.ptstarting) }}</td>	
+			<td>{{ form_widget(form.hourptindividual) }}</td>
+		</tr>
+		<tr><td colspan='2'>&nbsp;</td></tr>
+		<tr>
+            <th>{{'label.paid'|trans([],'BoAdminBundle')}}</th>
+            <th>{{'label.paiddate'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.paid) }}</td>	
+			<td>{{ form_widget(form.paiddate) }}</td>
+		</tr>
+		<tr><td colspan='2'>&nbsp;</td></tr>
+		<tr>
+			<th colspan='2'>{{'label.comment'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td colspan='2'>{{ form_widget(form.comment) }}</td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+	</table>

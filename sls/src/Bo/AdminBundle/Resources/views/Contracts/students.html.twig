@@ -1,0 +1,49 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="15%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+				<th width="15%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.startlevel'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.targetlevel'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.phonenumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+				<th width="120px" nowrap>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.firstname }}</td>
+                <td>{{ student.name }}</td>
+                <td>{%if student.startlevel %}{{ student.startlevel }}{%else%}---{%endif%}</td>
+                <td>{{ student.targetlevel }}</td>
+                <td>{%if student.phonenumber %}{{ student.phonenumber }}{%else%}---{%endif%}</td>
+                <td>{{ student.email }}</td>
+				<td>{% if contract.creationdate %}{{ contract.creationdate|date('Y-m-d') }}{% endif %}</td>
+                <td class="list-action" nowrap>
+		{%if contract.status==1 or contract.status==2%}
+                    <a href="{{ path('contracts_students_edit', { 'id': student.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].creation==1%}
+						<a href="{{ path('contracts_students_remove0',{'idcontract':contract.id,'idstudent':student.id,}) }}">{{'action.remove'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+		{%endif%}
+                </td>
+            </tr>
+        {% endfor %}
+	{%if contract.status==1 or contract.status==2%}	
+         <tr>	
+			<td colspan="8" class="list-action">		
+				{%if app.session.get('rights')['CONTRACTS']['Students'] is defined and app.session.get('rights')['CONTRACTS']['Students'].creation==1%}
+					<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_student">{{'action.add'|trans([],'BoAdminBundle')}}</button>
+				{%endif%}
+				{%if hstudents[0] is defined%}
+					{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].creation==1%}
+							<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#historic_student">{{'action.seehistoric'|trans([],'BoAdminBundle')}}</button>
+					{%endif%}
+				{% endif %}
+			</td>
+	</tr>
+	{%endif%}
+        </tbody>
+    </table>

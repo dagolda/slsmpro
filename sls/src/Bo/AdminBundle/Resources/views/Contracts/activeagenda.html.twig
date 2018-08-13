@@ -1,0 +1,28 @@
+		{% set i=0 %}
+        {% for schedule in agendas %}
+		<tr>
+			<td {%if schedule.status==0%}class="completed_contracts"{%elseif (schedule.status==1 or schedule.status==2) and schedule.startdate>=now%}class="wax_3d_1"{%endif%}>{{ schedule.id }}</td>
+			<td {%if schedule.status==0%}class="completed_contracts"{%elseif (schedule.status==1 or schedule.status==2) and schedule.startdate>=now%}class="wax_3d_1"{%endif%}>{{ schedule.employee.firstname }} {{ schedule.employee.name }}</td>
+			<td {%if schedule.status==0%}class="completed_contracts"{%elseif (schedule.status==1 or schedule.status==2) and schedule.startdate>=now%}class="wax_3d_1"{%endif%}>{%include "BoAdminBundle:Contracts:days.html.twig"%}</td>
+			<td {%if schedule.status==0%}class="completed_contracts"{%elseif (schedule.status==1 or schedule.status==2) and schedule.startdate>=now%}class="wax_3d_1"{%endif%} align="center">{%if schedule.startdate!=null%}{{ schedule.startdate|date('d-m-Y') }}{%else%}---{%endif%}</td>
+			<td {%if schedule.status==0%}class="completed_contracts"{%elseif (schedule.status==1 or schedule.status==2) and schedule.startdate>=now%}class="wax_3d_1"{%endif%} align="center">{%if schedule.enddate!=null%}{{ schedule.enddate|date('d-m-Y') }}{%else%}---{%endif%}</td>
+			<td {%if schedule.status==0%}class="completed_contracts"{%elseif (schedule.status==1 or schedule.status==2) and schedule.startdate>=now%}class="wax_3d_1"{%endif%} align="center">{%if schedule.startam!=null%}{{ schedule.startam|date('H:i') }}{%else%}00:00{%endif%}</td>
+			<td {%if schedule.status==0%}class="completed_contracts"{%elseif (schedule.status==1 or schedule.status==2) and schedule.startdate>=now%}class="wax_3d_1"{%endif%} align="center">{%if schedule.endam!=null%}{{ schedule.endam|date('H:i') }}{%else%}00:00{%endif%}</td>	
+			<td {%if schedule.status==0%}class="completed_contracts"{%elseif (schedule.status==1 or schedule.status==2) and schedule.startdate>=now%}class="wax_3d_1"{%endif%} align="center">{%if schedule.startpm!=null%}{{ schedule.startpm|date('H:i') }}{%else%}00:00{%endif%}</td>
+			<td {%if schedule.status==0%}class="completed_contracts"{%elseif (schedule.status==1 or schedule.status==2) and schedule.startdate>=now%}class="wax_3d_1"{%endif%} align="center">{%if schedule.endpm!=null%}{{ schedule.endpm|date('H:i') }}{%else%}00:00{%endif%}</td>	
+			<td {%if schedule.status==0%}class="completed_contracts"{%elseif (schedule.status==1 or schedule.status==2) and schedule.startdate>=now%}class="wax_3d_1"{%endif%} align="center">{%if schedule.hourperday%}{{ schedule.hourperday }}{%else%}---{%endif%}</td>	
+			<td class="{%if schedule.status==0%}completed_contracts{%elseif (schedule.status==1 or schedule.status==2) and schedule.startdate>=now%}wax_3d_1{%endif%} list-action" nowrap>
+			{%if contract.status==1 or contract.status==2%}
+				{%if app.session.get('rights')['CONTRACTS']['Teacher Schedule'] is defined and app.session.get('rights')['CONTRACTS']['Teacher Schedule'].edit==1%}
+					<a href="{{ path('agenda_edit',{'id':schedule.id}) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+				{%endif%}
+			{%endif%}
+			{%if app.session.get('rights')['CONTRACTS']['Teacher Schedule'] is defined and app.session.get('rights')['CONTRACTS']['Teacher Schedule'].ddelete==1%}
+				<!--a href="{{ path('agenda_remove',{'id':schedule.id}) }}">{{'action.remove'|trans([],'BoAdminBundle')}}</a-->
+			{%endif%}
+			{%if app.session.get('rights')['STAFF']['Substitution'] is defined and app.session.get('rights')['STAFF']['Substitution'].creation==1 and contract.students|length>0%}
+				<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_substitution{{schedule.id}}">{{'action.substitute'|trans([],'BoAdminBundle')}}</button>
+			{%endif%}			
+			</td>
+		</tr>
+        {% endfor %}

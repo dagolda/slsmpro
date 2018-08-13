@@ -1,0 +1,64 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['ROOMS']['Room'] is defined and app.session.get('rights')['ROOMS']['Room'].search==1%}	
+					<td class="form-group">
+						<input type="text" class="form-control" id="inp-search">
+					</td>
+					<td>
+						<button type="submit" id="btn_search">{{'action.search'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				{%endif%}
+				{%if app.session.get('rights')['ROOMS']['Room'] is defined and app.session.get('rights')['ROOMS']['Room'].creation==1%}	
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_local">{{'action.add'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				{%endif%}
+				{%if app.session.get('rights')['ROOMS']['Room'] is defined and app.session.get('rights')['ROOMS']['Room'].others==1%}	
+					<!--td>
+						<a href="{{ path('local_newbatch') }}">Add batch</a>
+					</td--!>
+				{%endif%}
+				{% if app.user is defined and app.user.employee.profil is not null and app.user.employee.profil=="Superadmin" %}	
+					<td>
+						<a href="{{ path('local_empty') }}">Empty Local</a>
+					</td>
+					<td>
+						<a href="{{ path('local_upcomingbug') }}">Upcoming bug</a>
+					</td>
+				{%endif%}
+				{%if app.session.get('rights')['ROOMS']['Room'] is defined and app.session.get('rights')['ROOMS']['Room'].liste==1%}	
+					<td class="list_link">
+						<a href="{{ path('local_index') }}">Room list</a>
+					</td>
+					<td>
+						<button type="button" class="btn btn-primary">
+							Total rooms <span class="badge">{{total|number_format(0,""," ")}}</span>
+						</button>
+					</td>
+				{%endif%}
+					<td>
+						<span class="btn brown_3d_11">
+							{{'label.occupied'|trans([],'BoAdminBundle')}}
+						</span>
+					</td>
+					<td>
+						<span class="btn wax_3d_3">
+							{{'label.reserved'|trans([],'BoAdminBundle')}}
+						</span>
+					</td>
+					<td>
+						<span class="btn ping-color">
+							{{'label.unavailable'|trans([],'BoAdminBundle')}}
+						</span>
+					</td>
+					<!--td>
+						<span class="btn status_free">
+							{{'label.free'|trans([],'BoAdminBundle')}}
+						</span>
+					</td-->
+				</tr>
+			</table>		
+		</div>
+	</div>	

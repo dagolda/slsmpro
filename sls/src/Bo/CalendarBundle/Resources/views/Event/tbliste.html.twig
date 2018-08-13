@@ -1,0 +1,33 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>Employee</th>
+                <th>Contrat</th>
+                <th>{{'label.room'|trans([],'BoAdminBundle')}}</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for event in events %}
+            <tr>
+                <td><a href="{{ path('event_show', { 'id': event.id }) }}">{{ event.id }}</a></td>
+                <td>{{ event.employee.name }} {{ event.employee.name }}</td>
+                <td>{{ event.contrats.reference }}</td>
+                <td>{{ event.local.reference }}</td>
+                <td>{% if event.start %}{{ event.start|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if event.end %}{{ event.end|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if event.creationdate %}{{ event.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('event_show', { 'id': event.id }) }}">show</a>
+                    <a href="{{ path('event_edit', { 'id': event.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="8">Aucune entrée de campus trouvée dans la base de données</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

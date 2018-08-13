@@ -1,0 +1,50 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+               <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+               <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+			   <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+			   <th>{{'label.employee'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+				<td>{{ tadmin.id }}</td>
+                <td>{% if tadmin.startdate %}{{ tadmin.startdate|date('Y-m-d') }}{% endif %}</td>
+				<td>{% if tadmin.enddate %}{{ tadmin.enddate|date('Y-m-d') }}{% else %}---{% endif %}</td>
+				<td>{% if tadmin.employee %}{{ tadmin.employee.firstname }} {{ tadmin.employee.name }}{% else %}---{% endif %}</td>
+				
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                
+				<td>{% if tadmin.startam %}{{ tadmin.startam|date('H:i:s') }}{% else %}---{% endif %}</td>
+                <td>{% if tadmin.endam %}{{ tadmin.endam|date('H:i:s') }}{% else %}---{% endif %}</td>
+                <td>{% if tadmin.startpm %}{{ tadmin.startpm|date('H:i:s') }}{% else %}---{% endif %}</td>
+                <td>{% if tadmin.endpm %}{{ tadmin.endpm|date('H:i:s') }}{% else %}---{% endif %}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.hour'|trans([],'BoAdminBundle')}}</th>
+				<th colspan="3">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+				<td>{{ tadmin.hour }}</td>
+                <td colspan="3">{% if tadmin.creationdate %}{{ tadmin.creationdate|date('Y-m-d H:i:s') }}{% else %}---{% endif %}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+			{%if tadmin.note%}
+				<tr>
+					<th colspan="4">{{'label.note'|trans([],'BoAdminBundle')}}</th>
+				</tr>
+				<tr>
+					<td colspan="4">{{ tadmin.note }}</td>
+				</tr>
+				<tr><td colspan="4">&nbsp;</td></tr>
+			{%endif%}
+        </tbody>
+    </table>

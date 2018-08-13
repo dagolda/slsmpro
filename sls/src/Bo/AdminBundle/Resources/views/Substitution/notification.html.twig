@@ -1,0 +1,90 @@
+{%if cc is defined%}
+	<p>Bonjour / Hello,</p>
+{%elseif agenda and agenda.contracts and agenda.contracts.advisor%}
+	<p>Bonjour / Hello {{agenda.contracts.advisor.firstname}},</p>
+{%elseif agenda and agenda.group and agenda.group.advisor%}
+	<p>Bonjour / Hello {{agenda.group.advisor.firstname}},</p>
+{%endif%}
+<p>
+	{%if substitution and substitution.holder and substitution.substitute%}
+		L'agenda du professeur {{agenda.employee.firstname}} {{agenda.employee.name}} a été modifi&#233; par {{user}}: Ajout d'horaires.
+	{%endif%}
+</p>
+<p>
+{%if agenda and agenda.contracts%}
+	{%set schedule=agenda%}
+	{%set contract=agenda.contracts%}
+	<div><u><b>Contrat/Contract:</b></u></div>
+	<div><b>Id / Numero </b>: {{contract.id}}</div>
+	{%if contract.contractnumber%}
+		<div><b>Contract Number</b>:{{contract.contractnumber}}</div>
+	{%endif%}
+	{%if contract.language%}
+		<div><b>Langue / Language </b>: {{contract.language}}</div>
+	{%endif%}
+	{%if contract.startdate%}
+		<div><b>Date de D&#233;but / Start Date</b>: {{contract.startdate|date("d-m-Y")}}</div>
+	{%endif%}
+	{%if contract.enddate%}
+		<div><b>Date de Fin / End Date</b>:{{contract.enddate|date("d-m-Y")}}</div>
+	{%endif%}
+	{%if contract.schedule%}
+		<div><b>Horaire / Schedule</b>:{{contract.schedule}}</div>
+	{%endif%}
+	{%if contract.targetlevel%}
+		<div><b>Niveau vis&#233; / Target Level</b>:{{contract.targetlevel}}</div>
+	{%endif%}
+	{%if contract.students and contract.students|length==1%}
+		{%for student in contract.students%}
+			<div><b>Apprenant / Student</b>: {{student.firstname}} {{student.name}}</div>
+		{%endfor%}
+	{%endif%}
+	{%if contract.adresse%}
+		<div><b>Lieu / Address</b>:{{contract.adresse}}</div>
+	{%elseif contract.location and contract.location=="Campus" and contract.campus%}
+		<div><b>Lieu / Address</b>:{{contract.campus.address}}</div>
+	{%endif%}
+	{%if contract.location=="Campus"%}
+		<div><b>Salle de classe</b>: {%if room is defined%}{{room}}{%endif%}</div>
+	{%endif%}
+{%elseif agenda and agenda.group%}
+	{%set group=agenda.group%}
+	<div><u><b>Le groupe/the group:</b></u></div>
+	<div><b>Id / Numero</b>: {{group.id}}</div>
+	<div><b>Nom du groupe / Group name</b>: {{group.name}}</div>
+	{%if group.startdate%}
+		<div><b>Date de D&#233;but / Start Date</b>: {{group.startdate|date("d-m-Y")}}</div>
+	{%endif%}
+	{%if group.enddate%}
+		<div><b>Date de Fin / End Date</b>:{{group.enddate|date("d-m-Y")}}</div>
+	{%endif%}
+	{%if contract.targetlevel%}
+		<div><b>Niveau vis&#233; / Target Level</b>:{{contract.targetlevel}}</div>
+	{%endif%}
+{%endif%}
+</p>
+{%if agenda%}
+	<p>
+		<div><u><b>Horaire/Schedule:</b></u></div>
+		{%if agenda.startdate%}
+			<div><b>Date de D&#233;but / Start Date</b>: {{agenda.startdate|date("d-m-Y")}}</div>
+		{%endif%}
+		{%if agenda.enddate%}
+			<div><b>Date de Fin / End Date</b>:{{agenda.enddate|date("d-m-Y")}}</div>
+		{%endif%}
+		{%if agenda.hourperday%}
+			<div><b>Nombre d'heures / hours</b>:{{agenda.hourperday}}</div>
+		{%endif%}
+		<div><b>Jours / days</b>:{%include "BoAdminBundle:Contracts:days.html.twig"%}</div>
+		{%if agenda.startam|date('H:i')!="00:00" and agenda.startam|date('H:i')!="00:00"%}
+			<div><b>Matin / A.M.</b>: de/from {{agenda.startam|date('H:i')}} &#224;/to {{agenda.endam|date('H:i')}} </div>
+		{%endif%}
+		{%if agenda.startpm|date('H:i')!="00:00" and agenda.startpm|date('H:i')!="00:00"%}
+			<div><b>Apr&#232; / P.M.</b>: de/from {{agenda.startpm|date('H:i')}} &#224;/to {{agenda.endpm|date('H:i')}} </div>
+		{%endif%}
+	</p>
+{%endif%}
+<p>
+	SLS MANAGER for 
+	CLIC OTTAWA-GATINEAU
+</p>

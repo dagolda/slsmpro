@@ -1,0 +1,45 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <!--th>{{'label.room'|trans([],'BoAdminBundle')}}</th--!>
+                <th>{{'label.targetlevel'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.createdby'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for group in groups %}
+            <tr>
+                <td {%if group.status==0%}class="completed_contracts"{%elseif (group.status==1 or group.status==2) and group.startdate>=now%}class="wax_3d_1"{%endif%}><a href="{{ path('group_show', { 'id': group.id }) }}">{{ group.id }}</a></td>
+                <td {%if group.status==0%}class="completed_contracts"{%elseif (group.status==1 or group.status==2) and group.startdate>=now%}class="wax_3d_1"{%endif%}>{{ group.name }}</td>
+                <!--td {%if group.status==0%}class="completed_contracts"{%elseif (group.status==1 or group.status==2) and group.startdate>=now%}class="wax_3d_1"{%endif%}>
+					{%if group.local is defined and group.local|length==1%}
+						{%for room in group.local %}
+							{{ room.reference }}
+						{%endfor%}
+					{%else%}
+						---				
+					{%endif%}
+				</td--!>
+                <td {%if group.status==0%}class="completed_contracts"{%elseif (group.status==1 or group.status==2) and group.startdate>=now%}class="wax_3d_1"{%endif%}>{{ group.targetlevel }}</td>
+                <td {%if group.status==0%}class="completed_contracts"{%elseif (group.status==1 or group.status==2) and group.startdate>=now%}class="wax_3d_1"{%endif%}>{% if group.startdate %}{{ group.startdate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+                <td {%if group.status==0%}class="completed_contracts"{%elseif (group.status==1 or group.status==2) and group.startdate>=now%}class="wax_3d_1"{%endif%}>{% if group.enddate %}{{ group.enddate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+		<td {%if group.status==0%}class="completed_contracts"{%elseif (group.status==1 or group.status==2) and group.startdate>=now%}class="wax_3d_1"{%endif%}>{% if group.createby %}{{ group.createby }}{%else%}---{% endif %}</td>
+                <td {%if group.status==0%}class="completed_contracts"{%elseif (group.status==1 or group.status==2) and group.startdate>=now%}class="wax_3d_1"{%endif%}>{% if group.creationdate %}{{ group.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td  {%if group.status==0%}class="completed_contracts list-action"{%elseif (group.status==1 or group.status==2) and group.startdate>=now%}class="wax_3d_1 list-action"{%else%}class="list-action"{%endif%}>
+                    <a href="{{ path('group_show', { 'id': group.id }) }}">show</a>
+					{%if app.session.get('rights')['CONTRACTS']['Groups'] is defined and app.session.get('rights')['CONTRACTS']['Groups'].edit==1%}
+						<a href="{{ path('group_edit', { 'id': group.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="9">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

@@ -1,0 +1,23 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<!--td>
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#myModal">{{'action.delete'|trans([],'BoAdminBundle')}}</button>
+					</td-->
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#edit_contact">{{'action.edit'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					{%if app.session.get('search') is defined and app.session.get('search') is not null%}	
+						<td>
+							<a href="{{ path('ticketcontacts_back') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+						</td>
+					{%else%}
+						<td>
+							<a href="{{ path('ticketcontacts_index') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+						</td>
+					{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:setting.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>Holidayslist edit</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('holidayslist_edit',{'id':holidayslist.id}) }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Holidayslist:editactions.html.twig"%}
+			{%include "BoAdminBundle:Holidayslist:editform.html.twig"%}
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

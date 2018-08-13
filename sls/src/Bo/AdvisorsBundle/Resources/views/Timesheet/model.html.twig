@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'entity.timesheet'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}	
+	{%if employee!=null%}{%include "BoAdminBundle:Employee:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block label %}<h1>{{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'entity.timesheet'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdvisorsBundle:Timesheet:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<h4>{{'title.modellist'|trans([],'BoAdminBundle')}}</h4>
+	<div id="content-liste">
+		{%include "BoAdvisorsBundle:Timesheet:modelliste.html.twig"%}
+	</div>
+	
+	<!--Begin admin model timesheet creation --!>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_model" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.addmodel'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('dash_timesheet_modelnew') }}" method="post" class="style">
+				<div class="modal-body">
+					{{ form_errors(model_form) }}
+						{%include "BoAdvisorsBundle:Timesheet:modelform.html.twig"%}
+					{{ form_rest(model_form) }}
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<!--End admin timesheet creation --!>
+	
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

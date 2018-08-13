@@ -1,0 +1,41 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th width="24%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+				<th width="24%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+				<th width="24%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+				<th width="24%">{{'label.email'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ employee.id }}</td>
+                <td>{{ employee.name }}</td>
+				<td>{{ employee.firstname }}</td>
+				<td>{{ employee.email }}</td>
+            </tr>
+            <tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+				<th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+				<th>Qualification</th>
+				<th>{{'label.language'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ employee.status }}</td>
+				<td>{{ employee.typecontract }}</td>
+				<td>{{ employee.language }}</td>
+            </tr>
+            <tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.homenumber'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.cellnumber'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.address'|trans([],'BoAdminBundle')}} 1</th>
+				<th>{{'label.address'|trans([],'BoAdminBundle')}} 2</th>
+            </tr>
+            <tr>
+                <td>{%if employee.homenumber %}{{ employee.homenumber }}{%else%}---{% endif %}</td>
+                <td>{%if employee.cellnumber %}{{ employee.cellnumber }}{%else%}---{% endif %}</td>
+                <td>{%if employee.address1 %}{{ employee.address1 }}{%else%}---{% endif %}</td>
+                <td>{%if employee.address2 %}{{ employee.address2 }}{%else%}---{% endif %}</td>
+            </tr>
+		<tr><td colspan="4">&nbsp;</td></tr>
+        </tbody>
+    </table>

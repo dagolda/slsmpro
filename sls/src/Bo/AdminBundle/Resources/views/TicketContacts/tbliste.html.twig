@@ -1,0 +1,40 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="6%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="15%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th width="30%">{{'label.contacts'|trans([],'BoAdminBundle')}}</th>
+                <th width="15%">{{'label.cc'|trans([],'BoAdminBundle')}}</th>
+                <th width="20%">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ticketcontact in ticketcontacts %}
+            <tr>
+                <td><a href="{{ path('ticketcontacts_show', { 'id': ticketcontact.id }) }}">{{ ticketcontact.id }}</a></td>
+                <td>{{ ticketcontact.name }}</td>
+                <td>
+					{%if ticketcontact.employee %}
+						{%set i=1%}
+						{%for employee in ticketcontact.employee %}
+							{{ employee.firstname }} {{ employee.name }}{%if ticketcontact.employee|length>i%}, {%else%}{%set i=i+1%}{%endif%}
+						{%else%}
+							---
+						{%endfor%}	
+					{%endif%}
+				</td>
+                <td>{%if ticketcontact.cc %}{{ ticketcontact.cc }}{%else%}N/A{%endif%}</td>
+                <td>{% if ticketcontact.creationdate %}{{ ticketcontact.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+				<td class="list-action" nowrap>
+					<a href="{{ path('ticketcontacts_edit', { 'id': ticketcontact.id }) }}" title="{{'action.edit'|trans([],'BoAdminBundle')}}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_employee{{ticketcontact.id}}">{{'action.add'|trans([],'BoAdminBundle')}}</button>
+				</td>
+            </tr>
+		{%else%}
+            <tr>
+                <td colspan="6">{{'message.no.found'|trans([],'BoAdminBundle')}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

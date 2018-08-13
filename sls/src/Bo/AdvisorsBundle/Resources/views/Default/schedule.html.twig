@@ -1,0 +1,42 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+				<th>{{'label.contractnumber'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.days'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hourperday'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.hourperweek'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contract in contracts %}
+			{%set schedule=tsc[contract.id]%}
+			{%set nbd=0%}
+			<tr>
+				<td {%if contract.status==0%} class="completed_contracts"{%endif%}>{{ contract.contractnumber }}</td>
+				<td {%if contract.status==0%} class="completed_contracts"{%endif%}>
+					{%if schedule.monday==true and schedule.tuesday==true and schedule.wednesday==true and schedule.thursday==true and schedule.friday==true%}
+						{{'label.frommonday.tofriday'|trans([],'BoAdminBundle')}}
+						{%set nbd=5%}
+					{%else%}
+						{%if schedule.monday==true%}{%set nbd=nbd+1%}{{'label.monday'|trans([],'BoAdminBundle')}}, {%endif%}
+						{%if schedule.tuesday==true%}{%set nbd=nbd+1%}{{'label.tuesday'|trans([],'BoAdminBundle')}}, {%endif%}
+						{%if schedule.wednesday==true%}{%set nbd=nbd+1%}{{'label.wednesday'|trans([],'BoAdminBundle')}}, {%endif%}
+						{%if schedule.thursday==true%}{%set nbd=nbd+1%}{{'label.thursday'|trans([],'BoAdminBundle')}}, {%endif%}
+						{%if schedule.friday==true%}{%set nbd=nbd+1%}{{'label.friday'|trans([],'BoAdminBundle')}} {%endif%}
+					{%endif%}
+				</td>
+				<td align="center" {%if contract.status==0%} class="completed_contracts"{%endif%}>{%if schedule.startam!=null%}{{ schedule.startam|date('H:i') }}{%else%}00:00{%endif%}</td>
+				<td align="center" {%if contract.status==0%} class="completed_contracts"{%endif%}>{%if schedule.endam!=null%}{{ schedule.endam|date('H:i') }}{%else%}00:00{%endif%}</td>	
+				<td align="center" {%if contract.status==0%} class="completed_contracts"{%endif%}>{%if schedule.startpm!=null%}{{ schedule.startpm|date('H:i') }}{%else%}00:00{%endif%}</td>
+				<td align="center" {%if contract.status==0%} class="completed_contracts"{%endif%}>{%if schedule.endpm!=null%}{{ schedule.endpm|date('H:i') }}{%else%}00:00{%endif%}</td>	
+				<td align="center" {%if contract.status==0%} class="completed_contracts"{%endif%}>{%if schedule.hourperday%}{{ schedule.hourperday }}{%else%}---{%endif%}</td>				
+				<td align="center" {%if contract.status==0%} class="completed_contracts"{%endif%}>{%if schedule.hourperweek%}{{ schedule.hourperweek }}{%elseif schedule.hourperday%}{%set hourperweek=schedule.hourperday*nbd%}{{ hourperweek }}{%else%}---{%endif%}</td>
+		{%else%}
+			<tr><td colspan="8">No contract found</td></tr>
+		{%endfor%}			
+        </tbody>
+    </table>

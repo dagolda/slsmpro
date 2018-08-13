@@ -1,0 +1,40 @@
+<table class="records_list">
+    <thead>
+        <tr>
+            <th width="80" class="stylist">Profil</th>
+            <th width="80" class="stylist">Rubrique</th>
+            <th width="60" class="stylist">Activer</th>
+            <th width="60" class="stylist">Lister</th>
+            <th width="60" class="stylist">Créer</th>
+            <th width="60" class="stylist">Modifier</th>
+            <th width="60" class="stylist">Supprimer</th>
+            <th width="60" class="stylist">Rechercher</th>
+            <th width="80">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+		{%if entity.profil!='SUPER_ADMIN'%}
+			<tr>
+				<td>{{ entity.profil }}</td>
+				<td>{{ entity.rubrique }}</td>
+				<td>{{ entity.actif }}</td>
+				<td>{{ entity.liste }}</td>
+				<td>{{ entity.creation }}</td>
+				<td>{{ entity.modification }}</td>
+				<td>{{ entity.suppression }}</td>
+				<td>{{ entity.recherche }}</td>
+				<td class="record_actions">
+					<a href="{{ path('admin_droits_show', { 'id': entity.id }) }}" title="afficher"><img src="{{ asset('images/actions/afficher.jpg') }}" /></a>
+					<a href="{{ path('admin_droits', { 'id': entity.id }) }}" title="Modifier"><img src="{{ asset('images/actions/modifier.jpg') }}" /></a>
+				</td>
+			</tr>
+		{%endif%}
+	{% else %}
+		<tr>
+			<td class="envide" colspan="8">Aucune entrée de droitsètre</td>
+		</tr>
+    {% endfor %}
+		{% include 'BoUserBundle:Droits:newform.html.twig' %}
+    </tbody>
+</table>

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Steps list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Number</th>
+                <th>Resultat</th>
+                <th>Numberofhours</th>
+                <th>Startpoint</th>
+                <th>Createby</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for step in steps %}
+            <tr>
+                <td><a href="{{ path('steps_show', { 'id': step.id }) }}">{{ step.id }}</a></td>
+                <td>{{ step.number }}</td>
+                <td>{{ step.resultat }}</td>
+                <td>{{ step.numberofhours }}</td>
+                <td>{% if step.startpoint %}{{ step.startpoint|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ step.createby }}</td>
+                <td>{% if step.creationdate %}{{ step.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('steps_show', { 'id': step.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('steps_edit', { 'id': step.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('steps_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Extrapay list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Hour</th>
+                <th>Status</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for extrapay in extrapays %}
+            <tr>
+                <td><a href="{{ path('extrapay_show', { 'id': extrapay.id }) }}">{{ extrapay.id }}</a></td>
+                <td>{{ extrapay.hour }}</td>
+                <td>{{ extrapay.status }}</td>
+                <td>{% if extrapay.creationdate %}{{ extrapay.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('extrapay_show', { 'id': extrapay.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('extrapay_edit', { 'id': extrapay.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('extrapay_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

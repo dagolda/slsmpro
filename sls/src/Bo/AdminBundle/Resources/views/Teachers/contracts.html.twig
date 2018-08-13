@@ -1,0 +1,34 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="13%">{{'label.contractnumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="13%">{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+                <th width="20%">{{'label.pa'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.numberofhour'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.status'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contract in contracts %}
+            <tr>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{{ contract.contractnumber }}</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{{ contract.typecontract }}</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{{ contract.advisor }}</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{{ contract.hoursnumber }}</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{% if contract.startdate %}{{ contract.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{% if contract.enddate %}{{ contract.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td {%if contract.status==0%} class="completed_contracts"{%endif%}>{{contract.status}}</td>
+                <td class="list-action"  width="126px">
+					{%if contract.status==1%}
+						<a href="{{ path('home_timesheet_add', { 'idcontract': contract.id }) }}">{{'action.addts'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="7">No contract found</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

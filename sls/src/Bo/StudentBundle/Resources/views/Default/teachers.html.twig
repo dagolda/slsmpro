@@ -1,0 +1,49 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="11%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.days'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hourperday'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+		{% set i=0 %}
+        {% for employee in teachers %}
+			{%if tsc[employee.id] is defined or tsg[employee.id] is defined%}
+				{% set i=i+1 %}
+				{%if tsc[employee.id] is defined%}
+					{%set schedule=tsc[employee.id]%}
+				{%elseif tsg[employee.id] is defined%}
+					{%set schedule=tsg[employee.id]%}
+				{%endif%}
+				<tr>
+					<td>{{ employee.firstname }}</td>
+					<td>{{ employee.name }}</td>
+					<td class="sty_label">
+						{%if schedule.monday==true and schedule.tuesday==true and schedule.wednesday==true and schedule.thursday==true and schedule.friday==true%}
+							{{'label.frommonday.tofriday'|trans([],'BoAdminBundle')}}
+						{%else%}
+							{%if schedule.monday==true%}{{'label.monday'|trans([],'BoAdminBundle')}}, {%endif%}
+							{%if schedule.tuesday==true%}{{'label.tuesday'|trans([],'BoAdminBundle')}}, {%endif%}
+							{%if schedule.wednesday==true%}{{'label.wednesday'|trans([],'BoAdminBundle')}}, {%endif%}
+							{%if schedule.thursday==true%}{{'label.thursday'|trans([],'BoAdminBundle')}}, {%endif%}
+							{%if schedule.friday==true%}{{'label.friday'|trans([],'BoAdminBundle')}} {%endif%}
+						{%endif%}
+					</td>
+					<td>{%if schedule.startam!=null%}{{ schedule.startam|date('H:i') }}{%else%}00:00{%endif%}</td>
+					<td>{%if schedule.endam!=null%}{{ schedule.endam|date('H:i') }}{%else%}00:00{%endif%}</td>	
+					<td>{%if schedule.startpm!=null%}{{ schedule.startpm|date('H:i') }}{%else%}00:00{%endif%}</td>
+					<td>{%if schedule.endpm!=null%}{{ schedule.endpm|date('H:i') }}{%else%}00:00{%endif%}</td>	
+					<td>{%if schedule.hourperday%}{{ schedule.hourperday }}{%else%}---{%endif%}</td>
+				</tr>
+			{% endif %}
+		{%else%}
+			<tr><td colspan="8">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}			
+        </tbody>
+    </table>

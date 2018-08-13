@@ -1,0 +1,15 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="25%" class="sty_label">Year</th>
+			<th width="25%" class="sty_label">Month</th>
+            <th width="25%" class="sty_label">{{'label.from'|trans([],'BoAdminBundle')}}</th>
+			<th width="25%" class="sty_label">{{'label.to'|trans([],'BoAdminBundle')}}</th>	
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.year, {'attr' : {'class' : 'yearclass span3'}}) }}</td>
+			<td>{{ form_widget(form.month, {'attr' : {'class' : 'monthclass span3'}}) }}</td>		
+			<td>{{ form_widget(form.startdate, {'attr' : {'class' : 'sdateclass span3'}}) }}</td>
+			<td>{{ form_widget(form.enddate, {'attr' : {'class' : 'edateclass span3'}}) }}</td>				
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+	</table>

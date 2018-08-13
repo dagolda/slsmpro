@@ -1,0 +1,49 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="30%" class="sty_label">{{'label.reference'|trans([],'BoAdminBundle')}}</th>
+			<th width="30%" class="sty_label">{{'label.designation'|trans([],'BoAdminBundle')}}</th>
+			<th width="30%" class="sty_label">Campus</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.reference) }}</td>
+			<td>{{ form_widget(form.designation) }}</td>
+			<td>{{ form_widget(form.campus) }}</td>			
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>			
+			<th class="sty_label">{{'label.dimension'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.capacity'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">Maximum</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.dimension) }}</td>
+			<td>{{ form_widget(form.capability) }}</td>	
+			<td>{{ form_widget(form.max) }}</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">Category</th>
+            <th colspan="2" class="sty_label">{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.categoryroom) }}</td>
+			<td colspan="2">{{ form_widget(form.typecontract) }}</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.status'|trans([],'BoAdminBundle')}}</th>
+            <th class="sty_label">{{'label.available'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.status) }}</td>
+			<td>{{ form_widget(form.available) }}</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+            <th colspan="3" class="sty_label">{{'label.details'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td colspan="3">{{ form_widget(form.details) }}</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+	</table>

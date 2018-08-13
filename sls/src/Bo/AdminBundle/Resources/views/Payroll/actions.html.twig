@@ -1,0 +1,22 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['ACCOUNTING']['Payroll'] is defined and app.session.get('rights')['ACCOUNTING']['Payroll'].search==1%}	
+					<td class="form-group">
+						<input type="text" class="form-control" id="inp-search">
+					</td>
+					<td><button type="submit" id="btn-search">{{'action.search'|trans([],'BoAdminBundle')}}</button></td>
+				{%endif%}
+				{%if app.session.get('rights')['ACCOUNTING']['Payroll'] is defined and app.session.get('rights')['ACCOUNTING']['Payroll'].creation==1%}	
+					<td>
+						<a href="{{ path('payroll_new') }}">{{'action.add'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#extract_ts">{{'action.extract'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

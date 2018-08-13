@@ -1,0 +1,231 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.employee'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block stylesheets %}{{parent()}} <style>.row.content {height: 100%;}</style>{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}	
+{% block nav %}
+	{%include "BoAdminBundle:Employee:rightshow.html.twig"%}
+{% endblock %}
+{% block label %}<h1>{{'entity.employee'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Employee:showactions.html.twig"%}
+		<div class="display_content">
+			<legend>{{'title.security.cote'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Employee:securitycote.html.twig"%}
+		</div>
+		{%if groups!=null and tcsgs!=null and app.session.get('rights')['STAFF']['Employees'] is defined and app.session.get('rights')['STAFF']['Employees'].others==1%}
+			<div class="display_content">
+				<legend>{{'label.group'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Employee:group.html.twig"%}
+			</div>
+		{%endif%}
+		{%if contracts!=null and tcsc!=null and app.session.get('rights')['STAFF']['Employees'] is defined and app.session.get('rights')['STAFF']['Employees'].others==1%}
+			<div class="display_content">
+				<legend>{{'label.contracts'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Employee:contracts.html.twig"%}
+			</div>
+		{%endif%}
+		{%if substitutions is defined and substitutions|length>0%}
+			<div class="display_content">
+				<legend>{{'label.substitution'|trans([],'BoAdminBundle')}}</legend>
+				<div id="teacher_content">
+					{%include "BoAdminBundle:Contracts:substitutions.html.twig"%}
+				</div>
+			</div>
+		{%endif%}
+		{%if contracts!=null and app.session.get('rights')['STAFF']['Employees'] is defined and app.session.get('rights')['STAFF']['Employees'].others==1%}	
+			<!--div class="display_content">
+				<legend>{{'entity.student'|trans([],'BoAdminBundle')}}</legend>
+				{%if contracts|length>1%}
+					{%include "BoAdminBundle:Group:studentsgroup.html.twig"%}
+				{%else%}
+					{%include "BoAdminBundle:Group:students.html.twig"%}
+				{%endif%}
+			</div--!>
+		{%endif%}
+		{%if app.session.get('rights')['STAFF']['Employees'] is defined and app.session.get('rights')['STAFF']['Employees'].others==1 and invitations|length>0%}
+			<div class="display_content">
+				<legend>{{'label.agenda'|trans([],'BoAdminBundle')}}/{{'label.invitation'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Employee:invitation.html.twig"%}
+			</div>
+		{%endif%}
+		{%if epjs%}
+			<div class="display_content">
+				<legend>{{'layout.menu.documents'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Employee:document.html.twig"%}
+			</div>
+		{%endif%}
+		{%if absences%}
+			<div class="display_content">
+				<legend>Absences</legend>
+				{%include "BoAdminBundle:Employee:absences.html.twig"%}
+			</div>	
+		{%endif%}
+		{%if tadmins is defined and tadmins %}
+			<div class="display_content">
+				<legend>{{'label.tadmin'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Tadmin:tbliste.html.twig"%}
+			</div>
+		{%endif%}		
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.archive'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.archive'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(delete_form) }}
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(delete_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	
+	<div class="container">
+		<!-- Modal -->
+		<div class="modal fade" id="setting" role="dialog">
+			<div class="modal-dialog">
+		
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">{{'label.setting'|trans([],'BoAdminBundle')}}</h4>
+					</div>
+					<form action="{{ path('employee_setting',{'id':employee.id}) }}" method="post" class="style">
+						<div class="modal-body">
+							{%include "BoAdminBundle:Employee:setting.html.twig"%}
+						</div>
+						<div class="modal-footer">
+							<input type="submit" value="{{'action.validate'|trans([],'BoAdminBundle')}}">
+						</div>
+					</form>	
+				</div>
+		  
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_absence" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.addabsence'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('employee_create_absence',{'idemployee':employee.id}) }}" method="post" class="style">
+				<div class="modal-body">
+					{{ form_errors(absence_form) }}
+						{%include "BoAdminBundle:Employee:absenceform.html.twig"%}
+					{{ form_rest(absence_form) }}
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}" id="btn_submit">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	
+	<!-- begin add tadmin creation form by modal dialog-->
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_spec" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.tadmin'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('tadmin_new',{'id':employee.id})}}" method="post" class="style">
+				<div class="modal-body">
+					{{ form_errors(tadmin_form) }}
+						{%include "BoAdminBundle:Tadmin:modalform.html.twig"%}
+					{{ form_rest(tadmin_form) }}
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<!-- end Training creation form by modal dialog-->
+
+	{% block javascripts %}
+		<script>	
+			$("#btn-create").click(function(){
+				startdate = new Date($(".abstart").val());
+				enddate = new Date($(".abend").val());
+				diff = enddate - startdate;
+				numerday = diff/(24*60*60*1000); 
+				if(numerday<0){
+					alert("Absence start date can not be greater than the end date!");
+					return false;
+				}else if(startdate>enddate){
+					alert("Absence start date can not be greater than the end date!");
+					return false;
+				}
+				return true;
+			});
+			$(".abstart").change(function(){
+				startdate = new Date($(".abstart").val());
+				enddate = new Date($(".abend").val());
+				diff = enddate - startdate;
+				numerday = diff/(24*60*60*1000); 
+				if(numerday<0){
+					alert("Absence start date can not be greater than the end date!");
+					return false;
+				}else if(startdate>enddate){
+					alert("Absence start date can not be greater than the end date!");
+					return false;
+				}else{
+					numerday++;
+					$(".numberday").val(numerday)
+				}
+				return true;
+			});	
+			$(".abend").change(function(){
+				startdate = new Date($(".abstart").val());
+				enddate = new Date($(".abend").val());
+				diff = enddate - startdate;
+				numerday = diff/(24*60*60*1000); 
+				if(numerday<0){
+					alert("Absence start date can not be greater than the end date!");
+					return false;
+				}else if(startdate>enddate){
+					alert("Absence start date can not be greater than the end date!");
+					return false;
+				}else{
+					numerday++;
+					$(".numberday").val(numerday)
+				}
+				return true;
+			});
+		</script>			
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

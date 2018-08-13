@@ -1,0 +1,11 @@
+			<form action="{{ path('contracts_local_new') }}" method="post" class="style">
+				<select name='local' id='local'>
+					<option value="0" selected="selected">Select a local</option>
+					{%for local in s_locals%}
+						<option value="{{local[0]}}" {%if idlocal is defined and local[0]==idlocal%}selected='selected'{%endif%}>{{local[1]}} </option>
+					{%endfor%}
+				</select>	
+				{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].creation==1%}
+					<button type="submit" id="local-create">{{'action.add'|trans([],'BoAdminBundle')}}</button>
+				{%endif%}
+			</form>

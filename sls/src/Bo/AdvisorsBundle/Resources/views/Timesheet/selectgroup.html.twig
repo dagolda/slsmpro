@@ -1,0 +1,6 @@
+				<select name='idgroup' id='idgroup'>
+					<option value="0" selected="delected">Select a group</option>
+					{%for group in groups%}
+						<option value="{{group.id}}" {%if idgroup is defined and group.id ==idgroup%}selected='selected'{%endif%}>{{group.name}} </option>
+					{%endfor%}
+				</select>	

@@ -1,0 +1,29 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.color'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for color in colors %}
+			{%if color.name!= "Teacher"%}
+				<tr>
+					<td><a href="{{ path('color_show', { 'id': color.id }) }}">{{ color.id }}</a></td>
+					<td>{{ color.name }}</td>
+					<td width="200px" class="{{ color.name }}">&nbsp;</td>
+					<td>{% if color.creationdate %}{{ color.creationdate|date('Y-m-d H:i:s') }}{% else %}---{% endif %}</td>
+					<td class="list-action">
+						<a href="{{ path('color_show', { 'id': color.id }) }}">show</a>
+						<a href="{{ path('color_edit', { 'id': color.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				</tr>
+			{%endif%}
+		{%else%}
+			<tr><td colspan="4">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

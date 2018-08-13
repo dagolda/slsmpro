@@ -1,0 +1,43 @@
+{% extends 'student.html.twig' %}
+{% block title %}{{parent()}}- Absence >> {{'title.creation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoStudentBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}{%if student is defined and student!=null%}{%include "BoStudentBundle:Default:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>Absences >> {{'title.creation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('student_absences_new') }}" method="post" class="style">
+			{{ form_errors(absence_form) }}
+			{%include "BoStudentBundle:Absences:newactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Absences:newform.html.twig"%}
+			</div>
+			{{ form_rest(absence_form) }}
+		</form>	
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#btn-create").click(function(){
+				if($(".contractnumber").val()==""){
+					alert("Contract number field is empty!");
+					return false;
+				}
+				var str=$(".typecontract option:selected");
+				type=str.text();
+				if(type==""){
+					alert("Contract type field is empty!");
+					return false;
+				}
+				var str=$(".language option:selected");
+				language=str.text();
+				if(language==""){
+					alert("Language field is empty!");
+					return false;
+				}
+				return true;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

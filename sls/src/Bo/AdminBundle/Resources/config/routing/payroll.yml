@@ -1,0 +1,32 @@
+payroll_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Payroll:index" }
+    methods:  GET
+payroll_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Payroll:show" }
+    methods:  GET
+payroll_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Payroll:new" }
+    methods:  [GET, POST]
+payroll_extract:
+    path:     /{id}/{action}/extract
+    defaults: { _controller: "BoAdminBundle:Payroll:extract" }
+    methods:  [GET, POST]
+payroll_message:
+    path:     /message
+    defaults: { _controller: "BoAdminBundle:Payroll:message" }
+    methods:  [GET, POST]
+payroll_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Payroll:edit" }
+    methods:  [GET, POST]
+payroll_tshours:
+    path:     /tshours
+    defaults: { _controller: "BoAdminBundle:Payroll:tshours" }
+    methods:  [GET, POST]
+payroll_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Payroll:delete" }
+    methods:  DELETE

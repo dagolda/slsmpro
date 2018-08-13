@@ -1,0 +1,18 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td>
+						<a href="{{ path('coordinator_supervision_index',{'status':_status}) }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					{%if lefthours is defined and lefthours!=0%}
+						<td class="total_number">
+							<button type="button" class="btn btn-primary">
+								{{'label.lefthours'|trans([],'BoAdminBundle')}} <span class="badge">{{lefthours|number_format(0,""," ")}}</span>
+							</button>
+						</td>
+					{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

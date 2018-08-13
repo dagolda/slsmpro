@@ -1,0 +1,26 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['ROOMS']['Room'] is defined and app.session.get('rights')['ROOMS']['Room'].search==1%}	
+					<td class="form-group">
+						<input type="text" class="form-control" id="inp-search">
+					</td>
+					<td>
+						<button type="submit" id="btn_search">{{'action.search'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				{%endif%}
+				{%if app.session.get('rights')['ROOMS']['Room'] is defined and app.session.get('rights')['ROOMS']['Room'].creation==1%}	
+					<td>
+						<a href="{{ path('local_new') }}">{{'action.add'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				{%endif%}
+				{%if app.session.get('rights')['ROOMS']['Room'] is defined and app.session.get('rights')['ROOMS']['Room'].liste==1%}	
+					<td>
+						<a href="{{ path('local_index') }}">Room list</a>
+					</td>
+				{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

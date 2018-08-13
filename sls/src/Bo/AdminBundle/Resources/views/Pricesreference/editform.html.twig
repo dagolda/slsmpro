@@ -1,0 +1,39 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th class="sty_label">{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.offernumber'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.typecontract) }}</td>
+			<td>{{ form_widget(form.offernumber) }}</td>	
+			
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">{{'label.workfield'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.targetlanguage'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.field) }}</td>
+			<td>{{ form_widget(form.language) }}</td>	
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">{{'label.privateorgroup'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.ftorpt'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.privateorgroup) }}</td>	
+			<td>{{ form_widget(form.ftorpt) }}</td>		
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">{{'label.description'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.location'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.description) }}</td>
+			<td>{{ form_widget(form.location) }}</td>	
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+	</table>

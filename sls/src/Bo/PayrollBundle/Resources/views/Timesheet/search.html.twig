@@ -1,0 +1,8 @@
+{% if criteria is defined %}
+	<div class="result_content">
+		{{'message.search.result'|trans([],'BoAdminBundle')}} "{{criteria}}"<br/>
+		{{'message.search.noresult'|trans([],'BoAdminBundle')}}.
+	</div>
+{%else%}
+	{% include 'BoPayrollBundle:Timesheet:tbliste.html.twig' %}
+{%endif%}

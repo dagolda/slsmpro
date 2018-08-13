@@ -1,0 +1,20 @@
+emppj_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Emppj:index" }
+    methods:  GET
+emppj_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Emppj:show" }
+    methods:  GET
+emppj_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Emppj:new" }
+    methods:  [GET, POST]
+emppj_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Emppj:edit" }
+    methods:  [GET, POST]
+emppj_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Emppj:delete" }
+    methods:  DELETE

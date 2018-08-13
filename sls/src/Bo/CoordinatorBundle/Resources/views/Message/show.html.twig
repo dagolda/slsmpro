@@ -1,0 +1,32 @@
+{% extends 'student.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.message'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoHomeBundle:Default:request.html.twig"%}{% endblock %}
+{% block nav %}{%if student is defined and student!=null%}{%include "BoHomeBundle:Default:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>{{'entity.message'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}{%include "BoHomeBundle:Message:showactions.html.twig"%}{% endblock %}
+{% block body %}
+	<div class="show_content">
+		<table>
+			<tbody>
+				<tr>
+					<th width="20%">{{'label.subject'|trans([],'BoAdminBundle')}}</th>
+					<th width="20%">{{'label.to'|trans([],'BoAdminBundle')}}</th>
+					<th width="20%">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+					<th width="20%">{{'label.status'|trans([],'BoAdminBundle')}}</th>
+				</tr>
+				<tr>
+					<td>{{ userMessage.subject }}</td>
+					<td>{%if userMessage.sto1 %}{{ userMessage.sto1 }}{%endif%}{%if userMessage.sto2 %}{{ userMessage.sto2 }}{%endif%}</td>
+					<td>{% if userMessage.dateCreation %}{{ userMessage.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>               
+					<td>{% if userMessage.status %}Yes{% else %}No{% endif %}</td>
+				</tr>
+				<tr><td colspan="4">&nbsp;</td></tr>
+				<tr><th colspan="4">Message</th></tr>
+				<tr>
+					<td colspan="4"><textarea name="message" rows=5 COLS=120  disabled="disabled"> {{userMessage.message|raw }}</textarea></td>
+				</tr>
+				<tr><td colspan="4">&nbsp;</td></tr>
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

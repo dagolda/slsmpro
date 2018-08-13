@@ -1,0 +1,20 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.accounting'|trans([],'BoAdminBundle')}} >> {{'title.tscreation'|trans([],'BoAdminBundle')}} >> {{'label.bygroup'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}	
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'entity.accounting'|trans([],'BoAdminBundle')}} >> {{'title.tscreation'|trans([],'BoAdminBundle')}} >> {{'label.bygroup'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoPayrollBundle:Contracts:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div id="content-liste">	
+		{%include "BoPayrollBundle:Contracts:grouplist.html.twig"%}
+	</div>
+	{% block javascripts %}
+		<script>
+
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

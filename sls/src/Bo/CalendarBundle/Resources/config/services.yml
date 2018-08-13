@@ -1,0 +1,6 @@
+services:
+    bo_calendar_listener:
+        class: Bo\CalendarBundle\Event\CalendarListener
+        tags:
+          - { name: kernel.event_listener, event: calendar.pre-persist, method: onPrePersist }
+

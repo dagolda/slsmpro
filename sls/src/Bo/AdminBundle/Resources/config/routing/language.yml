@@ -1,0 +1,24 @@
+language_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Language:index" }
+    methods:  GET
+
+language_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Language:show" }
+    methods:  GET
+
+language_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Language:new" }
+    methods:  [GET, POST]
+
+language_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Language:edit" }
+    methods:  [GET, POST]
+
+language_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Language:delete" }
+    methods:  DELETE

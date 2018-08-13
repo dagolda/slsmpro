@@ -1,0 +1,57 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.room'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.teachers'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.targetlevel'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.createdby'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for group in groups %}
+            <tr>
+                <td><a href="{{ path('group_show', { 'id': group.id }) }}">{{ group.id }}</a></td>
+                <td>{{ group.name }}</td>
+                <td>
+					{%if group.local is defined and group.local|length==1%}
+						{%for room in group.local %}
+							{{ room.reference }}
+						{%endfor%}
+					{%else%}
+						---				
+					{%endif%}
+				</td>
+                <td>
+					{%set i=1%}
+					{%if group.employee|length>0%}
+						{%for teacher in group.employee %}
+							{{ teacher.firstname }} {{ teacher.name }}{%if group.employee|length>i%}<br>{%else%}{%set i=i+1%}{%endif%}
+						{%endfor%}
+					{%elseif group.group and group.group.employee|length>0%}
+						{%for teacher in group.group.employee %}
+							{{ teacher.firstname }} {{ teacher.name }}{%if group.group.employee|length>i%}<br>{%else%}{%set i=i+1%}{%endif%}
+						{%endfor%}
+					{%else%}
+						---
+					{%endif%}
+				</td>
+                <td>{{ group.targetlevel }}</td>
+                <td>{% if group.startdate %}{{ group.startdate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+                <td>{% if group.enddate %}{{ group.enddate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+				<td>{% if group.createby %}{{ group.createby }}{%else%}---{% endif %}</td>
+                <td>{% if group.creationdate %}{{ group.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+			<a href="{{ path('payroll_group_show', { 'id': group.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+		</td>
+            </tr>
+		{%else%}
+			<tr><td colspan="9">No activity entry found in database</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

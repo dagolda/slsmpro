@@ -1,0 +1,56 @@
+substitution_index:
+    path:     /index/
+    defaults: { _controller: "BoAdminBundle:Substitution:index" }
+    methods:  GET
+substitution_list:
+    path:     /list/
+    defaults: { _controller: "BoAdminBundle:Substitution:list" }
+    methods:  GET
+substitution_daylist:
+    path:     /day/list
+    defaults: { _controller: "BoAdminBundle:Substitution:daylist" }
+    methods:  GET
+substitution_page:
+    path:     /{option}/page
+    defaults: { _controller: "BoAdminBundle:Substitution:page" }
+    methods:  GET
+substitution_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Substitution:show" }
+    methods:  GET
+substitution_new:
+    path:     /{idcontract}/new
+    defaults: { _controller: "BoAdminBundle:Substitution:new" }
+    methods:  [GET, POST]
+substitution_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Substitution:edit" }
+    methods:  [GET, POST]
+substitution_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Substitution:delete" }
+    methods:  DELETE
+substitution_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Substitution:search" }
+    methods:  [GET, POST]
+substitution_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Substitution:pagesearch" }
+    methods:  [GET, POST]
+substitution_reload:
+    path:  /reload/
+    defaults: { _controller: "BoAdminBundle:Substitution:reload" }
+    methods:  [GET, POST]
+substitution_reload2:
+    path:  /reload2/
+    defaults: { _controller: "BoAdminBundle:Substitution:reload2" }
+    methods:  [GET, POST]
+substitution_holder:
+    path:  /holder/
+    defaults: { _controller: "BoAdminBundle:Substitution:holder" }
+    methods:  [GET, POST]
+substitution_substitute:
+    path:  /substitute/
+    defaults: { _controller: "BoAdminBundle:Substitution:substitute" }
+    methods:  [GET, POST]

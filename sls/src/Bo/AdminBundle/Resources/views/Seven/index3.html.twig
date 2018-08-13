@@ -1,0 +1,10 @@
+					{%if agenda[2] is defined%}
+						{%if agenda[2]['07:00'] is defined%}
+							<td class="{%if dates[0]<today %}agenda-week-p{%elseif agenda[2]['07:00']['option']==1%}agenda-week{%else%}agenda-week-s{%endif%}" rowspan="{{agenda[2]['07:00']['hour']}}">{{agenda[2]['07:00']['label']|raw}}</td>
+						{%elseif (agenda[2]['endam'] is defined and times['07:00']<agenda[2]['endam']) and (agenda[2]['startam'] is defined and times['07:00']>=agenda[2]['startam'])%}
+						{%else%}
+							<td class="agenda-week1">&nbsp;</td>
+						{%endif%}
+					{%else%}
+						<td class="agenda-week1">&nbsp;</td>
+					{%endif%}

@@ -1,0 +1,33 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="4%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.phonenumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.cellnumber'|trans([],'BoAdminBundle')}}</th>
+               <th width="10%">{{'label.student'|trans([],'BoAdminBundle')}}/{{'label.group'|trans([],'BoAdminBundle')}}</th> 
+                <th width="10%">{{'label.available'|trans([],'BoAdminBundle')}}</th>
+                <th width="110" nowrap>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+		{%set available = availability[employee.id]%}
+            <tr>
+                <td><a href="{{ path('employee_show', { 'id': employee.id }) }}">{{ employee.id }}</a></td>
+                <td>{{ employee.firstname }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.homenumber }}</td>
+                <td>{{ employee.cellnumber }}</td>
+                <td>{%if students[employee.id] is defined%}{{ students[employee.id] }}{%else%}---{%endif%}</td>
+                <td>{{ available }}</td>
+                <td width="126px" nowrap></td>
+            </tr>
+		{%else%}
+			<tr><td colspan="9">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

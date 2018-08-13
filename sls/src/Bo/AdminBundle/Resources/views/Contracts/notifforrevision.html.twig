@@ -1,0 +1,91 @@
+{%if cc is defined%}
+	<p>Bonjour / Hello,</p>
+{%elseif contract.advisor%}
+	<p>Bonjour / Hello {{contract.advisor.firstname}},</p>
+{%endif%}
+<p>
+	{%if student!=null%}
+		Le contrat de {{student}} a été révisé :
+	{%elseif contract.advisor%}
+		Le contrat ci-dessous a été révisé :
+	{%endif%}
+</p>
+<p>
+	<div><u><b>Contract</b></u></div>
+	{%if contract.language%}
+		<div><b>Langue / Language </b>: {{contract.language}}</div>
+	{%endif%}
+	{%if contract.startdate%}
+		<div><b>Date de D&#233;but / Start Date</b>: {{contract.startdate|date("d-m-Y")}}</div>
+	{%endif%}
+	{%if contract.enddate%}
+		<div><b>Date de Fin / End Date</b>:{{contract.enddate|date("d-m-Y")}}</div>
+	{%endif%}
+	{%if contract.hoursnumber%}
+		<div><b>Nombre d'heures / Number of hours</b>:{{contract.totalhours}}</div>
+	{%endif%}
+	{%if contract.schedule%}
+		<div><b>Horaire / Schedule</b>:{{contract.schedule}}</div>
+	{%endif%}
+	{%if contract.targetlevel%}
+		<div><b>Niveau vis&#233; / Target Level</b>:{{contract.targetlevel}}</div>
+	{%endif%}
+	{%if contract.group and contract.group!=null%}
+		<div><b>Groupe / Group</b>: {{contract.group.name}}</div>
+	{%endif%}
+	{%if contract.students and contract.students|length==1%}
+		{%for student in contract.students%}
+			<div><b>Apprenant / Student</b>: {{student.firstname}} {{student.name}}</div>
+		{%endfor%}
+	{%endif%}
+	{%if contract.adresse%}
+		<div><b>Lieu / Address</b>:{{contract.adresse}}</div>
+	{%elseif contract.location and contract.location=="Campus" and contract.campus%}
+		<div><b>Lieu / Address</b>:{{contract.campus.address}}</div>
+	{%endif%}
+	{%if contract.contractnumber%}
+		<div><b>Contract Number</b>:{{contract.contractnumber}}</div>
+	{%endif%}
+	{%if contract.location=="Campus"%}
+		<div><b>Salle de classe</b>: {%if room is defined%}{{room}}{%endif%}</div>
+	{%endif%}
+</p>
+{%if revision!=null%}
+	<p>
+		<div><u><b>Revision</b></u></div>
+		{%if revision.amendment%}
+			<div><b>Amendement / Amendment </b>: {{revision.amendment}}</div>
+		{%endif%}
+		{%if revision.authorizeddate%}
+			<div><b>Autorisation / Authorisation</b>: {{revision.authorizeddate|date("d-m-Y")}}</div>
+		{%endif%}
+		{%if revision.ratedate%}
+			<div><b>Date du tarif / Rate date</b>:{{revision.ratedate|date("d-m-Y")}}</div>
+		{%endif%}
+		{%if revision.hourlyrate%}
+			<div><b>Tarif horaire / Hourly Rate</b>:{{revision.hourlyrate}}</div>
+		{%endif%}
+		{%if revision.hoursbefore%}
+			<div><b>Heures avant / Hours before</b>:{{revision.hoursbefore}}</div>
+		{%endif%}
+		{%if revision.hour%}
+			<div><b>Nombre d'heure / Number of hours</b>:{{revision.hour}}</div>
+		{%endif%}
+		{%if revision.hourafter%}
+			<div><b>Heures after / Hours after</b>:{{revision.hourafter}}</div>
+		{%endif%}
+		{%if revision.costbefore%}
+			<div><b>Coût avant / Cost before</b>:{{revision.costbefore}}</div>
+		{%endif%}
+		{%if revision.total%}
+			<div><b>Coût / Cost</b>:{{revision.costbefore}}</div>
+		{%endif%}
+		{%if revision.costafter%}
+			<div><b>Coût après / Cost after</b>:{{revision.costafter}}</div>
+		{%endif%}
+	</p>
+{%endif%}
+<p>
+	SLS MANAGER for 
+	CLIC OTTAWA-GATINEAU
+</p>

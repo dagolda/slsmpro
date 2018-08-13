@@ -1,0 +1,37 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            		<th class="sty_label">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.name) }}</td>	
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+           		 <th class="sty_label">{{'label.category'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.category) }}<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_category"><img src="{{ asset('images/actions/add.jpg') }}" border="0" alt="{{'action.add'|trans([],'BoAdminBundle')}}{{'label.category'|trans([],'BoAdminBundle')}}" /></button></td>	
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+           		 <th class="sty_label">{{'label.type'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.type) }}<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_type"><img src="{{ asset('images/actions/add.jpg') }}" border="0" alt="{{'action.add'|trans([],'BoAdminBundle')}}{{'label.type'|trans([],'BoAdminBundle')}}" /></button></td>	
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+            		<th class="sty_label">{{'label.noq'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.noq) }}</td>	
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+		<tr>
+            		<th class="sty_label">{{'label.language'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(edit_form.language) }}</td>	
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+	</table>

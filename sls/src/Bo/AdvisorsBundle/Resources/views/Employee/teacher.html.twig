@@ -1,0 +1,24 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="4%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="15%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th width="15%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.phonenumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.cellnumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="5%">{{'label.status'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td {%if employee.active==false%} class="ping-color"{%elseif employee.available==false%} class="enquiry_processed"{%endif%}><a href="{{ path('employee_show', { 'id': employee.id }) }}">{{ teacher.id }}</a></td>
+                <td {%if employee.active==false%} class="ping-color"{%elseif employee.available==false%} class="enquiry_processed"{%endif%}>{{ teacher.firstname }}</td>
+                <td {%if employee.active==false%} class="ping-color"{%elseif employee.available==false%} class="enquiry_processed"{%endif%}>{{ teacher.name }}</td>
+                <td {%if employee.active==false%} class="ping-color"{%elseif employee.available==false%} class="enquiry_processed"{%endif%}>{{ teacher.email }}</td>
+                <td {%if employee.active==false%} class="ping-color"{%elseif employee.available==false%} class="enquiry_processed"{%endif%}>{{ teacher.homenumber }}</td>
+                <td {%if employee.active==false%} class="ping-color"{%elseif employee.available==false%} class="enquiry_processed"{%endif%}>{{ teacher.cellnumber }}</td>
+                <td {%if employee.active==false%} class="ping-color"{%elseif employee.available==false%} class="enquiry_processed"{%endif%}>{{ teacher.status|trans([],'BoAdminBundle') }}</td>
+            </tr>
+        </tbody>
+    </table>

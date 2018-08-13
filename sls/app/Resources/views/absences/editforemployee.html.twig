@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.absence'|trans([],'BoAdminBundle')}} >> {{'entity.employee'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}	
+{% block nav %}	{%include "BoAdminBundle:Employee:rightshow.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.absence'|trans([],'BoAdminBundle')}} >> {{'entity.employee'|trans([],'BoAdminBundle')}} >> {{'title.edit'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('absences_employee_edit',{'id':absence.id}) }}" method="post" class="style">
+			{{ form_errors(absence_form) }}
+			{%include "BoAdminBundle:Absences:editforempactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdminBundle:Absences:employeeform.html.twig"%}
+			</div>
+			{{ form_rest(absence_form) }}
+		</form>	
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(delete_form) }}
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(delete_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+
+	{% block javascripts %}
+		<script>
+			$("#btn-create").click(function(){
+				startdate = new Date($(".abstart").val());
+				enddate = new Date($(".abend").val());
+				diff = enddate - startdate;
+				numerday = diff/(24*60*60*1000); 
+				if(numerday<0){
+					alert("Absence start date can not be greater than the end date!");
+					return false;
+				}
+				return true;
+			});
+			$(".abstart").change(function(){
+				startdate = new Date($(".abstart").val());
+				enddate = new Date($(".abend").val());
+				diff = enddate - startdate;
+				numerday = diff/(24*60*60*1000); 
+				if(numerday<0){
+					alert("Absence start date can not be greater than the end date!");
+					return false;
+				}else{
+					numerday++;
+					$(".numberday").val(numerday)
+				}
+				return true;
+			});	
+			$(".abend").change(function(){
+				startdate = new Date($(".abstart").val());
+				enddate = new Date($(".abend").val());
+				diff = enddate - startdate;
+				numerday = diff/(24*60*60*1000); 
+				if(numerday<0){
+					alert("Absence start date can not be greater than the end date!");
+					return false;
+				}else{
+					numerday++;
+					$(".numberday").val(numerday)
+				}
+				return true;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

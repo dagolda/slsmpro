@@ -1,0 +1,28 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="11%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th width="18%">{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.homenumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.cellnumber'|trans([],'BoAdminBundle')}}</th>
+				<th width="28%" colspan="2">{{'label.schedule'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+		{% set i=0 %}
+        {% for employee in teachers %}
+			{% set i=i+1 %}
+            <tr>
+                <td>{{ employee.firstname }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.homenumber }}</td>
+                <td>{{ employee.cellnumber }}</td>
+				<td colspan="2"><center>{%if teacherschedule[employee.id] is defined and teacherschedule[employee.id]!=null %}{{ teacherschedule[employee.id]}}{%else%}---{%endif%}</center></td>
+            </tr>	
+		{%else%}
+			<tr><td colspan="6">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>			
+        {% endfor %}
+        </tbody>
+    </table>

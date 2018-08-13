@@ -1,0 +1,32 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="12%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.phonenumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.cellnumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="15%">{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+			{%if contract%}{% set advisor=contract.advisor %}{%elseif group%}{% set advisor=group.advisor %}{%endif%}
+            <tr>
+                <td>{{ advisor.firstname }}</td>
+                <td>{{ advisor.name }}</td>
+                <td>{{ advisor.email }}</td>
+                <td>{{ advisor.homenumber }}</td>
+                <td>{{ advisor.cellnumber }}</td>
+                <td>
+					{%set i=0 %}
+					{%for tc in advisor.typecontract %}
+						{%set i=i+1 %}
+						{{ tc }}
+						{%if i<advisor.typecontract|length%},{%endif%}
+					{%else%}
+						<center>---</center>
+					{%endfor%}				
+				</td>
+            </tr>
+        </tbody>
+    </table>

@@ -1,0 +1,44 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					{%if enquiry.status==1%}
+						<td class="delete-action">
+							<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#myModal">{{'action.delete'|trans([],'BoAdminBundle')}}</button>
+						</td>
+					{%endif%}
+					<td>
+						<a href="{{ path('dash_enquiry_back') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					{%if enquiry.status==1%}
+						<td class="btn_resolved">
+							<a href="{{ path('dash_orderform_new',{'id':enquiry.id}) }}">{{'action.resolve'|trans([],'BoAdminBundle')}}</a>
+						</td>
+						<td class="btn_notresolved">
+							<button type="button" id="btn_notresolved" value="{{enquiry.id}}">{{'action.notresolved'|trans([],'BoAdminBundle')}}</button>
+						</td>
+					{%endif%}
+					{%if enquiry.status!=2%}
+						<!--td class="btn_resolved">
+							<button type="button" id="btn_resolved" value="{{enquiry.id}}">{{'action.resolved'|trans([],'BoAdminBundle')}}</button>
+						</td-->
+					{%endif%}
+					<td>
+						{%if enquiry.status==1%}
+							<span class="btn wax_3d_1">
+								{{'label.created'|trans([],'BoAdminBundle')}}
+							</span>
+						{%elseif enquiry.status==2%}
+							<span class="btn validated">
+								{{'label.resolved'|trans([],'BoAdminBundle')}}
+							</span>
+						{%elseif enquiry.status==3%}
+							<span class="btn rejected">
+								{{'label.notresolved'|trans([],'BoAdminBundle')}}
+							</span>
+						{%endif%}
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

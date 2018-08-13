@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ContractSchedule list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idcontracts</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Startam</th>
+                <th>Startpm</th>
+                <th>Endam</th>
+                <th>Endpm</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contractSchedule in contractSchedules %}
+            <tr>
+                <td><a href="{{ path('contractschedule_show', { 'id': contractSchedule.id }) }}">{{ contractSchedule.id }}</a></td>
+                <td>{{ contractSchedule.idcontracts }}</td>
+                <td>{{ contractSchedule.from }}</td>
+                <td>{{ contractSchedule.to }}</td>
+                <td>{% if contractSchedule.startam %}{{ contractSchedule.startam|date('H:i:s') }}{% endif %}</td>
+                <td>{% if contractSchedule.startpm %}{{ contractSchedule.startpm|date('H:i:s') }}{% endif %}</td>
+                <td>{% if contractSchedule.endam %}{{ contractSchedule.endam|date('H:i:s') }}{% endif %}</td>
+                <td>{% if contractSchedule.endpm %}{{ contractSchedule.endpm|date('H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('contractschedule_show', { 'id': contractSchedule.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('contractschedule_edit', { 'id': contractSchedule.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('contractschedule_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

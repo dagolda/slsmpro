@@ -1,0 +1,37 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>Situation</th>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.phone'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.departement'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.createdby'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td><a href="{{ path('userqz_show', { 'id': user.id }) }}">{{ user.id }}</a></td>
+                <td>{{ user.situation }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.department }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.createby }}</td>
+                <td>{% if user.creationdate %}{{ user.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    	<a href="{{ path('userqz_show', { 'id': user.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+			<a href="{{ path('userqz_edit', { 'id': user.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="10">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

@@ -1,0 +1,13 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td><a href="{{ path('payroll_employee_index') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a></td>
+					{%if etsc==false%}
+						<td><button type="submit">{{'action.generate'|trans([],'BoAdminBundle')}} TS</button></td>
+					{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>
+	

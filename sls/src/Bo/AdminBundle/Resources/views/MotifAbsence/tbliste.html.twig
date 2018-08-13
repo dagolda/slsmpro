@@ -1,0 +1,27 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.student'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.teacher'|trans([],'BoAdminBundle')}}</th>
+                <th width="130px" nowrap>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for motifabsence in motifabsences %}
+            <tr>
+                <td><a href="{{ path('motifabsence_show', { 'id': motifabsence.id }) }}">{{ motifabsence.id }}</a></td>
+                <td>{{ motifabsence.name }}</td>
+                <td>{%if motifabsence.student %}{{'label.yes'|trans([],'BoAdminBundle')}}{%else%}{{'label.no'|trans([],'BoAdminBundle')}}{%endif%}</td>
+                <td>{%if motifabsence.teacher %}{{'label.yes'|trans([],'BoAdminBundle')}}{%else%}{{'label.no'|trans([],'BoAdminBundle')}}{%endif%}</td>
+                <td class="list-action">
+                    <a href="{{ path('motifabsence_show', { 'id': motifabsence.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+                    <a href="{{ path('motifabsence_edit', { 'id': motifabsence.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="6">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

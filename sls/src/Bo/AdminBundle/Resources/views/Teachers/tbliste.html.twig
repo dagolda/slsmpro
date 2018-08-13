@@ -1,0 +1,37 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="4%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="11%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th width="11%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.homenumber'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.cellnumber'|trans([],'BoAdminBundle')}}</th>
+				<th width="8%">{{'label.language'|trans([],'BoAdminBundle')}}</th>
+				<th width="8%">Qualification</th>
+                <th width="126px">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for teacher in teachers %}
+            <tr>
+                <td><a href="{{ path('teachers_show', { 'id': teacher.id }) }}">{{ teacher.id }}</a></td>
+                <td>{{ teacher.firstname }}</td>
+                <td>{{ teacher.name }}</td>
+                <td>{{ teacher.email }}</td>
+                <td>{{ teacher.homenumber }}</td>
+                <td>{{ teacher.cellnumber }}</td>
+				<td>{{ teacher.language }}</td>
+				<td>{%for q in teacher.typecontract %}{{ q }},{%endfor%}</td>
+                <td class="list-action"  width="126px">
+                    <a href="{{ path('teachers_show', { 'id': teacher.id }) }}">show</a>
+				{%if app.session.get('rights')['STAFF']['Teachers'] is defined and app.session.get('rights')['STAFF']['Teachers'].edit==1%}
+                    <a href="{{ path('teachers_edit', { 'id': teacher.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+				{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="9">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

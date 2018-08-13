@@ -1,0 +1,29 @@
+	{%set i=1%}    
+	<table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.student'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.motif'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.contract'|trans([],'BoAdminBundle')}} {{'label.id'|trans([],'BoAdminBundle')}}{%if absence.contracts|length>1%}s{%endif%}</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.amorpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.numberday'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.noshow'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{%if absence.students%}{{ absence.students.firstname }} {{ absence.students.name }}{%else%}---{%endif%}</td>
+                <td>{{ absence.motif }}</td>
+                <td>{%for contract in absence.contracts %}{{ contract.id }}{%if i<absence.contracts|length%},{%endif%}{%set i=i+1%}{%endfor%}</td>
+                <td>{% if absence.startdate %}{{ absence.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if absence.enddate %}{{ absence.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if absence.amorpm %}{{ absence.amorpm }}{% endif %}</td>
+                <td>{{ absence.numberday }}</td>
+                <td>{% if absence.noshow == true%}{{'label.yes'|trans([],'BoAdminBundle')}}{% else %}{{'label.no'|trans([],'BoAdminBundle')}}{% endif %}</td>
+                <td>{% if absence.creationdate %}{{ absence.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>

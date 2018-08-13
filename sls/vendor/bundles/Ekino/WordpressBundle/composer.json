@@ -1,0 +1,34 @@
+{
+    "name": "ekino/wordpress-bundle",
+    "type": "symfony-bundle",
+    "description": "A Symfony bundle to link Symfony with Wordpress",
+    "keywords": ["ekino", "bundle", "symfony", "wordpress"],
+    "homepage": "http://github.com/ekino/EkinoWordpressBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vincent Composieux",
+            "email": "composieux@ekino.com"
+        }
+    ],
+    "require": {
+        "php": "^5.4|^7.0",
+        "symfony/framework-bundle": "^2.6|^3.0",
+        "symfony/security-bundle": "^2.6|^3.0",
+        "symfony/monolog-bundle": "^2.2",
+        "doctrine/doctrine-bundle": "^1.0",
+        "doctrine/orm": "^2.2",
+        "hautelook/phpass": "0.3"
+    },
+    "suggest": {
+        "twig/twig": ""
+    },
+    "autoload": {
+        "psr-4": { "Ekino\\WordpressBundle\\": "" }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

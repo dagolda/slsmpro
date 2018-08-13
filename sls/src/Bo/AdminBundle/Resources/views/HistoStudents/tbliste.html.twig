@@ -1,0 +1,24 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="6%">{{'label.group'|trans([],'BoAdminBundle')}}</th>
+				<th width="10%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for student in hstudents %}
+            <tr>
+                <td>{%if student.group %}{{ student.group.name }}{%else%}{%endif%}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.firstname }}</td>
+                <td>{% if student.startdate %}{{ student.startdate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+                <td>{% if student.enddate %}{{ student.enddate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+                <td>{% if student.creationdate %}{{ student.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

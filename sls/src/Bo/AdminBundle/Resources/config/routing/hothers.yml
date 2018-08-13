@@ -1,0 +1,24 @@
+hothers_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Hothers:index" }
+    methods:  GET
+
+hothers_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Hothers:show" }
+    methods:  GET
+
+hothers_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Hothers:new" }
+    methods:  [GET, POST]
+
+hothers_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Hothers:edit" }
+    methods:  [GET, POST]
+
+hothers_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Hothers:delete" }
+    methods:  DELETE

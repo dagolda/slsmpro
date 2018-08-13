@@ -1,0 +1,24 @@
+extrapay_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Extrapay:index" }
+    methods:  GET
+
+extrapay_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Extrapay:show" }
+    methods:  GET
+
+extrapay_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Extrapay:new" }
+    methods:  [GET, POST]
+
+extrapay_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Extrapay:edit" }
+    methods:  [GET, POST]
+
+extrapay_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Extrapay:delete" }
+    methods:  DELETE

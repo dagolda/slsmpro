@@ -1,0 +1,18 @@
+		<form action="{{ path('contracts_schedules_edit') }}" method="post" class="style">
+			{%if form_errors(schedule_form) %}
+				<tr><td colspan="7">{{ form_errors(schedule_form) }}</td></tr>
+			{%endif%}
+            <tr>
+                <td>{{ form_widget(schedule_form.dayfrom) }}</td>
+                <td>{{ form_widget(schedule_form.dayto) }}</td>
+                <td>{{ form_widget(schedule_form.startam) }}</td>
+                <td>{{ form_widget(schedule_form.endam) }}</td>
+                <td>{{ form_widget(schedule_form.startpm) }}</td>
+                <td>{{ form_widget(schedule_form.endpm) }}</td>
+                <td>{{ form_widget(schedule_form.hourperday) }}</td>
+                <td class="list-action">
+                    <button type="submit" id="btn-create">Edit</button>
+                </td>
+            </tr>
+			{{ form_rest(schedule_form) }}
+		</form>

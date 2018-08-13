@@ -1,0 +1,36 @@
+pricesreference_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Pricesreference:index" }
+    methods:  GET
+pricesreference_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Pricesreference:show" }
+    methods:  GET
+pricesreference_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Pricesreference:new" }
+    methods:  [GET, POST]
+pricesreference_price_new:
+    path:     /{id}/price/new
+    defaults: { _controller: "BoAdminBundle:Pricesreference:pricenew" }
+    methods:  [GET, POST]
+pricesreference_price_edit:
+    path:     /{id}/price/edit
+    defaults: { _controller: "BoAdminBundle:Pricesreference:editprice" }
+    methods:  [GET, POST]
+pricesreference_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Pricesreference:edit" }
+    methods:  [GET, POST]
+pricesreference_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Pricesreference:delete" }
+    methods:  DELETE
+pricesreference_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Pricesreference:search" }
+    methods:  [GET, POST]
+pricesreference_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Pricesreference:pagesearch" }
+    methods:  [GET, POST]

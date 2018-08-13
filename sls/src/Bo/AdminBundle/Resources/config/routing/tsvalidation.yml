@@ -1,0 +1,24 @@
+tsvalidation_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:TsValidation:index" }
+    methods:  GET
+
+tsvalidation_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:TsValidation:show" }
+    methods:  GET
+
+tsvalidation_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:TsValidation:new" }
+    methods:  [GET, POST]
+
+tsvalidation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:TsValidation:edit" }
+    methods:  [GET, POST]
+
+tsvalidation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:TsValidation:delete" }
+    methods:  DELETE

@@ -1,0 +1,27 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					{%if employees|length>0%}
+						<td class="td_check">
+							<button id="select-all">{{'action.checkall'|trans([],'BoAdminBundle')}} </button>
+						</td>
+					{%endif%}
+					<!--td class="td_uncheck">
+						<button id="deselect-all">{{'action.uncheckall'|trans([],'BoAdminBundle')}} </button>
+					</td-->
+					<td>
+						<button type="submit" id="btn-create">{{'action.send'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					<td>
+						<a href="{{ path('employee_index') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td class="total_number">
+						<button type="button" class="btn btn-primary">
+							Total {{'entity.employee'|trans([],'BoAdminBundle')}} <span class="badge">{{employees|length|number_format(0,""," ")}}</span>
+						</button>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>

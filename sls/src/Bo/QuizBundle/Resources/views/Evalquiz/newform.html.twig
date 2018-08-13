@@ -1,0 +1,45 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+           		<th class="sty_label">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.name) }}</td>
+			<td>{{ form_widget(form.firstname) }}</td>	
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+           		<th>{{'label.situation'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.department'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.situation) }}</td>
+			<td>{{ form_widget(form.department) }}</td>	
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+           		<th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.phone'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.email) }}</td>
+			<td>{{ form_widget(form.phone) }}</td>	
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+           		<th>{{'label.category'|trans([],'BoAdminBundle')}}</th>
+			<th>{{'label.notification'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(eval_form.category) }}</td>
+			<td>{{ form_widget(eval_form.notification) }}</td>	
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+           		<th colspan="2">{{'label.display'|trans([],'BoAdminBundle')}} {{'label.result'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td colspan="2">{{ form_widget(eval_form.dispresult) }}</td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+	</table>

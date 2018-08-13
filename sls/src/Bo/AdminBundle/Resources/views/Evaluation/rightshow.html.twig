@@ -1,0 +1,227 @@
+<div class="employee-identity">Evaluation Id:{{ evaluation.id }}</div>
+    <table> 
+        <tbody>
+			{% if evaluation.customer %}
+				<tr>
+					<th width="125px">{{'label.customer'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ evaluation.customer }}</td>
+				</tr>
+			{%endif%}
+			{%if evaluation.evaltype %}
+				<tr>		
+					<th>{{'label.evaltype'|trans([],'BoAdminBundle')}}:</th>
+					<td valign="bottom">{{ evaluation.evaltype }}</td>
+				</tr>
+			{%endif%}
+			{%if evaluation.options %}
+				<tr>		
+					<th>{{'label.options'|trans([],'BoAdminBundle')}}:</th>
+					<td valign="bottom">{{ evaluation.options }}</td>
+				</tr>
+			{%endif%}
+			{%if evaluation.evaluator %}
+				<tr>		
+					<th width="120px">{{'label.evaluator'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ evaluation.evaluator.firstname }} {{ evaluation.evaluator.name }}</td>
+				</tr>
+			{%endif%}
+			{% if evaluation.evaldate %}
+				<tr>
+					<th>{{'label.evaldate'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ evaluation.evaldate|date('Y-m-d') }}</td>
+				</tr>
+			{%endif%}
+			{% if evaluation.evaltime %}
+				<tr>
+					<th>{{'label.evalhour'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ evaluation.evaltime|date('H:i') }}</td>
+				</tr>
+			{%endif%}
+			{%if evaluation.sendevaldate %}
+				<tr>		
+					<th width="120px">{{'label.sendevaldate'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ evaluation.sendevaldate|date('Y-m-d') }}</td>
+				</tr>
+			{%endif%}
+			{%if evaluation.sendto %}
+				<tr>		
+					<th width="120px">{{'label.sendto'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ evaluation.sendto }}</td>
+				</tr>
+			{%endif%}
+			{%if evaluation.ryacc %}
+				<tr>		
+					<th width="120px">{{'label.ryacc'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ evaluation.ryacc }}</td>
+				</tr>
+			{%endif%}
+			{%if evaluation.typetime %}
+				<tr>		
+					<th width="120px">FT or PT:</th>
+					<td>{{ evaluation.typetime }}</td>
+				</tr>
+			{%endif%}
+			{%if evaluation.languages %}
+				<tr>		
+					<th>{{'label.language'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ evaluation.languages }}</td>
+				</tr>
+			{%endif%}
+			{%if evaluation.typeoftraining %}
+				<tr>		
+					<th>{{'label.typeoftraining'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ evaluation.typeoftraining }}</td>
+				</tr>
+			{%endif%}
+			{%if evaluation.expenses %}
+				<tr>		
+					<th>{{'label.expenses'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ evaluation.expenses }}</td>
+				</tr>
+			{%endif%}
+			{% if evaluation.evallocation %}
+            <tr>
+				<th>Location:</th>
+				<td>{{ evaluation.evallocation }}</td>               
+            </tr>
+			{% endif %}
+			{% if evaluation.campus %}
+            <tr>
+				<th>Campus:</th>
+				<td>{{ evaluation.campus }}</td>               
+            </tr>
+			{% endif %}
+			{% if evaluation.addresse%}
+            <tr>
+				<th>{{'label.address'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ evaluation.addresse }}</td>               
+            </tr>
+			{% endif %}
+			{%if resdisp==2 or resdisp=="right"%}
+				{% if evaluation.writencomprehension %}
+				<tr>
+					<th>{{'label.writencomprehension'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ evaluation.writencomprehension }}</td>
+				</tr>
+				{%endif%}
+				{% if evaluation.writenexpression %}
+				<tr>
+					<th>{{'label.writenexpression'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ evaluation.writenexpression }}</td>
+				</tr>
+				{%endif%}		
+				{% if evaluation.rcresult %}
+				<tr>
+					<th>{{'label.rcresult'|trans([],'BoAdminBundle')}}:</th>			
+					<td>{{ evaluation.rcresult }}</td>
+				</tr>
+				{%endif%}
+				{% if evaluation.eeresult %}
+				<tr>
+					<th>{{'label.eeresult'|trans([],'BoAdminBundle')}}:</th>			
+					<td>{{ evaluation.eeresult }}</td>
+				</tr>
+				{%endif%}			
+				{% if evaluation.oralunderstanding %}
+				<tr>
+					<th>{{'label.orc'|trans([],'BoAdminBundle')}}:</th>
+					<td valign="bottom">{{ evaluation.oralunderstanding }}</td>
+				</tr>
+				{%endif%}	
+				{% if evaluation.qualityofdiscourse %}
+				<tr>
+					<th>{{'label.qsp'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ evaluation.qualityofdiscourse }}</td>
+				</tr>
+				{%endif%}
+				{% if evaluation.prononciation %}
+				<tr>
+					<th>{{'label.pr'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ evaluation.prononciation }}</td>
+				</tr>
+				{%endif%}
+				{% if evaluation.grammar %}
+				<tr>
+					<th>{{'label.gr'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ evaluation.grammar }}</td>
+				</tr>
+				{%endif%}
+				{% if evaluation.verbs %}
+				<tr>
+					<th>{{'label.vb'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ evaluation.verbs }}</td>
+				</tr>
+				{%endif%}	
+				{% if evaluation.vocabulary %}
+				<tr>
+					<th>{{'label.voc'|trans([],'BoAdminBundle')}}:</th>			
+					<td>{{ evaluation.vocabulary }}</td>
+				</tr>
+				{%endif%}
+				{% if evaluation.syntaxe %}
+				<tr>
+					<th>{{'label.s'|trans([],'BoAdminBundle')}}:</th>			
+					<td>{{ evaluation.syntaxe }}</td>
+				</tr>
+				{%endif%}	
+			{%endif%}
+			{% if evaluation.ftgroup %}
+            <tr>
+				<th>{{'label.ftgroup'|trans([],'BoAdminBundle')}}:</th>			
+				<td>{{ evaluation.ftgroup }}</td>
+            </tr>
+			{%endif%}
+			{% if evaluation.hourgroup %}
+            <tr>
+				<th>{{'label.hourgroup'|trans([],'BoAdminBundle')}}:</th>			
+				<td>{{ evaluation.hourgroup }}</td>
+            </tr>
+			{%endif%}
+			{% if evaluation.ftindividual %}
+            <tr>
+				<th>{{'label.ftindividual'|trans([],'BoAdminBundle')}}:</th>			
+				<td>{{ evaluation.ftindividual }}</td>
+            </tr>
+			{%endif%}
+			{% if evaluation.hourftindividual %}
+            <tr>
+				<th>{{'label.hourftindividual'|trans([],'BoAdminBundle')}}:</th>			
+				<td>{{ evaluation.hourftindividual }}</td>
+            </tr>
+			{%endif%}
+			{% if evaluation.ptstarting %}
+            <tr>
+				<th>{{'label.ptstarting'|trans([],'BoAdminBundle')}}:</th>			
+				<td>{{ evaluation.ptstarting }}</td>
+            </tr>
+			{%endif%}
+			{% if evaluation.hourptindividual %}
+            <tr>
+				<th>{{'label.hourptindividual'|trans([],'BoAdminBundle')}}:</th>			
+				<td>{{ evaluation.hourptindividual }}</td>
+            </tr>
+			{%endif%}
+			{% if evaluation.online %}
+            <tr>
+				<th>{{'label.online'|trans([],'BoAdminBundle')}}:</th>			
+				<td><input type="checkbox" {%if evaluation.online==1 %}checked{%endif%} disabled/></td>
+            </tr>
+			{%endif%}
+            <tr>
+				<th>Status:</th>
+				<td>{{ status[evaluation.status] }}</td>               
+            </tr>
+			{% if evaluation.creationdate %}
+            <tr>
+				<th>{{'label.creationdate'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ evaluation.creationdate|date('Y-m-d H:i:s') }}</td>               
+            </tr>
+			{% endif %}
+			{% if evaluation.createby %}
+            <tr>
+				<th>{{'label.createdby'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ evaluation.createby}}</td>               
+            </tr>
+			{% endif %}
+        </tbody>
+    </table>

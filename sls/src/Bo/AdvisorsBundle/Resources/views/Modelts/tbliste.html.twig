@@ -1,0 +1,44 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="7px">id</th>
+                <th width="7px">{{'label.monday'|trans([],'BoAdminBundle')}}</th>
+                <th width="7px">{{'label.tuesday'|trans([],'BoAdminBundle')}}</th>
+                <th width="7px">{{'label.wednesday'|trans([],'BoAdminBundle')}}</th>
+                <th width="7px">{{'label.thursday'|trans([],'BoAdminBundle')}}</th>
+                <th width="7px">{{'label.friday'|trans([],'BoAdminBundle')}}</th>
+                <th width="7px">{{'label.saturday'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hour'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th nowrap>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for modelt in modelts %}
+            <tr>
+                <td>{{ modelt.id }}</td>
+                <td align="center"><input type="checkbox"  disabled="disabled" {% if modelt.monday %}checked{% endif %}></td>
+                <td align="center"><input type="checkbox"  disabled="disabled" {% if modelt.monday %}checked{% endif %}></td>
+                <td align="center"><input type="checkbox"  disabled="disabled" {% if modelt.monday %}checked{% endif %}></td>
+                <td align="center"><input type="checkbox"  disabled="disabled" {% if modelt.monday %}checked{% endif %}></td>
+                <td align="center"><input type="checkbox"  disabled="disabled" {% if modelt.monday %}checked{% endif %}></td>
+                <td align="center"><input type="checkbox"  disabled="disabled" {% if modelt.monday %}checked{% endif %}></td>
+                <td>{% if modelt.startam %}{{ modelt.startam|date('H:i:s') }}{% endif %}</td>
+                <td>{% if modelt.endam %}{{ modelt.endam|date('H:i:s') }}{% endif %}</td>
+                <td>{% if modelt.startpm %}{{ modelt.startpm|date('H:i:s') }}{% endif %}</td>
+                <td>{% if modelt.endpm %}{{ modelt.endpm|date('H:i:s') }}{% endif %}</td>
+                <td>{{ modelt.hour }}</td>
+                <td>{% if modelt.creationdate %}{{ modelt.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('dash_model_show', { 'id': modelt.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="14">{{'message.no.found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

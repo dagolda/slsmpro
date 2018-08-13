@@ -1,0 +1,39 @@
+holidayslist_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Holidayslist:index" }
+    methods:  GET
+holidayslist_list:
+    path:     /list/
+    defaults: { _controller: "BoAdminBundle:Holidayslist:list" }
+    methods:  GET
+holidayslist_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdminBundle:Holidayslist:page" }
+holidayslist_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Holidayslist:show" }
+    methods:  GET
+holidayslist_duplicate:
+    path:     /{id}/duplicate
+    defaults: { _controller: "BoAdminBundle:Holidayslist:duplicate" }
+    methods:  [GET, POST]
+holidayslist_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Holidayslist:new" }
+    methods:  [GET, POST]
+holidayslist_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Holidayslist:edit" }
+    methods:  [GET, POST]
+holidayslist_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Holidayslist:delete" }
+    methods:  DELETE
+holidayslist_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Holidayslist:search" }
+    methods:  [GET, POST]
+holidayslist_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Holidayslist:pagesearch" }
+    methods:  [GET, POST]

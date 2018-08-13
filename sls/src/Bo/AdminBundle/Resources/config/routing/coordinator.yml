@@ -1,0 +1,43 @@
+coordinator_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Coordinator:index" }
+    methods:  GET
+coordinator_list:
+    path:     /list/
+    defaults: { _controller: "BoAdminBundle:Coordinator:list" }
+    methods:  GET
+coordinator_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdminBundle:Coordinator:page" }
+coordinator_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Coordinator:show" }
+    methods:  GET
+coordinator_new:
+    path:     /new/
+    defaults: { _controller: "BoAdminBundle:Coordinator:new" }
+    methods:  [GET, POST]
+coordinator_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Coordinator:edit" }
+    methods:  [GET, POST]
+coordinator_back:
+    path:     /back/
+    defaults: { _controller: "BoAdminBundle:Coordinator:back" }
+    methods:  GET
+coordinator_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Coordinator:delete" }
+    methods:  DELETE
+coordinator_user_create:
+    path:     /{id}/createuser
+    defaults: { _controller: "BoAdminBundle:Coordinator:createuser" }
+    methods:  GET
+coordinator_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Coordinator:search" }
+    methods:  [GET, POST]
+coordinator_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Coordinator:pagesearch" }
+    methods:  [GET, POST]

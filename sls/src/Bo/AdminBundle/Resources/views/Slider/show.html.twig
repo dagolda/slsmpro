@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.document'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'entity.document'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ entity.categorie }}</td>
+            </tr>
+			{%if entity.b1!=null and entity.b1!=""%}
+				<tr>
+					<th>Titre 1</th>
+					<td>{{ entity.b1 }}</td>
+				</tr>
+			{%endif%}
+			{%if entity.b2!=null and entity.b2!=""%}
+				<tr>
+					<th>Titre 2</th>
+					<td>{{ entity.b2 }}</td>
+				</tr>
+			{%endif%}
+			{%if entity.b3!=null and entity.b3!=""%}
+				<tr>
+					<th>Message</th>
+					<td>{{ entity.b3 }}</td>
+				</tr>
+			{%endif%}
+            <tr>
+                <th>Ordre</th>
+                <td>{{ entity.ordre }}</td>
+            </tr>
+			{%if entity.path!=null and entity.path!=""%}
+				<tr>
+					<th>Image</th>
+					<td><img src="{{ asset(['images/slider/', entity.path]|join) }}" width="500px"/></td>
+				</tr>
+			{%endif%}
+            <tr>
+                <th>Datecreation</th>
+                <td>{{ entity.datecreation|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="record_actions">
+		<tr class="clink">
+			<td><a href="{{ path('admin_slider') }}">Retour</a>
+			<td><a href="{{ path('admin_slider_edit', { 'id': entity.id }) }}">Modifier</a></td>
+			<td>
+				<form action="{{ path('admin_slider_delete', { 'id': entity.id }) }}" method="post">
+					{{ form_widget(delete_form) }}
+					<button type="submit">Supprimer</button>
+				</form>			
+			</td>
+		</tr>
+	</table>
+{% endblock %}

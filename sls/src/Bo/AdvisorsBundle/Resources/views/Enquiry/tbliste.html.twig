@@ -1,0 +1,43 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.phone'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.ftorpt'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.targetlanguage'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hours'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th width="120px" nowrap>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for enquiry in enquiries %}
+            <tr>
+                <td {%if enquiry.status==1%}class="wax_3d_1"{%elseif enquiry.status==2%}class="validated"{%elseif enquiry.status==3%}class="rejected"{%endif%}>{{ enquiry.id }}</td>
+                <td {%if enquiry.status==1%}class="wax_3d_1"{%elseif enquiry.status==2%}class="validated"{%elseif enquiry.status==3%}class="rejected"{%endif%}>{{ enquiry.name }}</td>
+                <td {%if enquiry.status==1%}class="wax_3d_1"{%elseif enquiry.status==2%}class="validated"{%elseif enquiry.status==3%}class="rejected"{%endif%}>{{ enquiry.firstname }}</td>
+                <td {%if enquiry.status==1%}class="wax_3d_1"{%elseif enquiry.status==2%}class="validated"{%elseif enquiry.status==3%}class="rejected"{%endif%}>{{ enquiry.email }}</td>
+                <td {%if enquiry.status==1%}class="wax_3d_1"{%elseif enquiry.status==2%}class="validated"{%elseif enquiry.status==3%}class="rejected"{%endif%}>{{ enquiry.phone }}</td>
+                <td {%if enquiry.status==1%}class="wax_3d_1"{%elseif enquiry.status==2%}class="validated"{%elseif enquiry.status==3%}class="rejected"{%endif%}>{{ enquiry.ftorpt }}</td>
+                <td {%if enquiry.status==1%}class="wax_3d_1"{%elseif enquiry.status==2%}class="validated"{%elseif enquiry.status==3%}class="rejected"{%endif%}>{%if enquiry.typecontract%}{{ enquiry.typecontract }}{%else%}---{%endif%}</td>
+                <td {%if enquiry.status==1%}class="wax_3d_1"{%elseif enquiry.status==2%}class="validated"{%elseif enquiry.status==3%}class="rejected"{%endif%}>{{ enquiry.language }}</td>
+                <td {%if enquiry.status==1%}class="wax_3d_1"{%elseif enquiry.status==2%}class="validated"{%elseif enquiry.status==3%}class="rejected"{%endif%}>{{ enquiry.hours }}</td>
+                <td {%if enquiry.status==1%}class="wax_3d_1"{%elseif enquiry.status==2%}class="validated"{%elseif enquiry.status==3%}class="rejected"{%endif%}>{% if enquiry.startdate %}{{ enquiry.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td  {%if enquiry.status==1%}class="wax_3d_1"{%elseif enquiry.status==2%}class="validated"{%elseif enquiry.status==3%}class="rejected"{%endif%}>{% if enquiry.enddate %}{{ enquiry.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td class="list-action {%if enquiry.status==1%}wax_3d_1{%elseif enquiry.status==2%}validated{%elseif enquiry.status==3%}rejected{%endif%}">
+                    <a href="{{ path('dash_enquiry_show', { 'id': enquiry.id }) }}">show</a>
+					{%if enquiry.status==1%}
+						<a href="{{ path('dash_enquiry_edit', { 'id': enquiry.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="12">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

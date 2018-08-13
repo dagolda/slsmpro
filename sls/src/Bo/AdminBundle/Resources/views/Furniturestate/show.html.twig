@@ -1,0 +1,17 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th width='30%'>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width='30%'>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+				<th width='30%'>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+			<tr><td colspan="3">&nbsp;</td></tr>
+            <tr>
+                
+				<td>{{ etatmobilier.id }}</td>
+                <td>{{ etatmobilier.name }}</td>
+                <td>{% if etatmobilier.creationdate %}{{ etatmobilier.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+			<tr><td colspan="3">&nbsp;</td></tr>
+        </tbody>
+    </table>

@@ -1,0 +1,29 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <td>{{ errormessage.id }}</td>
+            </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>			
+            <tr>
+                <th>{{'label.designation'|trans([],'BoAdminBundle')}}</th>
+                <td>{{ errormessage.designation }}</td>
+            </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>	
+            <tr>
+                <th>French</th>
+                <td>{{ errormessage.descfr }}</td>
+            </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>	
+            <tr>
+                <th>English</th>
+                <td>{{ errormessage.descen }}</td>
+            </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>	
+            <tr>
+                <th>Datecreation</th>
+                <td>{% if errormessage.dateCreation %}{{ errormessage.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr><td colspan="2">&nbsp;</td></tr>
+        </tbody>
+    </table>

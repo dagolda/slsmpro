@@ -1,0 +1,76 @@
+agenda_index:
+    path:     /index/
+    defaults: { _controller: "BoAdminBundle:Agenda:index" }
+    methods:  GET
+agenda_closed:
+    path:     /closed/
+    defaults: { _controller: "BoAdminBundle:Agenda:closed" }
+    methods:  GET
+agenda_general:
+    path:     /general/
+    defaults: { _controller: "BoAdminBundle:Agenda:general" }
+    methods:  [GET, POST]
+agenda_show:
+    path:     /{id}/show/
+    defaults: { _controller: "BoAdminBundle:Agenda:show" }
+    methods:  GET
+agenda_active:
+    path:     /{id}/active/
+    defaults: { _controller: "BoAdminBundle:Agenda:active" }
+    methods:  GET
+agenda_new:
+    path:     /{idcontract}/new/
+    defaults: { _controller: "BoAdminBundle:Agenda:new" }
+    methods:  [GET, POST]
+agenda_edit:
+    path:     /{id}/edit/
+    defaults: { _controller: "BoAdminBundle:Agenda:edit" }
+    methods:  [GET, POST]
+agenda_delete:
+    path:     /{id}/delete/
+    defaults: { _controller: "BoAdminBundle:Agenda:delete" }
+    methods:  DELETE
+agenda_employee:
+    path:     /{id}/employee/agenda/
+    defaults: { _controller: "BoAdminBundle:Agenda:employee" }
+    methods:  [GET, POST]
+agenda_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Agenda:search" }
+    methods:  [GET, POST]
+agenda_search2:
+    path:  /search2/
+    defaults: { _controller: "BoAdminBundle:Agenda:search2" }
+    methods:  [GET, POST]
+agenda_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Agenda:pagesearch" }
+    methods:  [GET, POST]
+agenda_remove:
+    path:     /{id}/remove
+    defaults: { _controller: "BoAdminBundle:Agenda:remove" }
+    methods:  [GET, POST]
+agenda_check:
+    path:     /check/
+    defaults: { _controller: "BoAdminBundle:Agenda:check" }
+    methods:  [GET, POST]
+agenda_advanced_search:
+    path:     /advanced/search
+    defaults: { _controller: "BoAdminBundle:Agenda:advancedsearch" }
+    methods:  [GET, POST]
+agenda_add_cancel:
+    path:     /{id}/add/cancel/
+    defaults: { _controller: "BoAdminBundle:Agenda:addcancel" }
+    methods:  [GET, POST]
+agenda_edit_cancel:
+    path:     /{id}/edit/cancel/
+    defaults: { _controller: "BoAdminBundle:Agenda:editcancel" }
+    methods:  [GET, POST]
+agenda_delete_cancel:
+    path:     /{id}/delete/cancel/
+    defaults: { _controller: "BoAdminBundle:Agenda:deletecancel" }
+    methods:  DELETE
+agenda_substitution_new:
+    path:     /{idagenda}/substitution/new
+    defaults: { _controller: "BoAdminBundle:Agenda:substitute" }
+    methods:  [GET, POST]

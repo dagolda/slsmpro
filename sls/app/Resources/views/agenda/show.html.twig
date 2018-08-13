@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.contract'|trans([],'BoAdminBundle')}} >> {{'label.teacherschedule'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block nav %}
+	{%if contract %} {%include "BoAdminBundle:Contracts:rightshow.html.twig"%} {%endif%}
+{% endblock %}
+{% block label %}<h1>{{'entity.contract'|trans([],'BoAdminBundle')}} >> {{'label.teacherschedule'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Agenda:showactions.html.twig"%}
+		<div class="show_content">
+			{%include "BoAdminBundle:Agenda:tbshow.html.twig"%}
+		</div>
+		{%if schedule.invitation and schedule.invitation|length>0%}
+			{%set invitations = schedule.invitation%}
+			<div class="display_content">
+				<legend>{{'label.invitation'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Invitation:tbliste.html.twig"%}
+			</div>
+		{%endif%}
+		{%if schedule.cancel is defined and schedule.cancel|length>0%}
+			{%set cancels = schedule.cancel%}
+			<div class="display_content">
+				<legend>{{'label.canceling'|trans([],'BoAdminBundle')}}</legend>
+				<div id="teacher_content">
+					{%include "BoAdminBundle:Cancel:tbliste.html.twig"%}
+				</div>
+			</div>
+		{%endif%}
+		{%if schedule.substitution is defined and schedule.substitution|length>0%}
+			<div class="display_content">
+				<legend>{{'label.substitution'|trans([],'BoAdminBundle')}}</legend>
+				<div id="teacher_content">
+					{%include "BoAdminBundle:Contracts:substitutions.html.twig"%}
+				</div>
+			</div>
+		{%endif%}
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(delete_form) }}
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(delete_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+
+	<!-- begin add cancellation creation form by modal dialog-->
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_cancel" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.canceling'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-message"></div>
+			<form action="{{ path('agenda_add_cancel',{'id':schedule.id})}}" method="post" class="style">
+				<div class="modal-body">
+					{{ form_errors(form) }}
+						{%include "BoAdminBundle:Cancel:newform.html.twig"%}
+					{{ form_rest(form) }}
+				</div>
+				<div class="modal-footer">
+					<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+					<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<!-- end cancellation creation form by modal dialog-->
+
+	<!-- begin add substitution creation form by modal dialog-->
+	<div class="container">
+		<!-- Modal -->
+		<div class="modal fade" id="add_substitution" role="dialog">
+			<div class="modal-dialog">
+			
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">{{'label.addschedule'|trans([],'BoAdminBundle')}}</h4>
+					</div>
+					<form action="{{ path('agenda_substitution_new',{'idagenda':schedule.id}) }}" method="post" class="style">
+						<div class="modal-body">
+							{{ form_errors(substitution_form) }}
+								{%include "BoAdminBundle:Agenda:substitutionform.html.twig"%}
+							{{ form_rest(substitution_form) }}
+						</div>
+						<div class="modal-footer">
+							<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+						</div>
+					</form>	
+				</div>
+			  
+			</div>
+		</div>
+	</div>
+	<!-- end substitution creation form by modal dialog-->	
+
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

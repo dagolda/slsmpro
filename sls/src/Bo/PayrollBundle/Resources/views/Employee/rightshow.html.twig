@@ -1,0 +1,80 @@
+<div class="employee-identity">{{ employee.firstname }} {{ employee.name }}</div>
+<div class="employee-status">{% if employee.status %}{{ employee.status }}{%endif%}</div>
+    <table>
+        <tbody>
+            <tr>		
+				<th>Id:</th>
+				<td>{{ employee.id }}</td>
+            </tr>
+			{% if employee.email %}
+            <tr>		
+				<th>Email:</th>
+				<td>{{ employee.email }}</td>
+            </tr>
+			{%endif%}
+			{% if teacher[0] is defined and teacher[0].typecontract and teacher[0].typecontract|length>0 %}
+            <tr>
+                <th>Qualification:</th>
+                <td>
+					{%for tc in teacher[0].typecontract%}
+						{{ tc.reference }}-
+					{%endfor%}
+				</td>
+            </tr>
+			{%endif%}
+			{% if teacher[0] is defined and teacher[0].language %}
+            <tr>
+				<th>Language:</th>			
+				<td>{{ teacher[0].language }}</td>
+            </tr>
+			{%endif%}
+			{%if employee.homenumber %}
+            <tr>
+                <th>Home number:</th>
+                <td>{{ employee.homenumber }}</td>
+            </tr>
+			{% endif %}
+			{%if employee.cellnumber %}
+			<tr>
+				<th>Cell number:</th>
+                <td>{{ employee.cellnumber }}</td>
+            </tr>
+			{% endif %}
+			{%if employee.address1 %}
+            <tr>
+                <th>Address 1:</th>
+                <td>{{ employee.address1 }}</td>
+            </tr>
+			{% endif %}
+			{%if employee.address2 %}
+            <tr>
+				<th>Address 2:</th>
+                <td>{{ employee.address2 }}</td>
+            </tr>
+			{% endif %}
+			{%if teacher[0] is defined and teacher[0].categoryteacher %}
+            <tr>               
+				<th>Category:</th>
+				<td>{{ teacher[0].categoryteacher }}</td>            
+            </tr>
+			{% endif %}
+			{% if employee.birthdate %}
+            <tr>
+                <th>Birthdate:</th>
+                <td>{{ employee.birthdate|date('Y-m-d') }}</td>               
+            </tr>
+			{% endif %}
+			{% if employee.hiringdate %}
+            <tr>
+                <th>Hiring date:</th>
+                <td>{{ employee.hiringdate|date('Y-m-d') }}</td>
+            </tr>
+			{% endif %}
+			{% if employee.creationdate %}
+            <tr>
+				<th>Creation date:</th>
+				<td>{{ employee.creationdate|date('Y-m-d H:i:s') }}</td>               
+            </tr>
+			{% endif %}
+        </tbody>
+    </table>

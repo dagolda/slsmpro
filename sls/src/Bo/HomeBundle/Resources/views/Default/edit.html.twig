@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'admin.default.home'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoHomeBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>{{'admin.default.home'|trans([],'BoAdminBundle')}} >> {{'title.useredit'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('bo_home_edit') }}" method="post" class="style">
+			{{ form_errors(edit_form) }}
+			{%include "BoHomeBundle:Default:editactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoHomeBundle:Default:editform.html.twig"%}
+			</div>
+			{{ form_rest(edit_form) }}
+		</form>	
+	</div>
+{% endblock %}

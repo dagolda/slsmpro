@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:tools.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>Rights edit</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('rights_edit',{'id':right.id}) }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoUserBundle:Rights:righteditactions.html.twig"%}
+			<div class="display_content">
+				<legend>Rights</legend>
+				{%include "BoUserBundle:Rights:righteditform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+absences_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Absences:index" }
+    methods:  GET
+absences_employee_index:
+    path:     /employee/
+    defaults: { _controller: "BoAdminBundle:Absences:foremployee" }
+    methods:  GET
+absences_employee_day:
+    path:     /employee/today/
+    defaults: { _controller: "BoAdminBundle:Absences:employeeday" }
+    methods:  GET
+absences_employee_search:
+    path:     /employee/search/
+    defaults: { _controller: "BoAdminBundle:Absences:empsearch" }
+    methods:  GET
+absences_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdminBundle:Absences:page" }
+absences_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Absences:show" }
+    methods:  GET
+absences_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Absences:new" }
+    methods:  [GET, POST]
+absences_new_employee:
+    path:     /new/for/employee/
+    defaults: { _controller: "BoAdminBundle:Absences:newforemployee" }
+    methods:  [GET, POST]
+absences_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Absences:edit" }
+    methods:  [GET, POST]
+absences_employee_show:
+    path:     /{id}/employee/show
+    defaults: { _controller: "BoAdminBundle:Absences:showforemployee" }
+    methods:  GET
+absences_employee_edit:
+    path:     /{id}/employee/edit
+    defaults: { _controller: "BoAdminBundle:Absences:editforemployee" }
+    methods:  [GET, POST]
+absences_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Absences:search" }
+    methods:  [GET, POST]
+absences_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Absences:pagesearch" }
+    methods:  [GET, POST]
+absences_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Absences:delete" }
+    methods:  DELETE

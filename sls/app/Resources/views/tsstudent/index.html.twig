@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TsStudent list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Legende</th>
+                <th>Status</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tsStudent in tsStudents %}
+            <tr>
+                <td><a href="{{ path('tsstudent_show', { 'id': tsStudent.id }) }}">{{ tsStudent.id }}</a></td>
+                <td>{{ tsStudent.legende }}</td>
+                <td>{{ tsStudent.status }}</td>
+                <td>{% if tsStudent.creationdate %}{{ tsStudent.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('tsstudent_show', { 'id': tsStudent.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('tsstudent_edit', { 'id': tsStudent.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tsstudent_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

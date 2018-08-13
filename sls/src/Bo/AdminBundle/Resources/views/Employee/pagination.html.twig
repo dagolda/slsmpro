@@ -1,0 +1,43 @@
+	<form action="{{ path('employee_xls') }}" method="post" }} >
+		<table width="100%">
+			<tr>
+				<td class="sty-label">Page:</td>
+				<td class="page_first">
+					<a href="{{ path('employee_page', {'option': 1}) }}" title="{{'label.firstpage'|trans([],'BoAdminBundle')}}">
+						<img src="{{ asset('images/actions/first.gif') }}"/>
+					</a>
+				</td>
+				<td>
+					<a href="{{ path('employee_page', {'option': 2}) }}" title="{{'label.previouspage'|trans([],'BoAdminBundle')}}">
+						<img src="{{ asset('images/actions/prev.gif') }}" />
+					</a>
+				</td>
+				<td><select id="idpage" name="idpage">{%for i in range(1,nb_pages)%}<option value="{{i}}" {%if i==page%}selected="selected"{%endif%}>{{i}}</option>{%endfor%}</select>/{{nb_pages}}
+				</td>
+				<td>
+					<a href="{{ path('employee_page', {'option': 3}) }}" title="{{'label.nextpage'|trans([],'BoAdminBundle')}}">
+						<img src="{{ asset('images/actions/next.gif') }}"/>
+					</a>
+				</td>
+				<td>
+					<a href="{{ path('employee_page', {'option': nb_pages}) }}" title="{{'label.lastpage'|trans([],'BoAdminBundle')}}">
+						<img src="{{ asset('images/actions/last.gif') }}"/>
+					</a>
+				</td>
+				<td width="20">&nbsp;</td>
+				<td class="sty_label">{% include "BoAdminBundle:Employee:selecttype.html.twig" %}</td>
+				<td width="20">&nbsp;</td>
+				<td class="sty_label">{% include "BoAdminBundle:Employee:selectstatus.html.twig" %}</td>
+				<td width="20">&nbsp;</td>
+				<td class="sty_label">{% include "BoAdminBundle:Employee:savailability.html.twig" %}</td>
+				<td width="20">&nbsp;</td>
+				<td class="sty_label">{% include "BoAdminBundle:Employee:selectlangage.html.twig" %}</td>
+				<td width="20">&nbsp;</td>
+				<td class="sty_label">{% include "BoAdminBundle:Employee:selectsexe.html.twig" %}</td>
+				<td width="20">&nbsp;</td>
+				<td class="sty_label">{% include "BoAdminBundle:Employee:selectoption.html.twig" %}</td>
+				<td width="20">&nbsp;</td>
+				<td class="extract_btn"><button type="submit"><img src="{{ asset('images/actions/xls.gif') }}" /></button></td>	
+			</tr>
+		</table>
+	</form>

@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ModelTs</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ modelT.id }}</td>
+            </tr>
+            <tr>
+                <th>Monday</th>
+                <td>{% if modelT.monday %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Tuesday</th>
+                <td>{% if modelT.tuesday %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Wednesday</th>
+                <td>{% if modelT.wednesday %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Thursday</th>
+                <td>{% if modelT.thursday %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Friday</th>
+                <td>{% if modelT.friday %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Saturday</th>
+                <td>{% if modelT.saturday %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Startam</th>
+                <td>{% if modelT.startam %}{{ modelT.startam|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Endam</th>
+                <td>{% if modelT.endam %}{{ modelT.endam|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Startpm</th>
+                <td>{% if modelT.startpm %}{{ modelT.startpm|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Endpm</th>
+                <td>{% if modelT.endpm %}{{ modelT.endpm|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Hour</th>
+                <td>{{ modelT.hour }}</td>
+            </tr>
+            <tr>
+                <th>Creationdate</th>
+                <td>{% if modelT.creationdate %}{{ modelT.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('modelts_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('modelts_edit', { 'id': modelT.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

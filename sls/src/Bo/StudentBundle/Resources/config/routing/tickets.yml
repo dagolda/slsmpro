@@ -1,0 +1,16 @@
+student_tickets_index:
+    path:     /
+    defaults: { _controller: "BoStudentBundle:Tickets:index" }
+    methods:  GET
+student_tickets_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoStudentBundle:Tickets:show" }
+    methods:  GET
+student_tickets_new:
+    path:     /new
+    defaults: { _controller: "BoStudentBundle:Tickets:new" }
+    methods:  [GET, POST]
+student_tickets_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoStudentBundle:Tickets:edit" }
+    methods:  [GET, POST]

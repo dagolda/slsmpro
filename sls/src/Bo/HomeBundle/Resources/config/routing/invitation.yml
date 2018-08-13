@@ -1,0 +1,17 @@
+home_invitation_index:
+    path:     /
+    defaults: { _controller: "BoHomeBundle:Invitation:index" }
+    methods:  GET
+home_invitation_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoHomeBundle:Invitation:show" }
+    methods:  GET
+home_invitation_accept:
+    path:     /{id}/accept
+    defaults: { _controller: "BoHomeBundle:Invitation:accept" }
+    methods:  GET
+home_invitation_reject:
+    path:     /{id}/reject
+    defaults: { _controller: "BoHomeBundle:Invitation:reject" }
+    methods:  GET
+

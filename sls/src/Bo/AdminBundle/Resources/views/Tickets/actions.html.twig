@@ -1,0 +1,24 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td class="form-group">
+						<input type="text" class="form-control" id="inp-search">
+					</td>
+					<td><button type="submit" id="btn-search">{{'action.search'|trans([],'BoAdminBundle')}}</button></td>
+					<!--td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_ticket">{{'action.add'|trans([],'BoAdminBundle')}}</button>
+					</td-->
+					<td class="list_link">
+						<a href="{{ path('tickets_index') }}">{{'title.list'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td>
+						<a href="{{ path('ticketcontacts_index') }}">{{'label.contacts'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<!--td>
+						<a href="{{ path('tickettype_index') }}">{{'label.type'|trans([],'BoAdminBundle')}}</a>
+					</td-->
+				</tr>
+			</table>		
+		</div>
+	</div>	

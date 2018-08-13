@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Pdf</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pdf.id }}</td>
+            </tr>
+            <tr>
+                <th>Path</th>
+                <td>{{ pdf.path }}</td>
+            </tr>
+            <tr>
+                <th>Datecreation</th>
+                <td>{% if pdf.datecreation %}{{ pdf.datecreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pdf_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('pdf_edit', { 'id': pdf.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

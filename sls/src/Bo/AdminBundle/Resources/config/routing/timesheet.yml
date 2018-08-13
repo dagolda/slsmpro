@@ -1,0 +1,31 @@
+timesheet_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Timesheet:index" }
+    methods:  GET
+timesheet_newbysearch:
+    path:     /{idcontract}/newbysearch
+    defaults: { _controller: "BoAdminBundle:Timesheet:newbysearch" }
+timesheet_contractsearch:
+    path:     /contractsearch/
+    defaults: { _controller: "BoAdminBundle:Timesheet:contractsearch" }
+    methods:  POST
+timesheet_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Timesheet:show" }
+    methods:  GET
+timesheet_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Timesheet:new" }
+    methods:  [GET, POST]
+timesheet_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Timesheet:edit" }
+    methods:  [GET, POST]
+timesheet_addmany:
+    path:     /new/many/
+    defaults: { _controller: "BoAdminBundle:Timesheet:addmany" }
+    methods:  [GET, POST]
+timesheet_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Timesheet:delete" }
+    methods:  DELETE

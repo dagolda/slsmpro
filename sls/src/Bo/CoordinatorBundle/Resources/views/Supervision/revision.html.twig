@@ -1,0 +1,38 @@
+    <table class="table table-bordered records_list2">
+        <thead>
+            <tr>
+				<th>{{'label.amendment'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.reference'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.authorizeddate'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.hoursbefore'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hour'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hourafter'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.hourlyrate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.costbefore'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.totalcost'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+			{% for revision in revisions %}
+				<tr>
+					<td>{%if revision.amendment %}{{ revision.amendment }}{%else%}---{%endif%}</td>
+					<td>{%if revision.reference %}{{ revision.reference }}{%else%}---{%endif%}</td>
+					<td>{% if revision.authorizeddate %}{{ revision.authorizeddate|date('Y-m-d') }}{% endif %}</td>
+					<td>{%if revision.hoursbefore %}{{ revision.hoursbefore }}{%else%}---{%endif%}</td>
+					<td>{%if revision.hour %}{{ revision.hour }}{%else%}---{%endif%}</td>
+					<td>{%if revision.hourafter %}{{ revision.hourafter }}{%else%}---{%endif%}</td>
+					<td>{%if revision.hourlyrate and revision.hourlyrate!=0 %}{{ revision.hourlyrate }}{%else%}---{%endif%}</td>
+					<td>{%if revision.costbefore %}{{ revision.costbefore|number_format(0, '', ' ') }}{%else%}---{%endif%}</td>
+					<td>{%if revision.total %}{{ revision.costafter|number_format(0, '', ' ') }}{%else%}---{%endif%}</td>
+					<td>{% if revision.enddate %}{{ revision.enddate|date('Y-m-d') }}{% endif %}</td>
+					<td class="list-action">
+					{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].creation==1 and (contract.status==1 or contract.status==2)%}
+						<a href="{{ path('revision_edit', { 'id': revision.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+						<a href="{{ path('revision_remove', { 'id': revision.id }) }}">{{'action.remove'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+					</td>
+				</tr>
+			{% endfor %}
+        </tbody>
+    </table>

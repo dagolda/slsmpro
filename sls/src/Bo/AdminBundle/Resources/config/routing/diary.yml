@@ -1,0 +1,32 @@
+diary_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Diary:index" }
+    methods:  GET
+
+diary_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Diary:show" }
+    methods:  GET
+
+diary_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Diary:new" }
+    methods:  [GET, POST]
+
+diary_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Diary:edit" }
+    methods:  [GET, POST]
+
+diary_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Diary:delete" }
+    methods:  DELETE
+diary_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Diary:search" }
+    methods:  [GET, POST]
+diary_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Diary:pagesearch" }
+    methods:  [GET, POST]

@@ -1,0 +1,43 @@
+payroll_employee_index:
+    path:     /
+    defaults: { _controller: "BoPayrollBundle:Employee:index" }
+    methods:  GET
+payroll_employee_list:
+    path:     /list/
+    defaults: { _controller: "BoPayrollBundle:Employee:list" }
+    methods:  GET
+payroll_employee_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoPayrollBundle:Employee:page" }
+payroll_employee_show:
+    path:     /{id}/show/
+    defaults: { _controller: "BoPayrollBundle:Employee:show" }
+    methods:  GET
+payroll_employee_contractshow:
+    path:     /{id}/contract/show/
+    defaults: { _controller: "BoPayrollBundle:Employee:contractshow" }
+    methods:  GET
+payroll_employee_many:
+    path:     /{id}/show/many/
+    defaults: { _controller: "BoPayrollBundle:Employee:many" }
+    methods:  GET
+payroll_employee_allgenerate:
+    path:     /generate/bycontract/
+    defaults: { _controller: "BoPayrollBundle:Employee:cgenerate" }
+    methods:  [GET, POST]
+payroll_employee_tgenerate:
+    path:     /generate/byteacher/
+    defaults: { _controller: "BoPayrollBundle:Employee:tgenerate" }
+    methods:  [GET, POST]
+payroll_employee_generate:
+    path:     /generate/
+    defaults: { _controller: "BoPayrollBundle:Employee:generate" }
+    methods:  [GET, POST]
+payroll_employee_search:
+    path:  /search/
+    defaults: { _controller: "BoPayrollBundle:Employee:search" }
+    methods:  [GET, POST]
+payroll_employee_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoPayrollBundle:Employee:pagesearch" }
+    methods:  [GET, POST]

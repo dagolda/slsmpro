@@ -1,0 +1,24 @@
+typecontract_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Typecontract:index" }
+    methods:  GET
+
+typecontract_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Typecontract:show" }
+    methods:  GET
+
+typecontract_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Typecontract:new" }
+    methods:  [GET, POST]
+
+typecontract_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Typecontract:edit" }
+    methods:  [GET, POST]
+
+typecontract_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Typecontract:delete" }
+    methods:  DELETE

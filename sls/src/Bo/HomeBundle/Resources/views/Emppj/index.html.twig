@@ -1,0 +1,75 @@
+{% extends 'home2.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.mydocuments'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoHomeBundle:Default:document.html.twig"%}{% endblock %}
+{% block nav %}{%if employee!=null%}{%include "BoHomeBundle:Contracts:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>{{'entity.mydocuments'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoHomeBundle:Emppj:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div id="content-liste">
+		{%include "BoHomeBundle:Emppj:tbliste.html.twig"%}
+	</div>
+	
+	<!-- Begin employee document deleting -->
+	{%for epj in epjs%}
+		<div class="container">
+		  <!-- Modal -->
+		  <div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+			
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+				</div>
+				<div class="modal-body">
+				  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+				</div>
+				<div class="modal-footer">
+					{{ form_start(epjs_delete_form[epj.id]) }}
+						<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+					{{ form_end(epjs_delete_form[epj.id]) }}
+				</div>
+			  </div>
+			  
+			</div>
+		  </div>
+		</div>
+	{%endfor%}
+	<!-- End employee document deleting -->
+	
+	<div class="container">
+		<!-- Modal -->
+		<div class="modal fade" id="add_epj" role="dialog">
+			<div class="modal-dialog">
+			
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				  <h4 class="modal-title">{{'label.addmessage'|trans([],'BoAdminBundle')}}</h4>
+				</div>
+				<form action="{{ path('home_emppj_new') }}" enctype="multipart/form-data" method="post" class="style">
+					<div class="modal-body">
+						<div id=records_entity>
+							{{ form_errors(form) }}
+								{%include "BoHomeBundle:Emppj:newform.html.twig"%}
+							{{ form_rest(form) }}
+						</div>
+					</div>
+					<div class="modal-footer">
+						<input type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+					</div>
+				</form>	
+			  </div>
+			  
+			</div>
+		</div>
+	</div>
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

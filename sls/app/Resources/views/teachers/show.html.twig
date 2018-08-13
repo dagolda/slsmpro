@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}	
+{% block nav %}
+	{%include "BoAdminBundle:Teachers:rightshow.html.twig"%}
+{% endblock %}
+{% block label %}<h1>Teachers</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Teachers:showactions.html.twig"%}
+		<div class="display_content">
+			<legend>Security Cote</legend>
+			{%include "BoAdminBundle:Teachers:securitycote.html.twig"%}
+		</div>	
+		<br/>
+		<div class="display_content">
+			<legend>Contracts</legend>
+			{%include "BoAdminBundle:Teachers:contracts.html.twig"%}
+		</div>	
+	</div>
+{% endblock %}

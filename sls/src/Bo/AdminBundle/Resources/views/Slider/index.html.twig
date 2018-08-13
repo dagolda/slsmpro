@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.document'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'entity.document'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+    <h2>Liste des diapositives</h2>
+    <div class="clink"><a href="{{ path('admin_slider_new') }}">Ajouter une diapositives</a></div>
+	<br>
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th width="20">Id</th>
+                <th width="100">Titre 1</th>
+                <th width="100">Titre 2</th>
+                <th width="160">Message</th>
+                <th width="50">Ordre</th>
+                <th width="110">Date creation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('admin_slider_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.b1 }}</td>
+                <td>{{ entity.b2 }}</td>
+                <td>{{ entity.b3 }}</td>
+                <td>{{ entity.ordre }}</td>
+                <td>{% if entity.datecreation %}{{ entity.datecreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+				<td class="record_actions">
+					<a href="{{ path('admin_slider_show', { 'id': entity.id }) }}" title="Consulter"><img src="{{ asset('images/actions/afficher.jpg') }}" /></a>
+					<a href="{{ path('admin_slider_edit', { 'id': entity.id }) }}" title="modifier"><img src="{{ asset('images/actions/modifier.png') }}" /></a>
+				</td>
+            </tr>
+		{%else%}
+			<tr><td align="center" colspan="7">Aucune entrée de slide trouvée</td></tr>
+        {% endfor %}
+        </tbody>
+	</table>
+{% endblock %}

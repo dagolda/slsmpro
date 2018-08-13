@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:local.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>Local creation batch</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+			{%include "BoAdminBundle:Local:newbatchactions.html.twig"%}
+			{%for i in res%}
+				{{i}}
+			{%endfor%}
+	</div>
+{% endblock %}

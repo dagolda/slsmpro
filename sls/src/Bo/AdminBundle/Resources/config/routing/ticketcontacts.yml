@@ -1,0 +1,40 @@
+ticketcontacts_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:TicketContacts:index" }
+    methods:  GET
+ticketcontacts_back:
+    path:     /back/
+    defaults: { _controller: "BoAdminBundle:TicketContacts:back" }
+    methods:  GET
+ticketcontacts_psearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:TicketContacts:pagesearch" }
+    methods:  [GET, POST]
+ticketcontacts_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:TicketContacts:search" }
+    methods:  [GET, POST]
+ticketcontacts_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:TicketContacts:show" }
+    methods:  GET
+ticketcontacts_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:TicketContacts:new" }
+    methods:  [GET, POST]
+ticketcontacts_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:TicketContacts:edit" }
+    methods:  [GET, POST]
+ticketcontacts_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:TicketContacts:delete" }
+    methods:  DELETE
+ticketcontacts_employee_remove:
+    path:     /{id}/{idemployee}/employee/remove/
+    defaults: { _controller: "BoAdminBundle:TicketContacts:removeEmployee" }
+    methods:  [GET, POST]
+ticketcontacts_add_employee:
+    path:     /{id}/add/employee/
+    defaults: { _controller: "BoAdminBundle:TicketContacts:addEmployee" }
+    methods:  [GET, POST]

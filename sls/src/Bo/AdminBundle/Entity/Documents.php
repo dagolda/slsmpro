@@ -1,0 +1,443 @@
+<?php
+/*
+* Date Création: 04/10/2016
+* Auteur: N'VEKOUNOU Moise José
+* Nom fichier : Documents.php
+* Description: Documents
+*/
+namespace Bo\AdminBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+/**
+* @ORM\Entity
+ * @ORM\Table(name="adm_documents")
+ * @ORM\Entity(repositoryClass="Bo\AdminBundle\Repository\DocumentsRepository")
+* @ORM\HasLifecycleCallbacks
+*/
+class Documents
+{
+	/**
+	* @ORM\Id
+	* @ORM\Column(type="integer")
+	* @ORM\GeneratedValue(strategy="AUTO")
+	*/
+	public $id;
+		
+	/**
+	* @ORM\Column(type="string", length=255, nullable=true)
+	*/
+	public $extension;
+			
+	/**
+	* @ORM\Column(type="string", length=255)
+	*/
+	public $target;
+	
+	/**
+	* @ORM\Column(type="string", length=255)
+	*/
+	public $name;
+	
+	/**
+	* @ORM\Column(type="string", length=255, nullable=true)
+	*/
+	public $filename;
+	
+	/**
+	* @ORM\Column(type="string", length=255, nullable=true)
+	*/
+	public $path;
+	
+    /**
+     * @ORM\Column(type="string",length=1000,nullable=true)
+     */    
+    private $description;
+			
+    /**
+    * @ORM\Column(type="integer")
+    */
+	//1=created; 2=published;
+	private $status;	
+	
+    /**
+    * @ORM\Column(type="datetime")
+    */    
+	private $creationdate;
+	
+	/**
+	* @ORM\Column(type="string", length=255, nullable=true)
+	*/
+	public $createdby;
+	
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Please, upload the document file.")
+     * @Assert\File()
+     */
+	public $file;
+	
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+		$this->status=1;
+		$this->creationdate=new \DateTime();
+    }
+	
+	public function getAbsolutePath()
+	{
+		return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+	}
+	
+	public function getWebPath()
+	{
+		return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+	}
+	
+	protected function getUploadRootDir()
+	{
+		// le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+		return __DIR__.'/../../../../web/'.$this->getUploadDir();
+	}
+	protected function getUploadDir()
+	{
+		// on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+		// le document/image dans la vue.
+		return 'uploads/documents';
+	}
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Document
+     */
+    public function setName($name)
+    {
+        $this->name = $name;    
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Document
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;    
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+	
+	public function upload()
+	{
+		// la propriété « file » peut être vide si le champ n'est pas requis
+		if (null === $this->file) {
+			return;
+		}
+		// utilisez le nom de fichier original ici mais
+		// vous devriez « l'assainir » pour au moins éviter
+		// quelconques problèmes de sécurité
+		// la méthode « move » prend comme arguments le répertoire cible et
+		// le nom de fichier cible où le fichier doit être déplacé
+		$this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
+		// définit la propriété « path » comme étant le nom de fichier où vous
+		// avez stocké le fichier
+		$this->path = $this->file->getClientOriginalName();
+		// « nettoie » la propriété « file » comme vous n'en aurez plus besoin
+		$this->file = null;
+	}
+	/**
+	* @ORM\PrePersist()
+	* @ORM\PreUpdate()
+	*/
+	public function preUpload()
+	{
+		if (null !== $this->file) {
+			// faites ce que vous voulez pour générer un nom unique
+			$this->path = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+		}
+	}
+	/**
+	* @ORM\PostRemove()
+	*/
+	public function removeUpload()
+	{
+		if ($file = $this->getAbsolutePath()) {
+			unlink($file);
+		}
+	}
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     *
+     * @return Documents
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set target
+     *
+     * @param string $target
+     *
+     * @return Documents
+     */
+    public function setTarget($target)
+    {
+        $this->target = $target;
+
+        return $this;
+    }
+
+    /**
+     * Get target
+     *
+     * @return string
+     */
+    public function getTarget()
+    {
+        return $this->target;
+    }
+
+    /**
+     * Set comment
+     *
+     * @param string $comment
+     *
+     * @return Documents
+     */
+    public function setComment($comment)
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Get comment
+     *
+     * @return string
+     */
+    public function getComment()
+    {
+        return $this->comment;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     *
+     * @return Documents
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set creationdate
+     *
+     * @param \DateTime $creationdate
+     *
+     * @return Documents
+     */
+    public function setCreationdate($creationdate)
+    {
+        $this->creationdate = $creationdate;
+
+        return $this;
+    }
+
+    /**
+     * Get creationdate
+     *
+     * @return \DateTime
+     */
+    public function getCreationdate()
+    {
+        return $this->creationdate;
+    }
+
+    /**
+     * Set createdby
+     *
+     * @param string $createdby
+     *
+     * @return Documents
+     */
+    public function setCreatedby($createdby)
+    {
+        $this->createdby = $createdby;
+
+        return $this;
+    }
+
+    /**
+     * Get createdby
+     *
+     * @return string
+     */
+    public function getCreatedby()
+    {
+        return $this->createdby;
+    }
+
+    /**
+     * Set extension
+     *
+     * @param string $extension
+     *
+     * @return Documents
+     */
+    public function setExtension($extension)
+    {
+        $this->extension = $extension;
+
+        return $this;
+    }
+
+    /**
+     * Get extension
+     *
+     * @return string
+     */
+    public function getExtension()
+    {
+        return $this->extension;
+    }
+
+    /**
+     * Set filename
+     *
+     * @param string $filename
+     *
+     * @return Documents
+     */
+    public function setFilename($filename)
+    {
+        $this->filename = $filename;
+
+        return $this;
+    }
+
+    /**
+     * Get filename
+     *
+     * @return string
+     */
+    public function getFilename()
+    {
+        return $this->filename;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Documents
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set file
+     *
+     * @param string $file
+     *
+     * @return Documents
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return string
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+}

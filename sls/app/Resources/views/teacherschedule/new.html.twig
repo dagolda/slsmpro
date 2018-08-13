@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}
+{% block nav %}{%include "BoAdminBundle:Contracts:rightshow.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.teacherschedule'|trans([],'BoAdminBundle')}} >> {{'title.creation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('teacherschedule_new',{'idcontract':idcontract}) }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:TeacherSchedule:newactions.html.twig"%}
+			{%if schedules!=null%}
+				<div class="display_content">
+					<legend>{{'Teacher'|trans([],'BoAdminBundle')}} {{'label.schedule'|trans([],'BoAdminBundle')}}</legend>
+					{%include "BoAdminBundle:TeacherSchedule:tbliste.html.twig"%}
+				</div>			
+			{%endif%}
+			{%if absence!=null%}
+				<div class="display_content">
+					<legend>{{'label.availability'|trans([],'BoAdminBundle')}}/{{'label.absence'|trans([],'BoAdminBundle')}}</legend>
+					{%include "BoAdminBundle:TeacherSchedule:absence.html.twig"%}
+				</div>			
+			{%endif%}
+			<div class="show_content">
+				{%include "BoAdminBundle:TeacherSchedule:newform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

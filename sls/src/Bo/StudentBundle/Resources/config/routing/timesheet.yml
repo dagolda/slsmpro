@@ -1,0 +1,24 @@
+student_timesheet_index:
+    path:     /
+    defaults: { _controller: "BoStudentBundle:Timesheet:index" }
+    methods:  GET
+student_timesheet_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoStudentBundle:Timesheet:show" }
+    methods:  GET
+student_timesheet_validate:
+    path:     /{id}/validate
+    defaults: { _controller: "BoStudentBundle:Timesheet:validate" }
+    methods:  [GET, POST]
+student_timesheet_reject:
+    path:     /{id}/reject
+    defaults: { _controller: "BoStudentBundle:Timesheet:reject" }
+    methods:  [GET, POST]
+student_timesheet_allvalidate:
+    path:     /allvalidate
+    defaults: { _controller: "BoStudentBundle:Timesheet:allvalidate" }
+    methods:  [GET, POST]
+student_timesheet_validated:
+    path:     /validated
+    defaults: { _controller: "BoStudentBundle:Timesheet:validated" }
+    methods:  [GET, POST]

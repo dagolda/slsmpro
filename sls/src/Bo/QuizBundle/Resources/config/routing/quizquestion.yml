@@ -1,0 +1,24 @@
+quizquestion_index:
+    path:     /
+    defaults: { _controller: "BoQuizBundle:QuizQuestion:index" }
+    methods:  GET
+
+quizquestion_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoQuizBundle:QuizQuestion:show" }
+    methods:  GET
+
+quizquestion_new:
+    path:     /new
+    defaults: { _controller: "BoQuizBundle:QuizQuestion:new" }
+    methods:  [GET, POST]
+
+quizquestion_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoQuizBundle:QuizQuestion:edit" }
+    methods:  [GET, POST]
+
+quizquestion_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoQuizBundle:QuizQuestion:delete" }
+    methods:  DELETE

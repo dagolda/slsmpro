@@ -1,0 +1,14 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}-{{'label.room'|trans([],'BoAdminBundle')}} >> {{'title.empty'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:local.html.twig"%}{% endblock %}	
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'label.room'|trans([],'BoAdminBundle')}} >> {{'title.empty'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdminBundle:Local:emptyactions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div id="content-liste">
+		{%include "BoAdminBundle:Local:tbliste.html.twig"%}
+	</div>
+{% endblock %}

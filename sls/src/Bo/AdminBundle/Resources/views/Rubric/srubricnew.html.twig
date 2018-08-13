@@ -1,0 +1,14 @@
+		<form action="{{ path('subrubric_new') }}" method="post" class="style">
+			{%if form_errors(form) %}
+				<tr><td colspan="7">{{ form_errors(schedule_form) }}</td></tr>
+			{%endif%}
+            <tr>
+                <td>{{ form_widget(form.nameen) }}</td>
+                <td>{{ form_widget(form.namefr) }}</td>
+                <td>{{ form_widget(form.ordre) }}</td>
+                <td class="list-action">
+                    <button type="submit" id="btn-create">{{'action.add'|trans([],'BoAdminBundle')}}</button>
+                </td>
+            </tr>
+			{{ form_rest(form) }}
+		</form>

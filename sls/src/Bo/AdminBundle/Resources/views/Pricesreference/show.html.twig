@@ -1,0 +1,49 @@
+	<div class="employee-identity">{{'label.category'|trans([],'BoAdminBundle')}}</div>
+    <table>
+        <tbody>
+            <tr>
+                <th>Id:</th>
+				<td>{{ pricesreference.id }}</td>               
+            </tr>
+			{%if pricesreference.typecontract%}
+            <tr>				
+				<th>{{'label.contracttype'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ pricesreference.typecontract }}</td>
+            </tr>
+			{%endif%}
+				<tr>				
+					<th>{{'label.offernumber'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ pricesreference.offernumber }}</td>
+				</tr>
+			{%if pricesreference.ftorpt%}
+				<tr>				
+					<th>{{'label.ftorpt'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ pricesreference.ftorpt }}</td>
+				</tr>
+			{%endif%}
+			{%if pricesreference.privateorgroup%}
+				<tr>				
+					<th>{{'label.privateorgroup'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ pricesreference.privateorgroup }}</td>
+				</tr>
+			{%endif%}
+			{%if pricesreference.language%}
+				<tr>				
+					<th>{{'label.language'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ pricesreference.language }}</td>
+				</tr>
+			{%endif%}
+            <tr>
+                <th>{{'label.description'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ pricesreference.description }}</td>
+            </tr>
+            <tr>
+				<th>{{'label.workfield'|trans([],'BoAdminBundle')}}:</th>                
+                <td>{{ pricesreference.field }}</td>
+            </tr>
+            <tr>
+                <th>{{'label.location'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ pricesreference.location }}</td>
+            </tr>
+        </tbody>
+    </table>

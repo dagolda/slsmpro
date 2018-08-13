@@ -1,0 +1,38 @@
+    <table width="80%">
+        <tbody>
+            <tr>
+				<th width="22%">{{'label.motif'|trans([],'BoAdminBundle')}}</th>  
+                <th width="22%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="22%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+				<th width="22%">{{'label.numberday'|trans([],'BoAdminBundle')}}</th>  				
+            </tr>
+            <tr>
+                <td>{{ absence.motif }}</td>
+                <td>{% if absence.startdate %}{{ absence.startdate|date('Y-m-d') }}{% endif %}</td>
+				<td>{% if absence.enddate %}{{ absence.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ absence.numberday }}</td>  
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+				<th>{{'label.amorpm'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+                <th colspan="3">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+				<td>{{ absence.amorpm }}</td>			
+                <td>{%if absence.status==1 %}Submitt{%elseif absence.status==4%}Validated{%elseif absence.status==3%}rejected{%endif%}</td>
+                <td colspan="3">{% if absence.creationdate %}{{ absence.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+			{%if absence.comment%}
+            <tr>
+                <th colspan="4">Comment</th>
+            </tr>
+            <tr>
+                <td colspan="4">{{ absence.comment }}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+			{%endif%}
+        </tbody>
+    </table>
+	<br/>

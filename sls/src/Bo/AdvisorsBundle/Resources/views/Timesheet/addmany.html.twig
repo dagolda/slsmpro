@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- Timesheet creation{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}	{%if employee!=null%}{%include "BoAdminBundle:User:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>Timesheet creation</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('dash_timesheet_addmany') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdvisorsBundle:Timesheet:addmanyactions.html.twig"%}
+			<div class="show_content">
+				{%include "BoAdvisorsBundle:Timesheet:addmanyform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#btn-create").click(function(){
+				var str=$("#idgroup option:selected");
+				idgroup=str.val();
+				var str=$(".typeclass option:selected");
+				type=str.val();
+				var str=$("#idstudent option:selected");
+				idstudent=str.val();
+				if(type=='Teaching' && idgroup=="0" && idstudent=="0"){
+					alert("One of the two fields group or student must not be empty!");
+					return false;
+				}				
+				return true;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

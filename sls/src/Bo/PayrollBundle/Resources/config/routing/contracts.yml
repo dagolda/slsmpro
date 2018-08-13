@@ -1,0 +1,40 @@
+payroll_contracts_index:
+    path:     /
+    defaults: { _controller: "BoPayrollBundle:Contracts:index" }
+    methods:  GET
+payroll_contracts_list:
+    path:     /list/
+    defaults: { _controller: "BoPayrollBundle:Contracts:list" }
+    methods:  GET
+payroll_contracts_gencontts:
+    path:     /generate/contts/
+    defaults: { _controller: "BoPayrollBundle:Contracts:generateforcontract" }
+    methods:  GET
+payroll_contracts_gengroupts:
+    path:     /generate/groupts/
+    defaults: { _controller: "BoPayrollBundle:Contracts:generateforgroup" }
+    methods:  GET
+payroll_contracts_today:
+    path:     /today/
+    defaults: { _controller: "BoPayrollBundle:Contracts:today" }
+    methods:  GET
+payroll_contracts_group:
+    path:     /today/group/
+    defaults: { _controller: "BoPayrollBundle:Contracts:group" }
+    methods:  GET
+payroll_contracts_show:
+    path:     /{id}/today/contracts/show/
+    defaults: { _controller: "BoPayrollBundle:Contracts:show" }
+    methods:  GET
+payroll_group_show:
+    path:     /{id}/today/group/show/
+    defaults: { _controller: "BoPayrollBundle:Contracts:groupshow" }
+    methods:  GET
+payroll_contracts_allgenerate:
+    path:     /generate/all/
+    defaults: { _controller: "BoPayrollBundle:Contracts:allgenerate" }
+    methods:  [GET, POST]
+payroll_contracts_generate:
+    path:     /generate/
+    defaults: { _controller: "BoPayrollBundle:Contracts:generate" }
+    methods:  [GET, POST]

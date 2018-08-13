@@ -1,0 +1,11 @@
+{% extends 'student.html.twig' %}
+{% block title %}{{parent()}}- Activities{% endblock %}
+{% block smenu %}{%include "BoStudentBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>User Activities</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoStudentBundle:Activities:showactions.html.twig"%}
+		{%include "BoStudentBundle:Activities:show.html.twig"%}
+	</div>
+{% endblock %}

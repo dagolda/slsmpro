@@ -1,0 +1,19 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['ACCOUNTING']['TS Validation'] is defined and app.session.get('rights')['ACCOUNTING']['TS Validation'].liste==1%}	
+					<td>
+						<a href="{{ path('payroll_employee_index') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>	
+					<td><button type="submit">{{'action.generate'|trans([],'BoAdminBundle')}} TS</button></td>					
+					<td class="total_number">
+						<button type="button" class="btn btn-primary">
+							Total contracts <span class="badge">{{total|number_format(0,""," ")}}</span>
+						</button>
+					</td>
+				{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

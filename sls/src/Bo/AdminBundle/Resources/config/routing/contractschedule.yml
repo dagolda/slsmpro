@@ -1,0 +1,24 @@
+contractschedule_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:ContractSchedule:index" }
+    methods:  GET
+
+contractschedule_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:ContractSchedule:show" }
+    methods:  GET
+
+contractschedule_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:ContractSchedule:new" }
+    methods:  [GET, POST]
+
+contractschedule_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:ContractSchedule:edit" }
+    methods:  [GET, POST]
+
+contractschedule_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:ContractSchedule:delete" }
+    methods:  DELETE

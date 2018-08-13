@@ -1,0 +1,25 @@
+			<table width="100%">
+				<tr>
+					<td>					
+						<select name='holders' id='holders' required="true">
+							<option value="0" selected="delected">Select holder</option>
+							{%for holder in holderlist%}
+								<option value="{{holder.id}}" {%if idholder is defined and holder.id ==idholder%}selected='selected'{%endif%}>{{holder.firstname}} {{holder.name}}</option>
+							{%endfor%}
+						</select>		
+					</td>
+					<td>
+						<select name='substitute' id='substitute' required="true">
+							<option value="0" selected="delected">Select substitute</option>
+							{%for teacher in subslist%}
+								<option value="{{teacher.id}}" {%if idteacher is defined and teacher.id==idteacher%}selected='selected'{%endif%}>{{teacher.firstname}} {{teacher.name}}</option>
+							{%endfor%}
+						</select>				
+					</td>
+					<td class="sty_label">DU&nbsp;</td>
+					<td class="sty_value">{{ form_widget(ccd_form.startdate, {'attr' : {'class' : 'start span3'}}) }}</td>
+					<td width="25">&nbsp;</td>
+					<td class="sty_label">AU&nbsp;</td>
+					<td class="sty_value">{{ form_widget(ccd_form.enddate, {'attr' : {'class' : 'endamclass span3'}}) }}</td>	
+				</tr>
+			</table>

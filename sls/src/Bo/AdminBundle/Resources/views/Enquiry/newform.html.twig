@@ -1,0 +1,68 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="40%" class="sty_label">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+			<th width="40%" class="sty_label">{{'label.firstname'|trans([],'BoAdminBundle')}}</th>
+			<th width="40%" class="sty_label">{{'label.email'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.name) }}</td>
+			<td>{{ form_widget(form.firstname) }}</td>	
+			<td>{{ form_widget(form.email) }}</td>				
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.phone'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.targetlevel'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.ftorpt'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.phonenumber) }}</td>			
+			<td>{{ form_widget(form.targetlevel) }}</td>	
+			<td>{{ form_widget(form.ftorpt) }}</td>					
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.targetlanguage'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.privateorgroup'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.gouvemp'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.language) }}</td>			
+			<td>{{ form_widget(form.privateorgroup) }}</td>	
+			<td>{{ form_widget(form.gouvemp) }}</td>					
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.schedule'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.traininglocation'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.hours'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.schedule) }}</td>			
+			<td>{{ form_widget(form.location) }}</td>	
+			<td>{{ form_widget(form.hours) }}</td>					
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.workon'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.workon) }}</td>
+			<td>{{ form_widget(form.startdate) }}</td>				
+			<td>{{ form_widget(form.enddate) }}</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label">{{'label.contact'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.phonecontact'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.emailcontact'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.contact) }}</td>
+			<td>{{ form_widget(form.phonecontact) }}</td>	
+			<td>{{ form_widget(form.emailcontact) }}</td>				
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+	</table>

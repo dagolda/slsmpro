@@ -1,0 +1,47 @@
+bo_student_homepage:
+    path:     /
+    defaults: { _controller: BoStudentBundle:Default:index }
+    schemes: [https]
+bo_student_teamcontact:
+    path:     /team/admin/
+    defaults: { _controller: BoStudentBundle:Default:teamcontact }
+    schemes: [https]
+bo_student_contract:
+    path:     /contract/
+    defaults: { _controller: BoStudentBundle:Default:contract }
+    schemes: [https]
+bo_student_teamcontact_search:
+    path:     /teamadmin/search/
+    defaults: { _controller: BoStudentBundle:Default:contactsearch }
+    schemes: [https]
+bo_student_edit:
+    path:     /account/edit
+    defaults: { _controller: "BoStudentBundle:Default:edit" }
+bo_student_language:
+    path:     /{_locale}/language/
+    defaults: { _controller: BoStudentBundle:Default:language }
+    methods:  [GET, POST]
+    schemes: [https]
+    requirements:
+        _locale: en|fr   
+bo_student_tsstudent:
+    resource: "@BoStudentBundle/Resources/config/routing/tsstudent.yml"
+    prefix:   /tsstudent/
+bo_student_timesheet:
+    resource: "@BoStudentBundle/Resources/config/routing/timesheet.yml"
+    prefix:   /timesheet/
+bo_student_absences:
+    resource: "@BoStudentBundle/Resources/config/routing/absences.yml"
+    prefix:   /absences/
+bo_student_activities:
+    resource: "@BoStudentBundle/Resources/config/routing/activities.yml"
+    prefix:   /activities/
+bo_student_message:
+    resource: "@BoStudentBundle/Resources/config/routing/message.yml"
+    prefix:   /message/
+bo_student_tickets:
+    resource: "@BoStudentBundle/Resources/config/routing/tickets.yml"
+    prefix:   /tickets/
+bo_student_test:
+    path:     /test/
+    defaults: { _controller: BoStudentBundle:Default:test }

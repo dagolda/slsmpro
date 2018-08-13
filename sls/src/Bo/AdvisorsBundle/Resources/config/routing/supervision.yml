@@ -1,0 +1,32 @@
+dash_supervision_index:
+    path:     /{status}/index/
+    defaults: { _controller: "BoAdvisorsBundle:Supervision:index" }
+    methods:  GET
+dash_supervision_list:
+    path:     /{status}/list/
+    defaults: { _controller: "BoAdvisorsBundle:Supervision:contracts" }
+    methods:  GET
+dash_supervision_page:
+    path:     /{option}/page/
+    defaults: { _controller: "BoAdvisorsBundle:Supervision:page" }
+dash_supervision_contract_show:
+    path:     /{id}/contract/show
+    defaults: { _controller: "BoAdvisorsBundle:Supervision:showcontract" }
+    methods:  GET
+dash_supervision_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdvisorsBundle:Supervision:pagesearch" }
+    methods:  [GET, POST]
+dash_supervision_group:
+    path:     /{id}/group
+    defaults: { _controller: "BoAdvisorsBundle:Supervision:group" }
+    methods:  GET
+dash_supervision_teachers:
+    path:     /teachers
+    defaults: { _controller: "BoAdvisorsBundle:Supervision:teachers" }
+    methods:  [GET, POST]
+dash_supervision_students:
+    path:     /{id}/students
+    defaults: { _controller: "BoAdvisorsBundle:Supervision:students" }
+    methods:  [GET, POST]
+

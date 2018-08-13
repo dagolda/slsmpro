@@ -1,0 +1,67 @@
+'no notification found': 'aucune notification trouvée.'
+'No data found': 'Aucune données trouvées.'
+'No data found in database': 'Aucune données trouvées.'
+'You must enter a comment': 'Vous devez saisir un commentaire.'
+'Can not create this data. It already exist': 'Impossible de créer cette donnée.Elle semble exister déja dans la base de données.'
+'Can not close this contracts': 'Impossible de fermer ce contrat.'
+'Can not update this contract': "Impossible d'ajouter une note au contrat"
+'This enquiry is processed succefully': 'Ce renseignement a été traité avec succès.'
+'The system can not process this enquiry': 'Le système ne peut pas traiter ce renseignement.'
+'No teacher is found': "Aucun enseignant trouvé. Vérifier si vous en avez sélectionné un."
+'A student already exists under this identity. Click on select button to add it to the contract': "Un apprenant existe déjà sous ce nom et ce prénom. Cliquer sur Choisir pour l'ajouter au contrat."
+'A substitution already exists for this teacher and this date': "Un remplacement existe déjà pour cet enseignant et cette date."
+'SLS can not delete this group': "SLS ne peut pas supprimer ce groupe. Contactez l'administrateur du système."
+'The timesheet hour is null': "Le champ de l'heure de la feuille de temps est null."
+'The timesheet times given are not valids': "Les temps de la feuille de temps ne sont pas corrects."
+'Thank you to click the [Confirm] button to validate all': "Merci de cliquer sur le bouton [Confirm] pour valider ces feuilles de temps."
+'Thank you to click the [Confirm] button to validate': "Merci de cliquer sur le bouton [Confirm] pour valider cette feuille de temps."
+'Those timesheets are validated successfully': "Les feuilles de temps ci-après sont validées avec succès:"
+'validated': "Validé"
+'submitted': "Soumis"
+'pending validation': "Validation"
+'rejected': "Rejeté"
+'payroll traitement': "Paie"
+'paid': "Payé"
+'billing': "Facturation"
+'Confirmation is sent for the contract': "La confirmation est envoyée pour ce contrat"
+'Can not sent confirmation': "Impossible d'envoyer la confirmation"
+'This contract has been reopened successfully': "Le contrat est reouvert avec succès"
+'This contract has been updated successfully': "Le contrat a été mis à jour avec succès"
+'Something is wrong. Please contact the system administrator': "Impossible d'exécuter votre requête. Contactez l'administrateur du système."
+'Login timeout expired': "Temps de connexion expiré"
+'Unable to find the specified contract': "Impossible de trouver le contrat indiqué."
+'Timesheets are created successfully': "Les feuilles de temps sont créées avec succès"
+'Something is broken. Please let us know what you were doing when this error occurred. We will fix it as soon as possible. Sorry for any inconvenience caused.': "Quelque chose ne marche pas bien. S'il vous plait, laissez-nous savoir ce que vous faisiez avant d'avoir ce problème. Nous allons faire le nécessaire pour corriger cette anomalie. Désolé pour ce contre-temps."
+'The pedagogical advisor is added to the contract': "Un conseiller pédagogique a été ajouté au contrat"
+'Request executed successfully': "La requête a été exécutée avec succès"
+'Welcome page already exists for this account': "Une page d'accueil existe déjà pour ce compte"
+'Course time can not be found. Please contact the payroll manager.': "Impossible de trouver l'heure du cours. Contactez le gestionnaire de la paie"
+'This contract is a group contract. You have to choose a group before adding a teacher or a room': This contract is a group contract. You ,ust choose a group before adding a teacher or a room.
+'This room is already occupied by this group': "Cette salle de classe est déjà occupée par ce groupe"
+'This room is already occupied by this contract': "Cette salle de calsse est déjà occupée par ce contrat"
+'A timesheet already exists for this date': "Une feuille de temps existe déjà pour cette date pour vous."
+'unable to create a login for this employee. This account already exist' : "Impossible de créer cet employé. Il existe déjà dans la base de donnée"
+'Disease': Maladie
+'Family emergency': Urgence familiale
+'Family problem': Problème familial
+'Personal reason': Raison personnelle
+'Other': Other
+'The contract type is not defined this request. Impossible to create the proposal price': "Vous devez saisir un type de contrat pour cette demande avant la création de la proposition de prix."
+'The work field is not defined this request. Impossible to create the proposal price': "Vous devez saisir un champ de travail pour cette demande NMSO avant la création de la proposition de prix."
+'The hours number is not defined for this request. Impossible to create the proposal price': "Vous devez saisir le nombre d'heures pour cette demande avant la création de la proposition de prix."
+'An absence is already created for the this employee and for this date': "Une absences est déjà créée pour cet employee et pour cette date"
+'An absence already exists for you and for this date': "Une absences existe déjà pour vous et pour cette date"
+'Some timesheet are already created for you, so you can not create absence for this date': "Des feuilles de temps sont déjà créées, impossible de créer d'absence pour cette date"
+'A secury cote already exists for the this employee': "Une cote de sécurité existe déjà pour cet employé"
+'Can not add a teacher': "Vous devez saisir les horaires de formation avant d'ajouter un professeur"
+'Teacher not avalaible': "Le professeur choisi n'est pas disonible"
+'You must select a student': "Vous devez sélectionner un appreanant"
+'Can not create this absence': "Impossible de créer cette absence.Contactez l'administrateur du système."
+'Unable to update this timesheet': "Impossible de mettre à jour cette feuille de temps."
+'Hour per day is different the total of AM and PM hours': "L'heure par jour est différente au total des heures de formation."
+'An error occured while logging in to your account. Please contact the system administrator with this code': "Une erreur est survenue en se connectant à votre compte. Contactez s'il vous plait l'administrateur du système avec le code"
+'Some questions did not receive any response': "Une ou plusieurs questions n'ont pas eu de réponses"
+'Your validation has been saved successfully': "Votre validation a bien été prise en compte"
+'The schedules entered are not correct': "Les horaires saisis sont incorrects"
+'Schedule startdate can not be equal to or greater than the end date!': "La date du début entrée ne peut pas etre égale ni supérieure à la date de fin!"
+'The name entered already exists': "Le nom entré existe déjà"

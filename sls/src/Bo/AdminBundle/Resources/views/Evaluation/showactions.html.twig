@@ -1,0 +1,59 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					{%if app.session.get('rights')['ADMINISTRATION']['Evaluation'] is defined and app.session.get('rights')['ADMINISTRATION']['Evaluation'].ddelete==1%}
+						<td>
+							<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#myModal">{{'action.delete'|trans([],'BoAdminBundle')}}</button>
+						</td>	
+					{%endif%}					
+					<td>
+						<a href="{{ path('evaluation_back',{'page':page}) }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					{%if (app.session.get('rights')['ADMINISTRATION']['Evaluation'] is defined and app.session.get('rights')['ADMINISTRATION']['Evaluation'].edit==1) or(connected==evaluation.evaluator)%}
+						<td>
+							{%if evaluation.status==1 or evaluation.status==11%}
+								<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#evaluate">{{'action.evaluate'|trans([],'BoAdminBundle')}}</button>
+							{%else%}
+								<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#edit_eval">{{'action.edit'|trans([],'BoAdminBundle')}}</button>
+							{%endif%}
+						</td>
+					{%endif%}
+					{%if evaluation.status==1 or evaluation.status==11%}
+						<td>
+							<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#editfirst_eval">{{'action.edit'|trans([],'BoAdminBundle')}}</button>
+						</td>
+					{%endif%}
+					{% if results|length>0 %}
+						<td>
+							<a href="{{ path('evaluation_evalquiz',{'id':evalquiz.id}) }}">{{'label.onlineresult'|trans([],'BoAdminBundle')}} </a>
+						</td>
+					{%endif%}
+					{%if evaluation.status==2%}
+						<td>
+							<a href="{{ path('evaluation_sendresult',{'id':evaluation.id}) }}">{{'action.send'|trans([],'BoAdminBundle')}} {{'label.result'|trans([],'BoAdminBundle')}}</a>
+						</td>
+						<!--td class="delete-action">
+							<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#remove_pdf">{{'action.removepdf'|trans([],'BoAdminBundle')}}</button>
+						</td-->
+					{%endif%}
+					{%if evaluation.confirmation!=null%}
+						<td class="total_number">
+							<button type="button" class="btn btn-primary">
+								{{'label.confirmationsent'|trans([],'BoAdminBundle')}} <span class="badge">{{evaluation.confirmation}}</span>
+							</button>
+						</td>
+					{%endif%}
+					{%if evaluation.status==1 and evaluation.confirmation==0%}
+						<td>
+							<a href="{{ path('evaluation_confirmation',{'id':evaluation.id}) }}">{{'action.sendconfirmation'|trans([],'BoAdminBundle')}}</a>
+						</td>
+					{%else%}
+						<td>
+							<a href="{{ path('evaluation_confirmation',{'id':evaluation.id}) }}">{{'action.resend'|trans([],'BoAdminBundle')}}</a>
+						</td>
+					{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

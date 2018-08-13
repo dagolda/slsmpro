@@ -1,0 +1,54 @@
+<p>Bonjour / Hello {{student.firstname}} {{student.name}},</p>
+{%if mailhead!=null%}
+	<p>
+	{{mailhead|raw}}
+	</p>
+{%endif%}
+<p>
+	{%if contract.language%}
+		<div><b>Langue / Language </b>: {{contract.language}}</div>
+	{%endif%}
+	{%if contract.startdate%}
+		<div><b>Date de D&#233;but / Start Date</b>: {{contract.startdate|date("d-m-Y")}}</div>
+	{%endif%}
+	{%if contract.enddate%}
+		<div><b>Date de Fin / End Date</b>:{{contract.enddate|date("d-m-Y")}}</div>
+	{%endif%}
+	{%if contract.hoursnumber%}
+		<div><b>Nombre d'heures / Number of hours</b>:{{contract.totalhours}}</div>
+	{%endif%}
+	{%if contract.schedule%}
+		<div><b>Horaire / Schedule</b>:{{contract.schedule}}</div>
+	{%endif%}
+	{%if contract.typecontract and contract.typecontract.reference=="Non-NMSO"%}
+		<div><b>Type de contrat  / Contract type</b>:Contrat de service / Service contract</div>
+	{%elseif  contract.typecontract and contract.workfields and (contract.workfields.wfname=="Field 1" or contract.workfields.wfname=="Field 7" or contract.workfields.wfname=="Field 8")%}
+		<div><b>Type de contrat  / Contract type</b>:{{contract.typecontract.reference}} {{contract.workfields.wfname}}</div>		
+	{%endif%}
+	{%if contract.step%}
+		<div><b>Etape / Step</b>:{{contract.step}}</div>
+	{%endif%}
+	{%if student.targetlevel%}
+		<div><b>Niveau vis&#233; / Target Level</b>:{{student.targetlevel}}</div>
+	{%endif%}
+	{%if contract.advisor and contract.advisor!=null%}
+		<div><b>Conseiller p&#233;dagogique / Pedagogical Advisor</b>: {{contract.advisor.firstname}} {{contract.advisor.name}}</div>
+	{%endif%}
+	{%if contract.adresse%}
+		<div><b>Lieu / Address</b>:{{contract.adresse}}</div>
+	{%elseif contract.location and contract.location=="Campus" and contract.campus%}
+		<div><b>Lieu / Address</b>:{{contract.campus.address}}</div>
+	{%endif%}
+	{%if contract.contractnumber%}
+		<div><b>Contract Number</b>:{{contract.contractnumber}}</div>
+	{%endif%}
+	{%if contract.location=="Campus"%}
+		<div><b>Salle de classe</b>: {%if room is defined%}{{room}}{%endif%}</div>
+		{{mailroom|raw}}
+	{%endif%}
+</p>
+{%if mailfooter!=null%}
+	<p>
+	{{mailfooter|raw}}
+	</p>
+{%endif%}

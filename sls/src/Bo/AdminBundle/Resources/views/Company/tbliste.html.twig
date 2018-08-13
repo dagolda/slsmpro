@@ -1,0 +1,29 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="6%">Id</th>
+                <th width="9%">{{'label.account'|trans([],'BoAdminBundle')}}</th>
+                <th width="9%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th width="30%">Message en</th>
+                <th width="30%">Message fr</th>
+                <th width="15%">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for company in companies %}
+            <tr>
+                <td><a href="{{ path('company_show', { 'id': company.id }) }}">{{ company.id }}</a></td>
+                <td>{{ company.compte }}</td>
+                <td>{{ company.nname }}</td>
+                <td>{{ company.messageen[:500]|raw }}...</td>
+                <td>{{ company.messagefr[:500]|raw }}...</td>
+                <td>{% if company.dateCreation %}{{ company.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action" nowrap>
+                    <a href="{{ path('company_show', { 'id': company.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+					<a href="{{ path('company_edit', { 'id': company.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

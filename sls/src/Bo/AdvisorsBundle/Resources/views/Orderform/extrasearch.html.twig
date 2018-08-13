@@ -1,0 +1,4 @@
+	{% if orderforms|length>0 %}
+		<div class='numberfound'><b>{{'message.searchresult'|trans([],'BoAdminBundle')}}</b> : <span>{{orderforms|length}} {{'message.found'|trans([],'BoAdminBundle')}}</span></div>
+	{%endif%}
+	{% include 'BoAdvisorsBundle:Orderform:tbliste.html.twig' %}

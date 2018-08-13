@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.absence'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:personnel.html.twig"%}{% endblock %}	
+{% block label %}<h1>{{'entity.absences'|trans([],'BoAdminBundle')}} >> {%if now is defined%}{{now|date("Y-m-d")}}{%else%}{{'title.list'|trans([],'BoAdminBundle')}}{%endif%}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Employee:absenceactions.html.twig"%}
+		<div id="content-liste">
+			{%include "BoAdminBundle:Employee:listabsences.html.twig"%}
+		</div>
+	</div>
+{% endblock %}

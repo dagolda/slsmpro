@@ -1,0 +1,20 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td>{{ mail.name }}</td>
+                <td width="30%px">{% if mail.dateCreation %}<b>{{'label.created'|trans([],'BoAdminBundle')}}: {{ mail.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</b></td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <td colspan="2" width=80%>
+					{{ mail.messageen|raw }}
+				</td>
+            </tr>
+			<tr><td>&nbsp;</td></tr>
+            <tr>
+                <td colspan="2" width=80%>
+					{{ mail.messagefr|raw }}
+				</td>
+            </tr>
+        </tbody>
+    </table>

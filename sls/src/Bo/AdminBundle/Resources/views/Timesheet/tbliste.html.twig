@@ -1,0 +1,39 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>{{'label.studentname'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.hour'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+				<th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for timesheet in timesheets %}
+            <tr>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{{ timesheet.ddate|date('Y-m-d') }}</td>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{%if timesheet.group%}{{ timesheet.group.name }}{%elseif timesheet.student is defined%}{{ timesheet.student.firstname }} {{ timesheet.students.name }}{%else%}---{%endif%}</td>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{{ timesheet.startam|date('H:i') }}</td>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{{ timesheet.endam|date('H:i') }}</td>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{{ timesheet.startpm|date('H:i') }}</td>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{{ timesheet.endpm|date('H:i') }}</td>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{{ timesheet.hour }}</td>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{% if timesheet.creationdate %}{{ timesheet.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td {%if timesheet.status and timesheet.status==3%}class="validated"{%elseif timesheet.status and timesheet.status==4%}class="rejected"{%endif%}>{%if timesheet.status==1 %}Submitted{%elseif timesheet.status==2 %}Validated by student{%elseif timesheet.status==3 %}Validated by payroll{%else%}rejected{%endif%}</td>
+                <td class="list-action">
+                    <a href="{{ path('timesheet_show', { 'id': timesheet.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+					{%if timesheet.status==1 or timesheet.status==4%}
+						<a href="{{ path('timesheet_edit', { 'id': timesheet.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="10">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}	
+	{%if employee!=null%}{%include "BoAdminBundle:User:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block label %}<h1>admin.default.home|trans()</h1>{% endblock %}	
+{% block body %}
+	<div class="container">
+		<div class="panel panel-default">
+			<div class="panel-heading">Notification</div>
+			<div class="panel-body">Panel Content</div>
+		</div>
+	</div>
+{% endblock %}

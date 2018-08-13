@@ -1,0 +1,125 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th width="22%">Id</th>
+				<th>{{'label.ordernumber'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.nbstudent'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.program'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ orderform.id }}</td>
+                <td>{{ orderform.ordernumber }}</td>
+				<td>{{ orderform.nbstudent }}</td>
+				<td>{%if orderform.program %}{{ orderform.program }}{%else%}---{% endif %}</td>
+            </tr>
+            <tr><td colspan="4">&nbsp;</td></tr>
+            <tr>				
+                <th colspan="2">{{'label.typeofcourse'|trans([],'BoAdminBundle')}}</th>
+				<th colspan="2">{{'label.soumissiontype'|trans([],'BoAdminBundle')}}</th>           			
+            </tr>
+            <tr>				
+                <td colspan="2">{{ orderform.typeofcourse }}</td>
+				<td colspan="2">{%if stl[orderform.soumissiontype] is defined%}{{ stl[orderform.soumissiontype] }}{%else%}---{%endif%}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.daterate'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.hourlyrate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.numberhour'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.estimatedcost'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{% if orderform.startrate %}{{ orderform.startrate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+                <td>{{ orderform.hourlyrate }}</td>
+				<td>{{ orderform.hoursnumber }}</td>
+				<td>{{ orderform.estimatedcost|number_format("2","."," ") }}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+			{% if orderform.startrate1 and orderform.hourlyrate1%}
+				<tr>
+					<th>{{'label.daterate'|trans([],'BoAdminBundle')}} 1</th>
+					<th>{{'label.hourlyrate'|trans([],'BoAdminBundle')}} 1</th>
+					<th>{{'label.numberhour'|trans([],'BoAdminBundle')}} 1</th>
+					<th>{{'label.estimatedcost'|trans([],'BoAdminBundle')}} 1</th>
+				</tr>
+				<tr>
+					<td>{% if orderform.startrate1 %}{{ orderform.startrate1|date('Y-m-d') }}{% endif %}</td>
+					<td>{{ orderform.hourlyrate1 }}</td>
+					<td>{{ orderform.hoursnumber1 }}</td>               
+					<td>{{ orderform.estimatedcost1|number_format("2","."," ") }}</td>
+				</tr>
+				<tr><td colspan="4">&nbsp;</td></tr>
+			{%endif%}				
+			{% if orderform.startrate2 and orderform.hourlyrate2%}
+				<tr>
+					<th>{{'label.daterate'|trans([],'BoAdminBundle')}} 2</th>
+					<th>{{'label.hourlyrate'|trans([],'BoAdminBundle')}} 2</th>
+					<th>{{'label.numberhour'|trans([],'BoAdminBundle')}} 2</th>
+					<th>{{'label.estimatedcost'|trans([],'BoAdminBundle')}} 2</th>
+				</tr>
+				<tr>                
+					<td>{{ orderform.startrate2|date('Y-m-d') }}</td>
+					<td>{{ orderform.hourlyrate2 }}</td>
+					<td>{{ orderform.hoursnumber2 }}</td>
+					<td>{{ orderform.estimatedcost2|number_format("2","."," ") }}</td>
+				</tr>
+				<tr><td colspan="4">&nbsp;</td></tr>
+			{%endif%}
+            <tr>				
+				<th>{{'label.totalhours'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.didmatprice'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.totalcost'|trans([],'BoAdminBundle')}}</th>              			
+            </tr>
+            <tr>				
+                <td>{{ orderform.totalhours }}</td>
+				<td>{{ orderform.didmatprice|number_format("2","."," ") }}</td>
+				<td>{{ orderform.totalcost|number_format("2","."," ") }}$</td>
+
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+				<th>Preparedby</th>	
+				<th>Approvedby</th>
+                <th>Initlanguage</th>
+				<th>Weeklanguage</th>
+            </tr>
+            <tr>  
+				<td>{%if orderform.preparedby %}{{ orderform.preparedby }}{%else%}---{%endif%}</td>			
+                <td>{{ orderform.approvedby }}</td>
+				<td>{% if orderform.initlanguage %}Yes{% else %}No{% endif %}</td>
+				<td>{% if orderform.weeklanguage %}Yes{% else %}No{% endif %}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+				<th>Didmat</th>			
+				<th>Classvisit</th>
+                <th>Progressreport</th>
+				<th>Status</th>
+            </tr>
+            <tr>  
+				<td>{% if orderform.didmat %}Yes{% else %}No{% endif %}</td>			
+                <td>{% if orderform.classvisit %}Yes{% else %}No{% endif %}</td>
+				<td>{% if orderform.progressreport %}Yes{% else %}No{% endif %}</td>
+				<td>{{ status[orderform.status] }}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+				<th>Creationdate</th>
+                <th>Location</th>
+				<th colspan="2">Placeoftraining</th>            
+            </tr>
+            <tr>
+				<td>{% if orderform.creationdate %}{{ orderform.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ orderform.location }}</td>
+				<td colspan="2">{{ orderform.placeoftraining }}</td>               
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <th colspan="4">Comment</th>
+            </tr>
+            <tr>
+                <td colspan="4">{%if orderform.comment %}{{ orderform.comment }}{%else%}---{% endif %}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+        </tbody>
+    </table>

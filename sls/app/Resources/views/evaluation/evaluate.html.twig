@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'label.advisor'|trans([],'BoAdminBundle')}} >> {{'entity.evaluation'|trans([],'BoAdminBundle')}} {% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'label.advisor'|trans([],'BoAdminBundle')}} >> {{'entity.evaluation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('evaluation_evaluate',{'id':evaluation.id}) }}" method="post" class="style">
+			{{ form_errors(eval_form) }}
+				{%include "BoAdminBundle:Evaluation:editactions.html.twig"%}
+				<div class="show_content">
+					{%include "BoAdminBundle:Evaluation:part2form.html.twig"%}
+				</div>
+			{{ form_rest(eval_form) }}
+		</form>	
+	</div>
+{% endblock %}

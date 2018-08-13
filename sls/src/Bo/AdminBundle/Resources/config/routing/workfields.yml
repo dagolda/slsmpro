@@ -1,0 +1,24 @@
+workfields_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Workfields:index" }
+    methods:  GET
+
+workfields_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Workfields:show" }
+    methods:  GET
+
+workfields_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Workfields:new" }
+    methods:  [GET, POST]
+
+workfields_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Workfields:edit" }
+    methods:  [GET, POST]
+
+workfields_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Workfields:delete" }
+    methods:  DELETE

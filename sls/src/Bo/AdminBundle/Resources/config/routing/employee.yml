@@ -1,0 +1,183 @@
+employee_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Employee:index" }
+    methods:  GET
+employee_active:
+    path:     /active/
+    defaults: { _controller: "BoAdminBundle:Employee:active" }
+    methods:  GET
+employee_list:
+    path:     /list/
+    defaults: { _controller: "BoAdminBundle:Employee:list" }
+    methods:  GET
+employee_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdminBundle:Employee:page" }
+employee_back:
+    path:     /back/
+    defaults: { _controller: "BoAdminBundle:Employee:back" }
+    methods:  GET
+employee_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Employee:show" }
+    methods:  GET
+employee_list_absence:
+    path:     /{id}/{offset}/list/absences
+    defaults: { _controller: "BoAdminBundle:Employee:listabsence" }
+    methods:  GET
+employee_schedule:
+    path:     /{id}/schedule
+    defaults: { _controller: "BoAdminBundle:Employee:schedule" }
+    methods:  GET
+employee_extract_schedule:
+    path:     /extract/schedule
+    defaults: { _controller: "BoAdminBundle:Employee:extractschedule" }
+    methods:  [GET, POST]
+employee_schedule_load:
+    path:     /schedule/load
+    defaults: { _controller: "BoAdminBundle:Employee:loadschedule" }
+    methods:  [GET, POST]
+employee_add_schedule:
+    path:     /{id}/add/schedule
+    defaults: { _controller: "BoAdminBundle:Employee:addschedule" }
+    methods:  [GET, POST]
+employee_setting:
+    path:     /{id}/setting
+    defaults: { _controller: "BoAdminBundle:Employee:setting" }
+    methods:  [GET, POST]
+employee_agenda:
+    path:     /{id}/agenda
+    defaults: { _controller: "BoAdminBundle:Employee:agenda" }
+    methods:  [GET, POST]
+employee_invitation_show:
+    path:     /{id}/show/invitation/
+    defaults: { _controller: "BoAdminBundle:Employee:showinvite" }
+    methods:  [GET, POST]
+employee_user_create:
+    path:     /{id}/createuser
+    defaults: { _controller: "BoAdminBundle:Employee:createuser" }
+    methods:  GET
+employee_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Employee:new" }
+    methods:  [GET, POST]
+employee_securitycote_new:
+    path:     /{idemployee}/securitycote/new/
+    defaults: { _controller: "BoAdminBundle:Employee:securitycote" }
+    methods:  [GET, POST]
+employee_securitycote_delete:
+    path:     /{id}/securitycote/delete/
+    defaults: { _controller: "BoAdminBundle:Employee:securitycotedelete" }
+    methods:  DELETE
+employee_securitycote_edit:
+    path:     /{id}/securitycote/edit
+    defaults: { _controller: "BoAdminBundle:Employee:editsecuritycote" }
+    methods:  [GET, POST]
+employee_newbatch:
+    path:     /newbatch
+    defaults: { _controller: "BoAdminBundle:Employee:newbatch" }
+    methods:  [GET, POST]
+employee_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Employee:edit" }
+    methods:  [GET, POST]
+employee_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Employee:search" }
+    methods:  [GET, POST]
+employee_agenda_search:
+    path:  /agenda/search/
+    defaults: { _controller: "BoAdminBundle:Employee:agendasearch" }
+    methods:  [GET, POST]
+employee_teacher_available:
+    path:  /available/
+    defaults: { _controller: "BoAdminBundle:Employee:available" }
+    methods:  [GET, POST]
+employee_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Employee:pagesearch" }
+    methods:  [GET, POST]
+employee_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Employee:delete" }
+    methods:  DELETE
+employee_update:
+    path:  /update/
+    defaults: { _controller: "BoAdminBundle:Employee:update" }
+    methods:  [GET, POST]
+mail_manager:
+    path:  /email/{name}
+    defaults: { _controller: "BoAdminBundle:Employee:mail" }
+    methods:  [GET, POST]
+employee_create_status:
+    path:     /create/status/
+    defaults: { _controller: "BoAdminBundle:Employee:createstatus" }
+    methods:  [GET, POST]
+employee_send_login:
+    path:     /send/login/
+    defaults: { _controller: "BoAdminBundle:Employee:sendlogin" }
+    methods:  [GET, POST]
+employee_sendlogin:
+    path:     /{id}/sendlogin/
+    defaults: { _controller: "BoAdminBundle:Employee:sendlogintwo" }
+    methods:  [GET, POST]
+employee_sendmail:
+    path:     /sendmail/
+    defaults: { _controller: "BoAdminBundle:Employee:sendmail" }
+    methods:  [GET, POST]
+employee_create_category:
+    path:     /create/category/
+    defaults: { _controller: "BoAdminBundle:Employee:createcategory" }
+    methods:  [GET, POST]
+employee_create_language:
+    path:     /create/language/
+    defaults: { _controller: "BoAdminBundle:Employee:createlanguage" }
+    methods:  [GET, POST]
+employee_extrasearch:
+    path:     /extrasearch/
+    defaults: { _controller: "BoAdminBundle:Employee:extrasearch" }
+    methods:  [GET, POST]
+employee_xls:
+    path:     /extract/xls/
+    defaults: { _controller: "BoAdminBundle:Employee:xls" }
+    methods:  [GET, POST]
+employee_absence_day:
+    path:     /absences/today/
+    defaults: { _controller: "BoAdminBundle:Employee:dayabsences" }
+    methods:  GET
+employee_absence_index:
+    path:     /absences/
+    defaults: { _controller: "BoAdminBundle:Employee:absences" }
+    methods:  GET
+employee_page_absences:
+    path:     /{option}/absences/page/
+    defaults: { _controller: "BoAdminBundle:Employee:absencespage" }
+    methods:  GET
+employee_create_absence:
+    path:     /{idemployee}/add/absence/
+    defaults: { _controller: "BoAdminBundle:Employee:addabsence" }
+    methods:  [GET, POST]
+employee_show_absence:
+    path:     /{id}/show/absence/
+    defaults: { _controller: "BoAdminBundle:Employee:showabsence" }
+    methods:  GET
+employee_edit_absence:
+    path:     /{id}/edit/absence/
+    defaults: { _controller: "BoAdminBundle:Employee:editabsence" }
+    methods:  [GET, POST]
+employee_substitution_group:
+    path:     /{idgroup}/{idabsence}/substitution/group/
+    defaults: { _controller: "BoAdminBundle:Employee:subsgroup" }
+    methods:  [GET, POST]
+employee_substitution_contract:
+    path:     /{idcontract}/{idabsence}/substitution/contract/
+    defaults: { _controller: "BoAdminBundle:Employee:subscont" }
+    methods:  [GET, POST]
+employee_delete_absence:
+    path:     /{id}/delete/absence/
+    defaults: { _controller: "BoAdminBundle:Employee:deleteabsence" }
+    methods:  DELETE
+employee_right_show:
+    path:     /right/show/
+    defaults: { _controller: "BoAdminBundle:Employee:rightshow" }
+    methods:  [GET, POST]

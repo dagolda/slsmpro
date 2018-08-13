@@ -1,0 +1,26 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="19%">{{'label.firstname'|trans([],'BoAdminBundle')}} {{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th width="19%">{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="19%">{{'label.title'|trans([],'BoAdminBundle')}}</th>
+                <th width="14%">{{'label.site'|trans([],'BoAdminBundle')}}</th>
+                <th width="8%">Extension</th>
+                <th width="20%">{{'label.room'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+        </thead>
+        <tbody>
+			{%set i=0%}
+			{% for teamcontact in teamcontacts %}
+				<tr>
+					<td class="sty_line{{i}}">{{ teamcontact.employee }}</td>
+					<td class="sty_line{{i}}">{{ teamcontact.email }}</td>
+					<td class="sty_line{{i}}">{{ teamcontact.title }}</td>
+					<td class="sty_line{{i}}">{{ teamcontact.location }}</td>
+					<td class="sty_line{{i}}">{{ teamcontact.extension }}</td>
+					<td class="sty_line{{i}}">{{ teamcontact.room }}</td>
+				</tr>
+				{%if i==0%}{%set i=1%}{%else%}{%set i=0%}{%endif%}
+			{% endfor %}
+        </tbody>
+    </table>

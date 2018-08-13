@@ -1,0 +1,468 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.tools'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:tools.html.twig"%}{% endblock %}
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'entity.tools'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdminBundle:Profil:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#remove_employee">{{'label.removeemployee'|trans([],'BoAdminBundle')}} {{'label.from'|trans([],'BoAdminBundle')}} {{'label.group'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#remove_employee_ofcontract">{{'label.removeemployee'|trans([],'BoAdminBundle')}} {{'label.from'|trans([],'BoAdminBundle')}} {{'label.contract'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					<td>
+						<a href="{{ path('tools_update_training') }}">{{'action.update'|trans([],'BoAdminBundle')}} {{'entity.training'|trans([],'BoAdminBundle')}} 1</a>
+					</td>
+					<td>
+						<a href="{{ path('tools_update_contract') }}">{{'action.update'|trans([],'BoAdminBundle')}} {{'entity.contract'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<td>
+						<a href="{{ path('tools_create_coordinator') }}">{{'action.update'|trans([],'BoAdminBundle')}} {{'entity.coordinator'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#remove_teacher_contract">{{'action.remove'|trans([],'BoAdminBundle')}} {{'label.teacher'|trans([],'BoAdminBundle')}} {{'label.from'|trans([],'BoAdminBundle')}} {{'label.contract'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#remove_employee_ofcontract2">{{'label.removeemployee'|trans([],'BoAdminBundle')}} {{'label.from'|trans([],'BoAdminBundle')}} {{'label.contract'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					<td>
+						<a href="{{ path('tools_update_training2') }}">{{'action.update'|trans([],'BoAdminBundle')}} {{'entity.training'|trans([],'BoAdminBundle')}} 2</a>
+					</td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#remove_local_contract">{{'action.remove'|trans([],'BoAdminBundle')}} {{'label.room'|trans([],'BoAdminBundle')}} {{'label.from'|trans([],'BoAdminBundle')}} {{'label.contract'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#remove_local_group">{{'action.remove'|trans([],'BoAdminBundle')}} {{'label.room'|trans([],'BoAdminBundle')}} {{'label.from'|trans([],'BoAdminBundle')}} {{'label.group'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#update_local_status">{{'action.release'|trans([],'BoAdminBundle')}} {{'label.room'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-free" data-toggle="modal" data-target="#free_local" >{{'action.release'|trans([],'BoAdminBundle')}} {{'label.all'|trans([],'BoAdminBundle')}} {{'label.room'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-free" data-toggle="modal" data-target="#addlocaltogroup" >{{'action.add'|trans([],'BoAdminBundle')}} {{'label.room'|trans([],'BoAdminBundle')}} {{'label.to'|trans([],'BoAdminBundle')}} {{'label.group'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-free" data-toggle="modal" data-target="#addlocaltocontract" >{{'action.add'|trans([],'BoAdminBundle')}} {{'label.room'|trans([],'BoAdminBundle')}} {{'label.to'|trans([],'BoAdminBundle')}} {{'label.contract'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-free" data-toggle="modal" data-target="#remove_schedule" >{{'action.remove'|trans([],'BoAdminBundle')}} {{'label.schedule'|trans([],'BoAdminBundle')}} </button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-free" data-toggle="modal" data-target="#display_schedule" >{{'action.display'|trans([],'BoAdminBundle')}} {{'label.schedule'|trans([],'BoAdminBundle')}} </button>
+					</td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-free" data-toggle="modal" data-target="#display_schedule_bis" >{{'action.display'|trans([],'BoAdminBundle')}} {{'label.schedule'|trans([],'BoAdminBundle')}} idc-Idemp</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-free" data-toggle="modal" data-target="#display_schedule_byid" >{{'action.display'|trans([],'BoAdminBundle')}} {{'label.schedule'|trans([],'BoAdminBundle')}} idsch</button>
+					</td>
+					<td>
+						<a href="{{ path('tools_show_schedule') }}">{{'action.show'|trans([],'BoAdminBundle')}} {{'label.schedule'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td><a href="{{ path('tools_update_allcontract') }}">{{'action.update'|trans([],'BoAdminBundle')}} {{'label.contract'|trans([],'BoAdminBundle')}} {{'label.group'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<td>
+						<a href="{{ path('tools_checkbis') }}">{{'label.garbage'|trans([],'BoAdminBundle')}} </a>
+					</td>
+					<td>
+						<a href="{{ path('tools_check') }}">{{'action.check'|trans([],'BoAdminBundle')}} </a>
+					</td>
+					<td>
+						<a href="{{ path('tools_generate_agenda') }}">{{'action.generate'|trans([],'BoAdminBundle')}} {{'label.agenda'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td>
+						<a href="{{ path('tools_update_amorpm') }}">{{'action.update'|trans([],'BoAdminBundle')}} {{'label.amorpm'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+				<tr>
+					<td>
+						<a href="{{ path('tools_agenda_update') }}">{{'action.update'|trans([],'BoAdminBundle')}} {{'label.agenda'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td>
+						<a href="{{ path('tools_update_schedule') }}">{{'action.update'|trans([],'BoAdminBundle')}} {{'label.schedule'|trans([],'BoAdminBundle')}}</a>
+
+					</td>
+
+				</tr>
+				<tr><td>&nbsp;</td></tr>
+			</table>		
+		</div>
+	</div>	
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="free_local" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">{{'label.removeemployee'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('tools_free_allroom') }}" method="post" class="style">
+				<div class="modal-body">
+					<center>{{'message.confirm.localfree'|trans([],'BoAdminBundle')}}
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="remove_employee" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.removeemployee'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('tools_remove_group') }}" method="post" class="style">
+				<div class="modal-body">
+					Group Id: <input type="text" name="idgroup"><br>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.update'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="remove_schedule" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.removeemployee'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('tools_remove_schedule') }}" method="post" class="style">
+				<div class="modal-body">
+					Id schedule: <input type="text" name="idschedule"><br>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.update'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="display_schedule" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.removeemployee'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('tools_display_schedule') }}" method="post" class="style">
+				<div class="modal-body">
+					Id employee: <input type="text" name="idemployee"><br>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.show'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="display_schedule_byid" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.removeemployee'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('tools_display_schedulebyid') }}" method="post" class="style">
+				<div class="modal-body">
+					Id schedule: <input type="text" name="idschedule"><br>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.show'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="display_schedule_bis" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.removeemployee'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('tools_display_schedulebis') }}" method="post" class="style">
+				<div class="modal-body">
+					Id employee: <input type="text" name="idemployee"><br>
+					Id contract: <input type="text" name="idcontract"><br>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.show'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="remove_teacher_contract" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'action.remove'|trans([],'BoAdminBundle')}} {{'label.teacher'|trans([],'BoAdminBundle')}} {{'label.from'|trans([],'BoAdminBundle')}} {{'label.contract'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('tools_removeteacher_fromcontract') }}" method="post" class="style">
+				<div class="modal-body">
+					Contract Id: <input type="text" name="idcontract"><br>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.update'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="remove_local_contract" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">{{'action.remove'|trans([],'BoAdminBundle')}} {{'label.teacher'|trans([],'BoAdminBundle')}} {{'label.from'|trans([],'BoAdminBundle')}} {{'label.contract'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('tools_removelocal_fromcontract') }}" method="post" class="style">
+				<div class="modal-body">
+					Contract Id: <input type="text" name="idcontract"><br>
+					Local Id: <input type="text" name="idlocal"><br>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.update'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="addlocaltogroup" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.local'|trans([],'BoAdminBundle')}} {{'label.to'|trans([],'BoAdminBundle')}} {{'label.group'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('tools_add_localtogroup') }}" method="post" class="style">
+				<div class="modal-body">
+					Group Id : <input type="text" name="idgroup"><br><br>
+					Local Id : <input type="text" name="idlocal"><br>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.execute'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="addlocaltocontract" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.local'|trans([],'BoAdminBundle')}} {{'label.to'|trans([],'BoAdminBundle')}} {{'label.group'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('tools_add_localtocontract') }}" method="post" class="style">
+				<div class="modal-body">
+					Contract Id: <input type="text" name="idcontract"><br/><br/>
+					Local Id   : <input type="text" name="idlocal"><br/>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.execute'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="remove_local_group" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">{{'action.remove'|trans([],'BoAdminBundle')}} {{'label.teacher'|trans([],'BoAdminBundle')}} {{'label.from'|trans([],'BoAdminBundle')}} {{'label.contract'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('tools_removelocal_fromgroup') }}" method="post" class="style">
+				<div class="modal-body">
+					<table><tr>
+						<td>group Id: <input type="text" name="idgroup"><br></td>
+						<td>Local Id: <input type="text" name="idlocal"><br></td>
+					</tr></table>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.update'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="update_local_status" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">{{'action.update'|trans([],'BoAdminBundle')}} {{'label.room'|trans([],'BoAdminBundle')}} {{'label.status'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('tools_update_localstatus') }}" method="post" class="style">
+				<div class="modal-body">
+					<table><tr>
+						<td>Local Id: <input type="text" name="idlocal"><br></td>
+					</tr></table>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.update'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="remove_employee_ofcontract" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.removeemployee'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('tools_remove_ofcontract') }}" method="post" class="style">
+				<div class="modal-body">
+					Contract Id: <input type="text" name="idcontract"><br>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.update'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="remove_employee_ofcontract2" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.removeemployee'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('tools_remove_ofcontract2') }}" method="post" class="style">
+				<div class="modal-body">
+					Contract Id: <input type="text" name="idcontract"><br>
+					Employee Id: <input type="text" name="idemployee"><br>
+				</div>
+				<div class="modal-footer">
+					<input type="submit" value="{{'action.update'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

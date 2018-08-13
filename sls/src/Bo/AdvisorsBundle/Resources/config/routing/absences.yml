@@ -1,0 +1,21 @@
+dash_absences_index:
+    path:     /
+    defaults: { _controller: "BoAdvisorsBundle:Absences:index" }
+    methods:  GET
+dash_absences_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdvisorsBundle:Absences:show" }
+    methods:  GET
+dash_absences_new:
+    path:     /new
+    defaults: { _controller: "BoAdvisorsBundle:Absences:new" }
+    methods:  [GET, POST]
+dash_absences_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdvisorsBundle:Absences:edit" }
+    methods:  [GET, POST]
+dash_absences_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdvisorsBundle:Absences:delete" }
+    methods:  DELETE
+

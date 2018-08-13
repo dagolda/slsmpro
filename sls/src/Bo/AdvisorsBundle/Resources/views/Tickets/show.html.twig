@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.tickets'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block stylesheets %}
+	{{parent()}}
+	<link rel="stylesheet" href="{{ asset('css/infobulle.css') }}">
+{% endblock %}
+{% block label %}<h1>{{'entity.tickets'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdvisorsBundle:Tickets:showactions.html.twig"%}
+		<div class="show_content">
+			{%include "BoAdvisorsBundle:Tickets:tbshow.html.twig"%}
+		</div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(delete_form) }}
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(delete_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	
+	<div class="container">
+		<!-- Modal -->
+		<div class="modal fade" id="add_note" role="dialog">
+			<div class="modal-dialog">
+			
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				  <h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.notes'|trans([],'BoAdminBundle')}}</h4>
+				</div>
+				<form action="{{ path('dash_tickets_resolve', { 'id': ticket.id }) }}" method="post" class="style">
+					<div class="modal-body">
+						<textarea name="note" id="note" rows="4" cols="76"></textarea>
+					</div>
+					<div class="modal-footer">
+						<input type="submit" id="btn_submit" value="{{'action.continue'|trans([],'BoAdminBundle')}}">
+					</div>
+				</form>	
+			  </div>
+			  
+			</div>
+		</div>
+	</div>
+	
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

@@ -1,0 +1,7 @@
+        {% for quiz in quizzes %}
+		{%if results[quiz.id] is defined and results[quiz.id]==0%}
+                	<div class='quiz_list'><a href="{{ path('bo_quiz_quiz', { 'id': quiz.id, 'idevalquiz':evalquiz.id}) }}">{{ quiz.name }}</a></div>
+		{%else%}
+			<div class='quiz_list'><span class="wax_3d_2">{{ quiz.name }}</span>  <img src="{{ asset('images/actions/ok.gif') }}" alt="" width="20px"/></div>
+		{%endif%}
+        {% endfor %}

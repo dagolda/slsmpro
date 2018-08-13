@@ -1,0 +1,104 @@
+<?php
+/*
+* Date Création: 10/10/2016
+* Auteur: N'VEKOUNOU Moise José
+* Nom fichier : modelts.php
+* Description: Entité des Timesheets
+*/
+namespace Bo\AdminBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+* @ORM\Entity
+* @ORM\Table(name="adm_modelts")
+* @ORM\Entity(repositoryClass="Bo\AdminBundle\Repository\ModelTsRepository")
+*/
+class ModelTs 
+{
+    /**
+    * @ORM\GeneratedValue
+    * @ORM\Id
+    * @ORM\Column(type="integer")
+    */
+    private $id;
+		
+    /**
+    * @ORM\ManyToOne(targetEntity="Employee")
+	* @ORM\JoinColumn(name="idemployee",referencedColumnName="id")
+    */      
+    private $employee;
+	
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */    
+    private $monday;
+	
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */    
+    private $tuesday;
+	
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */    
+    private $wednesday;
+	
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */    
+    private $thursday;
+	
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */    
+    private $friday;	
+		
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */    
+    private $saturday;
+	
+    /**
+    * @ORM\Column(type="time",nullable=true)
+    */    
+    private $startam;
+	
+    /**
+    * @ORM\Column(type="time",nullable=true)
+    */    
+    private $endam;
+
+    /**
+    * @ORM\Column(type="time",nullable=true)
+    */    
+    private $startpm;
+	
+    /**
+    * @ORM\Column(type="time",nullable=true)
+    */    
+    private $endpm;
+	
+    /**
+    * @ORM\Column(type="string",length=7)
+    */    
+    private $hour;
+	
+    /**
+    * @ORM\Column(type="datetime")
+    */    
+	private $creationdate;	
+	
+    /**
+    * Constructor
+    */
+    public function __construct()
+    {
+		$this->monday=$this->tuesday=$this->wednesday=$this->thursday=$this->friday=true;
+		$this->startam = $this->endam = $this->startpm = $this->endpm = $this->getTime();
+		$this->creationdate=new \DateTime();
+    }
+	protected function getTime(){
+		return new \DateTime(date("Y-m-d",mktime(0, 0, 0, 0, 0, 0)));
+	}
+}

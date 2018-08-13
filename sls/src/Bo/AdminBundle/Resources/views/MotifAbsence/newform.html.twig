@@ -1,0 +1,18 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+			<th colspan="2" width="80%" class="sty_label">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td colspan="2">{{ form_widget(form.name) }}</td>		
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th width="40%" class="sty_label">{{'label.student'|trans([],'BoAdminBundle')}}</th>
+			<th width="40%" class="sty_label">{{'label.teacher'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.student) }}</td>
+			<td>{{ form_widget(form.teacher) }}</td>		
+		</tr>
+		<tr><td>&nbsp;</td></tr>
+	</table>

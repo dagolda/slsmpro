@@ -1,0 +1,15 @@
+services:
+    app.locale_listener:
+        class: Bo\AdminBundle\EventListener\LocaleListener
+        arguments: ['%kernel.default_locale%']
+        tags:
+            - { name: kernel.event_subscriber }
+    app.document_uploader:
+        class: Bo\AdminBundle\Libs\Others\FileUploader
+        arguments: ['%employee_directory%']
+    app.ticketimage_uploader:
+        class: Bo\AdminBundle\Libs\Others\FileUploader
+        arguments: ['%tickets_directory%']
+    app.pdfpath_manager:
+        class: Bo\AdminBundle\Libs\Others\PdfPathManager
+        arguments: ['%pdf_directory%']

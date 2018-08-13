@@ -1,0 +1,413 @@
+<?php
+/*
+* Date Création: 10/03/2016
+* Auteur: N'VEKOUNOU Moise José
+* Nom fichier : Advisor.php
+* Description: Pedagogical Advisor
+*/
+namespace Bo\AdminBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+/**
+* @ORM\Entity
+* @ORM\Table(name="adm_advisors")
+* @ORM\Entity(repositoryClass="Bo\AdminBundle\Repository\AdvisorRepository")
+*/
+class Advisors
+{
+    /**
+    * @ORM\Id
+    * @ORM\Column(type="integer")
+    * @ORM\GeneratedValue(strategy="AUTO")
+    */
+    protected $id;
+		
+    /**
+    * @ORM\Column(type="string",length=255)
+    */    
+    private $name;
+	
+    /**
+    * @ORM\Column(type="string",length=255)
+    */    
+    private $firstname;
+		
+    /**
+    * @ORM\ManyToOne(targetEntity="Employee")
+	* @ORM\JoinColumn(name="idadvisor",referencedColumnName="id",nullable=true)
+    */      
+    private $advisor;
+	
+    /**
+    * @ORM\Column(type="integer", nullable=true)
+    */
+    protected $numbercontract;
+	
+    /**
+    * @ORM\Column(type="decimal", scale=2)
+    */
+	//Authorized 
+    protected $adminhour;
+	
+    /**
+    * @ORM\Column(type="decimal", scale=2)
+    */
+    protected $hourlycharge;
+	
+    /**
+    * @ORM\Column(type="decimal", scale=2)
+    */
+    protected $percentcharge;
+	
+    /**
+    * @ORM\ManyToMany(targetEntity="Typecontract")
+	* @ORM\JoinColumn(name="idtypecontract",referencedColumnName="id", nullable=true)
+    */      
+	private $typecontract;
+	
+    /**
+     * @ORM\ManyToMany(targetEntity="Workfields")
+	 * @ORM\JoinColumn(name="idworkfields",referencedColumnName="id",nullable=true)
+     */      
+    private $workfields;		
+	
+    /**
+    * @ORM\ManyToOne(targetEntity="Employee")
+	* @ORM\JoinColumn(name="idsubstitute",referencedColumnName="id",nullable=true)
+    */      
+    private $substitute;
+				
+    /**
+    * @ORM\Column(type="string",length=255, nullable=true)
+    */
+    private $createby;
+		
+    /**
+    * @ORM\Column(type="datetime")
+    */ 
+    protected $creationdate;
+	
+    /**
+    * @ORM\Column(type="datetime")
+    */ 
+	//Date création de l'enregistrement
+    protected $creationdate2;
+	
+	public function __toString(){
+		return $this->firstname." ".$this->name;
+	}	
+
+    /**
+    * Constructor
+    */
+    public function __construct()
+    {
+		$this->creationdate=$this->creationdate2=new \DateTime();
+    }
+
+    /**
+    * Get id
+    *
+    * @return integer
+    */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+    * Set creationdate
+    * @param \DateTime $creationdate
+    * @return Advisors
+    */
+    public function setCreationdate($creationdate)
+    {
+        $this->creationdate = $creationdate;
+
+        return $this;
+    }
+
+    /**
+     * Get creationdate
+     *
+     * @return \DateTime
+     */
+    public function getCreationdate()
+    {
+        return $this->creationdate;
+    }
+
+    /**
+     * Set creationdate2
+     *
+     * @param \DateTime $creationdate2
+     *
+     * @return Advisors
+     */
+    public function setCreationdate2($creationdate2)
+    {
+        $this->creationdate2 = $creationdate2;
+
+        return $this;
+    }
+
+    /**
+     * Get creationdate2
+     *
+     * @return \DateTime
+     */
+    public function getCreationdate2()
+    {
+        return $this->creationdate2;
+    }
+
+    /**
+     * Set advisor
+     *
+     * @param \Bo\AdminBundle\Entity\Employee $advisor
+     *
+     * @return Advisors
+     */
+    public function setAdvisor(\Bo\AdminBundle\Entity\Employee $advisor = null)
+    {
+        $this->advisor = $advisor;
+
+        return $this;
+    }
+
+    /**
+     * Get advisor
+     *
+     * @return \Bo\AdminBundle\Entity\Employee
+     */
+    public function getAdvisor()
+    {
+        return $this->advisor;
+    }
+
+    /**
+     * Set adminhour
+     *
+     * @param integer $adminhour
+     *
+     * @return Advisors
+     */
+    public function setAdminhour($adminhour)
+    {
+        $this->adminhour = $adminhour;
+
+        return $this;
+    }
+
+    /**
+     * Get adminhour
+     *
+     * @return integer
+     */
+    public function getAdminhour()
+    {
+        return $this->adminhour;
+    }
+
+    /**
+     * Set numbercontract
+     *
+     * @param integer $numbercontract
+     *
+     * @return Advisors
+     */
+    public function setNumbercontract($numbercontract)
+    {
+        $this->numbercontract = $numbercontract;
+
+        return $this;
+    }
+
+    /**
+     * Get numbercontract
+     *
+     * @return integer
+     */
+    public function getNumbercontract()
+    {
+        return $this->numbercontract;
+    }
+
+    /**
+     * Set substitute
+     *
+     * @param \Bo\AdminBundle\Entity\Employee $substitute
+     *
+     * @return Advisors
+     */
+    public function setSubstitute(\Bo\AdminBundle\Entity\Employee $substitute = null)
+    {
+        $this->substitute = $substitute;
+
+        return $this;
+    }
+
+    /**
+     * Get substitute
+     *
+     * @return \Bo\AdminBundle\Entity\Employee
+     */
+    public function getSubstitute()
+    {
+        return $this->substitute;
+    }
+
+    /**
+     * Set createby
+     *
+     * @param string $createby
+     *
+     * @return Advisors
+     */
+    public function setCreateby($createby)
+    {
+        $this->createby = $createby;
+
+        return $this;
+    }
+
+    /**
+     * Get createby
+     *
+     * @return string
+     */
+    public function getCreateby()
+    {
+        return $this->createby;
+    }
+
+    /**
+     * Set typecontract
+     *
+     * @param \Bo\AdminBundle\Entity\Typecontract $typecontract
+     *
+     * @return Advisors
+     */
+    public function setTypecontract(\Bo\AdminBundle\Entity\Typecontract $typecontract = null)
+    {
+        $this->typecontract = $typecontract;
+
+        return $this;
+    }
+
+    /**
+     * Get typecontract
+     *
+     * @return \Bo\AdminBundle\Entity\Typecontract
+     */
+    public function getTypecontract()
+    {
+        return $this->typecontract;
+    }
+
+    /**
+     * Add workfield
+     *
+     * @param \Bo\AdminBundle\Entity\Workfields $workfield
+     *
+     * @return Advisors
+     */
+    public function addWorkfield(\Bo\AdminBundle\Entity\Workfields $workfield)
+    {
+        $this->workfields[] = $workfield;
+
+        return $this;
+    }
+
+    /**
+     * Remove workfield
+     *
+     * @param \Bo\AdminBundle\Entity\Workfields $workfield
+     */
+    public function removeWorkfield(\Bo\AdminBundle\Entity\Workfields $workfield)
+    {
+        $this->workfields->removeElement($workfield);
+    }
+
+    /**
+     * Get workfields
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getWorkfields()
+    {
+        return $this->workfields;
+    }
+
+    /**
+     * Add typecontract
+     *
+     * @param \Bo\AdminBundle\Entity\Typecontract $typecontract
+     *
+     * @return Advisors
+     */
+    public function addTypecontract(\Bo\AdminBundle\Entity\Typecontract $typecontract)
+    {
+        $this->typecontract[] = $typecontract;
+
+        return $this;
+    }
+
+    /**
+     * Remove typecontract
+     *
+     * @param \Bo\AdminBundle\Entity\Typecontract $typecontract
+     */
+    public function removeTypecontract(\Bo\AdminBundle\Entity\Typecontract $typecontract)
+    {
+        $this->typecontract->removeElement($typecontract);
+    }
+
+    /**
+     * Set hourlycharge
+     *
+     * @param string $hourlycharge
+     *
+     * @return Advisors
+     */
+    public function setHourlycharge($hourlycharge)
+    {
+        $this->hourlycharge = $hourlycharge;
+
+        return $this;
+    }
+
+    /**
+     * Get hourlycharge
+     *
+     * @return string
+     */
+    public function getHourlycharge()
+    {
+        return $this->hourlycharge;
+    }
+
+    /**
+     * Set percentcharge
+     *
+     * @param string $percentcharge
+     *
+     * @return Advisors
+     */
+    public function setPercentcharge($percentcharge)
+    {
+        $this->percentcharge = $percentcharge;
+
+        return $this;
+    }
+
+    /**
+     * Get percentcharge
+     *
+     * @return string
+     */
+    public function getPercentcharge()
+    {
+        return $this->percentcharge;
+    }
+}

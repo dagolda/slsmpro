@@ -1,0 +1,33 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.phone'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.createdby'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="15%">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for coordinator in coordinators %}
+            <tr>
+                <td>{{ coordinator.name }}</td>
+                <td>{{ coordinator.email }}</td>
+                <td>{% if coordinator.phone %}{{ coordinator.phone }}{% else %}---{% endif %}</td>
+                <td>{{ coordinator.typecontract }}</td>
+                <td>{{ coordinator.createby }}</td>
+                <td>{% if coordinator.creationdate %}{{ coordinator.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+					<a href="{{ path('coordinator_show', { 'id': coordinator.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+					{%if app.session.get('rights')['CONTRACTS']['Coordinators'] is defined and app.session.get('rights')['CONTRACTS']['Coordinators'].edit==1%}
+						<a href="{{ path('coordinator_edit', { 'id': coordinator.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="6">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

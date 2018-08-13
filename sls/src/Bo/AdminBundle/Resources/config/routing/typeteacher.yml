@@ -1,0 +1,24 @@
+typeteacher_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:TypeTeacher:index" }
+    methods:  GET
+
+typeteacher_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:TypeTeacher:show" }
+    methods:  GET
+
+typeteacher_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:TypeTeacher:new" }
+    methods:  [GET, POST]
+
+typeteacher_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:TypeTeacher:edit" }
+    methods:  [GET, POST]
+
+typeteacher_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:TypeTeacher:delete" }
+    methods:  DELETE

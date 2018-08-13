@@ -1,0 +1,24 @@
+diplomas_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Diplomas:index" }
+    methods:  GET
+
+diplomas_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Diplomas:show" }
+    methods:  GET
+
+diplomas_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Diplomas:new" }
+    methods:  [GET, POST]
+
+diplomas_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Diplomas:edit" }
+    methods:  [GET, POST]
+
+diplomas_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Diplomas:delete" }
+    methods:  DELETE

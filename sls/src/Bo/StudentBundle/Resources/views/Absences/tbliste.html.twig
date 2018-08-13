@@ -1,0 +1,31 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Motif</th>
+                <th>{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.amorpm'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.numberday'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for absence in absences %}
+            <tr>
+                <td>{{ absence.motif }}</td>
+                <td>{% if absence.startdate %}{{ absence.startdate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if absence.enddate %}{{ absence.enddate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ absence.amorpm }}</td>
+                <td>{{ absence.numberday }}</td>
+                <td>{% if absence.creationdate %}{{ absence.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('student_absences_show', { 'id': absence.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+                    <a href="{{ path('student_absences_edit', { 'id': absence.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="10">{{'message.no.found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

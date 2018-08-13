@@ -1,0 +1,27 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td><button type="submit" id="btn-create">{{'action.update'|trans([],'BoAdminBundle')}}</button></td>
+					{%if force==1%}
+						<td><button type="submit" id="btn-force" name="btn-force" value="1">{{'label.force'|trans([],'BoAdminBundle')}}</button></td>
+					{%endif%}					
+					<td>
+						{%if contracts is defined%}
+							<a href="{{ path('contracts_show',{'id':contract.id}) }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+						{%else%}
+							<a href="{{ url }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+						{%endif%}
+					</td>
+
+					{%if app.session.get('rights')['CONTRACTS']['Contracts'] is defined and app.session.get('rights')['CONTRACTS']['Contracts'].ddelete==1%}
+						<td>
+							<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#myModal">
+								{{'action.delete'|trans([],'BoAdminBundle')}}
+							</button>
+						</td>
+					{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

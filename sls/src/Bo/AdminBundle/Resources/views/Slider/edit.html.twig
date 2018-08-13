@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.document'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.document'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+    <h2>Modifier la diapositive N°{{entity.id}}</h2>
+	<form {{ form_enctype(form) }}>
+		{{ form_errors(form) }}	
+		{% include "FrAdminBundle:Slider:editform.html.twig" %}		
+	</form>
+{% endblock %}

@@ -1,0 +1,25 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="20">Id</th>
+                <th width="100">Path</th>
+                <th width="110">Date creation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.path }}</td>
+                <td>{% if entity.datecreation %}{{ entity.datecreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+				<td class="record_actions">
+					<a href="{{ path('pdf_show', { 'id': entity.id }) }}" title="Consulter"><img src="{{ asset('images/actions/afficher.jpg') }}" /></a>
+					<a href="{{ path('pdf_edit', { 'id': entity.id }) }}" title="modifier"><img src="{{ asset('images/actions/modifier.png') }}" /></a>
+				</td>
+            </tr>
+		{%else%}
+			<tr><td align="center" colspan="7">Aucune entrée de slide trouvée</td></tr>
+        {% endfor %}
+        </tbody>
+	</table>

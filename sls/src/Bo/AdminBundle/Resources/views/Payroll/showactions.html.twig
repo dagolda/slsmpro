@@ -1,0 +1,27 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['ACCOUNTING']['Payroll'] is defined and app.session.get('rights')['ACCOUNTING']['Payroll'].ddelete==1%}	
+					<!--td>
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#myModal">{{'action.delete'|trans([],'BoAdminBundle')}}</button>
+					</td-->
+				{%endif%}
+					<td>
+						<a href="{{ path('payroll_index') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td class="pay-action">
+						<input type="hidden" id="idperiodpay" value="{{periodPay.id}}"/>
+						<button type="submit" id="btn-teaching" value="Teaching">{{'action.teaching'|trans([],'BoAdminBundle')}}</button>
+						<button type="submit" id="btn-admin" value="Admin">{{'action.admin'|trans([],'BoAdminBundle')}}</button>
+						<button type="submit" id="btn-noshow" value="Noshow">{{'action.noshow'|trans([],'BoAdminBundle')}}</button>
+						<button type="submit" id="btn-holiday" value="holiday">{{'action.holiday'|trans([],'BoAdminBundle')}}</button>
+						<button type="submit" id="btn-others" value="Others">{{'action.others'|trans([],'BoAdminBundle')}}</button>
+					</td>
+					<!--td class="payroll_extract">
+						<a href="{{ path('payroll_extract',{'id': periodPay.id,'action':"Teaching"}) }}">{{'action.extract'|trans([],'BoAdminBundle')}}</a>
+					</td-->					
+				</tr>
+			</table>		
+		</div>
+	</div>	

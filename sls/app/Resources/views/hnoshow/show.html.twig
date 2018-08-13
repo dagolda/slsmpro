@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Hnoshow</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ hnoshow.id }}</td>
+            </tr>
+            <tr>
+                <th>Idperiodpay</th>
+                <td>{{ hnoshow.idperiodpay }}</td>
+            </tr>
+            <tr>
+                <th>Hw0</th>
+                <td>{{ hnoshow.hw0 }}</td>
+            </tr>
+            <tr>
+                <th>Hw1</th>
+                <td>{{ hnoshow.hw1 }}</td>
+            </tr>
+            <tr>
+                <th>Hw2</th>
+                <td>{{ hnoshow.hw2 }}</td>
+            </tr>
+            <tr>
+                <th>Hw3</th>
+                <td>{{ hnoshow.hw3 }}</td>
+            </tr>
+            <tr>
+                <th>Hw4</th>
+                <td>{{ hnoshow.hw4 }}</td>
+            </tr>
+            <tr>
+                <th>Hw5</th>
+                <td>{{ hnoshow.hw5 }}</td>
+            </tr>
+            <tr>
+                <th>Total</th>
+                <td>{{ hnoshow.total }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ hnoshow.status }}</td>
+            </tr>
+            <tr>
+                <th>Creationdate</th>
+                <td>{% if hnoshow.creationdate %}{{ hnoshow.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('hnoshow_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('hnoshow_edit', { 'id': hnoshow.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

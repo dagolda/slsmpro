@@ -1,0 +1,24 @@
+histostudents_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:HistoStudents:index" }
+    methods:  GET
+
+histostudents_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:HistoStudents:show" }
+    methods:  GET
+
+histostudents_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:HistoStudents:new" }
+    methods:  [GET, POST]
+
+histostudents_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:HistoStudents:edit" }
+    methods:  [GET, POST]
+
+histostudents_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:HistoStudents:delete" }
+    methods:  DELETE

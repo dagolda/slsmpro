@@ -1,0 +1,30 @@
+admin_slider:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Slider:index" }
+
+admin_slider_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Slider:show" }
+
+admin_slider_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Slider:new" }
+
+admin_slider_create:
+    path:     /create
+    defaults: { _controller: "BoAdminBundle:Slider:create" }
+    requirements: { _method: post }
+
+admin_slider_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Slider:edit" }
+
+admin_slider_update:
+    path:     /{id}/update
+    defaults: { _controller: "BoAdminBundle:Slider:update" }
+    requirements: { _method: post|put }
+
+admin_slider_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Slider:delete" }
+    requirements: { _method: post|delete }

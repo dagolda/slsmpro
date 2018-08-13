@@ -1,0 +1,204 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}-{{'label.room'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:local.html.twig"%}{% endblock %}	
+{% block nav %}	
+{% endblock %}
+{% block label %}<h1>{{'label.room'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdminBundle:Local:backactions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<div id="content-liste">
+		<div class='numberfound'><b>{{'message.searchresult'|trans([],'BoAdminBundle')}}</b> : <span>{{count}} {{'message.found'|trans([],'BoAdminBundle')}}</span></div>
+		{%include "BoAdminBundle:Local:tbliste.html.twig"%}
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#idpage").change(function(){
+				var str=$("#idpage option:selected");
+				page=str.text();
+				var DATA = 'motcle=' + page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('local_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});	
+			$("#btn_search").click(function(){
+				if($("#inp-search").val()==""){
+					alert("Search fields is empty!");
+					return false;
+				}
+				var criteria = $("#inp-search").val();			
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				$(".pagination_content").hide();
+				$(".list_link").show();
+				var DATA = 'description=' + criteria;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('local_search')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#idcampus").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idcampus option:selected");
+				campus=str.val();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var DATA = 'data=' +campus+":"+status+":"+type;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('local_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});	
+			$("#idcampus").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idcampus option:selected");
+				campus=str.val();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var DATA = 'data=' +campus+":"+status+":"+type;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('local_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});	
+			$("#idstatus").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idcampus option:selected");
+				campus=str.val();
+				var str=$("#idstatus option:selected");
+				exit(0);
+				var DATA = 'data=' +campus+":"+status;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('local_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});	
+			$("#idtype").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idcampus option:selected");
+				campus=str.val();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var DATA = 'data=' +campus+":"+status+":"+type;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('local_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});	
+			$("#idstatus").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idcampus option:selected");
+				campus=str.val();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var DATA = 'data=' +campus+":"+status+":"+type;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('local_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			/*
+			$(".startdate").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");	
+				var str=$("#idcampus option:selected");
+				campus=str.val();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();
+				$(".list_link").show();
+				$(".extract_btn").show();
+				var DATA = 'data='+campus+":"+status+":"+type+':'+start+":"+end;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('local_periodsearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;				
+			});
+			$(".enddate").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");	
+				var str=$("#idcampus option:selected");
+				campus=str.val();
+				var str=$("#idstatus option:selected");
+				status=str.val();
+				var str=$("#idtype option:selected");
+				type=str.val();
+				var start = $(".startdate").val();
+				var end = $(".enddate").val();
+				$(".list_link").show();
+				$(".extract_btn").show();
+				var DATA = 'data='+campus+":"+status+":"+type+':'+start+":"+end;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('local_periodsearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;	
+			});
+			*/
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.orderform'|trans([],'BoAdminBundle')}} >> {{'label.sendmail'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}	
+{% block nav %}	{%if enquiry!=null%}{%include "BoAdvisorsBundle:Orderform:rightshow.html.twig"%}{%endif%}{% endblock %}
+{% block label %}<h1>{{'entity.orderform'|trans([],'BoAdminBundle')}} >> {{'label.sendmail'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('dash_orderform_sendbordereau',{'id':orderform.id}) }}" method="post" class="style">	
+			{%include "BoAdvisorsBundle:Orderform:sendactions.html.twig"%}	
+			{{ form_errors(form) }}		
+			<div class="show_content">
+				{%if email%}
+					<div class="aeration"><input type="checkbox" name="email" value="1" checked> {{email}}</div>
+				{%endif%}
+				{%if contactemail%}
+					<div class="aeration"><input type="checkbox" name="contactemail" value="1" checked> {{contactemail}}</div>
+				{%endif%}
+				{%if clientservice %}
+					<div class="aeration"><input type="checkbox" name="clientservice" value="1" checked> {{clientservice}}</div>
+				{%endif%}
+				<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+					<tr>					
+						<th class="sty_label">{{'label.others'|trans([],'BoAdminBundle')}}:</th>
+					</tr>
+					<tr>					
+						<td>{{ form_widget(form.emailaddresses, {'attr' : {'class' : 'emailaddresses span3'}}) }}</td>
+					</tr>
+				</table>
+				<br/>
+			</div>
+			{{ form_rest(form) }}
+		</form>
+	</div>
+{% endblock %}

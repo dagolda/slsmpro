@@ -1,0 +1,6 @@
+				<select name='idlangage' id='idlangage'>
+					<option value="0" selected="delected">{{'action.selectlanguage'|trans([],'BoAdminBundle')}}</option>
+					{%for langage in languages%}
+						<option value="{{langage.id}}" {%if idlangage is defined and langage.id ==idlangage%}selected='selected'{%endif%}>{{langage.name}}</option>
+					{%endfor%}
+				</select>	

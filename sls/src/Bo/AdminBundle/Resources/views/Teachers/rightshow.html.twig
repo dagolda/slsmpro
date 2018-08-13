@@ -1,0 +1,76 @@
+<div class="employee-identity">{{ teachers.firstname }} {{ teachers.name }}</div>
+<div class="employee-status">{% if teachers.status %}{{ teachers.status }}{%endif%}</div>
+    <table>
+        <tbody>
+			{% if teachers.email %}
+            <tr>		
+				<th>{{'label.email'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ teachers.email }}</td>
+            </tr>
+			{%endif%}
+			{% if teachers.typecontract|length>0 %}
+            <tr>
+                <th>Qualification:</th>
+                <td>
+					{%for tc in teachers.typecontract%}
+						{{ tc.reference }}-
+					{%endfor%}
+				</td>
+            </tr>
+			{%endif%}
+			{% if teachers.language %}
+            <tr>
+				<th>{{'label.language'|trans([],'BoAdminBundle')}}:</th>			
+				<td>{{ teachers.language }}</td>
+            </tr>
+			{%endif%}
+			{%if teachers.homenumber %}
+            <tr>
+                <th>{{'label.homenumber'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ teachers.homenumber }}</td>
+            </tr>
+			{% endif %}
+			{%if teachers.cellnumber %}
+			<tr>
+				<th>{{'label.cellnumber'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ teachers.cellnumber }}</td>
+            </tr>
+			{% endif %}
+			{%if teachers.address1 %}
+            <tr>
+                <th>{{'label.address'|trans([],'BoAdminBundle')}} 1:</th>
+                <td>{{ teachers.address1 }}</td>
+            </tr>
+			{% endif %}
+			{%if teachers.address2 %}
+            <tr>
+				<th>{{'label.address'|trans([],'BoAdminBundle')}} 2:</th>
+                <td>{{ teachers.address2 }}</td>
+            </tr>
+			{% endif %}
+			{%if teachers.categoryteacher %}
+            <tr>               
+				<th>Category:</th>
+				<td>{{ teachers.categoryteacher }}</td>            
+            </tr>
+			{% endif %}
+			{% if teachers.birthdate %}
+            <tr>
+                <th>{{'label.birthdate'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ teachers.birthdate|date('Y-m-d') }}</td>               
+            </tr>
+			{% endif %}
+			{% if teachers.hiringdate %}
+            <tr>
+                <th>{{'label.hiringdate'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ teachers.hiringdate|date('Y-m-d') }}</td>
+            </tr>
+			{% endif %}
+			{% if teachers.creationdate %}
+            <tr>
+				<th>{{'label.creationdate'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ teachers.creationdate|date('Y-m-d H:i:s') }}</td>               
+            </tr>
+			{% endif %}
+        </tbody>
+    </table>

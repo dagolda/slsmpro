@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- Payroll creation{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:accounting.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>Payroll creation</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('payroll_new') }}" method="post" class="style">
+			{{ form_errors(form) }}
+			{%include "BoAdminBundle:Payroll:newactions.html.twig"%}
+			<div class="new_content">
+				{%include "BoAdminBundle:Payroll:newform.html.twig"%}
+			</div>
+			{{ form_rest(form) }}
+		</form>	
+	</div>
+{% endblock %}

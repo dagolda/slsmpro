@@ -1,0 +1,32 @@
+contractual_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Contractual:index" }
+    methods:  GET
+
+contractual_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Contractual:show" }
+    methods:  GET
+
+contractual_new:
+    path:     /{idcontract}/new
+    defaults: { _controller: "BoAdminBundle:Contractual:new" }
+    methods:  [GET, POST]
+
+contractual_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Contractual:edit" }
+    methods:  [GET, POST]
+
+contractual_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Contractual:delete" }
+    methods:  DELETE
+contractual_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Contractual:search" }
+    methods:  [GET, POST]
+contractual_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Contractual:pagesearch" }
+    methods:  [GET, POST]

@@ -1,0 +1,50 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					{%if app.session.get('rights')['ROOMS']['Room'] is defined and app.session.get('rights')['ROOMS']['Room'].ddelete==1%}	
+						<td>
+							<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#myModal">
+								{{'action.delete'|trans([],'BoAdminBundle')}}
+							</button>
+						</td>
+					{%endif%}
+					{%if (app.session.get('search') is defined and app.session.get('search') is not null) or (app.session.get('data') is defined and app.session.get('data') is not null)%}	
+						<td>
+							<a href="{{ path('local_back') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+						</td>
+					{%else%}
+						<td>
+							<a href="{{ path('local_index') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+						</td>
+					{%endif%}
+					{% if app.user is defined and app.user.employee.profil is not null and app.user.employee.profil=="Superadmin" %}
+						{%if (local.status==1 or local.status==2) and contracts|length==0 and groups|length==0%}
+							<td>
+								<a href="{{ path('local_free',{'id':local.id}) }}">{{'action.release'|trans([],'BoAdminBundle')}}</a>
+							</td>
+						{%endif%}
+					{%endif%}
+					<td>
+						{%if local.available==0%}
+							<span class="btn ping-color">
+								{{'label.unavailable'|trans([],'BoAdminBundle')}}
+							</span>
+						{%elseif local.status==1%}
+							<span class="btn brown_3d_11">
+								{{'label.occupied'|trans([],'BoAdminBundle')}}
+							</span>
+						{%elseif local.status==2%}
+							<span class="btn wax_3d_3">
+								{{'label.reserved'|trans([],'BoAdminBundle')}}
+							</span>
+						{%elseif local.status==3%}
+							<span class="btn red_3d_11">
+								{{'label.disable'|trans([],'BoAdminBundle')}}
+							</span>
+						{%endif%}
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

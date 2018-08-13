@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Hothers list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idperiodpay</th>
+                <th>Hw0</th>
+                <th>Hw1</th>
+                <th>Hw2</th>
+                <th>Hw3</th>
+                <th>Hw4</th>
+                <th>Hw5</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hother in hothers %}
+            <tr>
+                <td><a href="{{ path('hothers_show', { 'id': hother.id }) }}">{{ hother.id }}</a></td>
+                <td>{{ hother.idperiodpay }}</td>
+                <td>{{ hother.hw0 }}</td>
+                <td>{{ hother.hw1 }}</td>
+                <td>{{ hother.hw2 }}</td>
+                <td>{{ hother.hw3 }}</td>
+                <td>{{ hother.hw4 }}</td>
+                <td>{{ hother.hw5 }}</td>
+                <td>{{ hother.total }}</td>
+                <td>{{ hother.status }}</td>
+                <td>{% if hother.creationdate %}{{ hother.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('hothers_show', { 'id': hother.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('hothers_edit', { 'id': hother.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('hothers_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

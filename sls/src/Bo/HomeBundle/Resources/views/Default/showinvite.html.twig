@@ -1,0 +1,57 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th width="20%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+		<th width="20%">{{'label.student'|trans([],'BoAdminBundle')}}/{{'label.group'|trans([],'BoAdminBundle')}}</th>
+                <th width="20%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+		<th width="20%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+		<td>{{ schedule.id }}</td>
+		<td>{% if schedule.students %}{{ schedule.students.firstname }} {{ schedule.students.name }}{%else%}---{%endif%}</td>  
+                <td>{% if schedule.startdate %}{{ schedule.startdate|date('Y-m-d') }}{% endif %}</td>
+		<td>{% if schedule.enddate %}{{ schedule.enddate|date('Y-m-d') }}{% endif %}</td>         
+            </tr>
+	    <tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+		<th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{% if schedule.startam %}{{ schedule.startam|date('H:i') }}{%else%}---{% endif %}</td>
+                <td>{% if schedule.endam %}{{ schedule.endam|date('H:i') }}{%else%}---{% endif %}</td>
+                <td>{% if schedule.startpm %}{{ schedule.startpm|date('H:i') }}{%else%}---{% endif %}</td>
+                <td>{% if schedule.endpm %}{{ schedule.endpm|date('H:i') }}{%else%}---{% endif %}</td>
+            </tr>
+	    <tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.hourperday'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.days'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.invitationstatus'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ schedule.hourperday }}</td>               
+		<td>{%include "BoAdminBundle:Contracts:days.html.twig"%}</td>
+                <td>{% if invitation.creationdate %}{{ invitation.creationdate|date('d-m-Y H:i') }}{%else%}---{% endif %}</td>
+		<td>{% if invitation.status==1 %}{{'status.accepted'|trans([],'BoAdminBundle')}}{%elseif invitation.status==2 %}{{'status.rejected'|trans([],'BoAdminBundle')}}{% else %}{{'status.sent'|trans([],'BoAdminBundle')}}{% endif %}</td>
+            </tr>
+	    <tr><td colspan="4">&nbsp;</td></tr>
+        </tbody>
+    </table>
+	{%if invitation.status==0%}
+	    <div class="panel-body">
+			<table>
+				<tr>
+					<td>
+						<a href="{{ path('home_invitation_accept',{'id':invitation.id}) }}">{{'action.accept'|trans([],'BoAdminBundle')}}</a>
+					</td>
+					<td>
+						<a href="{{ path('home_invitation_reject',{'id':invitation.id}) }}">{{'action.reject'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				</tr>
+			</table>		
+		</div>	
+	{%endif%}

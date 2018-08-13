@@ -1,0 +1,10 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+	<div id="fos_user_registration">
+		<fieldset>
+			<legend><h1>{{'user.reset'|trans([],'BoAdminBundle')}}</h1></legend>
+			{% include "FOSUserBundle:Resetting:request_content.html.twig" %}
+		</fieldset>
+	</div>
+{% endblock fos_user_content %}

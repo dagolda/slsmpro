@@ -1,0 +1,37 @@
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Priceonsite</th>
+                <th>Priceoffsite</th>
+                <th>Language</th>
+                <th>Ftorpt</th>
+                <th>Feature</th>
+                <th>Creationdate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for otherprice in otherprices %}
+            <tr>
+                <td><a href="{{ path('otherprices_show', { 'id': otherprice.id }) }}">{{ otherprice.id }}</a></td>
+                <td>{{ otherprice.priceonsite }}</td>
+                <td>{{ otherprice.priceoffsite }}</td>
+                <td>{{ otherprice.language }}</td>
+                <td>{{ otherprice.ftorpt }}</td>
+                <td>{{ otherprice.feature }}</td>
+                <td>{% if otherprice.creationdate %}{{ otherprice.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('otherprices_show', { 'id': otherprice.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('otherprices_edit', { 'id': otherprice.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>

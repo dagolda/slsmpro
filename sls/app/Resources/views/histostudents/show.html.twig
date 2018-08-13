@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>HistoStudents</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ histoStudent.id }}</td>
+            </tr>
+            <tr>
+                <th>Idgroup</th>
+                <td>{{ histoStudent.idgroup }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ histoStudent.name }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ histoStudent.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Startlevel</th>
+                <td>{{ histoStudent.startlevel }}</td>
+            </tr>
+            <tr>
+                <th>Targetlevel</th>
+                <td>{{ histoStudent.targetlevel }}</td>
+            </tr>
+            <tr>
+                <th>Startdate</th>
+                <td>{% if histoStudent.startdate %}{{ histoStudent.startdate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Enddate</th>
+                <td>{% if histoStudent.enddate %}{{ histoStudent.enddate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Creationdate</th>
+                <td>{% if histoStudent.creationdate %}{{ histoStudent.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('histostudents_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('histostudents_edit', { 'id': histoStudent.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

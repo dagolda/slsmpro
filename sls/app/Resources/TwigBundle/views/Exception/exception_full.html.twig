@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    {%include "BoAdminBundle:Default:head.html.twig"%}
+    <body>
+		<div id="wrapper">
+			<div class="container header">
+				<div class="h-left">
+					<div class="logo"></div>
+					<p class="slogan">
+						SLS-MANAGER
+					</p>
+				</div>
+				<div class="h-right">
+					{% block hright%}{% endblock %}
+				</div>
+			</div>
+			<div class="container-fluid menu">
+				{%include "BoAdminBundle:Default:pm.html.twig"%}
+			</div>
+			<div id="line"/>
+			<div class="container-fluid text-center">    
+				<div class="row content">
+					<div class="col-sm-8 text-left">
+						<div class="container sub-menu">
+							<ul class="list-inline">
+								{%include "BoAdminBundle:Default:tdb.html.twig"%}
+							</ul>
+						</div>
+						<div class="container-content">
+							<div class="message-content">
+								<div class="message-container">
+									<div class="alert alert-warning">
+										<strong>Warning!</strong> {{'message.something.broken'|trans([],'BoAdminBundle')}}
+									</div>
+								</div>
+							</div>
+							<div id="exception-message">
+								<center>
+									{% if status_code=='404' %}
+										<h3>{{'message.error.404'|trans([],'BoAdminBundle')}}</h3>
+									{% elseif status_code=='500' %}
+										<h3>{{'message.error.500'|trans([],'BoAdminBundle')}}</h3>
+									{% else %}
+										<h3>{{'message.error.other'|trans([],'BoAdminBundle')}}</h3>
+									{% endif %}
+								</center>
+								<br/><br/>
+							</div>
+							<div class='errorImage'>
+								<center>
+									{%if option is defined and option==1%}
+										<img src="{{ asset('images/slider/2010_05_25_4844.jpg') }}" border="0" alt=""/>	
+									{%elseif option is defined and option==2%}	
+										<img src="{{ asset('images/slider/2010_05_25_4846.jpg') }}" border="0" alt=""/>	
+									{%elseif option is defined and option==3%}	
+										<img src="{{ asset('images/slider/2010_05_25_4856.jpg') }}" border="0" alt=""/>	
+									{%else%}	
+										<img src="{{ asset('images/slider/2010_05_25_4860.jpg') }}" border="0" alt=""/>	
+									{%endif%}
+									<div>
+										<p>{{'message.error.end'|trans([],'BoAdminBundle')}}</p>
+										<p>SLSMPRO pour CLIC.</p>
+									</div>
+								</center>
+							</div>
+						</div>
+							<div class="tout-petit">
+								<center>
+									{{exception.message}}<br>
+									{% if trace.function %}
+										at
+										<strong>
+											<abbr title="{{ trace.class }}">{{ trace.short_class }}</abbr>
+											{{ trace.type ~ trace.function }}
+										</strong>
+										({{ trace.args|format_args }})
+									{% endif %}
+
+									{% if trace.file is defined and trace.file and trace.line is defined and trace.line %}
+										{{ trace.function ? '<br />' : '' }}
+										in {{ trace.file|format_file(trace.line) }}&nbsp;
+									{% endif %}							
+								</center>
+							</div>
+					</div>
+					<div class="col-sm-2 sidenav">
+					  <div class="well">
+							{% block nav %}{% endblock %}							
+					  </div>
+					</div>
+				</div>
+			</div>
+			<div class="container-fluid text-center footer">
+				<p>Copyright &copy; Takatim 2016</p>
+			</div>
+		</div>
+        {% block javascripts %}
+			  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+			  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>			
+		{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,25 @@
+	{{ form_errors(form) }}
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+            <th width="40%" class="sty_label">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+			<th width="40%" class="sty_label">{{'label.cc'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.name) }}</td>	
+			<td>{{ form_widget(form.cc) }}</td>				
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+            <th class="sty_label" colspan="2">{{'action.selectemployee'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td colspan="2">{% include 'BoAdminBundle:TicketContacts:selectemployee.html.twig' %}</td>		
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<td colspan="2">
+				<input type="hidden" id="ids_employee"  value=""/>
+			</td>
+		</tr>
+	</table>
+	{{ form_rest(form) }}

@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.pricesreference'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:contracts.html.twig"%}{% endblock %}	
+{% block nav %}{%include "BoAdminBundle:Pricesreference:show.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.pricesreference'|trans([],'BoAdminBundle')}} >> {{'title.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdminBundle:Pricesreference:showactions.html.twig"%}
+
+		<div class="display_content">
+			<legend>Price</legend>
+			{%include "BoAdminBundle:Pricesreference:prices.html.twig"%}
+		</div>
+	</div>
+	
+	<!-- begin add price creation form by modal dialog-->
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="add_price" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.price'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<form action="{{ path('pricesreference_price_new',{'id':pricesreference.id})}}" method="post" class="style" class="form_submitt">
+				<div class="modal-message"></div>
+				<div class="modal-body">
+					{{ form_errors(form) }}
+						{%include "BoAdminBundle:Pricesreference:priceform.html.twig"%}
+					{{ form_rest(form) }}
+				</div>
+				<div class="modal-footer">
+					<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+					<input id="btn-create" type="submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+				</div>
+			</form>	
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<!-- end price creation form by modal dialog-->	
+	
+	<!-- begin edit price form by modal dialog-->
+	{% for price in prices %}	
+		{%set editform = edit_form[price.id]%}
+		<div class="container">
+		  <!-- Modal -->
+		  <div class="modal fade" id="edit_price{{price.id}}" role="dialog">
+			<div class="modal-dialog">
+			
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'label.price'|trans([],'BoAdminBundle')}}</h4>
+					</div>
+					<form action="{{ path('pricesreference_price_edit',{'id':price.id})}}" method="post" class="style" class="form_submitt">
+						<div class="modal-message"></div>
+						<div class="modal-body">
+							{{ form_errors(editform) }}
+							{%include "BoAdminBundle:Pricesreference:priceeditform.html.twig"%}
+							{{ form_rest(editform) }}
+						</div>
+						<div class="modal-footer">
+							<button class="close_modal_add" data-dismiss="modal">{{'action.close'|trans([],'BoAdminBundle')}}</button>
+							<input id="btn-create" type="submit" value="{{'action.update'|trans([],'BoAdminBundle')}}">
+						</div>
+					</form>	
+				</div>
+			  
+			</div>
+		  </div>
+		</div>
+    {% endfor %}
+	<!-- end edit price form by modal dialog-->	
+	
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'message.alert.delete'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+			  <p>{{'message.confirm.delete'|trans([],'BoAdminBundle')}}</p>
+			</div>
+			<div class="modal-footer">
+				{{ form_start(delete_form) }}
+					<input type="submit" value="{{'action.confirm'|trans([],'BoAdminBundle')}}">
+				{{ form_end(delete_form) }}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#btn_submit").click(function(){
+				var fullname = $(".fullname").val();
+				var array = fullname.split(" ");
+				if(array.length<2){
+					alert("You must to enter a firstname and name separeted by an empty space.");
+					return false;
+				}
+				return true;
+			});
+			$("#btn_delete").click(function(){
+				var nb_contract = $("#contract_number").val();
+				if(nb_contract>0){
+					alert("You can not delete this client because it is attached to a contract.");
+					return false;
+				}
+				return true;
+			});
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.js') }}"></script>
+	{% endblock %}
+{% endblock %}

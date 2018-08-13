@@ -1,0 +1,60 @@
+bo_home_homepage:
+    path:     /
+    defaults: { _controller: BoHomeBundle:Default:index }
+bo_home_maintenance:
+    path:     /maintenance/
+    defaults: { _controller: BoHomeBundle:Default:maintenance }
+bo_home_broken:
+    path:     /broken/
+    defaults: { _controller: BoHomeBundle:Default:broken }
+bo_home_teamcontact:
+    path:     /team/admin/
+    defaults: { _controller: BoHomeBundle:Default:teamcontact }
+bo_home_edit:
+    path:     /account/edit
+    defaults: { _controller: "BoHomeBundle:Default:edit" }
+bo_home_language:
+    path:     /{_locale}/language/
+    defaults: { _controller: BoHomeBundle:Default:language }
+    methods:  [GET, POST]
+    requirements:
+        _locale: en|fr   
+bo_home_user_update:
+    path:     /user/update/{idemployee}
+    defaults: { _controller: BoAdminBundle:Default:update }
+bo_home_timesheet:
+    resource: "@BoHomeBundle/Resources/config/routing/timesheet.yml"
+    prefix:   /timesheet/
+bo_home_absences:
+    resource: "@BoHomeBundle/Resources/config/routing/absences.yml"
+    prefix:   /absences/
+bo_home_message:
+    resource: "@BoHomeBundle/Resources/config/routing/message.yml"
+    prefix:   /message/
+bo_home_tickets:
+    resource: "@BoHomeBundle/Resources/config/routing/tickets.yml"
+    prefix:   /tickets/
+bo_home_substitution:
+    resource: "@BoHomeBundle/Resources/config/routing/substitution.yml"
+    prefix:   /substitution/
+bo_home_emppj:
+    resource: "@BoHomeBundle/Resources/config/routing/emppj.yml"
+    prefix:   /document/
+bo_home_agenda:
+    resource: "@BoHomeBundle/Resources/config/routing/agenda.yml"
+    prefix:   /agenda/
+bo_home_invitation:
+    resource: "@BoHomeBundle/Resources/config/routing/invitation.yml"
+    prefix:   /invitation/
+bo_home_contracts:
+    resource: "@BoHomeBundle/Resources/config/routing/contracts.yml"
+    prefix:   /contracts/
+bo_home_schedule:
+    resource: "@BoHomeBundle/Resources/config/routing/schedule.yml"
+    prefix:   /schedule/
+bo_home_dash:
+    resource: "@BoHomeBundle/Resources/config/routing/dash.yml"
+    prefix:   /dash/
+bo_home_tsdoc:
+    resource: "@BoHomeBundle/Resources/config/routing/tsdoc.yml"
+    prefix:   /tsdoc/

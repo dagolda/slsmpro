@@ -1,0 +1,52 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">	
+		<tr>
+			<th class="sty_label" colspan="3">{{'label.teacher'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>				
+			<td colspan="3">				
+				<select name='idteacher' id='teachers' required="true">
+					<option value="0" selected="selected">Select a teachers</option>
+					{%for teacher in teachers%}
+						<option value="{{teacher[0]}}" {%if idteacher is defined and teacher[0] ==idteacher%}selected='selected'{%endif%}>{{teacher[1]}}</option>
+					{%endfor%}
+				</select>	
+			</td>
+			<td>{{ form_widget(form.startdate) }}</td>
+			<td>{{ form_widget(form.enddate) }}</td>			
+		</tr>	
+		<tr><td colspan="5">&nbsp;</td></tr>	
+		<tr>
+            <th width="16%" class="sty_label">{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+			<th width="16%" class="sty_label">{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+            <th width="16%" class="sty_label">{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+			<th width="16%" class="sty_label">{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+			<th width="16%" class="sty_label">{{'label.hourperday'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.startam, {'attr' : {'class' : 'startam span3'}}) }}</td>
+			<td>{{ form_widget(form.endam, {'attr' : {'class' : 'endam span3'}}) }}</td>	
+			<td>{{ form_widget(form.startpm, {'attr' : {'class' : 'startpm span3'}}) }}</td>
+			<td>{{ form_widget(form.endpm, {'attr' : {'class' : 'endpm span3'}}) }}</td>	
+			<td>{{ form_widget(form.hourperday, {'attr' : {'class' : 'hourperday span3'}}) }}</td>				
+		</tr>	
+		<tr><td colspan="5">&nbsp;</td></tr>			
+	</table>
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+			<th width="15%" class="sty_label">{{'label.monday'|trans([],'BoAdminBundle')}}</th>
+            <th width="15%" class="sty_label">{{'label.tuesday'|trans([],'BoAdminBundle')}}</th>
+			<th width="15%" class="sty_label">{{'label.wednesday'|trans([],'BoAdminBundle')}}</th>
+			<th width="15%" class="sty_label">{{'label.thursday'|trans([],'BoAdminBundle')}}</th>
+            <th width="15%" class="sty_label">{{'label.friday'|trans([],'BoAdminBundle')}}</th>			
+		</tr>
+		<tr>
+			<td class="sty_label">{{ form_widget(form.monday, {'attr' : {'class' : 'cmonday span3'}}) }}</td>
+            <td class="sty_label">{{ form_widget(form.tuesday, {'attr' : {'class' : 'ttuesday span3'}}) }}</td>
+			<td class="sty_label">{{ form_widget(form.wednesday, {'attr' : {'class' : 'cwednesday span3'}}) }}</td>
+			<td class="sty_label">{{ form_widget(form.thursday, {'attr' : {'class' : 'cthursday span3'}}) }}</td>
+            <td class="sty_label">{{ form_widget(form.friday, {'attr' : {'class' : 'cfriday span3'}}) }}</td>				
+		</tr>
+		<tr><td colspan="5">&nbsp;</td></tr>
+	</table>

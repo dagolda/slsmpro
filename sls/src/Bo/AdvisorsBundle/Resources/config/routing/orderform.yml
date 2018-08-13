@@ -1,0 +1,87 @@
+dash_orderform_index:
+    path:     /
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:index" }
+    methods:  GET
+dash_orderform_list:
+    path:     /list
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:list" }
+    methods:  GET
+dash_orderform_back:
+    path:     /back
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:back" }
+    methods:  GET
+dash_orderform_headsup:
+    path:     /headsup/
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:headsup" }
+    methods:  GET
+dash_orderform_contract:
+    path:     /{id}/generate/contract/
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:contract" }
+    methods:  GET
+dash_orderform_page:
+    path:     /page/{option}/
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:page" }
+dash_orderform_show:
+    path:     /{id}/show/
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:show" }
+    methods:  GET
+dash_orderform_showheadsup:
+    path:     /{id}/show/headsup/
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:showheadsup" }
+    methods:  GET
+dash_orderform_editenquiry:
+    path:     /{id}/edit/enquiry/
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:editenquiry" }
+    methods:  [GET, POST]
+dash_orderform_error:
+    path:     /{id}/{opt}/items/missing/
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:error" }
+    methods:  [GET, POST]
+dash_orderform_new:
+    path:     /{id}/new/
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:new" }
+    methods:  [GET, POST]
+dash_orderform_pdf:
+    path:     /{id}/pdf/
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:pdf" }
+    methods:  [GET, POST]
+dash_orderform_remove:
+    path:     /{id}/remove/
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:remove" }
+    methods:  [GET, POST]
+dash_orderform_send:
+    path:     /{id}/send/
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:send" }
+    methods:  [GET, POST]  
+dash_orderform_resolved:
+    path:     /resolved/
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:resolved" }
+    methods:  [GET, POST]
+dash_orderform_notresolved:
+    path:     /notresolved/
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:notresolved" }
+    methods:  [GET, POST]
+dash_orderform_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:edit" }
+    methods:  [GET, POST]
+dash_orderform_sendbordereau:
+    path:     /{id}/send/bordereau/
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:sendbordereau" }
+    methods:  [GET, POST]
+dash_orderform_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:delete" }
+    methods:  DELETE
+dash_orderform_search:
+    path:  /search/
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:search" }
+    methods:  [GET, POST]
+dash_orderform_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:pagesearch" }
+    methods:  [GET, POST]
+dash_orderform_extrasearch:
+    path:  /extrasearch/
+    defaults: { _controller: "BoAdvisorsBundle:Orderform:extrasearch" }
+    methods:  [GET, POST]

@@ -1,0 +1,25 @@
+<?php
+namespace Bo\AdminBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+* @ORM\Entity
+* @ORM\Table(name="adm_tspresence")
+*/
+class Tspresence
+{
+    /**
+     * @ORM\Column(type="string",length=255)
+     */  	
+	private $month;
+
+    /**
+     * @ORM\Column(type="string",length=255)
+     */  	
+	private $year;
+	
+	public function __construct($start=null,$end=null){
+		$this->month = date('m');
+		$this->year = date('Y');
+	}	
+}

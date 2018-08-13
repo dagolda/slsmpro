@@ -1,0 +1,49 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th width="20%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+		<th width="20%">{{'label.teacher'|trans([],'BoAdminBundle')}}</th>
+		<th width="20%">{{'label.student'|trans([],'BoAdminBundle')}}/{{'label.group'|trans([],'BoAdminBundle')}}</th>
+                <th width="20%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+		<th width="20%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+		<td>{{ teacherSchedule.id }}</td>
+ 		<td>{{ teacher }}</td>  
+		<td>{{ student }}</td>  
+                <td>{% if teacherSchedule.startdate %}{{ teacherSchedule.startdate|date('Y-m-d') }}{% endif %}</td>
+		<td>{% if teacherSchedule.enddate %}{{ teacherSchedule.enddate|date('Y-m-d') }}{% endif %}</td>         
+            </tr>
+	    <tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <th>{{'label.hourperday'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.startam'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.endam'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.startpm'|trans([],'BoAdminBundle')}}</th>
+		<th>{{'label.endpm'|trans([],'BoAdminBundle')}}</th>
+            </tr>
+            <tr>
+                <td>{{ teacherSchedule.hourperday }}</td>
+                <td>{% if teacherSchedule.startam %}{{ teacherSchedule.startam|date('H:i:s') }}{% endif %}</td>
+                <td>{% if teacherSchedule.endam %}{{ teacherSchedule.endam|date('H:i:s') }}{% endif %}</td>
+                <td>{% if teacherSchedule.startpm %}{{ teacherSchedule.startpm|date('H:i:s') }}{% endif %}</td>
+                <td>{% if teacherSchedule.endpm %}{{ teacherSchedule.endpm|date('H:i:s') }}{% endif %}</td>
+            </tr>
+	    <tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <th>Monday</th>
+                <th>Tuesday</th>
+		<th>Wednesday</th>
+		<th>Thursday</th>
+		<th>Friday</th>
+            </tr>
+            <tr>               
+		<td>{% if teacherSchedule.monday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if teacherSchedule.tuesday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if teacherSchedule.wednesday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if teacherSchedule.thursday %}Yes{% else %}No{% endif %}</td>
+                <td>{% if teacherSchedule.friday %}Yes{% else %}No{% endif %}</td>
+            </tr>
+	    <tr><td colspan="4">&nbsp;</td></tr>
+        </tbody>
+    </table>

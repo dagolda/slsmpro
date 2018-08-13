@@ -1,0 +1,14 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td><a href="{{ path('students_absence_day') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a></td>
+					<td class="total_number">
+						<button type="button" class="btn btn-primary">
+							Total {{'label.teacher'|trans([],'BoAdminBundle')}}<span class="badge">{{employees|length|number_format(0,""," ")}}</span>
+						</button>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

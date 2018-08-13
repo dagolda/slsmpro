@@ -1,0 +1,35 @@
+dash_employee_index:
+    path:     /
+    defaults: { _controller: "BoAdvisorsBundle:Employee:index" }
+    methods:  GET
+dash_employee_list:
+    path:     /list/
+    defaults: { _controller: "BoAdvisorsBundle:Employee:list" }
+    methods:  GET
+dash_employee_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdvisorsBundle:Employee:page" }
+dash_employee_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdvisorsBundle:Employee:show" }
+    methods:  GET
+dash_employee_new:
+    path:     /{id}/timesheet/new
+    defaults: { _controller: "BoAdvisorsBundle:Employee:new" }
+    methods:  [GET, POST]
+dash_employee_search:
+    path:  /search/
+    defaults: { _controller: "BoAdvisorsBundle:Employee:search" }
+    methods:  [GET, POST]
+dash_employee_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdvisorsBundle:Employee:pagesearch" }
+    methods:  [GET, POST]
+dash_employee_allvalidate:
+    path:     /{id}/allvalidate
+    defaults: { _controller: "BoAdvisorsBundle:Employee:allvalidate" }
+    methods:  [GET, POST]
+dash_employee_ajaxvalidate:
+    path:     /ajaxvalidate/
+    defaults: { _controller: "BoAdvisorsBundle:Employee:ajaxvalidate" }
+    methods:  [GET, POST]

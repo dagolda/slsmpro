@@ -1,0 +1,27 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+			<th width="40%" class="sty_label">{{'label.subject'|trans([],'BoAdminBundle')}}</th>
+            <th width="40%" class="sty_label">{{'label.openeddate'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.subject, {'attr' : {'class' : 'subject span3'}}) }}</td>	
+			<td>{{ form_widget(form.openeddate) }}</td>		
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th class="sty_label">{{'label.employee'|trans([],'BoAdminBundle')}}</th>
+            <th class="sty_label">{{'label.students'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(form.employee, {'attr' : {'class' : 'subject span3'}}) }}</td>	
+			<td>{{ form_widget(form.students) }}</td>		
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr>
+			<th colspan="2" class="sty_label">{{'label.message'|trans([],'BoAdminBundle')}}</th>
+		</tr> 
+		<tr>
+			<td colspan="2">{{ form_widget(form.comments) }}</td>	
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+	</table>

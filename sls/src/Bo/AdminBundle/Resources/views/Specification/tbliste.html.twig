@@ -1,0 +1,29 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Module</th>
+                <th>Objet</th>
+                <th>Author</th>
+                <th>Date creation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for specification in specifications %}
+            <tr>
+                <td><a href="{{ path('specification_show', { 'id': specification.id }) }}">{{ specification.id }}</a></td>
+                <td>{{ specification.module }}</td>
+                <td>{{ specification.objet }}</td>
+                <td>{{ specification.author }}</td>
+                <td>{% if specification.dateCreation %}{{ specification.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+                    <a href="{{ path('specification_show', { 'id': specification.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+                    <a href="{{ path('specification_edit', { 'id': specification.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="6">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

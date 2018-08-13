@@ -1,0 +1,22 @@
+<li {%if sm=="contract"%} class="active"{%endif%}>
+	<a href="{{ path('home_contract_show') }}">
+		{{'layout.menu.contracts'|trans([],'BoAdminBundle')}}
+	</a>
+</li>
+{%if app.session.get('dts') is defined and app.session.get('dts')==1%}
+<li {%if sm=="timesheet"%} class="active"{%endif%}>
+	<a href="{{ path('home_timesheet_index') }}">
+		{{'layout.menu.timesheet'|trans([],'BoAdminBundle')}}
+	</a>
+</li>
+{%endif%}
+<li {%if sm=="substitution"%} class="active"{%endif%}>
+	<a href="{{ path('home_substitution_index') }}">
+		{{'layout.menu.substitutions'|trans([],'BoAdminBundle')}}
+	</a>
+</li>
+<li {%if sm=="invitation"%} class="active"{%endif%}>
+	<a href="{{ path('home_invitation_index') }}">
+		{{'label.invitation'|trans([],'BoAdminBundle')}}
+	</a>
+</li>

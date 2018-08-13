@@ -1,0 +1,49 @@
+question_index:
+    path:     /
+    defaults: { _controller: "BoQuizBundle:Question:index" }
+    methods:  GET
+
+question_show:
+    path:     /{idquiz}/{id}/show
+    defaults: { _controller: "BoQuizBundle:Question:show" }
+    methods:  GET
+
+question_previous:
+    path:     /{idquiz}/{id}/previous/
+    defaults: { _controller: "BoQuizBundle:Question:previous" }
+    methods:  GET
+
+question_next:
+    path:     /{idquiz}/{id}/next/
+    defaults: { _controller: "BoQuizBundle:Question:next" }
+    methods:  GET
+
+question_new:
+    path:     /{idquiz}/new
+    defaults: { _controller: "BoQuizBundle:Question:new" }
+    methods:  [GET, POST]
+
+question_duplicate:
+    path:     /{id}/{idquiz}/duplicate
+    defaults: { _controller: "BoQuizBundle:Question:duplicate" }
+    methods:  [GET, POST]
+
+question_addanswer:
+    path:     /{idquestion}/{idquiz}/add/
+    defaults: { _controller: "BoQuizBundle:Question:addAnswer" }
+    methods:  [GET, POST]
+
+question_edit:
+    path:     /{idquiz}/{id}/edit
+    defaults: { _controller: "BoQuizBundle:Question:edit" }
+    methods:  [GET, POST]
+
+question_editanswer:
+    path:     /{id}/editanswer
+    defaults: { _controller: "BoQuizBundle:Question:editanswer" }
+    methods:  [GET, POST]
+
+question_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoQuizBundle:Question:delete" }
+    methods:  DELETE

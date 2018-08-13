@@ -1,0 +1,97 @@
+		<table width="100%">
+			<tbody>
+				<tr>
+					<th width="30"%>{{'label.subject'|trans([],'BoAdminBundle')}}</th>
+					<th width="30%">{{'label.submittby'|trans([],'BoAdminBundle')}}</th>
+					<th width="30"%>{{'label.contacts'|trans([],'BoAdminBundle')}}</th>
+				</tr>
+				<tr>              
+					<td>{{ ticket.subject }}</td>
+					<td>
+						{%if ticket.employee %}{{ ticket.employee.firstname }} {{ ticket.employee.name }}{%elseif ticket.students%}{{ ticket.students.firstname }} {{ ticket.students.name }}{%endif%}
+					</td>
+					<td>
+						{%if ticket.contacts and ticket.contacts.employee%}
+							{%set i=1%}
+							{%for employee in ticket.contacts.employee%}
+								{{ employee.firstname }} {{ employee.name }}
+								{%if i<ticket.contacts.employee|length%}, {%endif%}
+								{%set i=i+1%}								
+							{%endfor%}
+						{%elseif advisor is defined and advisor is not null%}
+							{{ advisor.firstname }} {{ advisor.name }}
+						{%else%}
+							---
+						{%endif%}
+					</td>
+				</tr>
+				<tr><td colspan="3">&nbsp;</td></tr>
+				<tr>
+					<th>{{'label.blockedby'|trans([],'BoAdminBundle')}}</th>
+					<th>{{'label.openeddate'|trans([],'BoAdminBundle')}}</th>
+					<th>{{'label.status'|trans([],'BoAdminBundle')}}</th>
+				</tr>
+				<tr> 
+					<td>{%if ticket.blockedby %}{{ ticket.blockedby }}{%else%}---{%endif%}</td>				
+					<td>{% if ticket.openeddate %}{{ ticket.openeddate|date('Y-m-d') }}{% endif %}</td>
+					<td>{{ status[ticket.status] }}</td>					
+				</tr>
+				<tr><td colspan="3">&nbsp;</td></tr>
+				<tr>
+					<th>{{'label.statusddate'|trans([],'BoAdminBundle')}}</th>
+					<th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+					<th>{{'label.resolveddate'|trans([],'BoAdminBundle')}}</th>
+				</tr>
+				<tr>
+					<td>{% if ticket.statusddate %}{{ ticket.statusddate|date('Y-m-d') }}{% endif %}</td>
+					<td>{% if ticket.creationdate %}{{ ticket.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>				
+					<td>{% if ticket.resolveddate %}{{ ticket.openeddate|date('Y-m-d') }}{%else%}---{% endif %}</td>									
+				</tr>
+				<tr><td colspan="3">&nbsp;</td></tr>
+				{%if ticket.resolvedby%}
+					<tr>
+						<th>{{'label.resolvedby'|trans([],'BoAdminBundle')}}</th>
+						<th>{{'label.closedby'|trans([],'BoAdminBundle')}}</th>
+						<th>&nbsp;</th>
+					</tr>
+					<tr>				
+						<td>{% if ticket.resolvedby %}{{ ticket.resolvedby}}{%else%}---{% endif %}</td>	
+						<td>{% if ticket.closeby %}{{ ticket.closeby}}{%else%}---{% endif %}</td>	
+						<td>&nbsp;</td>							
+					</tr>
+				{% endif %}
+				<tr><td colspan="3">&nbsp;</td></tr>
+				{%if ticket.filename%}
+				<tr>
+					<th colspan="3">Image</th>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<a href="#" class="info1">
+							<img src="{{ asset(['uploads/tickets/', ticket.filename]|join) }}" width="500"/>
+							<span>
+								<img src="{{ asset(['uploads/tickets/', ticket.filename]|join) }}" width="900"/>
+							</span>	
+						</a>
+					</td>
+				</tr>
+				<tr><td colspan="3">&nbsp;</td></tr>
+				{%endif%}
+				<tr>
+					<th colspan="3"><legend>Message</legend></th>
+				</tr>
+				<tr>
+					<td colspan="3">{{ ticket.comments }}</td>
+				</tr>
+				<tr><td colspan="3">&nbsp;</td></tr>
+				{%if ticket.resolvednote%}
+					<tr>
+						<th colspan="3"><legend>{{'label.resolutionnotes'|trans([],'BoAdminBundle')}}</legend></th>
+					</tr>
+					<tr>
+						<td colspan="3">{{ ticket.resolvednote }}</td>
+					</tr>
+					<tr><td colspan="3">&nbsp;</td></tr>
+				{%endif%}
+			</tbody>
+		</table>

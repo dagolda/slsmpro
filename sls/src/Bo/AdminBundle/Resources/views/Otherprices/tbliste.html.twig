@@ -1,0 +1,37 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+				<th>{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.language'|trans([],'BoAdminBundle')}}</th>
+				<th>{{'label.ftorpt'|trans([],'BoAdminBundle')}}</th>  
+				<th>{{'label.feature'|trans([],'BoAdminBundle')}}</th>   				
+                <th>{{'label.priceonsite'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.priceoffsite'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for otherprice in otherprices %}
+            <tr>
+                <td><a href="{{ path('otherprices_show', { 'id': otherprice.id }) }}">{{ otherprice.id }}</a></td>
+				<td>{{ otherprice.contracttype }}</td>
+                <td>{{ otherprice.language }}</td>
+                <td>{{ otherprice.ftorpt }}</td>
+                <td>{{ feature[otherprice.feature] }}</td>
+                <td>{{ otherprice.priceonsite }}</td>
+                <td>{{ otherprice.priceoffsite }}</td>
+                <td>{% if otherprice.creationdate %}{{ otherprice.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action" nowrap>
+                    <a href="{{ path('otherprices_show', { 'id': otherprice.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+					{%if app.session.get('rights')['CONTRACTS']['Prices'] is defined and app.session.get('rights')['CONTRACTS']['Prices'].edit==1%}
+						<a href="{{ path('otherprices_edit', { 'id': otherprice.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="8">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

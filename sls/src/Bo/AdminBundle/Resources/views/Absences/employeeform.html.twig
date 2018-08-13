@@ -1,0 +1,38 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+			<th width="30%" class="sty_label">{{'label.employee'|trans([],'BoAdminBundle')}}</th>
+            		<th width="30%" class="sty_label">{{'label.motif'|trans([],'BoAdminBundle')}}</th>
+			<th width="30%" class="sty_label">{{'label.amorpm'|trans([],'BoAdminBundle')}}</th>				
+		</tr>
+		<tr>
+			<td>{{ form_widget(absence_form.employee) }}</td>
+			<td>{{ form_widget(absence_form.motif) }}</td>
+			<td>{{ form_widget(absence_form.amorpm) }}</td>	
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+            		<th class="sty_label">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+			<th class="sty_label">{{'label.numberday'|trans([],'BoAdminBundle')}}</th>		
+		</tr>
+		<tr>
+			<td>{{ form_widget(absence_form.startdate, {'attr' : {'class' : 'abstart span3'}}) }}</td>	
+			<td>{{ form_widget(absence_form.enddate, {'attr' : {'class' : 'abend span3'}}) }}</td>	
+			<td>{{ form_widget(absence_form.numberday, {'attr' : {'class' : 'numberday span3'}}) }}</td>
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+            		<th class="sty_label">{{'label.valid'|trans([],'BoAdminBundle')}}</th>
+		</tr>
+		<tr>
+			<td>{{ form_widget(absence_form.valid) }}</td>	
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+		<tr>
+            		<th colspan="3" class="sty_label">Comment</th>
+		</tr>
+		<tr>
+			<td colspan="3">{{ form_widget(absence_form.comment) }}</td>			
+		</tr>
+		<tr><td colspan="3">&nbsp;</td></tr>
+	</table>

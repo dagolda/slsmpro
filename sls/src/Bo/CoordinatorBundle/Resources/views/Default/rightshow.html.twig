@@ -1,0 +1,61 @@
+	<div class="employee-identity">{{'entity.coordinator'|trans([],'BoAdminBundle')}} {%if coordinator.master%}{{'label.master'|trans([],'BoAdminBundle')}}{%endif%}</div>
+    <table>
+        <tbody>
+			{%if coordinator.name is defined%}
+            <tr>
+                <th>{{'label.fullname'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ coordinator.name }}</td>
+            </tr>
+			{%endif%}
+			{%if coordinator.email%}
+            <tr>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ coordinator.email }}</td>
+            </tr>
+			{%endif%}
+			{%if coordinator.phone%}
+            <tr>
+                <th>{{'label.phone'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ coordinator.phone }}</td>
+            </tr>
+            <tr>
+                <th>{{'label.contracttype'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ coordinator.typecontract }}</td>
+            </tr>
+			{%endif%}
+			{%if coordinator.client%}
+				<tr>
+					<th>{{'label.customer'|trans([],'BoAdminBundle')}}:</th>
+					<td>{{ coordinator.client.reference }}</td>
+				</tr>
+			{%endif%}
+			{% if user[0] is defined and user[0].username!=null %}
+            <tr>		
+				<th>{{'label.username'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ user[0].username }}</td>
+            </tr>
+			{%endif%}
+			{% if token is defined and token.roles[0]=="ROLE_ADMIN" %}
+            <tr>		
+				<th>{{'label.token'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ coordinator.pwd }}</td>
+            </tr>
+			{%endif%}
+			{%if user[0]is defined and user[0].username%}
+            <tr>
+                <th>{{'label.lastlogin'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ user[0].lastLogin|date('Y-m-d H:i:s') }}</td>
+            </tr>
+			{%endif%}
+			{% if coordinator.createby %}
+            <tr>		
+				<th>{{'label.createdby'|trans([],'BoAdminBundle')}}:</th>
+				<td>{{ coordinator.createby }}</td>
+            </tr>
+			{%endif%}
+            <tr>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}:</th>
+                <td>{% if coordinator.creationdate %}{{ coordinator.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>

@@ -1,0 +1,9 @@
+{% if criteria is defined %}
+	<div class="result_content">
+		{{'message.search.result'|trans([],'BoAdminBundle')}} "{{criteria}}"<br>
+		{{'message.search.noresult'|trans([],'BoAdminBundle')}}.
+	</div>
+{%else%}
+	<div id='numberfound'><b>{{'message.searchresult'|trans([],'BoAdminBundle')}}</b> : <span>{{count}} {{'message.found'|trans([],'BoAdminBundle')}}</span></div>
+	{% include 'BoAdminBundle:Substitution:tbliste.html.twig' %}
+{%endif%}

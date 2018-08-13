@@ -1,0 +1,24 @@
+userqz_index:
+    path:     /
+    defaults: { _controller: "BoQuizBundle:User:index" }
+    methods:  GET
+
+userqz_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoQuizBundle:User:show" }
+    methods:  GET
+
+userqz_new:
+    path:     /new
+    defaults: { _controller: "BoQuizBundle:User:new" }
+    methods:  [GET, POST]
+
+userqz_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoQuizBundle:User:edit" }
+    methods:  [GET, POST]
+
+userqz_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoQuizBundle:User:delete" }
+    methods:  DELETE

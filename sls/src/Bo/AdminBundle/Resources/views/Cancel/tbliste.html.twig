@@ -1,0 +1,37 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="5%">{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.startdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.enddate'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.amorpm'|trans([],'BoAdminBundle')}}</th>
+                <th width="30%">{{'label.motif'|trans([],'BoAdminBundle')}}</th>
+                <th width="12%">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th width="126px" npowrap>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cancel in cancels %}
+            <tr>
+                <td>{{ cancel.id }}</td>
+                <td>{{ cancel.startdate|date('Y-m-d') }}</td>
+                <td>{{ cancel.enddate|date('Y-m-d') }}</td>
+                <td>{{ cancel.amorpm }}</td>
+                <td>{{ cancel.motif }}</td>
+                <td>{%if cancel.creationdate %}{{ cancel.creationdate|date('Y-m-d') }}{%else%}---{% endif %}</td>
+                <td class="list-action"  width="126px">
+                    	<a href="{{ path('cancel_show', { 'id': cancel.id }) }}">
+				{{'action.show'|trans([],'BoAdminBundle')}}
+			</a>
+			{%if app.session.get('rights')['STAFF']['Cancel'] is defined and app.session.get('rights')['STAFF']['Cancel'].edit==1%}
+			<a href="{{ path('cancel_edit', { 'id': cancel.id }) }}">
+				{{'action.edit'|trans([],'BoAdminBundle')}}
+			</a>
+			{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="8">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

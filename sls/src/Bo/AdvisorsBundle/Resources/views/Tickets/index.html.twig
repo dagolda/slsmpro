@@ -1,0 +1,214 @@
+{% extends 'base2.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.tickets'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoAdminBundle:Default:admin.html.twig"%}{% endblock %}
+{% block label %}<h1>{{'entity.tickets'|trans([],'BoAdminBundle')}} >> {{'title.list'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block actions %}
+	{%include "BoAdvisorsBundle:Tickets:actions.html.twig"%}					
+{% endblock %}
+{% block body %}
+	<input type="hidden" id="nb_pages" value="{{nb_pages}}" /> 
+	{%if total is defined and total>nb_cpp%}
+		<div class="pagination_content">
+			{% include 'BoAdvisorsBundle:Tickets:pagination.html.twig' %}
+		</div>
+	{%endif%}
+	<div id="content-liste">
+		{%include "BoAdvisorsBundle:Tickets:tbliste.html.twig"%}
+	</div>
+	<div class="container">
+		<!-- Modal -->
+		<div class="modal fade" id="add_ticket" role="dialog">
+			<div class="modal-dialog">
+			
+			  <!-- Modal content-->
+			  <div class="modal-content">
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal">&times;</button>
+				  <h4 class="modal-title">{{'action.add'|trans([],'BoAdminBundle')}} {{'entity.tickets'|trans([],'BoAdminBundle')}}</h4>
+				</div>
+				<form action="{{ path('dash_tickets_new') }}" enctype="multipart/form-data" method="post" class="style">
+					<div class="modal-body">
+						{{ form_errors(form) }}
+						{%include "BoAdminBundle:Tickets:modalform.html.twig"%}
+						{{ form_rest(form) }}
+					</div>
+					<div class="modal-footer">
+						<input type="submit" id="btn_submit" value="{{'action.create'|trans([],'BoAdminBundle')}}">
+					</div>
+				</form>	
+			  </div>
+			  
+			</div>
+		</div>
+	</div>
+	{% block javascripts %}
+		<script>
+			$("#idpage").change(function(){
+				var str=$("#idpage option:selected");
+				page=str.text();
+				alert(page);
+				var DATA = 'page=' + page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_tickets_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});	
+			$("#btn-search").click(function(){
+				if($("#inp-search").val()==""){
+					alert("Search fields is empty!");
+					return false;
+				}
+				var criteria = $("#inp-search").val();				
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				$(".pagination_content").hide();
+				$(".total_number").hide();
+				$(".list_link").show();
+				var DATA = 'description=' + criteria;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_tickets_search')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#idtype").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idtype option:selected");
+				idtype=str.val();
+				var str=$("#idstatus option:selected");
+				idstatus=str.val();
+				/*$(".list_link").show();*/
+				var DATA = 'data=' + idtype+':'+idstatus;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_tickets_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#idstatus").change(function(){
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idtype option:selected");
+				idtype=str.val();
+				var str=$("#idstatus option:selected");
+				idstatus=str.val();
+				/*$(".list_link").show();*/
+				var DATA = 'data=' + idtype+':'+idstatus;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_tickets_extrasearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#btn_first").click(function(){
+				var str=$("#idpage option:selected");
+				page=str.text();
+				if(parseInt(page)==1){
+					return false;
+				}
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");					
+				str.text(page);		
+				var DATA = 'page='+page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_tickets_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#btn_previous").click(function(){
+				var str=$("#idpage option:selected");
+				page=str.text();
+				if(parseInt(page)==1){
+					return false;
+				}
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				page=parseInt(page)-1;
+				str.text(page);		
+				var DATA = 'page='+page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_tickets_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#btn_next").click(function(){
+				var nbpages = $("#nb_pages").val();		
+				var str=$("#idpage option:selected");
+				page=str.text();
+				if(parseInt(page)>=parseInt(nbpages)){
+					return false;
+				}
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idpage option:selected");
+				page=str.text();				
+				page=parseInt(page)+1;
+				str.text(page);		
+				var DATA = 'page='+page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_tickets_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});
+			$("#btn_last").click(function(){
+				var nbpages = $("#nb_pages").val();		
+				var str=$("#idpage option:selected");
+				page=str.text();
+				if(parseInt(page)>=parseInt(nbpages)){
+					return false;
+				}
+				$('#content-liste').html("<center>{{'message.search_inprogress'|trans([],'BoAdminBundle')}} >>&nbsp;<img src=\"{{ asset('images/others/loading.gif') }}\" border='0' /></center>");
+				var str=$("#idpage option:selected");
+				var page=nbpages;				
+				str.text(page);			
+				var DATA = 'page='+page;
+				$.ajax({
+					type: "POST",
+					url: "{{ path('dash_tickets_pagesearch')}}",
+					data: DATA,
+					cache: false,
+					success: function(data){
+						$('#content-liste').html(data);
+					}
+				});
+				return false;
+			});	
+		</script>
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

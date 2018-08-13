@@ -1,0 +1,16 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					{%if tsstudent.status==1%}
+						<td class="delete-action">
+							<button type="submit" id="btn-create">{{'action.confirm'|trans([],'BoAdminBundle')}}</button>
+						</td>
+					{%endif%}
+					<td>
+						<a href="{{ path('students_show', { 'id': tsstudent.students.id }) }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				</tr>
+			</table>		
+		</div>
+	</div>	

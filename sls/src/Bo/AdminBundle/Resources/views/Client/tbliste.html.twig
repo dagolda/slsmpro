@@ -1,0 +1,31 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.reference'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.designation'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.phonenumber'|trans([],'BoAdminBundle')}}</th>
+                <th>{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="126px">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td><a href="{{ path('client_show', { 'id': client.id }) }}">{{ client.id }}</a></td>
+                <td>{{ client.reference }}</td>
+                <td>{{ client.designation }}</td>
+                <td>{{ client.phonenumber }}</td>
+                <td>{{ client.email }}</td>
+                <td class="list-action">
+                    <a href="{{ path('client_show', { 'id': client.id }) }}">show</a>
+					{%if app.session.get('rights')['CONTRACTS']['Customers'] is defined and app.session.get('rights')['CONTRACTS']['Customers'].edit==1%}
+						<a href="{{ path('client_edit', { 'id': client.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="6">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

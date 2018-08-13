@@ -1,0 +1,19 @@
+{% extends 'quiz.html.twig' %}
+{% block title %}{{parent()}}-{{'entity.evaluation'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block label %}<h1>{{'entity.evaluation'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<div class="quiz_evaluation">
+			<p>
+				<p>Vos résultats seront transmis à un conseiller pédagogique CLIC Ottawa Gatineau pour analyse.</p>
+				<p>Merci!</p>
+				<p><b>L'équipe d'évaluation</b></p>
+			</p>
+			<p>
+				<p>Your results will be forwarded to a Pedagogical Advisor at CLIC Ottawa Gatineau for analysis.</p>
+				<p>Thank you.</p>
+				<p><b>Evaluation Team</b></p>
+			</p>
+		</div>
+	</div>
+{% endblock %}

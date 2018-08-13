@@ -1,0 +1,74 @@
+{% extends 'quiz.html.twig' %}
+{% block title %}{{parent()}}- {{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'layout.menu.home'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block label %}<h1>{{'layout.menu.dashboard'|trans([],'BoAdminBundle')}} >> {{'layout.menu.home'|trans([],'BoAdminBundle')}}</h1>{% endblock %}	
+{% block body %}
+	<div class="panel-group">
+		<div class="panel panel-default">
+			<div class="panel-heading">{{'title.welcome.message'|trans([],'BoAdminBundle')}}</div>
+			<div class="panel-body noframe">
+				<div class="student_home_welcome">
+					<img src="{{ asset(['images/slider/', imgname]|join) }}" width="400"/>
+					{{welcome|raw}}
+				</div>				
+				<div class="student_home_address">
+					<h2>{{'title.our.address'|trans([],'BoAdminBundle')}}:</h2>
+					{%for campus in campuss%}
+						<ul>
+							<li>{{campus.address}}
+							<button type="button" class="btn btn-info btn-lg modal-map" data-toggle="modal" data-target="
+								{%if campus.city=='Gatineau' or campus.city=='gatineau'%}
+									#hull_map
+								{%elseif campus.city=='Ottawa' or campus.city=='ottawa'%}
+									#ottawa_map
+								{%endif%}							
+							">{{'action.seemap'|trans([],'BoAdminBundle')}}</button></li>
+						</ul>
+					{%endfor%}				
+				</div>
+			</div>
+		</div>
+		<br/>
+	</div>
+	<div class="container ggl_map">
+	  <!-- Modal -->
+	  <div class="modal fade" id="ottawa_map" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.googlemap'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+				{%include "BoStudentBundle:Default:ottawamap.html.twig"%}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	<div class="container">
+	  <!-- Modal -->
+	  <div class="modal fade" id="hull_map" role="dialog">
+		<div class="modal-dialog">
+		
+		  <!-- Modal content-->
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <button type="button" class="close" data-dismiss="modal">&times;</button>
+			  <h4 class="modal-title">{{'label.googlemap'|trans([],'BoAdminBundle')}}</h4>
+			</div>
+			<div class="modal-body">
+				{%include "BoStudentBundle:Default:hullmap.html.twig"%}
+			</div>
+		  </div>
+		  
+		</div>
+	  </div>
+	</div>
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('js/vendor/bootstrap/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+	{% endblock %}
+{% endblock %}

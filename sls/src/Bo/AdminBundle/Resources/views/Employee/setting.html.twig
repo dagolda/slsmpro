@@ -1,0 +1,9 @@
+	<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+		<tr>
+			<th width="80%" class="sty_label">{{'message.setting.tsdate'|trans([],'BoAdminBundle')}}</th>
+			<td>
+				<input type="radio" name="tsdate" value="yes" {%if employee.tsdate==1%}checked{%endif%}>Yes
+				<input type="radio" name="tsdate" value="no" {%if employee.tsdate==0%}checked{%endif%}>No
+			</td>
+		</tr>
+	</table>

@@ -1,0 +1,75 @@
+local_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Local:index" }
+    methods:  GET
+local_empty:
+    path:     /empty/
+    defaults: { _controller: "BoAdminBundle:Local:empty" }
+    methods:  GET
+local_upcomingbug:
+    path:     /upcomingbug/
+    defaults: { _controller: "BoAdminBundle:Local:upcomingbug" }
+    methods:  GET
+local_page:
+    path:     /page/{option}
+    defaults: { _controller: "BoAdminBundle:Local:page" }
+local_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Local:show" }
+    methods:  GET
+local_disable:
+    path:     /{id}/disable
+    defaults: { _controller: "BoAdminBundle:Local:disable" }
+    methods:  GET
+local_free:
+    path:     /{id}/free
+    defaults: { _controller: "BoAdminBundle:Local:free" }
+    methods:  GET
+local_enable:
+    path:     /{id}/enable
+    defaults: { _controller: "BoAdminBundle:Local:enable" }
+    methods:  GET
+local_back:
+    path:     /back/
+    defaults: { _controller: "BoAdminBundle:Local:back" }
+    methods:  GET
+local_search:
+    path:  /search/
+    defaults: { _controller: "BoAdminBundle:Local:search" }
+    methods:  [GET, POST]
+local_pagesearch:
+    path:  /pagesearch/
+    defaults: { _controller: "BoAdminBundle:Local:pagesearch" }
+    methods:  [GET, POST]
+local_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Local:new" }
+    methods:  [GET, POST]
+local_newbatch:
+    path:     /newbatch
+    defaults: { _controller: "BoAdminBundle:Local:newbatch" }
+    methods:  [GET, POST]
+local_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Local:edit" }
+    methods:  [GET, POST]
+local_maj:
+    path:     /update/
+    defaults: { _controller: "BoAdminBundle:Local:update" }
+    methods:  [GET, POST]
+local_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Local:delete" }
+    methods:  DELETE
+local_extrasearch:
+    path:     /extrasearch/
+    defaults: { _controller: "BoAdminBundle:Local:extrasearch" }
+    methods:  [GET, POST]
+local_periodsearch:
+    path:     /periodsearch/
+    defaults: { _controller: "BoAdminBundle:Local:periodsearch" }
+    methods:  [GET, POST]
+local_xls:
+    path:     /extract/xls/
+    defaults: { _controller: "BoAdminBundle:Local:xls" }
+    methods:  [GET, POST]

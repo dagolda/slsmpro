@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:local.html.twig"%}{% endblock %}
+{% block nav %}{% endblock %}
+{% block label %}<h1>Furnitures edit</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		<form action="{{ path('mobiliers_edit',{'id':mobiliers.id}) }}" method="post" class="style">
+			{{ form_errors(edit_form) }}
+			{%include "BoAdminBundle:Furnitures:editactions.html.twig"%}
+			{%include "BoAdminBundle:Furnitures:editform.html.twig"%}
+			{{ form_rest(edit_form) }}
+		</form>	
+	</div>
+{% endblock %}

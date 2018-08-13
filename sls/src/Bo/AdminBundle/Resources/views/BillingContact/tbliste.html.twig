@@ -1,0 +1,29 @@
+    <table class="table table-bordered records_list">
+        <thead>
+            <tr>
+                <th width="15%">{{'label.name'|trans([],'BoAdminBundle')}}</th>
+                <th width="40%">{{'label.email'|trans([],'BoAdminBundle')}}</th>
+                <th width="10%">Phone</th>
+                <th width="15%">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for billingcontact in billingContacts %}
+            <tr>
+                <td>{% if billingcontact.name %}{{ billingcontact.name }}{% else %}---{% endif %}</td>
+                <td>{% if billingcontact.email %}{{ billingcontact.email }}{% else %}---{% endif %}</td>
+                <td>{% if billingcontact.phone %}{{ billingcontact.phone }}{% else %}---{% endif %}</td>
+                <td>{% if billingcontact.creationdate %}{{ billingcontact.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td class="list-action">
+					<a href="{{ path('billingcontact_show', { 'id': billingcontact.id }) }}">{{'action.show'|trans([],'BoAdminBundle')}}</a>
+					{%if app.session.get('rights')['CONTRACTS']['Billing Contact'] is defined and app.session.get('rights')['CONTRACTS']['Billing Contact'].edit==1%}
+						<a href="{{ path('billingcontact_edit', { 'id': billingcontact.id }) }}">{{'action.edit'|trans([],'BoAdminBundle')}}</a>
+					{%endif%}
+                </td>
+            </tr>
+		{%else%}
+			<tr><td colspan="5">{{'No data found'|trans([],'BoAdminBundle')}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>

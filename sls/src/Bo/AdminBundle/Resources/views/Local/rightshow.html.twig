@@ -1,0 +1,90 @@
+	<div class="employee-identity">Local {{ local.reference }}</div>
+    <table>
+        <tbody>
+            <tr>
+                <th>Id:</th>
+                <td>{{ local.id }}</td>
+            </tr>
+			{%if local.typecontract and local.typecontract|length>0%}
+            <tr>
+                <th>{{'label.contracttype'|trans([],'BoAdminBundle')}}:</th>
+                <td>
+					{%set i=0%}
+					{%for tc in local.typecontract%}
+						{{ tc.reference }}
+						{%set i=i+1%}
+						{%if i<local.typecontract|length%}-{%endif%}
+					{%endfor%}				
+				</td>
+            </tr>
+			{%endif%}
+			{%if local.designation%}
+            <tr>
+                <th>{{'label.designation'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ local.designation }}</td>
+            </tr>
+			{%endif%}
+			{%if local.campus%}
+            <tr>
+                <th>{{'label.campus'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ local.campus.designation }}</td>
+            </tr>
+			{%endif%}
+			{%if local.campus%}
+            <tr>
+                <th>{{'label.address'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ local.campus.address }}</td>
+            </tr>
+			{%endif%}
+			{%if local.dimension%}
+            <tr>
+                <th>{{'label.dimension'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ local.dimension }}</td>
+            </tr>
+			{%endif%}
+			{%if local.categoryroom%}
+            <tr>
+                <th>{{'label.category'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ local.categoryroom.catname }}</td>
+            </tr>
+			{%endif%}
+			{%if local.capability%}
+            <tr>
+                <th>{{'label.capacity'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ local.capability }}</td>
+            </tr>
+			{%endif%}
+			{%if local.max %}
+            <tr>
+                <th>Max:</th>
+                <td>{{ local.max }}</td>
+            </tr>
+			{%endif%}
+			{%if local.suite %}
+            <tr>
+                <th>Suite:</th>
+                <td>{{ local.suite }}</td>
+            </tr>
+			{%endif%}
+            <tr>
+                <th>{{'label.status'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ status[local.status] }}</td>
+            </tr>
+            <tr>
+                <th>{{'label.available'|trans([],'BoAdminBundle')}}:</th>
+                <td>{%if local.available==1%}{{'label.yes'|trans([],'BoAdminBundle')}}{%else%}{{'label.no'|trans([],'BoAdminBundle')}}{%endif%}</td>
+            </tr>
+			{%if local.creationdate %}
+            <tr>
+                <th>{{'label.creationdate'|trans([],'BoAdminBundle')}}:</th>
+                <td>{{ local.creationdate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+			{% endif %}
+			{%if local.details!="" and local.details!=null%}
+				<tr>
+					<th>Details:</th>
+					<td>{{ local.details }}</td>
+				</tr>
+			{%endif%}
+        </tbody>
+    </table>

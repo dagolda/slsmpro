@@ -1,0 +1,20 @@
+    <table>
+        <tbody>
+            <tr>
+                <th>{{'label.id'|trans([],'BoAdminBundle')}}</th>
+                <td>{{ event.id }}</td>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <td>{{ event.year }}</td>
+            </tr>
+            <tr>
+                <th>Month</th>
+                <td>{{ event.month }}</td>
+            </tr>
+            <tr>
+                <th>Creationdate</th>
+                <td>{% if event.creationdate %}{{ event.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>

@@ -1,0 +1,6 @@
+				<select name='idavailability' id='idavailability'>
+					<option value="1" {%if idavailability is defined and availability.id ==1%}selected='selected'{%endif%}>{{'label.available'|trans([],'BoAdminBundle')}}</option>
+					<option value="2" {%if idavailability is defined and availability.id ==2%}selected='selected'{%endif%}>{{'label.unavailable'|trans([],'BoAdminBundle')}}</option>
+					<option value="3" {%if idavailability is defined and availability.id ==3%}selected='selected'{%endif%}>{{'label.active'|trans([],'BoAdminBundle')}}</option>
+					<option value="4" {%if idavailability is defined and availability.id ==4%}selected='selected'{%endif%}>{{'label.inactive'|trans([],'BoAdminBundle')}}</option>
+				</select>	

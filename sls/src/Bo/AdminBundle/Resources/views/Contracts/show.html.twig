@@ -1,0 +1,30 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th width="24%">Order number</th>
+				<th width="24%">{{'label.language'|trans([],'BoAdminBundle')}}</th>
+                <th width="24%">Contract type</th>
+				<th width="24%">Type training</th>
+            </tr>
+            <tr>
+                <td>{{ contract.ordernumber }}</td>
+                <td>{{ contract.language }}</td>
+				<td>{{ contract.typecontract }}</td>
+				<td>{{ contract.typeoftraining }}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+                <th>{% if contract.workfields %}Work field{%elseif contract.methodofsupply %}Method of supply{% endif %}</th>
+                <th>{{'label.numberofhour'|trans([],'BoAdminBundle')}}</th>
+				<th>Start of Training</th>
+				<th>End of Training</th>				
+            </tr>
+            <tr>               
+				<td>{% if contract.workfields %}{{ contract.workfields }}{%elseif contract.methodofsupply %}{{ contract.methodofsupply }}{% endif %}</td>
+                <td>{{ contract.hoursnumber }}</td>
+				<td>{% if contract.startdate %}{{ contract.startdate|date('Y-m-d') }}{% endif %}</td>
+				<td>{% if contract.enddate %}{{ contract.enddate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+        </tbody>
+    </table>

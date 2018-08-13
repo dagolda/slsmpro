@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block smenu %}{%include "BoAdminBundle:Default:tdb.html.twig"%}{% endblock %}
+{% block nav %}	{%if employee!=null%}{%include "BoAdminBundle:User:rightshow.html.twig"%}{%endif%}	{% endblock %}
+{% block label %}<h1>Employee Timesheet</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoAdvisorsBundle:Employee:showactions.html.twig"%}
+		<div class="show_content">
+			{%include "BoAdvisorsBundle:Employee:tbshow.html.twig"%}
+		</div>	
+		{%if tsv%}
+		<br/>
+		<div id="content-liste">
+			{%include "BoAdminBundle:TsValidation:tbliste.html.twig"%}
+		</div>
+		{%endif%}		
+	</div>
+{% endblock %}

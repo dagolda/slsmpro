@@ -1,0 +1,21 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+				{%if app.session.get('rights')['CONTRACTS']['Customers'] is defined and app.session.get('rights')['CONTRACTS']['Customers'].ddelete==1%}
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-delete" data-toggle="modal" data-target="#myModal" id="btn_delete">{{'action.delete'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				{%endif%}
+					<td>
+						<a href="{{ path('client_index') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				{%if app.session.get('rights')['CONTRACTS']['Coordinators'] is defined and app.session.get('rights')['CONTRACTS']['Coordinators'].creation==1%}
+					<td>
+						<button type="button" class="btn btn-info btn-lg modal-create" data-toggle="modal" data-target="#add_coordinator">{{'action.createmasteraccount'|trans([],'BoAdminBundle')}}</button>
+					</td>
+				{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

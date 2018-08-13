@@ -1,0 +1,24 @@
+hteaching_index:
+    path:     /
+    defaults: { _controller: "BoAdminBundle:Hteaching:index" }
+    methods:  GET
+
+hteaching_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoAdminBundle:Hteaching:show" }
+    methods:  GET
+
+hteaching_new:
+    path:     /new
+    defaults: { _controller: "BoAdminBundle:Hteaching:new" }
+    methods:  [GET, POST]
+
+hteaching_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoAdminBundle:Hteaching:edit" }
+    methods:  [GET, POST]
+
+hteaching_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoAdminBundle:Hteaching:delete" }
+    methods:  DELETE

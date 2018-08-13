@@ -1,0 +1,31 @@
+    <table width="100%">
+        <tbody>
+            <tr>
+                <th width="20%" class="sty_label">Id</th>
+				<th width="20%" class="sty_label">{{'label.contracttype'|trans([],'BoAdminBundle')}}</th>
+				<th width="20%" class="sty_label">{{'label.language'|trans([],'BoAdminBundle')}}</th>
+				<th width="20%" class="sty_label">{{'label.ftorpt'|trans([],'BoAdminBundle')}}</th> 
+
+            </tr>
+            <tr>
+                <td>{{ otherprice.id }}</td>
+				<td>{{ otherprice.contracttype }}</td>
+				<td>{{ otherprice.language }}</td>
+				<td>{{ otherprice.ftorpt }}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+            <tr>
+				<th class="sty_label">{{'label.feature'|trans([],'BoAdminBundle')}}</th>
+				<th class="sty_label">{{'label.priceonsite'|trans([],'BoAdminBundle')}}</th>
+				<th class="sty_label">{{'label.ftorpt'|trans([],'BoAdminBundle')}}</th> 
+				<th class="sty_label">{{'label.creationdate'|trans([],'BoAdminBundle')}}</th> 
+            </tr>
+            <tr>
+                <td>{{ feature[otherprice.feature] }}</td>
+				<td>{{ otherprice.priceonsite }}</td>
+				<td>{{ otherprice.priceoffsite }}</td>
+                <td>{% if otherprice.creationdate %}{{ otherprice.creationdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
+        </tbody>
+    </table>

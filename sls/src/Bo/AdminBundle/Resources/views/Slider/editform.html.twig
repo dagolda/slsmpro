@@ -1,0 +1,57 @@
+		<table border="0" cellpadding="0" cellspacing="0" id="new_row">
+			<tr>
+				<th class="sty_label" width="300">Categorie</th>
+				<th class="sty_label" width="300">Ordre</th>
+			</tr>
+			<tr>
+				<td>{{ form_widget(form.categorie) }}</td>
+				<td>{{ form_widget(form.ordre) }}</td>
+			</tr>
+			<tr>
+				<td colspan="2">&nbsp;</td>
+			</tr>
+			<tr>
+				<th class="sty_label" width="300">Titre 1</th>
+				<th class="sty_label" width="300">Titre 2</th>
+			</tr>
+			<tr>
+				<td>{{ form_widget(form.b1) }}</td>
+				<td>{{ form_widget(form.b2) }}</td>
+			</tr>
+			<tr><td colspan="2">&nbsp;</td></tr>
+			<tr>
+				<th class="sty_label" colspan="2">Message</th>
+			</tr>
+			<tr>
+				<td colspan="2">{{ form_widget(form.b3) }}</td>
+			</tr>
+			<tr>
+				<td colspan="2">&nbsp;</td>
+			</tr>
+			<tr>
+				<th colspan="2" align="left">
+					<pb class="sty_label">image</pb> <span>(Dimensions: 640x360)</span>
+				</th>
+			</tr>
+			{%if entity.path!=null and entity.path!=""%}
+				<tr>
+					<td colspan="2"><img src="{{ asset(['images/slider/', entity.path]|join) }}" width="500px"/></td>
+				</tr>
+			{%endif%}
+			<tr>
+				<td colspan="2">{{ form_widget(form.file) }}</td>				
+			</tr>
+			<tr>
+				<td colspan="2">&nbsp;</td>
+			</tr>
+			<tr>
+				<td class="bright">{{ form_rest(form) }}</td>
+				<td class="clink">
+					{%if url is defined%}
+						<a href="{{ url }}">Annuler</a>
+					{%else%}					
+						<a href="{{ path('admin_slider') }}">Annuler</a>
+					{%endif%}
+				</td>
+			</tr>
+		</table>		

@@ -1,0 +1,6 @@
+				<select name='idemployee' id='idemployee'>
+					<option value="0" selected='selected'>{{'action.select'|trans([],'BoAdminBundle')}}</option>
+					{%for employee in employees%}
+						<option value="{{employee.id}}" {%if idemployee is defined and idemployee ==employee.id%}selected='selected'{%endif%}>{{employee.firstname}} {{employee.name}}</option>
+					{%endfor%}
+				</select>	

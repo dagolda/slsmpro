@@ -1,0 +1,60 @@
+{% extends 'coordinator.html.twig' %}
+{% block title %}{{parent()}}- {{'entity.supervision'|trans([],'BoAdminBundle')}}  >> {{'label.students'|trans([],'BoAdminBundle')}}  >> {{'action.show'|trans([],'BoAdminBundle')}}{% endblock %}
+{% block smenu %}{%include "BoCoordinatorBundle:Default:supervision.html.twig"%}{% endblock %}
+{% block nav %}
+	{%if student!=null%}{%include "BoAdminBundle:Students:rightshow.html.twig"%}{%endif%}	
+{% endblock %}
+{% block label %}<h1>{{'entity.supervision'|trans([],'BoAdminBundle')}} >> {{'label.students'|trans([],'BoAdminBundle')}} >> {{'action.show'|trans([],'BoAdminBundle')}}</h1>{% endblock %}
+{% block body %}
+	<div id="body-content">
+		{%include "BoCoordinatorBundle:Students:showactions.html.twig"%}
+		{%if contract is defined and contract!=null%}
+			<div class="display_content">
+				<legend>{{'label.advisor'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Students:advisor.html.twig"%}
+			</div>
+		{%endif%}
+		<div class="display_content">
+			<legend>{{'entity.contract'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Students:contract.html.twig"%}
+		</div>
+		{%if group is defined and group!=null%}
+			<div class="display_content">
+				<legend>{{'label.group'|trans([],'BoAdminBundle')}}</legend>
+				{%include "BoAdminBundle:Contracts:group.html.twig"%}
+			</div>
+		{%endif%}
+		{%if teachers|length>0%}
+			<div class="display_content">
+				<legend>{{'Teacher'|trans([],'BoAdminBundle')}}</legend>
+				<div id="teacher_content">
+						{%include "BoAdminBundle:Students:teachers.html.twig"%}
+				</div>
+			</div>
+		{%endif%}
+		{%if contract.campus is defined and contract.campus!=null%}
+		<div class="display_content">
+			<legend>{{'label.room'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Students:local.html.twig"%}
+		</div>
+		{%endif%}
+		{%if evaluations %}
+		<div class="display_content">
+			<legend>{{'label.evaluation'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Students:tbeval.html.twig"%}
+		</div>
+		{%endif%}
+		{%if absences|length>0 %}
+		<div class="display_content">
+			<legend>{{'label.recentabsences'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoCoordinatorBundle:Students:absences.html.twig"%}
+		</div>
+		{%endif%}
+		{%if timesheets!=null%}
+		<div class="display_content">
+			<legend>{{'entity.timesheet'|trans([],'BoAdminBundle')}}</legend>
+			{%include "BoAdminBundle:Students:timesheet.html.twig"%}
+		</div>
+		{%endif%}
+	</div>
+{% endblock %}

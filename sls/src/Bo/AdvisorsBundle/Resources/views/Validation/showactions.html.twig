@@ -1,0 +1,18 @@
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table>
+				<tr>
+					<td>
+						<a href="{{ path('dash_validation_list') }}">{{'action.back'|trans([],'BoAdminBundle')}}</a>
+					</td>
+				{%if app.session.get('rights')['ACCOUNTING']['TS Validation'] is defined and app.session.get('rights')['ACCOUNTING']['TS Validation'].edit==1%}	
+					{%if timesheets|length>1%}
+						<td>
+							<a href="{{ path('dash_employee_allvalidate',{ 'id': employee.id }) }}">All validate</a>
+						</td>
+					{%endif%}
+				{%endif%}
+				</tr>
+			</table>		
+		</div>
+	</div>	

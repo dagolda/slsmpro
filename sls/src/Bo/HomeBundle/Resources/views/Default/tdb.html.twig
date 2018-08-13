@@ -1,0 +1,23 @@
+<li {%if sm=="home"%}class="active"{%endif%}>
+	<a href="{{ path('bo_home_homepage') }}">
+		{{'layout.menu.home'|trans([],'BoAdminBundle')}}
+	</a>
+</li>
+{%if app.session.get('dat') is defined and app.session.get('dts')==1%}
+	<li {%if sm=="agenda"%}class="active"{%endif%}>
+		<a href="{{ path('home_agenda_index') }}">
+			{{'layout.menu.agenda'|trans([],'BoAdminBundle')}}
+		</a>
+	</li>
+{%endif%}
+<li {%if sm=="teamcontact"%}class="active"{%endif%}>
+	<a href="{{ path('bo_home_teamcontact') }}">
+		{{'layout.menu.teamcontacts'|trans([],'BoAdminBundle')}}
+	</a>
+</li>
+{%if sm=="myaccount"%}
+	<li {%if sm=="myaccount"%}class="active"{%endif%}>
+		{{'layout.menu.myaccount'|trans([],'BoAdminBundle')}}
+	</li>
+{%endif%}
+

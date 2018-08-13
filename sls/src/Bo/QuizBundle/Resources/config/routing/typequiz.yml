@@ -1,0 +1,24 @@
+typequiz_index:
+    path:     /
+    defaults: { _controller: "BoQuizBundle:Typequiz:index" }
+    methods:  GET
+
+typequiz_show:
+    path:     /{id}/show
+    defaults: { _controller: "BoQuizBundle:Typequiz:show" }
+    methods:  GET
+
+typequiz_new:
+    path:     /{idquiz}/new
+    defaults: { _controller: "BoQuizBundle:Typequiz:new" }
+    methods:  [GET, POST]
+
+typequiz_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "BoQuizBundle:Typequiz:edit" }
+    methods:  [GET, POST]
+
+typequiz_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "BoQuizBundle:Typequiz:delete" }
+    methods:  DELETE
